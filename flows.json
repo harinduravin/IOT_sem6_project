@@ -1,15 +1,286 @@
 [
     {
-        "id": "b391ed8b.1ea32",
+        "id": "2ad522d6.3d80ce",
         "type": "tab",
-        "label": "Flow 1",
+        "label": "Flow 2",
         "disabled": false,
         "info": ""
     },
     {
-        "id": "6074636a.21df0c",
+        "id": "3a4aeaa5.e720d6",
+        "type": "exchangerates-key",
+        "name": "Thishani2"
+    },
+    {
+        "id": "6d92e441.b263cc",
+        "type": "ui_group",
+        "name": "Exchange Rate",
+        "tab": "df9f8e0b.903e2",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "df9f8e0b.903e2",
+        "type": "ui_tab",
+        "name": "Exchange Rates",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "3ab86060.4ea31",
+        "type": "exchangeratesapi",
+        "z": "2ad522d6.3d80ce",
+        "name": "",
+        "url": "latest",
+        "base": "",
+        "symbols": "",
+        "creds": "3a4aeaa5.e720d6",
+        "x": 520,
+        "y": 320,
+        "wires": [
+            [
+                "dd61d5c7.f00a28"
+            ]
+        ]
+    },
+    {
+        "id": "bc95624b.1f5fe",
+        "type": "inject",
+        "z": "2ad522d6.3d80ce",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 320,
+        "wires": [
+            [
+                "a2c60656.85d268"
+            ]
+        ]
+    },
+    {
+        "id": "e947f495.e22668",
+        "type": "debug",
+        "z": "2ad522d6.3d80ce",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 930,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "a2c60656.85d268",
         "type": "function",
-        "z": "b391ed8b.1ea32",
+        "z": "2ad522d6.3d80ce",
+        "name": "",
+        "func": "msg.params = {};\n// msg.params.base = 'USD'\n// msg.params.symbols = 'AUD'\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 320,
+        "wires": [
+            [
+                "3ab86060.4ea31"
+            ]
+        ]
+    },
+    {
+        "id": "dd61d5c7.f00a28",
+        "type": "function",
+        "z": "2ad522d6.3d80ce",
+        "name": "",
+        "func": "// msg.params = {};\n// // msg.params.base = 'USD'\n// msg.params.symbols = 'KRW'\n\n// var rate = msg.payload.rates.LKR;\n// return {rate};\n\n\n// var newMsg = { 'payload2': msg.payload.rates };\n// return newMsg;\n\nvar newMsg = { payload: msg.payload.rates };\nreturn [newMsg];",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 720,
+        "y": 320,
+        "wires": [
+            [
+                "e947f495.e22668"
+            ]
+        ]
+    },
+    {
+        "id": "9abb3a6.44104c8",
+        "type": "timerswitch",
+        "z": "2ad522d6.3d80ce",
+        "name": "Hourly Timer",
+        "ontopic": "",
+        "offtopic": "",
+        "onpayload": "1",
+        "offpayload": "0",
+        "disabled": false,
+        "schedules": [
+            {
+                "on_h": "-1",
+                "on_m": "01",
+                "on_s": "-1",
+                "off_h": "00",
+                "off_m": "59",
+                "off_s": "-1",
+                "valid": false
+            }
+        ],
+        "x": 580,
+        "y": 520,
+        "wires": [
+            [
+                "2f2f8377.ee67cc"
+            ]
+        ]
+    },
+    {
+        "id": "73f91ed5.86456",
+        "type": "inject",
+        "z": "2ad522d6.3d80ce",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 270,
+        "y": 540,
+        "wires": [
+            [
+                "9abb3a6.44104c8"
+            ]
+        ]
+    },
+    {
+        "id": "dbb17019.ae2c6",
+        "type": "inject",
+        "z": "2ad522d6.3d80ce",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "false",
+        "payloadType": "bool",
+        "x": 270,
+        "y": 620,
+        "wires": [
+            [
+                "9abb3a6.44104c8"
+            ]
+        ]
+    },
+    {
+        "id": "2f2f8377.ee67cc",
+        "type": "debug",
+        "z": "2ad522d6.3d80ce",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 810,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "d269c741.817f68",
+        "type": "ui_chart",
+        "z": "2ad522d6.3d80ce",
+        "name": "",
+        "group": "6d92e441.b263cc",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "label": "chart",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 710,
+        "y": 620,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a1367960.5c4dd8",
+        "type": "function",
+        "z": "2ad522d6.3d80ce",
         "name": "Simple Moving Average (SMA)",
         "func": "var moment = global.get('techmodule');\n\nconst SMA = moment.SMA\nlet period = msg.values.period; \nlet values = msg.values.value;                    \n\nvar out = {\n  values    : SMA.calculate({period : period, values : values})\n}\nmsg =  out\nreturn msg\n",
         "outputs": 1,
@@ -17,18 +288,18 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 780,
-        "y": 320,
+        "x": 510,
+        "y": 1220,
         "wires": [
             [
-                "cb251ba8.b19b7"
+                "77d9c891.b79028"
             ]
         ]
     },
     {
-        "id": "60bb71c2.c39b88",
+        "id": "6220ff02.4761a",
         "type": "inject",
-        "z": "b391ed8b.1ea32",
+        "z": "2ad522d6.3d80ce",
         "name": "Send Array",
         "props": [
             {
@@ -42,18 +313,18 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 490,
-        "y": 340,
+        "x": 220,
+        "y": 1240,
         "wires": [
             [
-                "6074636a.21df0c"
+                "a1367960.5c4dd8"
             ]
         ]
     },
     {
-        "id": "cb251ba8.b19b7",
+        "id": "77d9c891.b79028",
         "type": "debug",
-        "z": "b391ed8b.1ea32",
+        "z": "2ad522d6.3d80ce",
         "name": "",
         "active": true,
         "tosidebar": true,
@@ -63,14 +334,14 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1070,
-        "y": 300,
+        "x": 800,
+        "y": 1200,
         "wires": []
     },
     {
-        "id": "f057f473.089f98",
+        "id": "54e555e0.e31d7c",
         "type": "function",
-        "z": "b391ed8b.1ea32",
+        "z": "2ad522d6.3d80ce",
         "name": "MACD",
         "func": "var moment = global.get('techmodule');\nvar MACD = moment.MACD;\n\n\nvar macdInput = msg.values;                    \n\nvar out = {\n  values    : MACD.calculate(macdInput)\n}\nmsg =  out\nreturn msg\n\n\n\n\n\n",
         "outputs": 1,
@@ -78,18 +349,18 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 780,
-        "y": 240,
+        "x": 510,
+        "y": 1140,
         "wires": [
             [
-                "82e7863a.2c53a"
+                "8b31f2b2.a4946"
             ]
         ]
     },
     {
-        "id": "56f226a3.7a2e08",
+        "id": "86c32d4c.78803",
         "type": "inject",
-        "z": "b391ed8b.1ea32",
+        "z": "2ad522d6.3d80ce",
         "name": "Send Array",
         "props": [
             {
@@ -103,18 +374,18 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 500,
-        "y": 240,
+        "x": 230,
+        "y": 1140,
         "wires": [
             [
-                "f057f473.089f98"
+                "54e555e0.e31d7c"
             ]
         ]
     },
     {
-        "id": "82e7863a.2c53a",
+        "id": "8b31f2b2.a4946",
         "type": "debug",
-        "z": "b391ed8b.1ea32",
+        "z": "2ad522d6.3d80ce",
         "name": "",
         "active": true,
         "tosidebar": true,
@@ -124,14 +395,14 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 980,
-        "y": 240,
+        "x": 710,
+        "y": 1140,
         "wires": []
     },
     {
-        "id": "a19622f8.9567d8",
+        "id": "b486ed73.33e1b",
         "type": "function",
-        "z": "b391ed8b.1ea32",
+        "z": "2ad522d6.3d80ce",
         "name": "Rate Of Change (ROC)",
         "func": "var moment = global.get('techmodule');\n\nconst ROC = moment.ROC\nlet period = msg.values.period; \nlet values = msg.values.value;                    \n\nvar out = {\n  values    : ROC.calculate({period : period, values : values})\n}\nmsg =  out\nreturn msg\n",
         "outputs": 1,
@@ -139,18 +410,18 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 820,
-        "y": 140,
+        "x": 550,
+        "y": 1040,
         "wires": [
             [
-                "73874a00.7b687"
+                "c1ee69f0.0d4318"
             ]
         ]
     },
     {
-        "id": "b03e4d57.948568",
+        "id": "828f077a.ed7f88",
         "type": "inject",
-        "z": "b391ed8b.1ea32",
+        "z": "2ad522d6.3d80ce",
         "name": "Send Array",
         "props": [
             {
@@ -164,18 +435,19 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 490,
-        "y": 140,
+        "payloadType": "str",
+        "x": 220,
+        "y": 1040,
         "wires": [
             [
-                "a19622f8.9567d8"
+                "b486ed73.33e1b"
             ]
         ]
     },
     {
-        "id": "73874a00.7b687",
+        "id": "c1ee69f0.0d4318",
         "type": "debug",
-        "z": "b391ed8b.1ea32",
+        "z": "2ad522d6.3d80ce",
         "name": "",
         "active": true,
         "tosidebar": true,
@@ -185,8 +457,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1050,
-        "y": 140,
+        "x": 780,
+        "y": 1040,
         "wires": []
     }
 ]
