@@ -7,11 +7,6 @@
         "info": ""
     },
     {
-        "id": "3a4aeaa5.e720d6",
-        "type": "exchangerates-key",
-        "name": "Thishani2"
-    },
-    {
         "id": "6d92e441.b263cc",
         "type": "ui_group",
         "name": "Exchange Rate",
@@ -30,21 +25,104 @@
         "hidden": false
     },
     {
-        "id": "3ab86060.4ea31",
-        "type": "exchangeratesapi",
-        "z": "2ad522d6.3d80ce",
-        "name": "",
-        "url": "latest",
-        "base": "",
-        "symbols": "",
-        "creds": "3a4aeaa5.e720d6",
-        "x": 520,
-        "y": 320,
-        "wires": [
-            [
-                "dd61d5c7.f00a28"
-            ]
-        ]
+        "id": "9467bbf8.1e0c18",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "3a4aeaa5.e720d6",
+        "type": "exchangerates-key",
+        "name": "Thishani2"
     },
     {
         "id": "bc95624b.1f5fe",
@@ -97,12 +175,11 @@
         "type": "function",
         "z": "2ad522d6.3d80ce",
         "name": "",
-        "func": "msg.params = {};\n// msg.params.base = 'USD'\n// msg.params.symbols = 'AUD'\nreturn msg;",
+        "func": "msg.params = {};\n// msg.params.base = 'USD'\nmsg.params.symbols = 'AUD'\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "libs": [],
         "x": 300,
         "y": 320,
         "wires": [
@@ -121,41 +198,11 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "libs": [],
         "x": 720,
         "y": 320,
         "wires": [
             [
                 "e947f495.e22668"
-            ]
-        ]
-    },
-    {
-        "id": "9abb3a6.44104c8",
-        "type": "timerswitch",
-        "z": "2ad522d6.3d80ce",
-        "name": "Hourly Timer",
-        "ontopic": "",
-        "offtopic": "",
-        "onpayload": "1",
-        "offpayload": "0",
-        "disabled": false,
-        "schedules": [
-            {
-                "on_h": "-1",
-                "on_m": "01",
-                "on_s": "-1",
-                "off_h": "00",
-                "off_m": "59",
-                "off_s": "-1",
-                "valid": false
-            }
-        ],
-        "x": 580,
-        "y": 520,
-        "wires": [
-            [
-                "2f2f8377.ee67cc"
             ]
         ]
     },
@@ -271,8 +318,8 @@
         ],
         "outputs": 1,
         "useDifferentColor": false,
-        "x": 710,
-        "y": 620,
+        "x": 670,
+        "y": 700,
         "wires": [
             []
         ]
@@ -287,7 +334,6 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "libs": [],
         "x": 510,
         "y": 1220,
         "wires": [
@@ -348,7 +394,6 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "libs": [],
         "x": 510,
         "y": 1140,
         "wires": [
@@ -409,7 +454,6 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "libs": [],
         "x": 550,
         "y": 1040,
         "wires": [
@@ -460,5 +504,51 @@
         "x": 780,
         "y": 1040,
         "wires": []
+    },
+    {
+        "id": "3ab86060.4ea31",
+        "type": "exchangeratesapi",
+        "z": "2ad522d6.3d80ce",
+        "name": "",
+        "url": "latest",
+        "base": "",
+        "symbols": "",
+        "creds": "3a4aeaa5.e720d6",
+        "x": 520,
+        "y": 320,
+        "wires": [
+            [
+                "dd61d5c7.f00a28"
+            ]
+        ]
+    },
+    {
+        "id": "9abb3a6.44104c8",
+        "type": "timerswitch",
+        "z": "2ad522d6.3d80ce",
+        "name": "Hourly Timer",
+        "ontopic": "",
+        "offtopic": "",
+        "onpayload": "1",
+        "offpayload": "0",
+        "disabled": false,
+        "schedules": [
+            {
+                "on_h": "-1",
+                "on_m": "01",
+                "on_s": "-1",
+                "off_h": "00",
+                "off_m": "59",
+                "off_s": "-1",
+                "valid": false
+            }
+        ],
+        "x": 580,
+        "y": 520,
+        "wires": [
+            [
+                "2f2f8377.ee67cc"
+            ]
+        ]
     }
 ]
