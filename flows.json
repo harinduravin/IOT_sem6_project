@@ -150,6 +150,11 @@
         "loginType": "none"
     },
     {
+        "id": "ec9f480b.2b6f68",
+        "type": "exchangerates-key",
+        "name": "Thishani2"
+    },
+    {
         "id": "bc95624b.1f5fe",
         "type": "inject",
         "z": "2ad522d6.3d80ce",
@@ -577,26 +582,26 @@
         ]
     },
     {
-        "id": "d5ce07cf.d4d6c8",
+        "id": "933d3b81.8a1038",
         "type": "firebase modify",
-        "z": "2ad522d6.3d80ce",
-        "name": "",
+        "z": "e48732d4.55da8",
+        "name": "set",
         "firebaseconfig": "abd7d4f.34da828",
         "childpath": "max_value",
         "method": "set",
         "value": "msg.payload",
         "priority": "msg.priority",
-        "x": 1800,
-        "y": 460,
+        "x": 1010,
+        "y": 160,
         "wires": [
             []
         ]
     },
     {
-        "id": "883e7307.0437f",
+        "id": "cd0420bc.6e851",
         "type": "inject",
-        "z": "2ad522d6.3d80ce",
-        "name": "Set max value",
+        "z": "e48732d4.55da8",
+        "name": "set max value",
         "props": [
             {
                 "p": "payload"
@@ -611,84 +616,176 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "181.25",
+        "payload": "182.25",
         "payloadType": "num",
-        "x": 1300,
-        "y": 340,
+        "x": 240,
+        "y": 160,
         "wires": [
             [
-                "d5ce07cf.d4d6c8"
+                "933d3b81.8a1038"
             ]
         ]
     },
     {
-        "id": "aa80b9ef.374738",
-        "type": "firebase modify",
-        "z": "2ad522d6.3d80ce",
-        "name": "",
+        "id": "113e969e.fe0679",
+        "type": "firebase.once",
+        "z": "e48732d4.55da8",
+        "name": "get max value",
         "firebaseconfig": "e6313113.5cac7",
-        "childpath": "values",
-        "method": "push",
-        "value": "msg.payload",
-        "priority": "msg.priority",
-        "x": 1800,
-        "y": 640,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "a258b302.2a788",
-        "type": "inject",
-        "z": "2ad522d6.3d80ce",
-        "name": "Add value",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "{\"1623300879000\":181.25}",
-        "payloadType": "json",
-        "x": 1280,
-        "y": 520,
-        "wires": [
-            [
-                "aa80b9ef.374738"
-            ]
-        ]
-    },
-    {
-        "id": "aa53b945.6d1c18",
-        "type": "firebase.on",
-        "z": "2ad522d6.3d80ce",
-        "name": "",
-        "firebaseconfig": "643bdadb.c056a4",
         "childpath": "max_value",
-        "atStart": true,
+        "repeatifnull": false,
         "eventType": "value",
         "queries": [],
-        "x": 1540,
-        "y": 720,
+        "x": 460,
+        "y": 240,
         "wires": [
             [
-                "69d13cc4.4a9414"
+                "f689ca48.eaa578"
             ]
         ]
     },
     {
-        "id": "69d13cc4.4a9414",
+        "id": "c3c7a240.372c6",
+        "type": "inject",
+        "z": "e48732d4.55da8",
+        "name": "get max value",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 240,
+        "y": 240,
+        "wires": [
+            [
+                "113e969e.fe0679"
+            ]
+        ]
+    },
+    {
+        "id": "f689ca48.eaa578",
         "type": "debug",
-        "z": "2ad522d6.3d80ce",
-        "name": "Max_value",
+        "z": "e48732d4.55da8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1020,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "87c8dd65.85963",
+        "type": "firebase.once",
+        "z": "e48732d4.55da8",
+        "name": "get values",
+        "firebaseconfig": "abd7d4f.34da828",
+        "childpath": "values",
+        "repeatifnull": false,
+        "eventType": "value",
+        "queries": [],
+        "x": 450,
+        "y": 320,
+        "wires": [
+            [
+                "364cae40.93eb22"
+            ]
+        ]
+    },
+    {
+        "id": "f684270f.938d18",
+        "type": "inject",
+        "z": "e48732d4.55da8",
+        "name": "get values",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 230,
+        "y": 320,
+        "wires": [
+            [
+                "87c8dd65.85963"
+            ]
+        ]
+    },
+    {
+        "id": "c4371d6b.33881",
+        "type": "debug",
+        "z": "e48732d4.55da8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1020,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "4288d4e1.3566fc",
+        "type": "inject",
+        "z": "e48732d4.55da8",
+        "name": "fetch and push rates",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 250,
+        "y": 400,
+        "wires": [
+            [
+                "77a70e31.b6a11"
+            ]
+        ]
+    },
+    {
+        "id": "2db8c956.e0ce56",
+        "type": "debug",
+        "z": "e48732d4.55da8",
+        "name": "",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -697,8 +794,300 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1710,
-        "y": 800,
+        "x": 1030,
+        "y": 400,
         "wires": []
+    },
+    {
+        "id": "77a70e31.b6a11",
+        "type": "function",
+        "z": "e48732d4.55da8",
+        "name": "",
+        "func": "msg.params = {\n    // base :'USD',\n    symbols : 'USD,AUD,JPY,GBP,EUR,KWD'\n};\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 420,
+        "y": 400,
+        "wires": [
+            [
+                "c022b8a1.257d38"
+            ]
+        ]
+    },
+    {
+        "id": "e7f7317b.e9bee",
+        "type": "function",
+        "z": "e48732d4.55da8",
+        "name": "formater",
+        "func": "// msg.params = {};\n// // msg.params.base = 'USD'\n// msg.params.symbols = 'KRW'\n\n// var rate = msg.payload.rates.LKR;\n// return {rate};\n\n\n// var newMsg = { 'payload2': msg.payload.rates };\n// return newMsg;\nconst now = Date.now()\nvar newMsg = { payload: {[now]:msg.payload.rates} };\nreturn [newMsg];",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 840,
+        "y": 400,
+        "wires": [
+            [
+                "2db8c956.e0ce56",
+                "e98b199c.d37c18"
+            ]
+        ]
+    },
+    {
+        "id": "c022b8a1.257d38",
+        "type": "exchangeratesapi",
+        "z": "e48732d4.55da8",
+        "name": "",
+        "url": "latest",
+        "base": "",
+        "symbols": "",
+        "creds": "ec9f480b.2b6f68",
+        "x": 620,
+        "y": 400,
+        "wires": [
+            [
+                "e7f7317b.e9bee"
+            ]
+        ]
+    },
+    {
+        "id": "e98b199c.d37c18",
+        "type": "firebase modify",
+        "z": "e48732d4.55da8",
+        "name": "push",
+        "firebaseconfig": "abd7d4f.34da828",
+        "childpath": "values",
+        "method": "push",
+        "value": "msg.payload",
+        "priority": "msg.priority",
+        "x": 1030,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "364cae40.93eb22",
+        "type": "function",
+        "z": "e48732d4.55da8",
+        "name": "filter",
+        "func": "const values = []\n\nObject.keys(msg.payload).map(key=>(\n    values.push(msg.payload[key])\n    ))\n\nvar newMsg = { \n    payload: values\n};\nreturn [newMsg];",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 670,
+        "y": 320,
+        "wires": [
+            [
+                "c4371d6b.33881"
+            ]
+        ]
+    },
+    {
+        "id": "838bc6b9.14b218",
+        "type": "firebase.once",
+        "z": "e48732d4.55da8",
+        "name": "get max value",
+        "firebaseconfig": "e6313113.5cac7",
+        "childpath": "selected_currency",
+        "repeatifnull": false,
+        "eventType": "value",
+        "queries": [],
+        "x": 620,
+        "y": 600,
+        "wires": [
+            [
+                "d37e854b.bf4d98"
+            ]
+        ]
+    },
+    {
+        "id": "f53c1e82.011d6",
+        "type": "inject",
+        "z": "e48732d4.55da8",
+        "name": "get selected currency",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 270,
+        "y": 600,
+        "wires": [
+            [
+                "838bc6b9.14b218"
+            ]
+        ]
+    },
+    {
+        "id": "d37e854b.bf4d98",
+        "type": "debug",
+        "z": "e48732d4.55da8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1020,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "8a21a559.3c3958",
+        "type": "inject",
+        "z": "e48732d4.55da8",
+        "name": "auth with username/pwd",
+        "props": [
+            {
+                "p": "userdata",
+                "v": "{\"username\":\"sem6biot\",\"password\":\"hdts05\"}",
+                "vt": "json"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 270,
+        "y": 760,
+        "wires": [
+            [
+                "243df070.5384c"
+            ]
+        ]
+    },
+    {
+        "id": "41159431.541bbc",
+        "type": "debug",
+        "z": "e48732d4.55da8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1030,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "2a57abc3.9da694",
+        "type": "firebase.once",
+        "z": "e48732d4.55da8",
+        "name": "get max value",
+        "firebaseconfig": "643bdadb.c056a4",
+        "childpath": "user",
+        "repeatifnull": false,
+        "eventType": "value",
+        "queries": [],
+        "x": 620,
+        "y": 680,
+        "wires": [
+            [
+                "73db5b47.3468d4"
+            ]
+        ]
+    },
+    {
+        "id": "605d43b0.45eddc",
+        "type": "inject",
+        "z": "e48732d4.55da8",
+        "name": "get curent user",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 250,
+        "y": 680,
+        "wires": [
+            [
+                "2a57abc3.9da694"
+            ]
+        ]
+    },
+    {
+        "id": "73db5b47.3468d4",
+        "type": "debug",
+        "z": "e48732d4.55da8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1020,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "243df070.5384c",
+        "type": "firebase.once",
+        "z": "e48732d4.55da8",
+        "name": "get max value",
+        "firebaseconfig": "e6313113.5cac7",
+        "childpath": "user",
+        "repeatifnull": false,
+        "eventType": "value",
+        "queries": [],
+        "x": 600,
+        "y": 760,
+        "wires": [
+            [
+                "e817c97f.fa7b88"
+            ]
+        ]
+    },
+    {
+        "id": "e817c97f.fa7b88",
+        "type": "function",
+        "z": "e48732d4.55da8",
+        "name": "",
+        "func": "let  iscorrect=false\nif (msg.payload.password==msg.userdata.password && msg.payload.username==msg.userdata.username ){\n    iscorrect=true\n}\nvar newMsg = { payload: iscorrect };\nreturn [newMsg];\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 810,
+        "y": 760,
+        "wires": [
+            [
+                "41159431.541bbc"
+            ]
+        ]
     }
 ]
