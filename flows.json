@@ -7,6 +7,13 @@
         "info": ""
     },
     {
+        "id": "e48732d4.55da8",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
         "id": "6d92e441.b263cc",
         "type": "ui_group",
         "name": "Exchange Rate",
@@ -123,6 +130,24 @@
         "id": "3a4aeaa5.e720d6",
         "type": "exchangerates-key",
         "name": "Thishani2"
+    },
+    {
+        "id": "abd7d4f.34da828",
+        "type": "firebase config",
+        "firebaseurl": "sem-6b-iot-default-rtdb",
+        "loginType": "none"
+    },
+    {
+        "id": "e6313113.5cac7",
+        "type": "firebase config",
+        "firebaseurl": "sem-6b-iot-default-rtdb",
+        "loginType": "none"
+    },
+    {
+        "id": "643bdadb.c056a4",
+        "type": "firebase config",
+        "firebaseurl": "sem-6b-iot-default-rtdb",
+        "loginType": "none"
     },
     {
         "id": "bc95624b.1f5fe",
@@ -550,5 +575,130 @@
                 "2f2f8377.ee67cc"
             ]
         ]
+    },
+    {
+        "id": "d5ce07cf.d4d6c8",
+        "type": "firebase modify",
+        "z": "2ad522d6.3d80ce",
+        "name": "",
+        "firebaseconfig": "abd7d4f.34da828",
+        "childpath": "max_value",
+        "method": "set",
+        "value": "msg.payload",
+        "priority": "msg.priority",
+        "x": 1800,
+        "y": 460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "883e7307.0437f",
+        "type": "inject",
+        "z": "2ad522d6.3d80ce",
+        "name": "Set max value",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "181.25",
+        "payloadType": "num",
+        "x": 1300,
+        "y": 340,
+        "wires": [
+            [
+                "d5ce07cf.d4d6c8"
+            ]
+        ]
+    },
+    {
+        "id": "aa80b9ef.374738",
+        "type": "firebase modify",
+        "z": "2ad522d6.3d80ce",
+        "name": "",
+        "firebaseconfig": "e6313113.5cac7",
+        "childpath": "values",
+        "method": "push",
+        "value": "msg.payload",
+        "priority": "msg.priority",
+        "x": 1800,
+        "y": 640,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a258b302.2a788",
+        "type": "inject",
+        "z": "2ad522d6.3d80ce",
+        "name": "Add value",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"1623300879000\":181.25}",
+        "payloadType": "json",
+        "x": 1280,
+        "y": 520,
+        "wires": [
+            [
+                "aa80b9ef.374738"
+            ]
+        ]
+    },
+    {
+        "id": "aa53b945.6d1c18",
+        "type": "firebase.on",
+        "z": "2ad522d6.3d80ce",
+        "name": "",
+        "firebaseconfig": "643bdadb.c056a4",
+        "childpath": "max_value",
+        "atStart": true,
+        "eventType": "value",
+        "queries": [],
+        "x": 1540,
+        "y": 720,
+        "wires": [
+            [
+                "69d13cc4.4a9414"
+            ]
+        ]
+    },
+    {
+        "id": "69d13cc4.4a9414",
+        "type": "debug",
+        "z": "2ad522d6.3d80ce",
+        "name": "Max_value",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1710,
+        "y": 800,
+        "wires": []
     }
 ]
