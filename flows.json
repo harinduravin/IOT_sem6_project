@@ -1,15 +1,15 @@
 [
     {
-        "id": "2ad522d6.3d80ce",
+        "id": "4d83ec58.e26e84",
         "type": "tab",
-        "label": "Flow 2",
+        "label": "Flow 1",
         "disabled": false,
         "info": ""
     },
     {
-        "id": "4d83ec58.e26e84",
+        "id": "2ad522d6.3d80ce",
         "type": "tab",
-        "label": "Flow 1",
+        "label": "Flow 2",
         "disabled": false,
         "info": ""
     },
@@ -170,8 +170,8 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 510,
-        "y": 1220,
+        "x": 370,
+        "y": 360,
         "wires": [
             [
                 "77d9c891.b79028"
@@ -186,7 +186,7 @@
         "props": [
             {
                 "p": "values",
-                "v": "{\"value\":[127.75,129.02,132.75,145.4,148.98,137.52,147.38,139.05,137.23,149.3,162.45,178.95,200.35,221.9,243.23,243.52,286.42,280.27],\"period\":4}",
+                "v": "{\"value\":[127.85,129.02,132.75,145.4,148.98,137.52,147.38,139.05,137.23,149.3,162.45,178.95,200.35,221.9,243.23,243.52,286.42,280.27],\"period\":4}",
                 "vt": "json"
             }
         ],
@@ -195,8 +195,8 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 220,
-        "y": 1240,
+        "x": 120,
+        "y": 360,
         "wires": [
             [
                 "a1367960.5c4dd8"
@@ -216,8 +216,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 800,
-        "y": 1200,
+        "x": 610,
+        "y": 360,
         "wires": []
     },
     {
@@ -230,8 +230,8 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 510,
-        "y": 1140,
+        "x": 290,
+        "y": 260,
         "wires": [
             [
                 "8b31f2b2.a4946"
@@ -255,8 +255,8 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 230,
-        "y": 1140,
+        "x": 120,
+        "y": 260,
         "wires": [
             [
                 "54e555e0.e31d7c"
@@ -276,8 +276,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 710,
-        "y": 1140,
+        "x": 610,
+        "y": 260,
         "wires": []
     },
     {
@@ -290,8 +290,8 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 550,
-        "y": 1040,
+        "x": 350,
+        "y": 160,
         "wires": [
             [
                 "c1ee69f0.0d4318"
@@ -315,9 +315,8 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payloadType": "str",
-        "x": 220,
-        "y": 1040,
+        "x": 120,
+        "y": 160,
         "wires": [
             [
                 "b486ed73.33e1b"
@@ -337,8 +336,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 780,
-        "y": 1040,
+        "x": 610,
+        "y": 160,
         "wires": []
     },
     {
@@ -363,7 +362,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 120,
-        "y": 320,
+        "y": 60,
         "wires": [
             [
                 "a2c60656.85d268"
@@ -384,7 +383,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 930,
-        "y": 340,
+        "y": 60,
         "wires": []
     },
     {
@@ -398,7 +397,7 @@
         "initialize": "",
         "finalize": "",
         "x": 300,
-        "y": 320,
+        "y": 60,
         "wires": [
             [
                 "3ab86060.4ea31"
@@ -416,7 +415,7 @@
         "initialize": "",
         "finalize": "",
         "x": 720,
-        "y": 320,
+        "y": 60,
         "wires": [
             [
                 "e947f495.e22668"
@@ -433,7 +432,7 @@
         "symbols": "",
         "creds": "3a4aeaa5.e720d6",
         "x": 520,
-        "y": 320,
+        "y": 60,
         "wires": [
             [
                 "dd61d5c7.f00a28"
@@ -451,7 +450,7 @@
         "value": "msg.payload",
         "priority": "msg.priority",
         "x": 1010,
-        "y": 160,
+        "y": 200,
         "wires": [
             []
         ]
@@ -478,7 +477,7 @@
         "payload": "182.25",
         "payloadType": "num",
         "x": 240,
-        "y": 160,
+        "y": 200,
         "wires": [
             [
                 "d3fd9e83.edc7d8"
@@ -496,7 +495,7 @@
         "eventType": "value",
         "queries": [],
         "x": 460,
-        "y": 240,
+        "y": 300,
         "wires": [
             [
                 "42cdba4a.cb01f4"
@@ -525,7 +524,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 240,
-        "y": 240,
+        "y": 300,
         "wires": [
             [
                 "3bf2c40e.ae740c"
@@ -545,7 +544,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1020,
-        "y": 240,
+        "y": 300,
         "wires": []
     },
     {
@@ -559,7 +558,7 @@
         "eventType": "value",
         "queries": [],
         "x": 450,
-        "y": 320,
+        "y": 380,
         "wires": [
             [
                 "ffddca73.d1678"
@@ -588,7 +587,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 230,
-        "y": 320,
+        "y": 380,
         "wires": [
             [
                 "81ec3326.0bd8e8"
@@ -608,7 +607,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1020,
-        "y": 320,
+        "y": 380,
         "wires": []
     },
     {
@@ -633,7 +632,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 250,
-        "y": 400,
+        "y": 460,
         "wires": [
             [
                 "e76a8b9e.c686c"
@@ -654,7 +653,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1030,
-        "y": 400,
+        "y": 460,
         "wires": []
     },
     {
@@ -668,7 +667,7 @@
         "initialize": "",
         "finalize": "",
         "x": 420,
-        "y": 400,
+        "y": 460,
         "wires": [
             [
                 "418b2d78.71296c"
@@ -686,7 +685,7 @@
         "initialize": "",
         "finalize": "",
         "x": 840,
-        "y": 400,
+        "y": 460,
         "wires": [
             [
                 "7b1f3af9.d87884",
@@ -704,7 +703,7 @@
         "symbols": "",
         "creds": "ec9f480b.2b6f68",
         "x": 620,
-        "y": 400,
+        "y": 460,
         "wires": [
             [
                 "fa816e65.0e9c08"
@@ -721,8 +720,8 @@
         "method": "push",
         "value": "msg.payload",
         "priority": "msg.priority",
-        "x": 1030,
-        "y": 500,
+        "x": 1010,
+        "y": 540,
         "wires": [
             []
         ]
@@ -738,7 +737,7 @@
         "initialize": "",
         "finalize": "",
         "x": 670,
-        "y": 320,
+        "y": 380,
         "wires": [
             [
                 "9b5b3bbb.e2d9"
@@ -950,37 +949,367 @@
         ]
     },
     {
-        "id": "dc20a7da.9f2ce8",
-        "type": "firebase.on",
-        "z": "4d83ec58.e26e84",
-        "name": "",
-        "firebaseconfig": "6ef5f71b.98f1b8",
-        "childpath": "max_value",
-        "atStart": true,
-        "eventType": "value",
-        "queries": [],
-        "x": 530,
-        "y": 860,
+        "id": "1229ee47.933062",
+        "type": "function",
+        "z": "2ad522d6.3d80ce",
+        "name": "Rate Of Change (ROC)",
+        "func": "var moment = global.get('techmodule');\n\nconst ROC = moment.ROC\nlet period = msg.values.period; \nlet values = msg.values.value;                    \n\nvar out = {\n  values    : ROC.calculate({period : period, values : values})\n}\nmsg =  out\nreturn msg\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 710,
+        "y": 460,
         "wires": [
             [
-                "ffff4f51.afe78"
+                "8771f92e.bdbde8"
             ]
         ]
     },
     {
-        "id": "ffff4f51.afe78",
+        "id": "27a88b3.16bec74",
+        "type": "inject",
+        "z": "2ad522d6.3d80ce",
+        "name": "Send Array",
+        "props": [
+            {
+                "p": "values",
+                "v": "{\"value\":[11045.27,11167.32,11008.61,11151.83,10926.77,10868.12,10520.32,10380.43,10785.14,10748.26,10896.91,10782.95,10620.16,10625.83,10510.95,10444.37,10068.01,10193.39,10066.57,10043.75],\"period\":5}",
+                "vt": "json"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 120,
+        "y": 460,
+        "wires": [
+            [
+                "501c2b06.654374"
+            ]
+        ]
+    },
+    {
+        "id": "8771f92e.bdbde8",
         "type": "debug",
-        "z": "4d83ec58.e26e84",
+        "z": "2ad522d6.3d80ce",
         "name": "",
         "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "true",
+        "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
+        "x": 910,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "5ecc8d77.851124",
+        "type": "firebase.on",
+        "z": "4d83ec58.e26e84",
+        "name": "fetch selected currency in init and save it globaly",
+        "firebaseconfig": "6ef5f71b.98f1b8",
+        "childpath": "selected_currency",
+        "atStart": true,
+        "eventType": "value",
+        "queries": [],
+        "x": 320,
+        "y": 100,
+        "wires": [
+            [
+                "4525f06f.c4f87"
+            ]
+        ]
+    },
+    {
+        "id": "4525f06f.c4f87",
+        "type": "change",
+        "z": "4d83ec58.e26e84",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "selected_currency",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 660,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b957780.deff688",
+        "type": "function",
+        "z": "2ad522d6.3d80ce",
+        "name": "filter",
+        "func": "const values = []\n\n\nObject.keys(msg.payload).map(key=>{\n    let currency_ob=Object.values(msg.payload[key])[0][global.get(\"selected_currency\")];\n    values.push(currency_ob);\n    })\n\nvar newMsg = { \n    values: {\n        \"value\":values,\n         \"period\": 5\n    }\n};\nreturn [newMsg];",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 470,
+        "y": 460,
+        "wires": [
+            [
+                "1229ee47.933062"
+            ]
+        ]
+    },
+    {
+        "id": "501c2b06.654374",
+        "type": "firebase.once",
+        "z": "2ad522d6.3d80ce",
+        "name": "get values",
+        "firebaseconfig": "6ef5f71b.98f1b8",
+        "childpath": "values",
+        "repeatifnull": false,
+        "eventType": "value",
+        "queries": [
+            {
+                "name": "orderByValue",
+                "value": "",
+                "valType": ""
+            },
+            {
+                "name": "limitToLast",
+                "value": "10",
+                "valType": "str"
+            }
+        ],
+        "x": 290,
+        "y": 460,
+        "wires": [
+            [
+                "b957780.deff688"
+            ]
+        ]
+    },
+    {
+        "id": "c38ab726.bfede8",
+        "type": "inject",
+        "z": "2ad522d6.3d80ce",
+        "name": "Send Array",
+        "props": [
+            {
+                "p": "values",
+                "v": "{\"value\":[11045.27,11167.32,11008.61,11151.83,10926.77,10868.12,10520.32,10380.43,10785.14,10748.26,10896.91,10782.95,10620.16,10625.83,10510.95,10444.37,10068.01,10193.39,10066.57,10043.75],\"period\":5}",
+                "vt": "json"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 120,
+        "y": 560,
+        "wires": [
+            [
+                "7c9db6ac.25ef78"
+            ]
+        ]
+    },
+    {
+        "id": "eac65389.25b28",
+        "type": "function",
+        "z": "2ad522d6.3d80ce",
+        "name": "filter",
+        "func": "const values = []\n\n\nObject.keys(msg.payload).map(key=>{\n    let currency_ob=Object.values(msg.payload[key])[0][global.get(\"selected_currency\")];\n    values.push(currency_ob);\n    })\n\nvar newMsg = { \n    values: {\n        \"value\":values,\n        \"fastPeriod\": 5,\n        \"slowPeriod\": 8,\n        \"signalPeriod\": 3,\n        \"SimpleMAOscillator\": false,\n        \"SimpleMASignal\": false\n    }\n};\nreturn [newMsg];",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 470,
+        "y": 560,
+        "wires": [
+            [
+                "267e2fa8.83558"
+            ]
+        ]
+    },
+    {
+        "id": "7c9db6ac.25ef78",
+        "type": "firebase.once",
+        "z": "2ad522d6.3d80ce",
+        "name": "get values",
+        "firebaseconfig": "6ef5f71b.98f1b8",
+        "childpath": "values",
+        "repeatifnull": false,
+        "eventType": "value",
+        "queries": [
+            {
+                "name": "orderByValue",
+                "value": "",
+                "valType": ""
+            },
+            {
+                "name": "limitToLast",
+                "value": "10",
+                "valType": "str"
+            }
+        ],
+        "x": 290,
+        "y": 560,
+        "wires": [
+            [
+                "eac65389.25b28"
+            ]
+        ]
+    },
+    {
+        "id": "85272627.73e938",
+        "type": "inject",
+        "z": "2ad522d6.3d80ce",
+        "name": "Send Array",
+        "props": [
+            {
+                "p": "values",
+                "v": "{\"value\":[11045.27,11167.32,11008.61,11151.83,10926.77,10868.12,10520.32,10380.43,10785.14,10748.26,10896.91,10782.95,10620.16,10625.83,10510.95,10444.37,10068.01,10193.39,10066.57,10043.75],\"period\":5}",
+                "vt": "json"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 120,
+        "y": 660,
+        "wires": [
+            [
+                "2d61a6e1.ee06da"
+            ]
+        ]
+    },
+    {
+        "id": "d8cb1a43.0b2148",
+        "type": "function",
+        "z": "2ad522d6.3d80ce",
+        "name": "filter",
+        "func": "const values = []\n\n\nObject.keys(msg.payload).map(key=>{\n    let currency_ob=Object.values(msg.payload[key])[0][global.get(\"selected_currency\")];\n    values.push(currency_ob);\n    })\n\nvar newMsg = { \n    values: {\n        \"values\":values,\n        \"fastPeriod\": 5,\n    \"slowPeriod\": 8,\n    \"signalPeriod\": 3,\n    \"SimpleMAOscillator\": false,\n    \"SimpleMASignal\": false\n    }\n};\nreturn [newMsg];",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 470,
+        "y": 660,
+        "wires": [
+            [
+                "20f10d0.45435f4"
+            ]
+        ]
+    },
+    {
+        "id": "2d61a6e1.ee06da",
+        "type": "firebase.once",
+        "z": "2ad522d6.3d80ce",
+        "name": "get values",
+        "firebaseconfig": "6ef5f71b.98f1b8",
+        "childpath": "values",
+        "repeatifnull": false,
+        "eventType": "value",
+        "queries": [
+            {
+                "name": "orderByValue",
+                "value": "",
+                "valType": ""
+            },
+            {
+                "name": "limitToLast",
+                "value": "10",
+                "valType": "str"
+            }
+        ],
+        "x": 290,
+        "y": 660,
+        "wires": [
+            [
+                "d8cb1a43.0b2148"
+            ]
+        ]
+    },
+    {
+        "id": "267e2fa8.83558",
+        "type": "function",
+        "z": "2ad522d6.3d80ce",
+        "name": "Simple Moving Average (SMA)",
+        "func": "var moment = global.get('techmodule');\n\nconst SMA = moment.SMA\nlet period = msg.values.period; \nlet values = msg.values.value;                    \n\nvar out = {\n  values    : SMA.calculate({period : period, values : values})\n}\nmsg =  out\nreturn msg\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
         "x": 730,
-        "y": 900,
+        "y": 560,
+        "wires": [
+            [
+                "43d2a492.567dfc"
+            ]
+        ]
+    },
+    {
+        "id": "43d2a492.567dfc",
+        "type": "debug",
+        "z": "2ad522d6.3d80ce",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 970,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "20f10d0.45435f4",
+        "type": "function",
+        "z": "2ad522d6.3d80ce",
+        "name": "MACD",
+        "func": "var moment = global.get('techmodule');\nvar MACD = moment.MACD;\n\n\nvar macdInput = msg.values;                    \n\nvar out = {\n  values    : MACD.calculate(macdInput)\n}\nmsg =  out\nreturn msg\n\n\n\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 650,
+        "y": 660,
+        "wires": [
+            [
+                "b0a69be3.457808"
+            ]
+        ]
+    },
+    {
+        "id": "b0a69be3.457808",
+        "type": "debug",
+        "z": "2ad522d6.3d80ce",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 970,
+        "y": 660,
         "wires": []
     }
 ]
