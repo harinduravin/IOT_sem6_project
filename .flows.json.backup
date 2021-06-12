@@ -1149,8 +1149,7 @@
         "y": 840,
         "wires": [
             [
-                "e2529988.3231c8",
-                "75c18ffc.94eb8"
+                "e2529988.3231c8"
             ]
         ]
     },
@@ -1179,7 +1178,7 @@
         "firebaseconfig": "6ef5f71b.98f1b8",
         "childpath": "values",
         "method": "push",
-        "value": "msg.formatedPayload",
+        "value": "msg.payload",
         "priority": "msg.priority",
         "x": 990,
         "y": 1120,
@@ -1278,7 +1277,7 @@
         "type": "function",
         "z": "4d83ec58.e26e84",
         "name": "ceil/floor checker",
-        "func": "const latest = Object.values(msg.formatedPayload)[0];\nconst last =  Object.values(Object.values(msg.payload)[0])[0];\nconst selectedNow = last[global.get(\"selected_currency\")];\nconst selectedLast = last[global.get(\"selected_currency\")];\nlet status = \"no change\";\nconst isWentUp=selectedNow>selectedLast;\nif(isWentUp){\nconst change = (selectedNow-selectedLast)/selectedLast\nif(change>=0.05){\n    status=\"went up\"\n}\n}else{\nconst change = (selectedLast-selectedNow)/selectedLast   \nif(change>=0.05){\n    status=\"went down\"\n}\n}\n\nreturn {\nlatest,\nlast,\nselectedNow,\nselectedLast,\nstatus,\nformatedPayload:msg.formatedPayload\n};",
+        "func": "const latest = Object.values(msg.formatedPayload)[0];\nconst last =  Object.values(Object.values(msg.payload)[0])[0];\nconst selectedNow = last[global.get(\"selected_currency\")];\nconst selectedLast = last[global.get(\"selected_currency\")];\nlet status = \"no change\";\nconst isWentUp=selectedNow>selectedLast;\nif(isWentUp){\nconst change = (selectedNow-selectedLast)/selectedLast\nif(change>=0.05){\n    status=\"went up\"\n}\n}else{\nconst change = (selectedLast-selectedNow)/selectedLast   \nif(change>=0.05){\n    status=\"went down\"\n}\n}\n\nreturn {\nlatest,\nlast,\nselectedNow,\nselectedLast,\nstatus,\npayload:msg.formatedPayload\n};",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1287,7 +1286,8 @@
         "y": 1020,
         "wires": [
             [
-                "ffb98f8a.985"
+                "ffb98f8a.985",
+                "75c18ffc.94eb8"
             ]
         ]
     },

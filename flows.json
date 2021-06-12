@@ -1277,7 +1277,7 @@
         "type": "function",
         "z": "4d83ec58.e26e84",
         "name": "ceil/floor checker",
-        "func": "const latest = Object.values(msg.formatedPayload)[0];\nconst last =  Object.values(Object.values(msg.payload)[0])[0];\nconst selectedNow = last[global.get(\"selected_currency\")];\nconst selectedLast = last[global.get(\"selected_currency\")];\nlet status = \"no change\";\nconst isWentUp=selectedNow>selectedLast;\nif(isWentUp){\nconst change = (selectedNow-selectedLast)/selectedLast\nif(change>=0.05){\n    status=\"went up\"\n}\n}else{\nconst change = (selectedLast-selectedNow)/selectedLast   \nif(change>=0.05){\n    status=\"went down\"\n}\n}\n\nreturn {\nlatest,\nlast,\nselectedNow,\nselectedLast,\nstatus,\npayload:msg.formatedPayload\n};",
+        "func": "const latest = Object.values(msg.formatedPayload)[0];\nconst last =  Object.values(Object.values(msg.payload)[0])[0];\nconst selectedNow = last[global.get(\"selected_currency\")];\nconst selectedLast = last[global.get(\"selected_currency\")];\nlet status = \"no change\";\nconst isWentUp=selectedNow>selectedLast;\nif(isWentUp){\nconst change = (selectedNow-selectedLast)/selectedLast\nif(change>=global.get(\"ceil\")/100){\n    status=\"went up\"\n}\n}else{\nconst change = (selectedLast-selectedNow)/selectedLast   \nif(change>=global.get(\"floor\")/100){\n    status=\"went down\"\n}\n}\n\nreturn {\nlatest,\nlast,\nselectedNow,\nselectedLast,\nstatus,\npayload:msg.formatedPayload\n};",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
