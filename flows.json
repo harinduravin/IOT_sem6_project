@@ -987,7 +987,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1030,
+        "x": 1010,
         "y": 760,
         "wires": []
     },
@@ -1089,5 +1089,39 @@
                 "41159431.541bbc"
             ]
         ]
+    },
+    {
+        "id": "2aef22f8.3cf80e",
+        "type": "firebase.on",
+        "z": "e48732d4.55da8",
+        "name": "",
+        "firebaseconfig": "abd7d4f.34da828",
+        "childpath": "max_value",
+        "atStart": true,
+        "eventType": "value",
+        "queries": [],
+        "x": 530,
+        "y": 1540,
+        "wires": [
+            [
+                "c5c28f54.f7463"
+            ]
+        ]
+    },
+    {
+        "id": "c5c28f54.f7463",
+        "type": "debug",
+        "z": "e48732d4.55da8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 880,
+        "y": 1580,
+        "wires": []
     }
 ]

@@ -803,7 +803,7 @@
         "type": "function",
         "z": "e48732d4.55da8",
         "name": "",
-        "func": "msg.params = {\n    base :'USD',\n    symbols : 'USD,AUD,JPY,GBP,EUR,KWD'\n};\n\nreturn msg;",
+        "func": "msg.params = {\n    // base :'USD',\n    symbols : 'USD,AUD,JPY,GBP,EUR,KWD'\n};\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
