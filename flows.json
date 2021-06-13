@@ -982,5 +982,66 @@
         "x": 730,
         "y": 900,
         "wires": []
+    },
+    {
+        "id": "57e6e3bf.9f878c",
+        "type": "function",
+        "z": "2ad522d6.3d80ce",
+        "name": "Relative Strength Index (RSI)",
+        "func": "var moment = global.get('techmodule');\n\nconst RSI = moment.RSI\nlet period = msg.values.period; \nlet values = msg.values.value;                    \n\nvar out = {\n  values    : RSI.calculate({period : period, values : values})\n}\nmsg =  out\nreturn msg\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 1320,
+        "wires": [
+            [
+                "96dbed8f.fa77e"
+            ]
+        ]
+    },
+    {
+        "id": "f5cbf4c.e2b7388",
+        "type": "inject",
+        "z": "2ad522d6.3d80ce",
+        "name": "Send Array",
+        "props": [
+            {
+                "p": "values",
+                "v": "{\"value\":[127.75,129.02,132.75,145.4,148.98,137.52,147.38,139.05,137.23,149.3,162.45,178.95,200.35,221.9,243.23,243.52,286.42,280.27,277.35,269.02,263.23,214.9],\"period\":5}",
+                "vt": "json"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 190,
+        "y": 1320,
+        "wires": [
+            [
+                "57e6e3bf.9f878c"
+            ]
+        ]
+    },
+    {
+        "id": "96dbed8f.fa77e",
+        "type": "debug",
+        "z": "2ad522d6.3d80ce",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 750,
+        "y": 1320,
+        "wires": []
     }
 ]

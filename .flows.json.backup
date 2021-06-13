@@ -7,7 +7,7 @@
         "info": ""
     },
     {
-        "id": "e48732d4.55da8",
+        "id": "4d83ec58.e26e84",
         "type": "tab",
         "label": "Flow 1",
         "disabled": false,
@@ -132,6 +132,11 @@
         "name": "Thishani2"
     },
     {
+        "id": "ec9f480b.2b6f68",
+        "type": "exchangerates-key",
+        "name": "Thishani2"
+    },
+    {
         "id": "abd7d4f.34da828",
         "type": "firebase config",
         "firebaseurl": "sem-6b-iot-default-rtdb",
@@ -150,209 +155,10 @@
         "loginType": "none"
     },
     {
-        "id": "ec9f480b.2b6f68",
-        "type": "exchangerates-key",
-        "name": "Thishani2"
-    },
-    {
-        "id": "bc95624b.1f5fe",
-        "type": "inject",
-        "z": "2ad522d6.3d80ce",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 120,
-        "y": 320,
-        "wires": [
-            [
-                "a2c60656.85d268"
-            ]
-        ]
-    },
-    {
-        "id": "e947f495.e22668",
-        "type": "debug",
-        "z": "2ad522d6.3d80ce",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 930,
-        "y": 340,
-        "wires": []
-    },
-    {
-        "id": "a2c60656.85d268",
-        "type": "function",
-        "z": "2ad522d6.3d80ce",
-        "name": "",
-        "func": "msg.params = {};\n// msg.params.base = 'USD'\nmsg.params.symbols = 'AUD'\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 300,
-        "y": 320,
-        "wires": [
-            [
-                "3ab86060.4ea31"
-            ]
-        ]
-    },
-    {
-        "id": "dd61d5c7.f00a28",
-        "type": "function",
-        "z": "2ad522d6.3d80ce",
-        "name": "",
-        "func": "// msg.params = {};\n// // msg.params.base = 'USD'\n// msg.params.symbols = 'KRW'\n\n// var rate = msg.payload.rates.LKR;\n// return {rate};\n\n\n// var newMsg = { 'payload2': msg.payload.rates };\n// return newMsg;\n\nvar newMsg = { payload: msg.payload.rates };\nreturn [newMsg];",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 720,
-        "y": 320,
-        "wires": [
-            [
-                "e947f495.e22668"
-            ]
-        ]
-    },
-    {
-        "id": "73f91ed5.86456",
-        "type": "inject",
-        "z": "2ad522d6.3d80ce",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "true",
-        "payloadType": "bool",
-        "x": 270,
-        "y": 540,
-        "wires": [
-            [
-                "9abb3a6.44104c8"
-            ]
-        ]
-    },
-    {
-        "id": "dbb17019.ae2c6",
-        "type": "inject",
-        "z": "2ad522d6.3d80ce",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "false",
-        "payloadType": "bool",
-        "x": 270,
-        "y": 620,
-        "wires": [
-            [
-                "9abb3a6.44104c8"
-            ]
-        ]
-    },
-    {
-        "id": "2f2f8377.ee67cc",
-        "type": "debug",
-        "z": "2ad522d6.3d80ce",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 810,
-        "y": 520,
-        "wires": []
-    },
-    {
-        "id": "d269c741.817f68",
-        "type": "ui_chart",
-        "z": "2ad522d6.3d80ce",
-        "name": "",
-        "group": "6d92e441.b263cc",
-        "order": 0,
-        "width": 0,
-        "height": 0,
-        "label": "chart",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "HH:mm:ss",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": true,
-        "ymin": "",
-        "ymax": "",
-        "removeOlder": 1,
-        "removeOlderPoints": "",
-        "removeOlderUnit": "3600",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "x": 670,
-        "y": 700,
-        "wires": [
-            []
-        ]
+        "id": "6ef5f71b.98f1b8",
+        "type": "firebase config",
+        "firebaseurl": "sem-6b-iot-default-rtdb",
+        "loginType": "none"
     },
     {
         "id": "a1367960.5c4dd8",
@@ -536,6 +342,88 @@
         "wires": []
     },
     {
+        "id": "bc95624b.1f5fe",
+        "type": "inject",
+        "z": "2ad522d6.3d80ce",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 320,
+        "wires": [
+            [
+                "a2c60656.85d268"
+            ]
+        ]
+    },
+    {
+        "id": "e947f495.e22668",
+        "type": "debug",
+        "z": "2ad522d6.3d80ce",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 930,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "a2c60656.85d268",
+        "type": "function",
+        "z": "2ad522d6.3d80ce",
+        "name": "",
+        "func": "msg.params = {};\n// msg.params.base = 'USD'\nmsg.params.symbols = 'AUD'\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 300,
+        "y": 320,
+        "wires": [
+            [
+                "3ab86060.4ea31"
+            ]
+        ]
+    },
+    {
+        "id": "dd61d5c7.f00a28",
+        "type": "function",
+        "z": "2ad522d6.3d80ce",
+        "name": "",
+        "func": "// msg.params = {};\n// // msg.params.base = 'USD'\n// msg.params.symbols = 'KRW'\n\n// var rate = msg.payload.rates.LKR;\n// return {rate};\n\n\n// var newMsg = { 'payload2': msg.payload.rates };\n// return newMsg;\n\nvar newMsg = { payload: msg.payload.rates };\nreturn [newMsg];",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 720,
+        "y": 320,
+        "wires": [
+            [
+                "e947f495.e22668"
+            ]
+        ]
+    },
+    {
         "id": "3ab86060.4ea31",
         "type": "exchangeratesapi",
         "z": "2ad522d6.3d80ce",
@@ -553,40 +441,11 @@
         ]
     },
     {
-        "id": "9abb3a6.44104c8",
-        "type": "timerswitch",
-        "z": "2ad522d6.3d80ce",
-        "name": "Hourly Timer",
-        "ontopic": "",
-        "offtopic": "",
-        "onpayload": "1",
-        "offpayload": "0",
-        "disabled": false,
-        "schedules": [
-            {
-                "on_h": "-1",
-                "on_m": "01",
-                "on_s": "-1",
-                "off_h": "00",
-                "off_m": "59",
-                "off_s": "-1",
-                "valid": false
-            }
-        ],
-        "x": 580,
-        "y": 520,
-        "wires": [
-            [
-                "2f2f8377.ee67cc"
-            ]
-        ]
-    },
-    {
-        "id": "933d3b81.8a1038",
+        "id": "d3fd9e83.edc7d8",
         "type": "firebase modify",
-        "z": "e48732d4.55da8",
+        "z": "4d83ec58.e26e84",
         "name": "set",
-        "firebaseconfig": "abd7d4f.34da828",
+        "firebaseconfig": "6ef5f71b.98f1b8",
         "childpath": "max_value",
         "method": "set",
         "value": "msg.payload",
@@ -598,9 +457,9 @@
         ]
     },
     {
-        "id": "cd0420bc.6e851",
+        "id": "4024142f.4eda5c",
         "type": "inject",
-        "z": "e48732d4.55da8",
+        "z": "4d83ec58.e26e84",
         "name": "set max value",
         "props": [
             {
@@ -622,16 +481,16 @@
         "y": 160,
         "wires": [
             [
-                "933d3b81.8a1038"
+                "d3fd9e83.edc7d8"
             ]
         ]
     },
     {
-        "id": "113e969e.fe0679",
+        "id": "3bf2c40e.ae740c",
         "type": "firebase.once",
-        "z": "e48732d4.55da8",
+        "z": "4d83ec58.e26e84",
         "name": "get max value",
-        "firebaseconfig": "e6313113.5cac7",
+        "firebaseconfig": "6ef5f71b.98f1b8",
         "childpath": "max_value",
         "repeatifnull": false,
         "eventType": "value",
@@ -640,14 +499,14 @@
         "y": 240,
         "wires": [
             [
-                "f689ca48.eaa578"
+                "42cdba4a.cb01f4"
             ]
         ]
     },
     {
-        "id": "c3c7a240.372c6",
+        "id": "9171dd80.8a4228",
         "type": "inject",
-        "z": "e48732d4.55da8",
+        "z": "4d83ec58.e26e84",
         "name": "get max value",
         "props": [
             {
@@ -669,14 +528,14 @@
         "y": 240,
         "wires": [
             [
-                "113e969e.fe0679"
+                "3bf2c40e.ae740c"
             ]
         ]
     },
     {
-        "id": "f689ca48.eaa578",
+        "id": "42cdba4a.cb01f4",
         "type": "debug",
-        "z": "e48732d4.55da8",
+        "z": "4d83ec58.e26e84",
         "name": "",
         "active": true,
         "tosidebar": true,
@@ -690,11 +549,11 @@
         "wires": []
     },
     {
-        "id": "87c8dd65.85963",
+        "id": "81ec3326.0bd8e8",
         "type": "firebase.once",
-        "z": "e48732d4.55da8",
+        "z": "4d83ec58.e26e84",
         "name": "get values",
-        "firebaseconfig": "abd7d4f.34da828",
+        "firebaseconfig": "6ef5f71b.98f1b8",
         "childpath": "values",
         "repeatifnull": false,
         "eventType": "value",
@@ -703,14 +562,14 @@
         "y": 320,
         "wires": [
             [
-                "364cae40.93eb22"
+                "ffddca73.d1678"
             ]
         ]
     },
     {
-        "id": "f684270f.938d18",
+        "id": "b73d2405.d495f",
         "type": "inject",
-        "z": "e48732d4.55da8",
+        "z": "4d83ec58.e26e84",
         "name": "get values",
         "props": [
             {
@@ -732,14 +591,14 @@
         "y": 320,
         "wires": [
             [
-                "87c8dd65.85963"
+                "81ec3326.0bd8e8"
             ]
         ]
     },
     {
-        "id": "c4371d6b.33881",
+        "id": "9b5b3bbb.e2d9",
         "type": "debug",
-        "z": "e48732d4.55da8",
+        "z": "4d83ec58.e26e84",
         "name": "",
         "active": true,
         "tosidebar": true,
@@ -753,9 +612,9 @@
         "wires": []
     },
     {
-        "id": "4288d4e1.3566fc",
+        "id": "f95094eb.72e2d8",
         "type": "inject",
-        "z": "e48732d4.55da8",
+        "z": "4d83ec58.e26e84",
         "name": "fetch and push rates",
         "props": [
             {
@@ -777,14 +636,14 @@
         "y": 400,
         "wires": [
             [
-                "77a70e31.b6a11"
+                "e76a8b9e.c686c"
             ]
         ]
     },
     {
-        "id": "2db8c956.e0ce56",
+        "id": "7b1f3af9.d87884",
         "type": "debug",
-        "z": "e48732d4.55da8",
+        "z": "4d83ec58.e26e84",
         "name": "",
         "active": true,
         "tosidebar": true,
@@ -799,9 +658,9 @@
         "wires": []
     },
     {
-        "id": "77a70e31.b6a11",
+        "id": "e76a8b9e.c686c",
         "type": "function",
-        "z": "e48732d4.55da8",
+        "z": "4d83ec58.e26e84",
         "name": "",
         "func": "msg.params = {\n    // base :'USD',\n    symbols : 'USD,AUD,JPY,GBP,EUR,KWD'\n};\n\nreturn msg;",
         "outputs": 1,
@@ -812,14 +671,14 @@
         "y": 400,
         "wires": [
             [
-                "c022b8a1.257d38"
+                "418b2d78.71296c"
             ]
         ]
     },
     {
-        "id": "e7f7317b.e9bee",
+        "id": "fa816e65.0e9c08",
         "type": "function",
-        "z": "e48732d4.55da8",
+        "z": "4d83ec58.e26e84",
         "name": "formater",
         "func": "// msg.params = {};\n// // msg.params.base = 'USD'\n// msg.params.symbols = 'KRW'\n\n// var rate = msg.payload.rates.LKR;\n// return {rate};\n\n\n// var newMsg = { 'payload2': msg.payload.rates };\n// return newMsg;\nconst now = Date.now()\nvar newMsg = { payload: {[now]:msg.payload.rates} };\nreturn [newMsg];",
         "outputs": 1,
@@ -830,15 +689,15 @@
         "y": 400,
         "wires": [
             [
-                "2db8c956.e0ce56",
-                "e98b199c.d37c18"
+                "7b1f3af9.d87884",
+                "70670e1.05fc0f"
             ]
         ]
     },
     {
-        "id": "c022b8a1.257d38",
+        "id": "418b2d78.71296c",
         "type": "exchangeratesapi",
-        "z": "e48732d4.55da8",
+        "z": "4d83ec58.e26e84",
         "name": "",
         "url": "latest",
         "base": "",
@@ -848,16 +707,16 @@
         "y": 400,
         "wires": [
             [
-                "e7f7317b.e9bee"
+                "fa816e65.0e9c08"
             ]
         ]
     },
     {
-        "id": "e98b199c.d37c18",
+        "id": "70670e1.05fc0f",
         "type": "firebase modify",
-        "z": "e48732d4.55da8",
+        "z": "4d83ec58.e26e84",
         "name": "push",
-        "firebaseconfig": "abd7d4f.34da828",
+        "firebaseconfig": "6ef5f71b.98f1b8",
         "childpath": "values",
         "method": "push",
         "value": "msg.payload",
@@ -869,9 +728,9 @@
         ]
     },
     {
-        "id": "364cae40.93eb22",
+        "id": "ffddca73.d1678",
         "type": "function",
-        "z": "e48732d4.55da8",
+        "z": "4d83ec58.e26e84",
         "name": "filter",
         "func": "const values = []\n\nObject.keys(msg.payload).map(key=>(\n    values.push(msg.payload[key])\n    ))\n\nvar newMsg = { \n    payload: values\n};\nreturn [newMsg];",
         "outputs": 1,
@@ -882,16 +741,16 @@
         "y": 320,
         "wires": [
             [
-                "c4371d6b.33881"
+                "9b5b3bbb.e2d9"
             ]
         ]
     },
     {
-        "id": "838bc6b9.14b218",
+        "id": "98dfe73.3b25298",
         "type": "firebase.once",
-        "z": "e48732d4.55da8",
+        "z": "4d83ec58.e26e84",
         "name": "get max value",
-        "firebaseconfig": "e6313113.5cac7",
+        "firebaseconfig": "6ef5f71b.98f1b8",
         "childpath": "selected_currency",
         "repeatifnull": false,
         "eventType": "value",
@@ -900,14 +759,14 @@
         "y": 600,
         "wires": [
             [
-                "d37e854b.bf4d98"
+                "c90823.4e389fe"
             ]
         ]
     },
     {
-        "id": "f53c1e82.011d6",
+        "id": "b2d533fb.f0c03",
         "type": "inject",
-        "z": "e48732d4.55da8",
+        "z": "4d83ec58.e26e84",
         "name": "get selected currency",
         "props": [
             {
@@ -929,14 +788,14 @@
         "y": 600,
         "wires": [
             [
-                "838bc6b9.14b218"
+                "98dfe73.3b25298"
             ]
         ]
     },
     {
-        "id": "d37e854b.bf4d98",
+        "id": "c90823.4e389fe",
         "type": "debug",
-        "z": "e48732d4.55da8",
+        "z": "4d83ec58.e26e84",
         "name": "",
         "active": true,
         "tosidebar": true,
@@ -950,9 +809,9 @@
         "wires": []
     },
     {
-        "id": "8a21a559.3c3958",
+        "id": "f1a44017.90ab08",
         "type": "inject",
-        "z": "e48732d4.55da8",
+        "z": "4d83ec58.e26e84",
         "name": "auth with username/pwd",
         "props": [
             {
@@ -970,14 +829,14 @@
         "y": 760,
         "wires": [
             [
-                "243df070.5384c"
+                "c34533df.488658"
             ]
         ]
     },
     {
-        "id": "41159431.541bbc",
+        "id": "45fe98ed.964918",
         "type": "debug",
-        "z": "e48732d4.55da8",
+        "z": "4d83ec58.e26e84",
         "name": "",
         "active": true,
         "tosidebar": true,
@@ -987,16 +846,16 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1030,
+        "x": 1010,
         "y": 760,
         "wires": []
     },
     {
-        "id": "2a57abc3.9da694",
+        "id": "8603f53.8567b88",
         "type": "firebase.once",
-        "z": "e48732d4.55da8",
+        "z": "4d83ec58.e26e84",
         "name": "get max value",
-        "firebaseconfig": "643bdadb.c056a4",
+        "firebaseconfig": "6ef5f71b.98f1b8",
         "childpath": "user",
         "repeatifnull": false,
         "eventType": "value",
@@ -1005,14 +864,14 @@
         "y": 680,
         "wires": [
             [
-                "73db5b47.3468d4"
+                "25f02bcf.44f5c4"
             ]
         ]
     },
     {
-        "id": "605d43b0.45eddc",
+        "id": "e2bddafa.5c0eb",
         "type": "inject",
-        "z": "e48732d4.55da8",
+        "z": "4d83ec58.e26e84",
         "name": "get curent user",
         "props": [
             {
@@ -1034,14 +893,14 @@
         "y": 680,
         "wires": [
             [
-                "2a57abc3.9da694"
+                "8603f53.8567b88"
             ]
         ]
     },
     {
-        "id": "73db5b47.3468d4",
+        "id": "25f02bcf.44f5c4",
         "type": "debug",
-        "z": "e48732d4.55da8",
+        "z": "4d83ec58.e26e84",
         "name": "",
         "active": true,
         "tosidebar": true,
@@ -1055,11 +914,11 @@
         "wires": []
     },
     {
-        "id": "243df070.5384c",
+        "id": "c34533df.488658",
         "type": "firebase.once",
-        "z": "e48732d4.55da8",
+        "z": "4d83ec58.e26e84",
         "name": "get max value",
-        "firebaseconfig": "e6313113.5cac7",
+        "firebaseconfig": "6ef5f71b.98f1b8",
         "childpath": "user",
         "repeatifnull": false,
         "eventType": "value",
@@ -1068,14 +927,14 @@
         "y": 760,
         "wires": [
             [
-                "e817c97f.fa7b88"
+                "8e740a58.c2bd88"
             ]
         ]
     },
     {
-        "id": "e817c97f.fa7b88",
+        "id": "8e740a58.c2bd88",
         "type": "function",
-        "z": "e48732d4.55da8",
+        "z": "4d83ec58.e26e84",
         "name": "",
         "func": "let  iscorrect=false\nif (msg.payload.password==msg.userdata.password && msg.payload.username==msg.userdata.username ){\n    iscorrect=true\n}\nvar newMsg = { payload: iscorrect };\nreturn [newMsg];\n",
         "outputs": 1,
@@ -1086,8 +945,103 @@
         "y": 760,
         "wires": [
             [
-                "41159431.541bbc"
+                "45fe98ed.964918"
             ]
         ]
+    },
+    {
+        "id": "dc20a7da.9f2ce8",
+        "type": "firebase.on",
+        "z": "4d83ec58.e26e84",
+        "name": "",
+        "firebaseconfig": "6ef5f71b.98f1b8",
+        "childpath": "max_value",
+        "atStart": true,
+        "eventType": "value",
+        "queries": [],
+        "x": 530,
+        "y": 860,
+        "wires": [
+            [
+                "ffff4f51.afe78"
+            ]
+        ]
+    },
+    {
+        "id": "ffff4f51.afe78",
+        "type": "debug",
+        "z": "4d83ec58.e26e84",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 730,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "57e6e3bf.9f878c",
+        "type": "function",
+        "z": "2ad522d6.3d80ce",
+        "name": "Relative Strength Index (RSI)",
+        "func": "var moment = global.get('techmodule');\n\nconst RSI = moment.RSI\nlet period = msg.values.period; \nlet values = msg.values.value;                    \n\nvar out = {\n  values    : RSI.calculate({period : period, values : values})\n}\nmsg =  out\nreturn msg\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 1320,
+        "wires": [
+            [
+                "96dbed8f.fa77e"
+            ]
+        ]
+    },
+    {
+        "id": "f5cbf4c.e2b7388",
+        "type": "inject",
+        "z": "2ad522d6.3d80ce",
+        "name": "Send Array",
+        "props": [
+            {
+                "p": "values",
+                "v": "{\"value\":[127.75,129.02,132.75,145.4,148.98,137.52,147.38,139.05,137.23,149.3,162.45,178.95,200.35,221.9,243.23,243.52,286.42,280.27,277.35,269.02,263.23,214.9],\"period\":14}",
+                "vt": "json"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 190,
+        "y": 1320,
+        "wires": [
+            [
+                "57e6e3bf.9f878c"
+            ]
+        ]
+    },
+    {
+        "id": "96dbed8f.fa77e",
+        "type": "debug",
+        "z": "2ad522d6.3d80ce",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 750,
+        "y": 1320,
+        "wires": []
     }
 ]
