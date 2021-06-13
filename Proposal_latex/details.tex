@@ -12,23 +12,50 @@ Currency Converter Service
 
 \section{Introduction}
 
-For this project, we propose a service which provides the information needed by Day Traders to conduct their business activities successfully. For this implementation, we hope to use the Currency Exchange API to extract the necessary exchange rates. 
-The service gives two types of information and are as follows.
-The fluctuations of currency rates with a time period specified by the user\cite{10years}
-The ??
-D
+For this project, we propose a service which provides the information needed by \textbf{Day Traders} to conduct their business activities successfully. 
+Day traders are a set of people who use forex (foreign exchange) prices to take advantage of the minor price mismatches that occur due to volatility of prices. Buying and selling is done in large volumes in order to exploit these small price differences which occur over a very short term. Day trading is healthy for financial markets as they keep the forex prices updated. Day traders are very active, they are very concerned about minor price changes and several technical indicators. 
+In order to derive these technical indicators, a considerable amount of time series data processing must be done. This application uses an API to extract the spot rates for currency exchange, and performs the processing needed to provide these technical indicators to Day Traders. The indicators derived are as follows.
 
-Notifications of when a specified 
-The ??
-the
+\begin{enumerate}
+\item \textbf{Moving average lines} are frequently used to smooth the fluctuations in a price chart (or a chart of any time series). A moving average is simply the mean of the last n closing prices. 
+
+\item \textbf{Rate of change oscillator} An ROC or momentum oscillator is calculated as 100 times the difference between the latest closing price and the closing price n periods earlier. Thus, it oscillates around zero.
+
+\item \textbf{Moving average convergence/divergence (MACD)} oscillators are drawn using exponentially smoothed moving averages, which place greater weight on more recent observations. The “MACD line” is the difference between two exponentially smoothed moving averages of the price.
+
+\item \textbf{Stochastic oscillator} is calculated from the latest closing price and highest and lowest prices reached in a recent period, such as 14 days. In a sustainable uptrend, prices tend to close nearer to the recent high, and in a sustainable downtrend, prices tend to close nearer to the recent low. Stochastic oscillators use two lines that are bounded by 0 and 100. 
+\end{enumerate}
+
+For this implementation, we hope to use the Currency Exchange API to extract the necessary exchange rates. The service gives three types of information to the users and are as follows,
+
+\begin{itemize}
+
+
+
+
+
+\item \textbf{The spot rate of the specified currency value in LKR and whether the selected spot rate is increasing or decreasing. The available currencies are USD, AUD, JPY, GBP, EUR and INR.}
+\item \textbf{Notifications pushed when the specified ceiling and floor values are exceeded.}
+\item \textbf{Plots of Technical Indicators are displayed through the Dashboard.}
+
+
+
+
+\end{itemize}
+
 
 \section{System Design}
 
-The Node-red application extracts the exchange rate at hourly intervals and checks whether the 
-
-<Diagram>
-
+A architecture diagram of the system architecture can be found at this \href{https://drive.google.com/file/d/1TJLkz44PTER5wlyw7kqzVCokANtGV_jx/view?usp=sharing}{LINK}.
 
 \section{Group Members}
 
-For this project, we propose a service which provides the information needed by Day Traders to conduct their business activities successfully. For this implementation, we hope to use the Currency Exchange API to extract the necessary exchange rates.
+\begin{itemize}
+\setlength\itemsep{0.3em}
+\item 170258L - R.H.R. Jayarathne
+\item 170543G - M.K.T. Sampath
+\item 170698J - L.T.A. Wijayaratne
+\item 170375R - D.R. Marasinghe
+
+\end{itemize}
+

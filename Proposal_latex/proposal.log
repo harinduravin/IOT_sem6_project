@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.5.15)  6 JUN 2021 12:00
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.5.15)  10 JUN 2021 23:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -8,8 +8,8 @@ LaTeX2e <2020-10-01> patch level 4
 L3 programming layer <2021-02-18>
 (/usr/local/texlive/2021basic/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
-(/usr/local/texlive/2021basic/texmf-dist/tex/latex/base/size12.clo
-File: size12.clo 2020/04/10 v1.4m Standard LaTeX file (size option)
+(/usr/local/texlive/2021basic/texmf-dist/tex/latex/base/size11.clo
+File: size11.clo 2020/04/10 v1.4m Standard LaTeX file (size option)
 )
 \c@part=\count179
 \c@section=\count180
@@ -951,12 +951,12 @@ LaTeX Font Info:    ... okay on input line 111.
 * \topmargin=-37.0pt
 * \headheight=12.0pt
 * \headsep=25.0pt
-* \topskip=12.0pt
+* \topskip=11.0pt
 * \footskip=30.0pt
-* \marginparwidth=35.0pt
+* \marginparwidth=50.0pt
 * \marginparsep=10.0pt
 * \columnsep=10.0pt
-* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
 * \hoffset=0.0pt
 * \voffset=0.0pt
 * \mag=1000
@@ -1021,55 +1021,18 @@ LaTeX Info: Redefining \nameref on input line 111.
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
- (./details.tex) (./proposal.bbl
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 5
-.
+ (./details.tex
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 3
+7.
 
-(/usr/local/texlive/2021basic/texmf-dist/tex/latex/base/t1cmtt.fd
-File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
-)
-LaTeX Font Info:    Trying to load font information for OT1+ztmcm on input line
- 5.
-
-(/usr/local/texlive/2021basic/texmf-dist/tex/latex/psnfss/ot1ztmcm.fd
-File: ot1ztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ztmcm.
-)
-LaTeX Font Info:    Trying to load font information for OML+ztmcm on input line
- 5.
-
-(/usr/local/texlive/2021basic/texmf-dist/tex/latex/psnfss/omlztmcm.fd
-File: omlztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ztmcm.
-)
-LaTeX Font Info:    Trying to load font information for OMS+ztmcm on input line
- 5.
-
-(/usr/local/texlive/2021basic/texmf-dist/tex/latex/psnfss/omsztmcm.fd
-File: omsztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/ztmcm.
-)
-LaTeX Font Info:    Trying to load font information for OMX+ztmcm on input line
- 5.
-
-(/usr/local/texlive/2021basic/texmf-dist/tex/latex/psnfss/omxztmcm.fd
-File: omxztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/ztmcm.
-)
-LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 5
-.
-
-(/usr/local/texlive/2021basic/texmf-dist/tex/latex/psnfss/ot1ptm.fd
-File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
-)
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 5.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 5.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 5.
-) [1
+(/usr/local/texlive/2021basic/texmf-dist/tex/latex/psnfss/ts1ptm.fd
+File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
+)) [1
 
 {/usr/local/texlive/2021basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 
 LaTeX3 Info: Redefining command \BeforeClosingMainAux with sig. 'm' on line
-(LaTeX3)     120.
+(LaTeX3)     118.
 
 
 (./proposal.aux)
@@ -1077,23 +1040,20 @@ Package rerunfilecheck Info: File `proposal.out' has not changed.
 (rerunfilecheck)             Checksum: CDBFB5FFCA6DB9FC4C778F1F2A53CA90;325.
  ) 
 Here is how much of TeX's memory you used:
- 25498 strings out of 480445
- 469289 string characters out of 5892391
- 792755 words of memory out of 5000000
- 42310 multiletter control sequences out of 15000+600000
- 425780 words of font info for 58 fonts, out of 8000000 for 9000
+ 25417 strings out of 480445
+ 467491 string characters out of 5892391
+ 798726 words of memory out of 5000000
+ 42252 multiletter control sequences out of 15000+600000
+ 417613 words of font info for 40 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
- 98i,5n,102p,409b,461s stack positions out of 5000i,500n,10000p,200000b,80000s
- </Users/harindujayarathne/Library/texlive/2021basic/texmf-var/fonts/pk/ljfou
-r/jknappen/ec/ectt1200.600pk>{/usr/local/texlive/2021basic/texmf-dist/fonts/enc
-/dvips/base/8r.enc}</usr/local/texlive/2021basic/texmf-dist/fonts/type1/urw/tim
-es/utmb8a.pfb></usr/local/texlive/2021basic/texmf-dist/fonts/type1/urw/times/ut
-mr8a.pfb></usr/local/texlive/2021basic/texmf-dist/fonts/type1/urw/times/utmri8a
-.pfb>
-Output written on proposal.pdf (1 page, 42583 bytes).
+ 98i,5n,102p,518b,323s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2021basic/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/lo
+cal/texlive/2021basic/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/t
+exlive/2021basic/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
+Output written on proposal.pdf (1 page, 36735 bytes).
 PDF statistics:
- 68 PDF objects out of 1000 (max. 8388607)
- 42 compressed objects within 1 object stream
- 6 named destinations out of 1000 (max. 500000)
+ 45 PDF objects out of 1000 (max. 8388607)
+ 39 compressed objects within 1 object stream
+ 9 named destinations out of 1000 (max. 500000)
  37 words of extra memory for PDF output out of 10000 (max. 10000000)
 
