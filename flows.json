@@ -202,6 +202,7 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
+        "payloadType": "str",
         "x": 120,
         "y": 360,
         "wires": [
@@ -869,7 +870,7 @@
             },
             {
                 "name": "limitToLast",
-                "value": "1",
+                "value": "30",
                 "valType": "str"
             }
         ],
@@ -911,11 +912,12 @@
         "type": "function",
         "z": "2ad522d6.3d80ce",
         "name": "filter",
-        "func": "const values = []\n\n\nObject.keys(msg.payload).map(key=>{\n    let currency_ob=Object.values(msg.payload[key])[0][global.get(\"selected_currency\")];\n    values.push(currency_ob);\n    })\n\nvar newMsg = { \n    values: {\n        \"value\":values,\n        \"fastPeriod\": 5,\n        \"slowPeriod\": 8,\n        \"signalPeriod\": 3,\n        \"SimpleMAOscillator\": false,\n        \"SimpleMASignal\": false\n    }\n};\nreturn [newMsg];",
+        "func": "const values = []\n\n\nObject.keys(msg.payload).map(key=>{\n    let currency_ob=Object.values(msg.payload[key])[0][global.get(\"selected_currency\")];\n    values.push(currency_ob);\n    })\n\nvar newMsg = { \n    values: {\n        \"value\":values,\n        \"period\": 5\n    }\n};\nreturn [newMsg];",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
+        "libs": [],
         "x": 470,
         "y": 560,
         "wires": [
@@ -941,7 +943,7 @@
             },
             {
                 "name": "limitToLast",
-                "value": "1",
+                "value": "30",
                 "valType": "str"
             }
         ],
@@ -993,35 +995,6 @@
         "wires": [
             [
                 "20f10d0.45435f4"
-            ]
-        ]
-    },
-    {
-        "id": "2d61a6e1.ee06da",
-        "type": "firebase.once",
-        "z": "2ad522d6.3d80ce",
-        "name": "get values",
-        "firebaseconfig": "6ef5f71b.98f1b8",
-        "childpath": "values",
-        "repeatifnull": false,
-        "eventType": "value",
-        "queries": [
-            {
-                "name": "orderByValue",
-                "value": "",
-                "valType": ""
-            },
-            {
-                "name": "limitToLast",
-                "value": "",
-                "valType": "str"
-            }
-        ],
-        "x": 290,
-        "y": 660,
-        "wires": [
-            [
-                "d8cb1a43.0b2148"
             ]
         ]
     },
@@ -1091,8 +1064,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 890,
-        "y": 640,
+        "x": 870,
+        "y": 660,
         "wires": []
     },
     {
@@ -1533,36 +1506,11 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 540,
-        "y": 1320,
+        "x": 660,
+        "y": 740,
         "wires": [
             [
                 "96dbed8f.fa77e"
-            ]
-        ]
-    },
-    {
-        "id": "f5cbf4c.e2b7388",
-        "type": "inject",
-        "z": "2ad522d6.3d80ce",
-        "name": "Send Array",
-        "props": [
-            {
-                "p": "values",
-                "v": "{\"value\":[127.75,129.02,132.75,145.4,148.98,137.52,147.38,139.05,137.23,149.3,162.45,178.95,200.35,221.9,243.23,243.52,286.42,280.27,277.35,269.02,263.23,214.9],\"period\":5}",
-                "vt": "json"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 190,
-        "y": 1320,
-        "wires": [
-            [
-                "57e6e3bf.9f878c"
             ]
         ]
     },
@@ -1579,8 +1527,110 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 750,
-        "y": 1320,
+        "x": 870,
+        "y": 740,
         "wires": []
+    },
+    {
+        "id": "2d61a6e1.ee06da",
+        "type": "firebase.once",
+        "z": "2ad522d6.3d80ce",
+        "name": "get values",
+        "firebaseconfig": "6ef5f71b.98f1b8",
+        "childpath": "values",
+        "repeatifnull": false,
+        "eventType": "value",
+        "queries": [
+            {
+                "name": "orderByValue",
+                "value": "",
+                "valType": ""
+            },
+            {
+                "name": "limitToLast",
+                "value": "30",
+                "valType": "str"
+            }
+        ],
+        "x": 290,
+        "y": 660,
+        "wires": [
+            [
+                "d8cb1a43.0b2148"
+            ]
+        ]
+    },
+    {
+        "id": "c7d7aa86.3ff558",
+        "type": "inject",
+        "z": "2ad522d6.3d80ce",
+        "name": "Send Array",
+        "props": [
+            {
+                "p": "values",
+                "v": "{\"value\":[11045.27,11167.32,11008.61,11151.83,10926.77,10868.12,10520.32,10380.43,10785.14,10748.26,10896.91,10782.95,10620.16,10625.83,10510.95,10444.37,10068.01,10193.39,10066.57,10043.75],\"period\":5}",
+                "vt": "json"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 100,
+        "y": 740,
+        "wires": [
+            [
+                "e2fd3a1c.9847e8"
+            ]
+        ]
+    },
+    {
+        "id": "e912ca4c.0d30c8",
+        "type": "function",
+        "z": "2ad522d6.3d80ce",
+        "name": "filter",
+        "func": "const values = []\n\n\nObject.keys(msg.payload).map(key=>{\n    let currency_ob=Object.values(msg.payload[key])[0][global.get(\"selected_currency\")];\n    values.push(currency_ob);\n    })\n\nvar newMsg = { \n    values: {\n        \"value\":values,\n        \"period\": 5\n    }\n};\nreturn [newMsg];",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 450,
+        "y": 740,
+        "wires": [
+            [
+                "57e6e3bf.9f878c"
+            ]
+        ]
+    },
+    {
+        "id": "e2fd3a1c.9847e8",
+        "type": "firebase.once",
+        "z": "2ad522d6.3d80ce",
+        "name": "get values",
+        "firebaseconfig": "6ef5f71b.98f1b8",
+        "childpath": "values",
+        "repeatifnull": false,
+        "eventType": "value",
+        "queries": [
+            {
+                "name": "orderByValue",
+                "value": "",
+                "valType": ""
+            },
+            {
+                "name": "limitToLast",
+                "value": "30",
+                "valType": "str"
+            }
+        ],
+        "x": 270,
+        "y": 740,
+        "wires": [
+            [
+                "e912ca4c.0d30c8"
+            ]
+        ]
     }
 ]
