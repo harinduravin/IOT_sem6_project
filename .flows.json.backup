@@ -1,12 +1,5 @@
 [
     {
-        "id": "8e4a1fa5.c8baf",
-        "type": "tab",
-        "label": "Flow 1",
-        "disabled": false,
-        "info": ""
-    },
-    {
         "id": "4d83ec58.e26e84",
         "type": "tab",
         "label": "Firebase",
@@ -1530,151 +1523,6 @@
         "wires": []
     },
     {
-        "id": "ad482a46.4a1a98",
-        "type": "timerswitch",
-        "z": "8e4a1fa5.c8baf",
-        "name": "Hourly Timer",
-        "ontopic": "ON",
-        "offtopic": "ON",
-        "onpayload": "1",
-        "offpayload": "0",
-        "disabled": false,
-        "schedules": [
-            {
-                "on_h": "00",
-                "on_m": "05",
-                "on_s": "00",
-                "off_h": "01",
-                "off_m": "05",
-                "off_s": "00",
-                "valid": true
-            },
-            {
-                "on_h": "02",
-                "on_m": "05",
-                "on_s": "00",
-                "off_h": "03",
-                "off_m": "05",
-                "off_s": "00",
-                "valid": true
-            },
-            {
-                "on_h": "04",
-                "on_m": "05",
-                "on_s": "00",
-                "off_h": "05",
-                "off_m": "05",
-                "off_s": "00",
-                "valid": true
-            },
-            {
-                "on_h": "06",
-                "on_m": "05",
-                "on_s": "00",
-                "off_h": "07",
-                "off_m": "05",
-                "off_s": "00",
-                "valid": true
-            },
-            {
-                "on_h": "08",
-                "on_m": "05",
-                "on_s": "00",
-                "off_h": "09",
-                "off_m": "05",
-                "off_s": "00",
-                "valid": true
-            },
-            {
-                "on_h": "10",
-                "on_m": "05",
-                "on_s": "00",
-                "off_h": "11",
-                "off_m": "05",
-                "off_s": "00",
-                "valid": true
-            },
-            {
-                "on_h": "12",
-                "on_m": "05",
-                "on_s": "00",
-                "off_h": "13",
-                "off_m": "05",
-                "off_s": "00",
-                "valid": true
-            },
-            {
-                "on_h": "14",
-                "on_m": "05",
-                "on_s": "00",
-                "off_h": "15",
-                "off_m": "05",
-                "off_s": "00",
-                "valid": true
-            },
-            {
-                "on_h": "16",
-                "on_m": "05",
-                "on_s": "00",
-                "off_h": "17",
-                "off_m": "05",
-                "off_s": "00",
-                "valid": true
-            },
-            {
-                "on_h": "18",
-                "on_m": "05",
-                "on_s": "00",
-                "off_h": "19",
-                "off_m": "05",
-                "off_s": "00",
-                "valid": true
-            },
-            {
-                "on_h": "20",
-                "on_m": "05",
-                "on_s": "00",
-                "off_h": "21",
-                "off_m": "05",
-                "off_s": "00",
-                "valid": true
-            },
-            {
-                "on_h": "22",
-                "on_m": "05",
-                "on_s": "00",
-                "off_h": "23",
-                "off_m": "05",
-                "off_s": "00",
-                "valid": true
-            }
-        ],
-        "x": 230,
-        "y": 140,
-        "wires": [
-            [
-                "af451df0.6037a"
-            ]
-        ]
-    },
-    {
-        "id": "af451df0.6037a",
-        "type": "debug",
-        "z": "8e4a1fa5.c8baf",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 510,
-        "y": 160,
-        "wires": []
-    },
-    {
         "id": "5bcb85fe.3e3bac",
         "type": "timerswitch",
         "z": "4d83ec58.e26e84",
@@ -1683,7 +1531,7 @@
         "offtopic": "ON",
         "onpayload": "1",
         "offpayload": "0",
-        "disabled": false,
+        "disabled": true,
         "schedules": [
             {
                 "on_h": "00",
@@ -1801,5 +1649,201 @@
                 "a2d3233a.96fd4"
             ]
         ]
+    },
+    {
+        "id": "c70f8f7b.7ccc5",
+        "type": "inject",
+        "z": "4d83ec58.e26e84",
+        "name": "fetch and push rates",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"USD\":[198.05,198.49,199.78,198.05,198.57,198.93,198.13,197.19,198.52,197.43,197.3,198.46,199.25,197.41,199.27,199.14,199.7,199.36,198.44,198.2,198.49,197.18,199.46,198.19,199.6,198.47,197.96,199.85,198.3,199.17],\"JYP\":[1.8,1.77,1.8,1.77,1.77,1.79,1.79,1.81,1.79,1.8,1.79,1.81,1.81,1.8,1.82,1.78,1.8,1.8,1.79,1.8,1.81,1.78,1.78,1.79,1.8,1.81,1.79,1.8,1.82,1.81],\"EUR\":[238.27,239.72,239.47,242.28,236.03,235.16,240.2,239.92,241.46,238.91,240.87,237.94,242.98,239.2,240.28,238.48,236.34,237.55,237.06,238.59,235.14,238.4,237.64,240.18,239.66,236.69,242.28,235.07,241.14,237.81],\"AUD\":[153.36,153.62,153.11,152.73,152.17,154.26,150.96,150.07,152.41,152.09,153.71,151.36,150.08,154.13,150.24,150.67,152.71,154.12,151.16,151.3,151.53,150.7,154.42,154.79,151,154.83,153.66,151.98,151.92,150.66],\"KWD\":[656.35,659.39,657.09,655.26,656.47,657.58,655.77,654.36,659.6,657.59,658.24,658.41,655,658.28,659.41,658.59,656.84,659.12,659.33,656.17,654.45,654.45,656.83,654.83,655.65,659.65,658.7,654.71,659.54,658.38],\"GBP\":[281.41,278.46,278.7,281.36,277.73,276.23,282.15,278.14,278.93,280.43,282.34,282.04,276.65,281.72,282.59,281.4,276.42,276.96,280.09,278.19,279.96,276.24,278.84,279.65,282.16,282.96,276.06,276.4,278.5,282.44]}",
+        "payloadType": "json",
+        "x": 230,
+        "y": 1140,
+        "wires": [
+            [
+                "f61afb9.5ea0808",
+                "98be2c9a.61472"
+            ]
+        ]
+    },
+    {
+        "id": "f61afb9.5ea0808",
+        "type": "function",
+        "z": "4d83ec58.e26e84",
+        "name": "formater",
+        "func": "\n\nconst rates = msg.payload;\nconst index = global.get(\"tempIndex\")\nconst newRates = {\n    USD:rates[\"USD\"][index],\n    AUD:rates[\"AUD\"][index],\n    JPY:rates[\"JYP\"][index],\n    GBP:rates[\"GBP\"][index],\n    EUR:rates[\"EUR\"][index],\n    KWD:rates[\"KWD\"][index],\n}\n\n\nconst now = Date.now()\nvar newMsg = { payload: {[now]:newRates} };\nreturn [newMsg];",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 500,
+        "y": 1140,
+        "wires": [
+            [
+                "d5505067.66613",
+                "4ba9143d.8af14c"
+            ]
+        ]
+    },
+    {
+        "id": "4ba9143d.8af14c",
+        "type": "firebase modify",
+        "z": "4d83ec58.e26e84",
+        "name": "push",
+        "firebaseconfig": "6ef5f71b.98f1b8",
+        "childpath": "values",
+        "method": "push",
+        "value": "msg.payload",
+        "priority": "msg.priority",
+        "x": 950,
+        "y": 1280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d5505067.66613",
+        "type": "debug",
+        "z": "4d83ec58.e26e84",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1170,
+        "y": 1160,
+        "wires": []
+    },
+    {
+        "id": "c239dd8c.4da3e",
+        "type": "change",
+        "z": "4d83ec58.e26e84",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "tempIndex",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 580,
+        "y": 1400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "98be2c9a.61472",
+        "type": "function",
+        "z": "4d83ec58.e26e84",
+        "name": "",
+        "func": "var newIndex = global.get(\"tempIndex\")+1;\n\n\nreturn {payload:newIndex};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 390,
+        "y": 1280,
+        "wires": [
+            [
+                "c239dd8c.4da3e",
+                "bba01c5e.61f07"
+            ]
+        ]
+    },
+    {
+        "id": "ce5550aa.953ed",
+        "type": "inject",
+        "z": "4d83ec58.e26e84",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 210,
+        "y": 1560,
+        "wires": [
+            [
+                "b4305e4.25c24a"
+            ]
+        ]
+    },
+    {
+        "id": "b4305e4.25c24a",
+        "type": "change",
+        "z": "4d83ec58.e26e84",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "tempIndex",
+                "pt": "global",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 450,
+        "y": 1560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "bba01c5e.61f07",
+        "type": "debug",
+        "z": "4d83ec58.e26e84",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 840,
+        "y": 1360,
+        "wires": []
     }
 ]
