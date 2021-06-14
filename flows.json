@@ -1,15 +1,22 @@
 [
     {
-        "id": "2ad522d6.3d80ce",
+        "id": "4d83ec58.e26e84",
         "type": "tab",
-        "label": "Flow 2",
+        "label": "Firebase",
         "disabled": false,
         "info": ""
     },
     {
-        "id": "4d83ec58.e26e84",
+        "id": "2ad522d6.3d80ce",
         "type": "tab",
-        "label": "Flow 1",
+        "label": "Forex Functions",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "3048da4.77ad926",
+        "type": "tab",
+        "label": "Email",
         "disabled": false,
         "info": ""
     },
@@ -170,8 +177,8 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 510,
-        "y": 1220,
+        "x": 370,
+        "y": 360,
         "wires": [
             [
                 "77d9c891.b79028"
@@ -186,7 +193,7 @@
         "props": [
             {
                 "p": "values",
-                "v": "{\"value\":[127.75,129.02,132.75,145.4,148.98,137.52,147.38,139.05,137.23,149.3,162.45,178.95,200.35,221.9,243.23,243.52,286.42,280.27],\"period\":4}",
+                "v": "{\"value\":[127.85,129.02,132.75,145.4,148.98,137.52,147.38,139.05,137.23,149.3,162.45,178.95,200.35,221.9,243.23,243.52,286.42,280.27],\"period\":4}",
                 "vt": "json"
             }
         ],
@@ -195,8 +202,8 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 220,
-        "y": 1240,
+        "x": 120,
+        "y": 360,
         "wires": [
             [
                 "a1367960.5c4dd8"
@@ -216,8 +223,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 800,
-        "y": 1200,
+        "x": 610,
+        "y": 360,
         "wires": []
     },
     {
@@ -230,8 +237,8 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 510,
-        "y": 1140,
+        "x": 290,
+        "y": 260,
         "wires": [
             [
                 "8b31f2b2.a4946"
@@ -255,8 +262,8 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 230,
-        "y": 1140,
+        "x": 120,
+        "y": 260,
         "wires": [
             [
                 "54e555e0.e31d7c"
@@ -276,8 +283,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 710,
-        "y": 1140,
+        "x": 610,
+        "y": 260,
         "wires": []
     },
     {
@@ -290,8 +297,8 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 550,
-        "y": 1040,
+        "x": 350,
+        "y": 160,
         "wires": [
             [
                 "c1ee69f0.0d4318"
@@ -315,9 +322,8 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payloadType": "str",
-        "x": 220,
-        "y": 1040,
+        "x": 120,
+        "y": 160,
         "wires": [
             [
                 "b486ed73.33e1b"
@@ -337,8 +343,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 780,
-        "y": 1040,
+        "x": 610,
+        "y": 160,
         "wires": []
     },
     {
@@ -363,7 +369,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 120,
-        "y": 320,
+        "y": 60,
         "wires": [
             [
                 "a2c60656.85d268"
@@ -384,7 +390,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 930,
-        "y": 340,
+        "y": 60,
         "wires": []
     },
     {
@@ -398,7 +404,7 @@
         "initialize": "",
         "finalize": "",
         "x": 300,
-        "y": 320,
+        "y": 60,
         "wires": [
             [
                 "3ab86060.4ea31"
@@ -416,7 +422,7 @@
         "initialize": "",
         "finalize": "",
         "x": 720,
-        "y": 320,
+        "y": 60,
         "wires": [
             [
                 "e947f495.e22668"
@@ -433,120 +439,12 @@
         "symbols": "",
         "creds": "3a4aeaa5.e720d6",
         "x": 520,
-        "y": 320,
+        "y": 60,
         "wires": [
             [
                 "dd61d5c7.f00a28"
             ]
         ]
-    },
-    {
-        "id": "d3fd9e83.edc7d8",
-        "type": "firebase modify",
-        "z": "4d83ec58.e26e84",
-        "name": "set",
-        "firebaseconfig": "6ef5f71b.98f1b8",
-        "childpath": "max_value",
-        "method": "set",
-        "value": "msg.payload",
-        "priority": "msg.priority",
-        "x": 1010,
-        "y": 160,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "4024142f.4eda5c",
-        "type": "inject",
-        "z": "4d83ec58.e26e84",
-        "name": "set max value",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "182.25",
-        "payloadType": "num",
-        "x": 240,
-        "y": 160,
-        "wires": [
-            [
-                "d3fd9e83.edc7d8"
-            ]
-        ]
-    },
-    {
-        "id": "3bf2c40e.ae740c",
-        "type": "firebase.once",
-        "z": "4d83ec58.e26e84",
-        "name": "get max value",
-        "firebaseconfig": "6ef5f71b.98f1b8",
-        "childpath": "max_value",
-        "repeatifnull": false,
-        "eventType": "value",
-        "queries": [],
-        "x": 460,
-        "y": 240,
-        "wires": [
-            [
-                "42cdba4a.cb01f4"
-            ]
-        ]
-    },
-    {
-        "id": "9171dd80.8a4228",
-        "type": "inject",
-        "z": "4d83ec58.e26e84",
-        "name": "get max value",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 240,
-        "y": 240,
-        "wires": [
-            [
-                "3bf2c40e.ae740c"
-            ]
-        ]
-    },
-    {
-        "id": "42cdba4a.cb01f4",
-        "type": "debug",
-        "z": "4d83ec58.e26e84",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1020,
-        "y": 240,
-        "wires": []
     },
     {
         "id": "81ec3326.0bd8e8",
@@ -559,7 +457,7 @@
         "eventType": "value",
         "queries": [],
         "x": 450,
-        "y": 320,
+        "y": 460,
         "wires": [
             [
                 "ffddca73.d1678"
@@ -588,7 +486,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 230,
-        "y": 320,
+        "y": 460,
         "wires": [
             [
                 "81ec3326.0bd8e8"
@@ -608,124 +506,8 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1020,
-        "y": 320,
+        "y": 460,
         "wires": []
-    },
-    {
-        "id": "f95094eb.72e2d8",
-        "type": "inject",
-        "z": "4d83ec58.e26e84",
-        "name": "fetch and push rates",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 250,
-        "y": 400,
-        "wires": [
-            [
-                "e76a8b9e.c686c"
-            ]
-        ]
-    },
-    {
-        "id": "7b1f3af9.d87884",
-        "type": "debug",
-        "z": "4d83ec58.e26e84",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1030,
-        "y": 400,
-        "wires": []
-    },
-    {
-        "id": "e76a8b9e.c686c",
-        "type": "function",
-        "z": "4d83ec58.e26e84",
-        "name": "",
-        "func": "msg.params = {\n    // base :'USD',\n    symbols : 'USD,AUD,JPY,GBP,EUR,KWD'\n};\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 420,
-        "y": 400,
-        "wires": [
-            [
-                "418b2d78.71296c"
-            ]
-        ]
-    },
-    {
-        "id": "fa816e65.0e9c08",
-        "type": "function",
-        "z": "4d83ec58.e26e84",
-        "name": "formater",
-        "func": "// msg.params = {};\n// // msg.params.base = 'USD'\n// msg.params.symbols = 'KRW'\n\n// var rate = msg.payload.rates.LKR;\n// return {rate};\n\n\n// var newMsg = { 'payload2': msg.payload.rates };\n// return newMsg;\nconst now = Date.now()\nvar newMsg = { payload: {[now]:msg.payload.rates} };\nreturn [newMsg];",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 840,
-        "y": 400,
-        "wires": [
-            [
-                "7b1f3af9.d87884",
-                "70670e1.05fc0f"
-            ]
-        ]
-    },
-    {
-        "id": "418b2d78.71296c",
-        "type": "exchangeratesapi",
-        "z": "4d83ec58.e26e84",
-        "name": "",
-        "url": "latest",
-        "base": "",
-        "symbols": "",
-        "creds": "ec9f480b.2b6f68",
-        "x": 620,
-        "y": 400,
-        "wires": [
-            [
-                "fa816e65.0e9c08"
-            ]
-        ]
-    },
-    {
-        "id": "70670e1.05fc0f",
-        "type": "firebase modify",
-        "z": "4d83ec58.e26e84",
-        "name": "push",
-        "firebaseconfig": "6ef5f71b.98f1b8",
-        "childpath": "values",
-        "method": "push",
-        "value": "msg.payload",
-        "priority": "msg.priority",
-        "x": 1030,
-        "y": 500,
-        "wires": [
-            []
-        ]
     },
     {
         "id": "ffddca73.d1678",
@@ -738,7 +520,7 @@
         "initialize": "",
         "finalize": "",
         "x": 670,
-        "y": 320,
+        "y": 460,
         "wires": [
             [
                 "9b5b3bbb.e2d9"
@@ -749,14 +531,14 @@
         "id": "98dfe73.3b25298",
         "type": "firebase.once",
         "z": "4d83ec58.e26e84",
-        "name": "get max value",
+        "name": "get selected currency",
         "firebaseconfig": "6ef5f71b.98f1b8",
         "childpath": "selected_currency",
         "repeatifnull": false,
         "eventType": "value",
         "queries": [],
-        "x": 620,
-        "y": 600,
+        "x": 640,
+        "y": 540,
         "wires": [
             [
                 "c90823.4e389fe"
@@ -785,7 +567,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 270,
-        "y": 600,
+        "y": 540,
         "wires": [
             [
                 "98dfe73.3b25298"
@@ -805,7 +587,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1020,
-        "y": 600,
+        "y": 540,
         "wires": []
     },
     {
@@ -826,7 +608,7 @@
         "onceDelay": 0.1,
         "topic": "",
         "x": 270,
-        "y": 760,
+        "y": 700,
         "wires": [
             [
                 "c34533df.488658"
@@ -847,21 +629,21 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1010,
-        "y": 760,
+        "y": 700,
         "wires": []
     },
     {
         "id": "8603f53.8567b88",
         "type": "firebase.once",
         "z": "4d83ec58.e26e84",
-        "name": "get max value",
+        "name": "get current user",
         "firebaseconfig": "6ef5f71b.98f1b8",
         "childpath": "user",
         "repeatifnull": false,
         "eventType": "value",
         "queries": [],
         "x": 620,
-        "y": 680,
+        "y": 620,
         "wires": [
             [
                 "25f02bcf.44f5c4"
@@ -890,7 +672,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 250,
-        "y": 680,
+        "y": 620,
         "wires": [
             [
                 "8603f53.8567b88"
@@ -910,21 +692,21 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1020,
-        "y": 680,
+        "y": 620,
         "wires": []
     },
     {
         "id": "c34533df.488658",
         "type": "firebase.once",
         "z": "4d83ec58.e26e84",
-        "name": "get max value",
+        "name": "get current user",
         "firebaseconfig": "6ef5f71b.98f1b8",
         "childpath": "user",
         "repeatifnull": false,
         "eventType": "value",
         "queries": [],
         "x": 600,
-        "y": 760,
+        "y": 700,
         "wires": [
             [
                 "8e740a58.c2bd88"
@@ -935,14 +717,14 @@
         "id": "8e740a58.c2bd88",
         "type": "function",
         "z": "4d83ec58.e26e84",
-        "name": "",
+        "name": "auth",
         "func": "let  iscorrect=false\nif (msg.payload.password==msg.userdata.password && msg.payload.username==msg.userdata.username ){\n    iscorrect=true\n}\nvar newMsg = { payload: iscorrect };\nreturn [newMsg];\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 810,
-        "y": 760,
+        "x": 800,
+        "y": 700,
         "wires": [
             [
                 "45fe98ed.964918"
@@ -950,25 +732,709 @@
         ]
     },
     {
-        "id": "dc20a7da.9f2ce8",
-        "type": "firebase.on",
-        "z": "4d83ec58.e26e84",
-        "name": "",
-        "firebaseconfig": "6ef5f71b.98f1b8",
-        "childpath": "max_value",
-        "atStart": true,
-        "eventType": "value",
-        "queries": [],
-        "x": 530,
-        "y": 860,
+        "id": "1229ee47.933062",
+        "type": "function",
+        "z": "2ad522d6.3d80ce",
+        "name": "Rate Of Change (ROC)",
+        "func": "var moment = global.get('techmodule');\n\nconst ROC = moment.ROC\nlet period = msg.values.period; \nlet values = msg.values.value;                    \n\nvar out = {\n  values    : ROC.calculate({period : period, values : values})\n}\nmsg =  out\nreturn msg\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 710,
+        "y": 460,
         "wires": [
             [
-                "ffff4f51.afe78"
+                "8771f92e.bdbde8"
             ]
         ]
     },
     {
-        "id": "ffff4f51.afe78",
+        "id": "27a88b3.16bec74",
+        "type": "inject",
+        "z": "2ad522d6.3d80ce",
+        "name": "Send Array",
+        "props": [
+            {
+                "p": "values",
+                "v": "{\"value\":[11045.27,11167.32,11008.61,11151.83,10926.77,10868.12,10520.32,10380.43,10785.14,10748.26,10896.91,10782.95,10620.16,10625.83,10510.95,10444.37,10068.01,10193.39,10066.57,10043.75],\"period\":5}",
+                "vt": "json"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 120,
+        "y": 460,
+        "wires": [
+            [
+                "501c2b06.654374"
+            ]
+        ]
+    },
+    {
+        "id": "8771f92e.bdbde8",
+        "type": "debug",
+        "z": "2ad522d6.3d80ce",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 910,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "5ecc8d77.851124",
+        "type": "firebase.on",
+        "z": "4d83ec58.e26e84",
+        "name": "fetch selected currency in init and save it globaly",
+        "firebaseconfig": "6ef5f71b.98f1b8",
+        "childpath": "selected_currency",
+        "atStart": true,
+        "eventType": "value",
+        "queries": [],
+        "x": 320,
+        "y": 40,
+        "wires": [
+            [
+                "4525f06f.c4f87"
+            ]
+        ]
+    },
+    {
+        "id": "4525f06f.c4f87",
+        "type": "change",
+        "z": "4d83ec58.e26e84",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "selected_currency",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 660,
+        "y": 40,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b957780.deff688",
+        "type": "function",
+        "z": "2ad522d6.3d80ce",
+        "name": "filter",
+        "func": "const values = []\n\n\nObject.keys(msg.payload).map(key=>{\n    let currency_ob=Object.values(msg.payload[key])[0][global.get(\"selected_currency\")];\n    values.push(currency_ob);\n    })\n\nvar newMsg = { \n    values: {\n        \"value\":values,\n         \"period\": 5\n    }\n};\nreturn [newMsg];",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 470,
+        "y": 460,
+        "wires": [
+            [
+                "1229ee47.933062"
+            ]
+        ]
+    },
+    {
+        "id": "501c2b06.654374",
+        "type": "firebase.once",
+        "z": "2ad522d6.3d80ce",
+        "name": "get values",
+        "firebaseconfig": "6ef5f71b.98f1b8",
+        "childpath": "values",
+        "repeatifnull": false,
+        "eventType": "value",
+        "queries": [
+            {
+                "name": "orderByValue",
+                "value": "",
+                "valType": ""
+            },
+            {
+                "name": "limitToLast",
+                "value": "1",
+                "valType": "str"
+            }
+        ],
+        "x": 290,
+        "y": 460,
+        "wires": [
+            [
+                "b957780.deff688"
+            ]
+        ]
+    },
+    {
+        "id": "c38ab726.bfede8",
+        "type": "inject",
+        "z": "2ad522d6.3d80ce",
+        "name": "Send Array",
+        "props": [
+            {
+                "p": "values",
+                "v": "{\"value\":[11045.27,11167.32,11008.61,11151.83,10926.77,10868.12,10520.32,10380.43,10785.14,10748.26,10896.91,10782.95,10620.16,10625.83,10510.95,10444.37,10068.01,10193.39,10066.57,10043.75],\"period\":5}",
+                "vt": "json"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 120,
+        "y": 560,
+        "wires": [
+            [
+                "7c9db6ac.25ef78"
+            ]
+        ]
+    },
+    {
+        "id": "eac65389.25b28",
+        "type": "function",
+        "z": "2ad522d6.3d80ce",
+        "name": "filter",
+        "func": "const values = []\n\n\nObject.keys(msg.payload).map(key=>{\n    let currency_ob=Object.values(msg.payload[key])[0][global.get(\"selected_currency\")];\n    values.push(currency_ob);\n    })\n\nvar newMsg = { \n    values: {\n        \"value\":values,\n        \"fastPeriod\": 5,\n        \"slowPeriod\": 8,\n        \"signalPeriod\": 3,\n        \"SimpleMAOscillator\": false,\n        \"SimpleMASignal\": false\n    }\n};\nreturn [newMsg];",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 470,
+        "y": 560,
+        "wires": [
+            [
+                "267e2fa8.83558"
+            ]
+        ]
+    },
+    {
+        "id": "7c9db6ac.25ef78",
+        "type": "firebase.once",
+        "z": "2ad522d6.3d80ce",
+        "name": "get values",
+        "firebaseconfig": "6ef5f71b.98f1b8",
+        "childpath": "values",
+        "repeatifnull": false,
+        "eventType": "value",
+        "queries": [
+            {
+                "name": "orderByValue",
+                "value": "",
+                "valType": ""
+            },
+            {
+                "name": "limitToLast",
+                "value": "1",
+                "valType": "str"
+            }
+        ],
+        "x": 290,
+        "y": 560,
+        "wires": [
+            [
+                "eac65389.25b28"
+            ]
+        ]
+    },
+    {
+        "id": "85272627.73e938",
+        "type": "inject",
+        "z": "2ad522d6.3d80ce",
+        "name": "Send Array",
+        "props": [
+            {
+                "p": "values",
+                "v": "{\"value\":[11045.27,11167.32,11008.61,11151.83,10926.77,10868.12,10520.32,10380.43,10785.14,10748.26,10896.91,10782.95,10620.16,10625.83,10510.95,10444.37,10068.01,10193.39,10066.57,10043.75],\"period\":5}",
+                "vt": "json"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 120,
+        "y": 660,
+        "wires": [
+            [
+                "2d61a6e1.ee06da"
+            ]
+        ]
+    },
+    {
+        "id": "d8cb1a43.0b2148",
+        "type": "function",
+        "z": "2ad522d6.3d80ce",
+        "name": "filter",
+        "func": "const values = []\n\n\nObject.keys(msg.payload).map(key=>{\n    let currency_ob=Object.values(msg.payload[key])[0][global.get(\"selected_currency\")];\n    values.push(currency_ob);\n    })\n\nvar newMsg = { \n    values: {\n        \"values\":values,\n        \"fastPeriod\": 5,\n    \"slowPeriod\": 8,\n    \"signalPeriod\": 3,\n    \"SimpleMAOscillator\": false,\n    \"SimpleMASignal\": false\n    }\n};\nreturn [newMsg];",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 470,
+        "y": 660,
+        "wires": [
+            [
+                "20f10d0.45435f4"
+            ]
+        ]
+    },
+    {
+        "id": "2d61a6e1.ee06da",
+        "type": "firebase.once",
+        "z": "2ad522d6.3d80ce",
+        "name": "get values",
+        "firebaseconfig": "6ef5f71b.98f1b8",
+        "childpath": "values",
+        "repeatifnull": false,
+        "eventType": "value",
+        "queries": [
+            {
+                "name": "orderByValue",
+                "value": "",
+                "valType": ""
+            },
+            {
+                "name": "limitToLast",
+                "value": "",
+                "valType": "str"
+            }
+        ],
+        "x": 290,
+        "y": 660,
+        "wires": [
+            [
+                "d8cb1a43.0b2148"
+            ]
+        ]
+    },
+    {
+        "id": "267e2fa8.83558",
+        "type": "function",
+        "z": "2ad522d6.3d80ce",
+        "name": "Simple Moving Average (SMA)",
+        "func": "var moment = global.get('techmodule');\n\nconst SMA = moment.SMA\nlet period = msg.values.period; \nlet values = msg.values.value;                    \n\nvar out = {\n  values    : SMA.calculate({period : period, values : values})\n}\nmsg =  out\nreturn msg\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 730,
+        "y": 560,
+        "wires": [
+            [
+                "43d2a492.567dfc"
+            ]
+        ]
+    },
+    {
+        "id": "43d2a492.567dfc",
+        "type": "debug",
+        "z": "2ad522d6.3d80ce",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 970,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "20f10d0.45435f4",
+        "type": "function",
+        "z": "2ad522d6.3d80ce",
+        "name": "MACD",
+        "func": "var moment = global.get('techmodule');\nvar MACD = moment.MACD;\n\n\nvar macdInput = msg.values;                    \n\nvar out = {\n  values    : MACD.calculate(macdInput)\n}\nmsg =  out\nreturn msg\n\n\n\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 650,
+        "y": 660,
+        "wires": [
+            [
+                "b0a69be3.457808"
+            ]
+        ]
+    },
+    {
+        "id": "b0a69be3.457808",
+        "type": "debug",
+        "z": "2ad522d6.3d80ce",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 890,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "e3fe7a46.d18458",
+        "type": "inject",
+        "z": "4d83ec58.e26e84",
+        "name": "fetch and push rates",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 250,
+        "y": 780,
+        "wires": [
+            [
+                "a2d3233a.96fd4"
+            ]
+        ]
+    },
+    {
+        "id": "a2d3233a.96fd4",
+        "type": "function",
+        "z": "4d83ec58.e26e84",
+        "name": "Query",
+        "func": "msg.params = {\n        symbols : 'USD,AUD,JPY,GBP,EUR,KWD,LKR'\n};\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 430,
+        "y": 780,
+        "wires": [
+            [
+                "e0c16b3b.e49258"
+            ]
+        ]
+    },
+    {
+        "id": "dff0df42.44ea9",
+        "type": "function",
+        "z": "4d83ec58.e26e84",
+        "name": "formater",
+        "func": "const rates = msg.payload.rates;\nconst LKR = rates[\"LKR\"]\nconst newRates = {\n    USD:parseFloat((LKR/rates.USD).toFixed(3)),\n    AUD:parseFloat((LKR/rates.AUD).toFixed(3)),\n    JPY:parseFloat((LKR/rates.JPY).toFixed(3)),\n    GBP:parseFloat((LKR/rates.GBP).toFixed(3)),\n    EUR:parseFloat((LKR/rates.EUR).toFixed(3)),\n    KWD:parseFloat((LKR/rates.KWD).toFixed(3)),\n}\n\n\nconst now = Date.now()\nvar newMsg = { formatedPayload: {[now]:newRates} };\nreturn [newMsg];",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 840,
+        "y": 780,
+        "wires": [
+            [
+                "e2529988.3231c8"
+            ]
+        ]
+    },
+    {
+        "id": "e0c16b3b.e49258",
+        "type": "exchangeratesapi",
+        "z": "4d83ec58.e26e84",
+        "name": "",
+        "url": "latest",
+        "base": "",
+        "symbols": "",
+        "creds": "ec9f480b.2b6f68",
+        "x": 640,
+        "y": 780,
+        "wires": [
+            [
+                "dff0df42.44ea9"
+            ]
+        ]
+    },
+    {
+        "id": "75c18ffc.94eb8",
+        "type": "firebase modify",
+        "z": "4d83ec58.e26e84",
+        "name": "push",
+        "firebaseconfig": "6ef5f71b.98f1b8",
+        "childpath": "values",
+        "method": "push",
+        "value": "msg.payload",
+        "priority": "msg.priority",
+        "x": 990,
+        "y": 1100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d9507d77.0f38d",
+        "type": "firebase.on",
+        "z": "4d83ec58.e26e84",
+        "name": "fetch ceil in init and save it globaly",
+        "firebaseconfig": "6ef5f71b.98f1b8",
+        "childpath": "ceil",
+        "atStart": true,
+        "eventType": "value",
+        "queries": [],
+        "x": 280,
+        "y": 100,
+        "wires": [
+            [
+                "a370db36.012b58"
+            ]
+        ]
+    },
+    {
+        "id": "a370db36.012b58",
+        "type": "change",
+        "z": "4d83ec58.e26e84",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "ceil",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 620,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "57a1945b.aa7cac",
+        "type": "firebase.on",
+        "z": "4d83ec58.e26e84",
+        "name": "fetch floor in init and save it globaly",
+        "firebaseconfig": "6ef5f71b.98f1b8",
+        "childpath": "floor",
+        "atStart": true,
+        "eventType": "value",
+        "queries": [],
+        "x": 280,
+        "y": 160,
+        "wires": [
+            [
+                "de164255.b0d84"
+            ]
+        ]
+    },
+    {
+        "id": "de164255.b0d84",
+        "type": "change",
+        "z": "4d83ec58.e26e84",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "floor",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 620,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "950f9e51.ad732",
+        "type": "function",
+        "z": "4d83ec58.e26e84",
+        "name": "ceil/floor checker",
+        "func": "const latest = Object.values(msg.formatedPayload)[0];\nconst last =  Object.values(Object.values(msg.payload)[0])[0];\n\nconst selectedNow = last[global.get(\"selected_currency\")];\nconst selectedLast = last[global.get(\"selected_currency\")];\nlet status = \"\";\nif(selectedNow==selectedLast){\n    status = \"no_change\"\n}else{\nconst isWentUp=selectedNow>selectedLast;\nif(isWentUp){\n    const change = (selectedNow-selectedLast)/selectedLast\n    if(change>=global.get(\"ceil\")/100){\n        status=\"ceiling_crossed\"\n    }else{\n        status=\"went_up\"\n    }\n}else{\n    const change = (selectedLast-selectedNow)/selectedLast   \n    if(change>=global.get(\"floor\")/100){\n        status=\"floor_crossed\"\n    }else{\n        status=\"went_down\"\n    }\n}\n}\nreturn {\nlatest,\nlast,\nselectedNow,\nselectedLast,\nstatus,\npayload:msg.formatedPayload\n};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 930,
+        "y": 960,
+        "wires": [
+            [
+                "ffb98f8a.985",
+                "75c18ffc.94eb8"
+            ]
+        ]
+    },
+    {
+        "id": "8cbcc465.7ad078",
+        "type": "firebase modify",
+        "z": "4d83ec58.e26e84",
+        "name": "set",
+        "firebaseconfig": "6ef5f71b.98f1b8",
+        "childpath": "selected_currency",
+        "method": "set",
+        "value": "msg.payload",
+        "priority": "msg.priority",
+        "x": 1010,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f31e761.2899b88",
+        "type": "inject",
+        "z": "4d83ec58.e26e84",
+        "name": "set selected currency",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "USD",
+        "payloadType": "str",
+        "x": 270,
+        "y": 220,
+        "wires": [
+            [
+                "8cbcc465.7ad078"
+            ]
+        ]
+    },
+    {
+        "id": "27290d4a.21b602",
+        "type": "firebase modify",
+        "z": "4d83ec58.e26e84",
+        "name": "set",
+        "firebaseconfig": "6ef5f71b.98f1b8",
+        "childpath": "ceil",
+        "method": "set",
+        "value": "msg.payload",
+        "priority": "msg.priority",
+        "x": 1010,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5d701eeb.74516",
+        "type": "inject",
+        "z": "4d83ec58.e26e84",
+        "name": "set ceil %",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "5",
+        "payloadType": "num",
+        "x": 230,
+        "y": 300,
+        "wires": [
+            [
+                "27290d4a.21b602"
+            ]
+        ]
+    },
+    {
+        "id": "7518841f.0e3c7c",
+        "type": "firebase modify",
+        "z": "4d83ec58.e26e84",
+        "name": "set",
+        "firebaseconfig": "6ef5f71b.98f1b8",
+        "childpath": "floor",
+        "method": "set",
+        "value": "msg.payload",
+        "priority": "msg.priority",
+        "x": 1010,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8d37634b.32a3c",
+        "type": "inject",
+        "z": "4d83ec58.e26e84",
+        "name": "set floor %",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "5",
+        "payloadType": "num",
+        "x": 230,
+        "y": 380,
+        "wires": [
+            [
+                "7518841f.0e3c7c"
+            ]
+        ]
+    },
+    {
+        "id": "ffb98f8a.985",
         "type": "debug",
         "z": "4d83ec58.e26e84",
         "name": "",
@@ -976,11 +1442,84 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "true",
+        "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 730,
-        "y": 900,
+        "x": 1210,
+        "y": 960,
+        "wires": []
+    },
+    {
+        "id": "e2529988.3231c8",
+        "type": "firebase.once",
+        "z": "4d83ec58.e26e84",
+        "name": "get last value",
+        "firebaseconfig": "6ef5f71b.98f1b8",
+        "childpath": "values",
+        "repeatifnull": false,
+        "eventType": "value",
+        "queries": [
+            {
+                "name": "orderByValue",
+                "value": "",
+                "valType": ""
+            },
+            {
+                "name": "limitToLast",
+                "value": "1",
+                "valType": "str"
+            }
+        ],
+        "x": 890,
+        "y": 860,
+        "wires": [
+            [
+                "950f9e51.ad732"
+            ]
+        ]
+    },
+    {
+        "id": "bed1b78e.2a6fc8",
+        "type": "inject",
+        "z": "3048da4.77ad926",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "This is test",
+        "payloadType": "str",
+        "x": 210,
+        "y": 260,
+        "wires": [
+            [
+                "f2886c22.c60e2"
+            ]
+        ]
+    },
+    {
+        "id": "f2886c22.c60e2",
+        "type": "e-mail",
+        "z": "3048da4.77ad926",
+        "server": "smtp.gmail.com",
+        "port": "465",
+        "secure": false,
+        "tls": false,
+        "name": "mkt.sampath97@gmail.com",
+        "dname": "",
+        "x": 650,
+        "y": 440,
         "wires": []
     },
     {
