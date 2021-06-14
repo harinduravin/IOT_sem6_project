@@ -14,6 +14,13 @@
         "info": ""
     },
     {
+        "id": "3048da4.77ad926",
+        "type": "tab",
+        "label": "Email",
+        "disabled": false,
+        "info": ""
+    },
+    {
         "id": "6d92e441.b263cc",
         "type": "ui_group",
         "name": "Exchange Rate",
@@ -862,7 +869,7 @@
             },
             {
                 "name": "limitToLast",
-                "value": "10",
+                "value": "1",
                 "valType": "str"
             }
         ],
@@ -934,7 +941,7 @@
             },
             {
                 "name": "limitToLast",
-                "value": "",
+                "value": "1",
                 "valType": "str"
             }
         ],
@@ -1006,7 +1013,7 @@
             },
             {
                 "name": "limitToLast",
-                "value": "10",
+                "value": "",
                 "valType": "str"
             }
         ],
@@ -1084,8 +1091,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 970,
-        "y": 660,
+        "x": 890,
+        "y": 640,
         "wires": []
     },
     {
@@ -1110,7 +1117,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 250,
-        "y": 840,
+        "y": 780,
         "wires": [
             [
                 "a2d3233a.96fd4"
@@ -1122,13 +1129,13 @@
         "type": "function",
         "z": "4d83ec58.e26e84",
         "name": "Query",
-        "func": "msg.params = {\n    // base :'USD',\n    symbols : 'USD,AUD,JPY,GBP,EUR,KWD,LKR'\n};\n\nreturn msg;",
+        "func": "msg.params = {\n        symbols : 'USD,AUD,JPY,GBP,EUR,KWD,LKR'\n};\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "x": 430,
-        "y": 840,
+        "y": 780,
         "wires": [
             [
                 "e0c16b3b.e49258"
@@ -1140,13 +1147,13 @@
         "type": "function",
         "z": "4d83ec58.e26e84",
         "name": "formater",
-        "func": "const rates = msg.payload.rates;\nconst LKR = rates[\"LKR\"]\nconst newRates = {\n    USD:parseFloat((rates.USD/LKR).toFixed(3)),\n    AUD:parseFloat((rates.AUD/LKR).toFixed(3)),\n    JPY:parseFloat((rates.JPY/LKR).toFixed(3)),\n    GBP:parseFloat((rates.GBP/LKR).toFixed(3)),\n    EUR:parseFloat((rates.EUR/LKR).toFixed(3)),\n    KWD:parseFloat((rates.KWD/LKR).toFixed(3)),\n}\n\n\nconst now = Date.now()\nvar newMsg = { formatedPayload: {[now]:newRates} };\nreturn [newMsg];",
+        "func": "const rates = msg.payload.rates;\nconst LKR = rates[\"LKR\"]\nconst newRates = {\n    USD:parseFloat((LKR/rates.USD).toFixed(3)),\n    AUD:parseFloat((LKR/rates.AUD).toFixed(3)),\n    JPY:parseFloat((LKR/rates.JPY).toFixed(3)),\n    GBP:parseFloat((LKR/rates.GBP).toFixed(3)),\n    EUR:parseFloat((LKR/rates.EUR).toFixed(3)),\n    KWD:parseFloat((LKR/rates.KWD).toFixed(3)),\n}\n\n\nconst now = Date.now()\nvar newMsg = { formatedPayload: {[now]:newRates} };\nreturn [newMsg];",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "x": 840,
-        "y": 840,
+        "y": 780,
         "wires": [
             [
                 "e2529988.3231c8"
@@ -1163,7 +1170,7 @@
         "symbols": "",
         "creds": "ec9f480b.2b6f68",
         "x": 640,
-        "y": 840,
+        "y": 780,
         "wires": [
             [
                 "dff0df42.44ea9"
@@ -1181,7 +1188,7 @@
         "value": "msg.payload",
         "priority": "msg.priority",
         "x": 990,
-        "y": 1120,
+        "y": 1100,
         "wires": [
             []
         ]
@@ -1277,13 +1284,13 @@
         "type": "function",
         "z": "4d83ec58.e26e84",
         "name": "ceil/floor checker",
-        "func": "const latest = Object.values(msg.formatedPayload)[0];\nconst last =  Object.values(Object.values(msg.payload)[0])[0];\nconst selectedNow = last[global.get(\"selected_currency\")];\nconst selectedLast = last[global.get(\"selected_currency\")];\nlet status = \"no change\";\nconst isWentUp=selectedNow>selectedLast;\nif(isWentUp){\nconst change = (selectedNow-selectedLast)/selectedLast\nif(change>=global.get(\"ceil\")/100){\n    status=\"went up\"\n}\n}else{\nconst change = (selectedLast-selectedNow)/selectedLast   \nif(change>=global.get(\"floor\")/100){\n    status=\"went down\"\n}\n}\n\nreturn {\nlatest,\nlast,\nselectedNow,\nselectedLast,\nstatus,\npayload:msg.formatedPayload\n};",
+        "func": "const latest = Object.values(msg.formatedPayload)[0];\nconst last =  Object.values(Object.values(msg.payload)[0])[0];\n\nconst selectedNow = last[global.get(\"selected_currency\")];\nconst selectedLast = last[global.get(\"selected_currency\")];\nlet status = \"\";\nif(selectedNow==selectedLast){\n    status = \"no_change\"\n}else{\nconst isWentUp=selectedNow>selectedLast;\nif(isWentUp){\n    const change = (selectedNow-selectedLast)/selectedLast\n    if(change>=global.get(\"ceil\")/100){\n        status=\"ceiling_crossed\"\n    }else{\n        status=\"went_up\"\n    }\n}else{\n    const change = (selectedLast-selectedNow)/selectedLast   \n    if(change>=global.get(\"floor\")/100){\n        status=\"floor_crossed\"\n    }else{\n        status=\"went_down\"\n    }\n}\n}\nreturn {\nlatest,\nlast,\nselectedNow,\nselectedLast,\nstatus,\npayload:msg.formatedPayload\n};",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "x": 930,
-        "y": 1020,
+        "y": 960,
         "wires": [
             [
                 "ffb98f8a.985",
@@ -1440,7 +1447,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1210,
-        "y": 1020,
+        "y": 960,
         "wires": []
     },
     {
@@ -1465,11 +1472,54 @@
             }
         ],
         "x": 890,
-        "y": 920,
+        "y": 860,
         "wires": [
             [
                 "950f9e51.ad732"
             ]
         ]
+    },
+    {
+        "id": "bed1b78e.2a6fc8",
+        "type": "inject",
+        "z": "3048da4.77ad926",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "This is test",
+        "payloadType": "str",
+        "x": 210,
+        "y": 260,
+        "wires": [
+            [
+                "f2886c22.c60e2"
+            ]
+        ]
+    },
+    {
+        "id": "f2886c22.c60e2",
+        "type": "e-mail",
+        "z": "3048da4.77ad926",
+        "server": "smtp.gmail.com",
+        "port": "465",
+        "secure": false,
+        "tls": false,
+        "name": "mkt.sampath97@gmail.com",
+        "dname": "",
+        "x": 650,
+        "y": 440,
+        "wires": []
     }
 ]
