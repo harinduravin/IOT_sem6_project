@@ -1,5 +1,12 @@
 [
     {
+        "id": "8e4a1fa5.c8baf",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
         "id": "4d83ec58.e26e84",
         "type": "tab",
         "label": "Firebase",
@@ -1013,7 +1020,7 @@
             },
             {
                 "name": "limitToLast",
-                "value": "1",
+                "value": "",
                 "valType": "str"
             }
         ],
@@ -1188,7 +1195,7 @@
         "value": "msg.payload",
         "priority": "msg.priority",
         "x": 990,
-        "y": 1060,
+        "y": 1100,
         "wires": [
             []
         ]
@@ -1284,7 +1291,7 @@
         "type": "function",
         "z": "4d83ec58.e26e84",
         "name": "ceil/floor checker",
-        "func": "const latest = Object.values(msg.formatedPayload)[0];\nconst last =  Object.values(Object.values(msg.payload)[0])[0];\n\nconst selectedNow = last[global.get(\"selected_currency\")];\nconst selectedLast = last[global.get(\"selected_currency\")];\nlet status = \"\";\nif(selectedNow==selectedLast){\n    status = \"no change\"\n}else{\nconst isWentUp=selectedNow>selectedLast;\nif(isWentUp){\n    const change = (selectedNow-selectedLast)/selectedLast\n    if(change>=global.get(\"ceil\")/100){\n        status=\"ceiling crossed\"\n    }else{\n        status=\"went up\"\n    }\n}else{\n    const change = (selectedLast-selectedNow)/selectedLast   \n    if(change>=global.get(\"floor\")/100){\n        status=\"floor crossed\"\n    }else{\n        status=\"went down\"\n    }\n}\n}\nreturn {\nlatest,\nlast,\nselectedNow,\nselectedLast,\nstatus,\npayload:msg.formatedPayload\n};",
+        "func": "const latest = Object.values(msg.formatedPayload)[0];\nconst last =  Object.values(Object.values(msg.payload)[0])[0];\n\nconst selectedNow = last[global.get(\"selected_currency\")];\nconst selectedLast = last[global.get(\"selected_currency\")];\nlet status = \"\";\nif(selectedNow==selectedLast){\n    status = \"no_change\"\n}else{\nconst isWentUp=selectedNow>selectedLast;\nif(isWentUp){\n    const change = (selectedNow-selectedLast)/selectedLast\n    if(change>=global.get(\"ceil\")/100){\n        status=\"ceiling_crossed\"\n    }else{\n        status=\"went_up\"\n    }\n}else{\n    const change = (selectedLast-selectedNow)/selectedLast   \n    if(change>=global.get(\"floor\")/100){\n        status=\"floor_crossed\"\n    }else{\n        status=\"went_down\"\n    }\n}\n}\nreturn {\nlatest,\nlast,\nselectedNow,\nselectedLast,\nstatus,\npayload:msg.formatedPayload\n};",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1521,5 +1528,278 @@
         "x": 650,
         "y": 440,
         "wires": []
+    },
+    {
+        "id": "ad482a46.4a1a98",
+        "type": "timerswitch",
+        "z": "8e4a1fa5.c8baf",
+        "name": "Hourly Timer",
+        "ontopic": "ON",
+        "offtopic": "ON",
+        "onpayload": "1",
+        "offpayload": "0",
+        "disabled": false,
+        "schedules": [
+            {
+                "on_h": "00",
+                "on_m": "05",
+                "on_s": "00",
+                "off_h": "01",
+                "off_m": "05",
+                "off_s": "00",
+                "valid": true
+            },
+            {
+                "on_h": "02",
+                "on_m": "05",
+                "on_s": "00",
+                "off_h": "03",
+                "off_m": "05",
+                "off_s": "00",
+                "valid": true
+            },
+            {
+                "on_h": "04",
+                "on_m": "05",
+                "on_s": "00",
+                "off_h": "05",
+                "off_m": "05",
+                "off_s": "00",
+                "valid": true
+            },
+            {
+                "on_h": "06",
+                "on_m": "05",
+                "on_s": "00",
+                "off_h": "07",
+                "off_m": "05",
+                "off_s": "00",
+                "valid": true
+            },
+            {
+                "on_h": "08",
+                "on_m": "05",
+                "on_s": "00",
+                "off_h": "09",
+                "off_m": "05",
+                "off_s": "00",
+                "valid": true
+            },
+            {
+                "on_h": "10",
+                "on_m": "05",
+                "on_s": "00",
+                "off_h": "11",
+                "off_m": "05",
+                "off_s": "00",
+                "valid": true
+            },
+            {
+                "on_h": "12",
+                "on_m": "05",
+                "on_s": "00",
+                "off_h": "13",
+                "off_m": "05",
+                "off_s": "00",
+                "valid": true
+            },
+            {
+                "on_h": "14",
+                "on_m": "05",
+                "on_s": "00",
+                "off_h": "15",
+                "off_m": "05",
+                "off_s": "00",
+                "valid": true
+            },
+            {
+                "on_h": "16",
+                "on_m": "05",
+                "on_s": "00",
+                "off_h": "17",
+                "off_m": "05",
+                "off_s": "00",
+                "valid": true
+            },
+            {
+                "on_h": "18",
+                "on_m": "05",
+                "on_s": "00",
+                "off_h": "19",
+                "off_m": "05",
+                "off_s": "00",
+                "valid": true
+            },
+            {
+                "on_h": "20",
+                "on_m": "05",
+                "on_s": "00",
+                "off_h": "21",
+                "off_m": "05",
+                "off_s": "00",
+                "valid": true
+            },
+            {
+                "on_h": "22",
+                "on_m": "05",
+                "on_s": "00",
+                "off_h": "23",
+                "off_m": "05",
+                "off_s": "00",
+                "valid": true
+            }
+        ],
+        "x": 230,
+        "y": 140,
+        "wires": [
+            [
+                "af451df0.6037a"
+            ]
+        ]
+    },
+    {
+        "id": "af451df0.6037a",
+        "type": "debug",
+        "z": "8e4a1fa5.c8baf",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 510,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "5bcb85fe.3e3bac",
+        "type": "timerswitch",
+        "z": "4d83ec58.e26e84",
+        "name": "Hourly Timer",
+        "ontopic": "ON",
+        "offtopic": "ON",
+        "onpayload": "1",
+        "offpayload": "0",
+        "disabled": false,
+        "schedules": [
+            {
+                "on_h": "00",
+                "on_m": "05",
+                "on_s": "00",
+                "off_h": "01",
+                "off_m": "05",
+                "off_s": "00",
+                "valid": true
+            },
+            {
+                "on_h": "02",
+                "on_m": "05",
+                "on_s": "00",
+                "off_h": "03",
+                "off_m": "05",
+                "off_s": "00",
+                "valid": true
+            },
+            {
+                "on_h": "04",
+                "on_m": "05",
+                "on_s": "00",
+                "off_h": "05",
+                "off_m": "05",
+                "off_s": "00",
+                "valid": true
+            },
+            {
+                "on_h": "06",
+                "on_m": "05",
+                "on_s": "00",
+                "off_h": "07",
+                "off_m": "05",
+                "off_s": "00",
+                "valid": true
+            },
+            {
+                "on_h": "08",
+                "on_m": "05",
+                "on_s": "00",
+                "off_h": "09",
+                "off_m": "05",
+                "off_s": "00",
+                "valid": true
+            },
+            {
+                "on_h": "10",
+                "on_m": "05",
+                "on_s": "00",
+                "off_h": "11",
+                "off_m": "05",
+                "off_s": "00",
+                "valid": true
+            },
+            {
+                "on_h": "12",
+                "on_m": "05",
+                "on_s": "00",
+                "off_h": "13",
+                "off_m": "05",
+                "off_s": "00",
+                "valid": true
+            },
+            {
+                "on_h": "14",
+                "on_m": "05",
+                "on_s": "00",
+                "off_h": "15",
+                "off_m": "05",
+                "off_s": "00",
+                "valid": true
+            },
+            {
+                "on_h": "16",
+                "on_m": "05",
+                "on_s": "00",
+                "off_h": "17",
+                "off_m": "05",
+                "off_s": "00",
+                "valid": true
+            },
+            {
+                "on_h": "18",
+                "on_m": "05",
+                "on_s": "00",
+                "off_h": "19",
+                "off_m": "05",
+                "off_s": "00",
+                "valid": true
+            },
+            {
+                "on_h": "20",
+                "on_m": "05",
+                "on_s": "00",
+                "off_h": "21",
+                "off_m": "05",
+                "off_s": "00",
+                "valid": true
+            },
+            {
+                "on_h": "22",
+                "on_m": "05",
+                "on_s": "00",
+                "off_h": "23",
+                "off_m": "05",
+                "off_s": "00",
+                "valid": true
+            }
+        ],
+        "x": 230,
+        "y": 860,
+        "wires": [
+            [
+                "a2d3233a.96fd4"
+            ]
+        ]
     }
 ]
