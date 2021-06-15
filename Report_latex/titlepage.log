@@ -1,0 +1,479 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.5.15)  15 JUN 2021 22:36
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**titlepage.tex
+(./titlepage.tex
+LaTeX2e <2020-10-01> patch level 4
+L3 programming layer <2021-02-18>
+
+! LaTeX Error: Environment titlepage undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1 \begin{titlepage}
+                     
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.3     \begin{center}
+                      
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 3--3
+[] 
+ []
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <22> not available
+(Font)              size <20.74> substituted on input line 5.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <20> not available
+(Font)              size <20.74> substituted on input line 8.
+
+
+Overfull \hbox (99.71823pt too wide) in paragraph at lines 5--8
+ \OT1/cmr/m/n/20.74 Department 
+ []
+
+
+Overfull \hbox (15.23111pt too wide) in paragraph at lines 5--8
+ \OT1/cmr/m/n/20.74 of 
+ []
+
+
+Overfull \hbox (41.32422pt too wide) in paragraph at lines 5--8
+ \OT1/cmr/m/n/20.74 Elec- 
+ []
+
+
+Overfull \hbox (48.40215pt too wide) in paragraph at lines 5--8
+ \OT1/cmr/m/n/20.74 tronic 
+ []
+
+
+Overfull \hbox (30.70229pt too wide) in paragraph at lines 5--8
+ \OT1/cmr/m/n/20.74 and 
+ []
+
+
+Overfull \hbox (74.4686pt too wide) in paragraph at lines 5--8
+ \OT1/cmr/m/n/20.74 Telecom- 
+ []
+
+
+Overfull \hbox (32.32758pt too wide) in paragraph at lines 5--8
+ \OT1/cmr/m/n/20.74 mu- 
+ []
+
+
+Overfull \hbox (22.03401pt too wide) in paragraph at lines 5--8
+ \OT1/cmr/m/n/20.74 ni- 
+ []
+
+
+Overfull \hbox (24.20108pt too wide) in paragraph at lines 5--8
+ \OT1/cmr/m/n/20.74 ca- 
+ []
+
+
+Overfull \hbox (32.62927pt too wide) in paragraph at lines 5--8
+ \OT1/cmr/m/n/20.74 tion 
+ []
+
+
+Overfull \hbox (29.88548pt too wide) in paragraph at lines 5--8
+ \OT1/cmr/m/n/20.74 En- 
+ []
+
+
+Overfull \hbox (20.95047pt too wide) in paragraph at lines 5--8
+ \OT1/cmr/m/n/20.74 gi- 
+ []
+
+
+Overfull \hbox (41.0575pt too wide) in paragraph at lines 5--8
+ \OT1/cmr/m/n/20.74 neer- 
+ []
+
+
+Overfull \hbox (25.2846pt too wide) in paragraph at lines 5--8
+ \OT1/cmr/m/n/20.74 ing 
+ []
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <16> not available
+(Font)              size <17.28> substituted on input line 9.
+
+
+Overfull \hbox (66.33377pt too wide) in paragraph at lines 8--9
+ []\OT1/cmr/m/n/20.74 Internet 
+ []
+
+
+Overfull \hbox (15.23111pt too wide) in paragraph at lines 8--9
+ \OT1/cmr/m/n/20.74 of 
+ []
+
+
+Overfull \hbox (57.17879pt too wide) in paragraph at lines 8--9
+ \OT1/cmr/m/n/20.74 Things 
+ []
+
+
+Overfull \hbox (54.53558pt too wide) in paragraph at lines 9--12
+ []\OT1/cmr/m/n/17.28 EN3250 
+ []
+
+
+Overfull \hbox (76.63568pt too wide) in paragraph at lines 12--13
+ []\OT1/cmr/m/n/20.74 Currency 
+ []
+
+
+Overfull \hbox (40.21402pt too wide) in paragraph at lines 12--13
+ \OT1/cmr/m/n/20.74 Con- 
+ []
+
+
+Overfull \hbox (48.40215pt too wide) in paragraph at lines 12--13
+ \OT1/cmr/m/n/20.74 verter 
+ []
+
+
+Overfull \hbox (32.62929pt too wide) in paragraph at lines 12--13
+ \OT1/cmr/m/n/20.74 Ser- 
+ []
+
+
+Overfull \hbox (32.08752pt too wide) in paragraph at lines 12--13
+ \OT1/cmr/m/n/20.74 vice 
+ []
+
+
+Overfull \hbox (60.88943pt too wide) in paragraph at lines 13--13
+ []\OT1/cmr/m/n/20.74 Project 
+ []
+
+
+Overfull \hbox (28.80194pt too wide) in paragraph at lines 13--13
+ \OT1/cmr/m/n/20.74 Re- 
+ []
+
+
+Overfull \hbox (35.3381pt too wide) in paragraph at lines 13--13
+ \OT1/cmr/m/n/20.74 port 
+ []
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 21--21
+[] 
+ []
+
+! Undefined control sequence.
+l.22         \includegraphics
+                             [width=0.4\textwidth]{images/uom.png}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no [ in font nullfont!
+Missing character: There is no w in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no = in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no 4 in font nullfont!
+! Missing number, treated as zero.
+<to be read again> 
+                   ]
+l.22         \includegraphics[width=0.4\textwidth]
+                                                  {images/uom.png}
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   ]
+l.22         \includegraphics[width=0.4\textwidth]
+                                                  {images/uom.png}
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+Missing character: There is no ] in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no g in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no / in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no g in font nullfont!
+
+Overfull \hbox (70.75616pt too wide) in paragraph at lines 25--25
+ \OT1/cmr/m/n/17.28 University 
+ []
+
+
+Overfull \hbox (12.69012pt too wide) in paragraph at lines 25--25
+ \OT1/cmr/m/n/17.28 of 
+ []
+
+
+Overfull \hbox (70.16313pt too wide) in paragraph at lines 25--25
+ \OT1/cmr/m/n/17.28 Moratuwa 
+ []
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 29--29
+[] 
+ []
+
+! Undefined control sequence.
+l.32 \NumTabs
+             {7}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Overfull \hbox (7.92491pt too wide) in paragraph at lines 32--33
+\OT1/cmr/m/n/17.28 7  
+ []
+
+! Undefined control sequence.
+l.36       \tab
+               
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Overfull \hbox (122.85876pt too wide) in paragraph at lines 35--38
+[] 
+ []
+
+
+Overfull \hbox (57.50215pt too wide) in paragraph at lines 35--38
+\OT1/cmr/m/n/17.28 170258L 
+ []
+
+
+Overfull \hbox (4.31383pt too wide) in paragraph at lines 35--38
+\OT1/cmr/m/n/17.28 : 
+ []
+
+
+Overfull \hbox (48.4384pt too wide) in paragraph at lines 35--38
+\OT1/cmr/m/n/17.28 R.H.R. 
+ []
+
+
+Overfull \hbox (21.28868pt too wide) in paragraph at lines 35--38
+\OT1/cmr/m/n/17.28 Ja- 
+ []
+
+
+Overfull \hbox (60.69101pt too wide) in paragraph at lines 35--38
+\OT1/cmr/m/n/17.28 yarathne  
+ []
+
+! Undefined control sequence.
+l.39       \tab
+               
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Overfull \hbox (122.85876pt too wide) in paragraph at lines 38--41
+[] 
+ []
+
+
+Overfull \hbox (60.09935pt too wide) in paragraph at lines 38--41
+\OT1/cmr/m/n/17.28 170543G 
+ []
+
+
+Overfull \hbox (4.31383pt too wide) in paragraph at lines 38--41
+\OT1/cmr/m/n/17.28 : 
+ []
+
+
+Overfull \hbox (51.59808pt too wide) in paragraph at lines 38--41
+\OT1/cmr/m/n/17.28 M.K.T. 
+ []
+
+
+Overfull \hbox (35.31076pt too wide) in paragraph at lines 38--41
+\OT1/cmr/m/n/17.28 Sam- 
+ []
+
+
+Overfull \hbox (31.69968pt too wide) in paragraph at lines 38--41
+\OT1/cmr/m/n/17.28 path  
+ []
+
+
+! LaTeX Error: The font size command \normalsize is not defined:
+               there is probably something wrong with the class file.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.41 
+     
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+[1{/usr/local/texlive/2021basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+! Undefined control sequence.
+l.43       \tab
+               
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Overfull \hbox (122.85876pt too wide) in paragraph at lines 42--45
+[] 
+ []
+
+
+Overfull \hbox (55.69662pt too wide) in paragraph at lines 42--45
+\OT1/cmr/m/n/17.28 170698J 
+ []
+
+
+Overfull \hbox (4.31383pt too wide) in paragraph at lines 42--45
+\OT1/cmr/m/n/17.28 : 
+ []
+
+
+Overfull \hbox (46.41063pt too wide) in paragraph at lines 42--45
+\OT1/cmr/m/n/17.28 L.T.A. 
+ []
+
+
+Overfull \hbox (26.02475pt too wide) in paragraph at lines 42--45
+\OT1/cmr/m/n/17.28 Wi- 
+ []
+
+
+Overfull \hbox (17.90674pt too wide) in paragraph at lines 42--45
+\OT1/cmr/m/n/17.28 ja- 
+ []
+
+
+Overfull \hbox (51.86331pt too wide) in paragraph at lines 42--45
+\OT1/cmr/m/n/17.28 yaratne  
+ []
+
+! Undefined control sequence.
+l.47       \tab
+               
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Overfull \hbox (122.85876pt too wide) in paragraph at lines 46--49
+[] 
+ []
+
+
+Overfull \hbox (59.3077pt too wide) in paragraph at lines 46--49
+\OT1/cmr/m/n/17.28 170375R 
+ []
+
+
+Overfull \hbox (4.31383pt too wide) in paragraph at lines 46--49
+\OT1/cmr/m/n/17.28 : 
+ []
+
+
+Overfull \hbox (32.59549pt too wide) in paragraph at lines 46--49
+\OT1/cmr/m/n/17.28 D.R. 
+ []
+
+
+Overfull \hbox (48.08423pt too wide) in paragraph at lines 46--49
+\OT1/cmr/m/n/17.28 Maras- 
+ []
+
+
+Overfull \hbox (36.91629pt too wide) in paragraph at lines 46--49
+\OT1/cmr/m/n/17.28 inghe  
+ []
+
+
+! LaTeX Error: \begin{document} ended by \end{titlepage}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.54 \end{titlepage}
+                    
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+)
+! Emergency stop.
+<*> titlepage.tex
+                 
+*** (job aborted, no legal \end found)
+
+ 
+Here is how much of TeX's memory you used:
+ 26 strings out of 480445
+ 511 string characters out of 5892391
+ 283386 words of memory out of 5000000
+ 17399 multiletter control sequences out of 15000+600000
+ 404028 words of font info for 29 fonts, out of 8000000 for 9000
+ 319 hyphenation exceptions out of 8191
+ 21i,4n,18p,131b,191s stack positions out of 5000i,500n,10000p,200000b,80000s
+!  ==> Fatal error occurred, no output PDF file produced!
