@@ -65,13 +65,7 @@ void setup() {
   setup_wifi();
   setupMQTT();
   
-  server.on("/", handle_OnConnect);
-  server.on("/USD", handle_USD);
-  server.on("/JPY", handle_JPY);
-  server.on("/GBP", handle_GBP);
-  server.on("/EUR", handle_EUR);
-  server.on("/KWD", handle_KWD);
-  server.on("/INR", handle_INR);
+  server.on("/",handlerequest);
   server.onNotFound(handle_NotFound);
 
   server.begin();
@@ -87,34 +81,29 @@ void loop() {
 
 }
 
-void handle_OnConnect() {
-  server.send(200, "text/html", SendHTML("USD")); 
-}
-void handle_USD(){
-  client.publish("IOT_6B/G05/currency", "USD");
-  server.send(200, "text/html", SendHTML("USD"));
-}
+void handlerequest(){
+//  if (server.hasArg("plain")== false){ //Check if body received
+//      server.send(200, "text/plain", "Body not received");
+//      return;
+//      }
+      String currency = server.arg("currency");
+      String Ceil = server.arg("ceil");
+      String Floor = server.arg("floor");
 
-void handle_JPY(){
-  client.publish("IOT_6B/G05/currency", "JPY");
-  server.send(200, "text/html", SendHTML("JPY"));
-}
-
-void handle_GBP(){
-  client.publish("IOT_6B/G05/currency", "GBP");
-  server.send(200, "text/html", SendHTML("GBP"));
-}
-void handle_EUR(){
-  client.publish("IOT_6B/G05/currency", "EUR");
-  server.send(200, "text/html", SendHTML("EUR"));
-}
-void handle_KWD(){
-  client.publish("IOT_6B/G05/currency", "KWD");
-  server.send(200, "text/html", SendHTML("KWD"));
-}
-void handle_INR(){
-  client.publish("IOT_6B/G05/currency", "INR");
-  server.send(200, "text/html", SendHTML("INR"));
+      int currency_len = currency.length() + 1;
+      int ceil_len = Ceil.length() + 1;
+      int floor_len = Floor.length() + 1; 
+      char currency_array[currency_len];
+      char ceil_array[ceil_len];
+      char floor_array[floor_len];
+      currency.toCharArray( currency_array, currency_len);
+      Ceil.toCharArray( ceil_array, ceil_len);
+      Floor.toCharArray( floor_array, floor_len);
+      
+      client.publish("IOT_6B/G05/currency", currency_array );
+      client.publish("IOT_6B/G05/ceil", ceil_array);
+      client.publish("IOT_6B/G05/floor", floor_array);
+      server.send(200, "text/html", SendHTML(currency));
 }
 
 void handle_NotFound(){
@@ -131,7 +120,7 @@ String SendHTML(String Currency){
   ptr+= "<title>GROUP 5</title>\n";
   ptr+= "</head>\n";
   ptr+= "<body style=\"text-align:center;display:grid;place-content: center;background-color: rgb(23, 196, 196);\"\n";
-  ptr+= "<h1 \"style= font-size: 45px;\" >Get Exchange</h1>\n";
+  ptr+= "<h1 style=\"font-size: 200px;\" >Get Exchange</h1>\n";
   
   if (Currency == "USD"){
     ptr+="<h2>LKR/USD</h2>\n";
@@ -157,13 +146,6 @@ String SendHTML(String Currency){
   
   ptr+= "<h1 style=\" color :rgb(62, 128, 0)\">1.81 <i class=\"fa fa-arrow-up\"></i></h1>\n";
   ptr+= "<h1 style=\" color :red\">1.81 <i class=\"fa fa-arrow-down\"></i></h1>\n";
-//  ptr+= "<script>\n";
-//  ptr+= "function goToNewPage() {\n";
-//  ptr+= "if(document.getElementById('currency').value){\n";
-//  ptr+= "window.location.href = document.getElementById('currency').value;\n";
-//  ptr+= "}\n";
-//  ptr+= "}\n";
-//  ptr+= "</script>\n";
   ptr+= "<form name=\"dropdown\" method=\"get\" style=\" font-size: xx-large;\" >\n";
   ptr+= "<label for=\"currency_label\">Select Currency :</label><br>\n";
   ptr+= "<select name=\"currency\" id=\"currency\">\n";
@@ -180,7 +162,6 @@ String SendHTML(String Currency){
   ptr+= "<label for=\"floor\">Floor% :</label><br>\n";
   ptr+= "<input type=\"number\" id=\"floor\" name=\"floor\" value=5><br><br>\n";
   ptr+= "<input type=\"submit\" value=\"Submit\">\n";
-//  ptr+= "<input type=\"button\" value=\"Submit\" onclick=\"goToNewPage(document.dropdown.currency)\">\n";
   ptr+= "</form>\n";
   ptr+= "</body>\n";
   ptr+= "</html>\n";
