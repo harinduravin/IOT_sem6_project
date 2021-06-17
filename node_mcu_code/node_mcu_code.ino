@@ -257,8 +257,6 @@ void loop() {
     }
     delay(2000);
 
-    buzzerinit();
-
     server.handleClient();
     client.loop();
     lcd.clear();
