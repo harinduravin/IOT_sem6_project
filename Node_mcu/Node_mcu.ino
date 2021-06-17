@@ -13,14 +13,23 @@
 #include <WiFiManager.h> 
 #include <DNSServer.h>
 #include <PubSubClient.h>
+#include <EEPROM.h>
 
 int BUILTIN_LED = 2;
 WebServer server(80);
 
 WiFiClient wifiClient;
 PubSubClient client(wifiClient); 
-const char* mqttServer = "test.mosquitto.org";
 
+const char* mqttServer = "test.mosquitto.org";
+uint addr = 0;
+struct { 
+  bool Authenticated = false;
+  char email[30] = "";
+  char Email_submitted[30] = "";
+  }data;
+bool Authorized = false;
+ 
 void setup_wifi() {
   // Connecting to a WiFi network
   delay(5000);
@@ -30,7 +39,7 @@ void setup_wifi() {
 
 void setupMQTT() {
   client.setServer(mqttServer,1883);
-//  client.setCallback(callback);
+  client.setCallback(callback);
   }
 
 void reconnect() {
@@ -46,7 +55,9 @@ void reconnect() {
       // Once connected, publish an announcement...
       client.publish("IOT_6B/G05/start", "Hello World");
       // ... and resubscribe
-//      client.subscribe("inTopic");
+//      client.subscribe("IOT_6B/G05/BuzzerNotification");
+      client.subscribe("IOT_6B/G05/CommonData");
+      
     } else {
       Serial.print("failed, rc=");
       Serial.print(client.state());
@@ -62,9 +73,14 @@ void setup() {
   pinMode(BUILTIN_LED, OUTPUT);     // Initialize the BUILTIN_LED pin as an output
   WiFi.mode(WIFI_AP_STA);
   Serial.begin(115200);
+  EEPROM.begin(512);
   setup_wifi();
   setupMQTT();
-  
+  data.Authenticated = true;
+  strncpy(data.email, "dhanuka37@outlook.com",30);
+  EEPROM.put(addr,data);
+  EEPROM.commit(); 
+
   server.on("/",handlerequest);
   server.onNotFound(handle_NotFound);
 
@@ -86,29 +102,99 @@ void handlerequest(){
 //      server.send(200, "text/plain", "Body not received");
 //      return;
 //      }
-      String currency = server.arg("currency");
-      String Ceil = server.arg("ceil");
-      String Floor = server.arg("floor");
 
-      int currency_len = currency.length() + 1;
-      int ceil_len = Ceil.length() + 1;
-      int floor_len = Floor.length() + 1; 
-      char currency_array[currency_len];
-      char ceil_array[ceil_len];
-      char floor_array[floor_len];
-      currency.toCharArray( currency_array, currency_len);
-      Ceil.toCharArray( ceil_array, ceil_len);
-      Floor.toCharArray( floor_array, floor_len);
+      String Email = server.arg("email");
+      String Password = server.arg("password");
+      char Email_array[30];
+      Email.toCharArray(Email_array, 30);
+
+      if (!Authorized){
+        strncpy(data.Email_submitted, Email_array,30);
+        EEPROM.put(addr,data);
+        EEPROM.commit();
+      }
       
-      client.publish("IOT_6B/G05/currency", currency_array );
-      client.publish("IOT_6B/G05/ceil", ceil_array);
-      client.publish("IOT_6B/G05/floor", floor_array);
-      server.send(200, "text/html", SendHTML(currency));
+      EEPROM.get(addr,data);
+      
+      if (strcmp(data.email,data.Email_submitted) == 0){
+        if (data.Authenticated){
+          Authorized = true;
+          String UserNeeds;
+          String currency = server.arg("currency");
+          String Ceil = server.arg("ceil");
+          String Floor = server.arg("floor");
+          
+          UserNeeds = currency +"$"+ Ceil +"$"+ Floor;
+          
+          int currency_len = currency.length() + 1;
+          int ceil_len = Ceil.length() + 1;
+          int floor_len = Floor.length() + 1; 
+    
+          int UserNeeds_len = currency_len + ceil_len + floor_len;
+    
+          char UserNeeds_array[UserNeeds_len];
+          UserNeeds.toCharArray(UserNeeds_array, UserNeeds_len);
+          client.publish("IOT_6B/G05/UserNeeds", UserNeeds_array );
+          server.send(200, "text/html", SendHTML(currency));
+        }
+        else{
+          server.send(200, "text/html", UserAuthentification());
+        }
+      }
+      else{
+          server.send(200, "text/html", UserAuthentification());
+        }
+         
+//      String UserNeeds;
+//      String currency = server.arg("currency");
+//      String Ceil = server.arg("ceil");
+//      String Floor = server.arg("floor");
+//      
+//      UserNeeds = currency +"$"+ Ceil +"$"+ Floor;
+//      
+//      int currency_len = currency.length() + 1;
+//      int ceil_len = Ceil.length() + 1;
+//      int floor_len = Floor.length() + 1; 
+//
+//      int UserNeeds_len = currency_len + ceil_len + floor_len;
+//
+//      char UserNeeds_array[UserNeeds_len];
+//      UserNeeds.toCharArray(UserNeeds_array, UserNeeds_len);
+//      client.publish("IOT_6B/G05/UserNeeds", UserNeeds_array );
+//      server.send(200, "text/html", SendHTML(currency));
 }
 
 void handle_NotFound(){
   server.send(404, "text/plain", "Not found");
 }
+
+String UserAuthentification() {
+  String s="<!DOCTYPE html>\n";
+  s+= "<html lang=\"en\">\n";
+  s+= "<head>\n";
+  s+= "<meta charset=\"UTF-8\">\n";
+  s+= "<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n";
+  s+= "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n";
+  s+= "<title>Login</title>\n";
+  s+= "</head>\n";
+  s+= "<body\n";
+  s+= "style=\"text-align:center;\n";
+  s+= "display:grid;\n";
+  s+= "place-content: center;\n";
+  s+= "background-color: azure;\">\n";
+  s+= "<h1 style=\" font-size: 45px;\" >Get Exchange</h1>\n";
+  s+= "<h2 style=\" font-size: 45px;\" >Sign In</h2>\n";
+  s+= "<form method=\"post\" style=\" font-size: xx-large;\" >\n";
+  s+= "<label for=\"ceil\">Email :</label><br>\n";
+  s+= "<input type=\"email\" id=\"email\" name=\"email\" value=\"\" required><br><br>\n";
+  s+= "<label for=\"floor\">Password :</label><br>\n";
+  s+= "<input type=\"password\" id=\"password\" name=\"password\" value=\"\" required><br><br>\n";
+  s+= "<input style=\"height:35px;width: 100px;background-color: aquamarine;\" type=\"submit\" value=\"Submit\">\n";
+  s+= "</form>\n";
+  s+= "</body>\n";
+  s+= "</html>\n";
+  return s;
+  }
 
 String SendHTML(String Currency){
   String ptr = "<!DOCTYPE html> <html lang=\"en\">\n";
@@ -119,8 +205,8 @@ String SendHTML(String Currency){
   ptr+= "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n";
   ptr+= "<title>GROUP 5</title>\n";
   ptr+= "</head>\n";
-  ptr+= "<body style=\"text-align:center;display:grid;place-content: center;background-color: rgb(23, 196, 196);\"\n";
-  ptr+= "<h1 style=\"font-size: 200px;\" >Get Exchange</h1>\n";
+  ptr+= "<body style=\"text-align:center;display:grid;place-content: center;background-color: rgb(23, 196, 196);overflow-y: scroll;\"\n";
+  ptr+= "<h1 style=\"font-size: 50px;\" >Get Exchange</h1>\n";
   
   if (Currency == "USD"){
     ptr+="<h2>LKR/USD</h2>\n";
@@ -144,7 +230,9 @@ String SendHTML(String Currency){
     ptr+="<h2>LKR/NON</h2>\n";
   }
   
-  ptr+= "<h1 style=\" color :rgb(62, 128, 0)\">1.81 <i class=\"fa fa-arrow-up\"></i></h1>\n";
+  ptr+= "<h1 style=\" color :rgb(62, 128, 0)\">";
+  ptr+= Currency;
+  ptr+= "<i class=\"fa fa-arrow-up\"></i></h1>\n";
   ptr+= "<h1 style=\" color :red\">1.81 <i class=\"fa fa-arrow-down\"></i></h1>\n";
   ptr+= "<form name=\"dropdown\" method=\"get\" style=\" font-size: xx-large;\" >\n";
   ptr+= "<label for=\"currency_label\">Select Currency :</label><br>\n";
@@ -166,4 +254,46 @@ String SendHTML(String Currency){
   ptr+= "</body>\n";
   ptr+= "</html>\n";
   return ptr;
+}
+
+void callback(char* topic, byte* payload, unsigned int length) {
+
+//  if (String(topic) == "IOT_6B/G05/BuzzerNotification") {
+//    String payloadstr;
+//    Serial.println();
+//    for (int i = 0; i < length; i++) {
+//      payloadstr += (char)payload[i];
+//    }
+//    Serial.println(payloadstr);
+//     char payloadstr_array[50];
+//     payloadstr.toCharArray(payloadstr_array, 50);
+//
+//   char * token = strtok(payloadstr_array, "$");
+//   // loop through the string to extract all other tokens
+//   while( token != NULL ) {
+//      Serial.print(token); //printing each token
+//      Serial.println();
+//      token = strtok(NULL, "$");
+//   }
+//  }
+
+  
+//  if (String(topic) == "IOT_6B/G05/CommonData") {
+//    String payloadstr;
+//    Serial.println();
+//    for (int i = 0; i < length; i++) {
+//      payloadstr += (char)payload[i];
+//    }
+//
+//     char payloadstr_array[50];
+//     payloadstr.toCharArray(payloadstr_array, 70);
+//
+//   char * token = strtok(payloadstr_array, "$");
+//   // loop through the string to extract all other tokens
+//   while( token != NULL ) {
+//      Serial.print(token); //printing each token
+//      Serial.println();
+//      token = strtok(NULL, "$");
+//   }
+//  }
 }
