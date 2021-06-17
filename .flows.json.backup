@@ -146,7 +146,7 @@
     {
         "id": "abd7d4f.34da828",
         "type": "firebase config",
-        "firebaseurl": "sem-6b-iot-default-rtdb",
+        "firebaseurl": "senudasampath-bb968-default-rtdb",
         "loginType": "none"
     },
     {
@@ -869,7 +869,7 @@
             },
             {
                 "name": "limitToLast",
-                "value": "1",
+                "value": "30",
                 "valType": "str"
             }
         ],
@@ -941,7 +941,7 @@
             },
             {
                 "name": "limitToLast",
-                "value": "1",
+                "value": "30",
                 "valType": "str"
             }
         ],
@@ -1013,7 +1013,7 @@
             },
             {
                 "name": "limitToLast",
-                "value": "",
+                "value": "30",
                 "valType": "str"
             }
         ],
@@ -1092,7 +1092,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 890,
-        "y": 640,
+        "y": 660,
         "wires": []
     },
     {
@@ -1173,7 +1173,8 @@
         "y": 780,
         "wires": [
             [
-                "dff0df42.44ea9"
+                "dff0df42.44ea9",
+                "8d919997.754878"
             ]
         ]
     },
@@ -1187,8 +1188,8 @@
         "method": "push",
         "value": "msg.payload",
         "priority": "msg.priority",
-        "x": 990,
-        "y": 1100,
+        "x": 1150,
+        "y": 1040,
         "wires": [
             []
         ]
@@ -1709,8 +1710,8 @@
         "method": "push",
         "value": "msg.payload",
         "priority": "msg.priority",
-        "x": 950,
-        "y": 1280,
+        "x": 850,
+        "y": 1180,
         "wires": [
             []
         ]
@@ -1728,8 +1729,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1170,
-        "y": 1160,
+        "x": 710,
+        "y": 1140,
         "wires": []
     },
     {
@@ -1751,8 +1752,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 580,
-        "y": 1400,
+        "x": 1060,
+        "y": 1280,
         "wires": [
             []
         ]
@@ -1767,8 +1768,8 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 390,
-        "y": 1280,
+        "x": 500,
+        "y": 1180,
         "wires": [
             [
                 "c239dd8c.4da3e",
@@ -1797,8 +1798,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 210,
-        "y": 1560,
+        "x": 200,
+        "y": 1260,
         "wires": [
             [
                 "b4305e4.25c24a"
@@ -1824,8 +1825,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 450,
-        "y": 1560,
+        "x": 440,
+        "y": 1260,
         "wires": [
             []
         ]
@@ -1842,8 +1843,115 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 840,
-        "y": 1360,
+        "x": 950,
+        "y": 1220,
+        "wires": []
+    },
+    {
+        "id": "695304d7.e3f1ac",
+        "type": "comment",
+        "z": "4d83ec58.e26e84",
+        "name": "## This is just dummy nodes",
+        "info": "## This is just dummy nodes",
+        "x": 240,
+        "y": 1080,
+        "wires": []
+    },
+    {
+        "id": "7d33d015.81e76",
+        "type": "inject",
+        "z": "4d83ec58.e26e84",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "2122",
+        "payloadType": "num",
+        "x": 230,
+        "y": 1480,
+        "wires": [
+            [
+                "5c77d320.c5716c",
+                "10e04a8e.71a195"
+            ]
+        ]
+    },
+    {
+        "id": "5c77d320.c5716c",
+        "type": "firebase.once",
+        "z": "4d83ec58.e26e84",
+        "name": "",
+        "firebaseconfig": "abd7d4f.34da828",
+        "childpath": "hello",
+        "repeatifnull": false,
+        "eventType": "value",
+        "queries": [],
+        "x": 650,
+        "y": 1460,
+        "wires": [
+            [
+                "757330a8.f8d32"
+            ]
+        ]
+    },
+    {
+        "id": "757330a8.f8d32",
+        "type": "debug",
+        "z": "4d83ec58.e26e84",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 950,
+        "y": 1640,
+        "wires": []
+    },
+    {
+        "id": "10e04a8e.71a195",
+        "type": "firebase modify",
+        "z": "4d83ec58.e26e84",
+        "name": "",
+        "firebaseconfig": "abd7d4f.34da828",
+        "childpath": "hello",
+        "method": "set",
+        "value": "msg.payload",
+        "priority": "msg.priority",
+        "x": 660,
+        "y": 1800,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8d919997.754878",
+        "type": "debug",
+        "z": "4d83ec58.e26e84",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 540,
+        "y": 940,
         "wires": []
     }
 ]
