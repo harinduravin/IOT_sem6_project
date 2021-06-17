@@ -29,6 +29,32 @@ struct {
   char Email_submitted[30] = "";
   }data;
 bool Authorized = false;
+
+String payloadstr;
+long timestamp;
+unsigned long lastMsg = 0;
+#define MSG_BUFFER_SIZE  (50)
+char msg[MSG_BUFFER_SIZE];
+int value = 0;
+String Current_currency;
+String Current_value;
+uint8_t Current_UpDown;
+
+float USD = 198.25; // up - true, down - false
+float GBP = 198.25; // up - true, down - false
+float JPY = 198.25; // up - true, down - false
+float AUD = 198.25; // up - true, down - false
+float KWD = 198.25; // up - true, down - false
+float EUR = 198.25; // up - true, down - false
+
+
+bool usd_up = false;
+bool gbp_up = false;
+bool jpy_up = false;
+bool aud_up = false;
+bool kwd_up = false;
+bool eur_up = false;
+char * binary;
  
 void setup_wifi() {
   // Connecting to a WiFi network
@@ -120,13 +146,15 @@ void handlerequest(){
         if (data.Authenticated){
           Authorized = true;
           String UserNeeds;
-          String currency = server.arg("currency");
+           
+          Current_currency = server.arg("currency");
+     
           String Ceil = server.arg("ceil");
           String Floor = server.arg("floor");
           
-          UserNeeds = currency +"$"+ Ceil +"$"+ Floor;
+          UserNeeds = Current_currency +"$"+ Ceil +"$"+ Floor;
           
-          int currency_len = currency.length() + 1;
+          int currency_len = Current_currency.length() + 1;
           int ceil_len = Ceil.length() + 1;
           int floor_len = Floor.length() + 1; 
     
@@ -135,7 +163,7 @@ void handlerequest(){
           char UserNeeds_array[UserNeeds_len];
           UserNeeds.toCharArray(UserNeeds_array, UserNeeds_len);
           client.publish("IOT_6B/G05/UserNeeds", UserNeeds_array );
-          server.send(200, "text/html", SendHTML(currency));
+          server.send(200, "text/html", SendHTML(Current_currency,"0.00",false));
         }
         else{
           server.send(200, "text/html", UserAuthentification());
@@ -165,7 +193,7 @@ void handlerequest(){
 }
 
 void handle_NotFound(){
-  server.send(404, "text/plain", "Not found");
+  server.send(404, "text/html", "Not found");
 }
 
 String UserAuthentification() {
@@ -196,7 +224,7 @@ String UserAuthentification() {
   return s;
   }
 
-String SendHTML(String Currency){
+String SendHTML(String Currency,String value,uint8_t UpDown){
   String ptr = "<!DOCTYPE html> <html lang=\"en\">\n";
   ptr+= "<head>\n";
   ptr+= "<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\">\n";   
@@ -223,17 +251,23 @@ String SendHTML(String Currency){
   else if (Currency == "KWD"){
     ptr+="<h2>LKR/KWD</h2>\n";
   }
-  else if (Currency == "INR"){
-    ptr+="<h2>LKR/INR</h2>\n";
+  else if (Currency == "AUR"){
+    ptr+="<h2>LKR/AUR</h2>\n";
   }
   else{
     ptr+="<h2>LKR/NON</h2>\n";
   }
-  
+
+  if(UpDown){
   ptr+= "<h1 style=\" color :rgb(62, 128, 0)\">";
-  ptr+= Currency;
+  ptr+= value;
   ptr+= "<i class=\"fa fa-arrow-up\"></i></h1>\n";
-  ptr+= "<h1 style=\" color :red\">1.81 <i class=\"fa fa-arrow-down\"></i></h1>\n";
+  }
+  else{
+  ptr+= "<h1 style=\" color :red\">\n";
+  ptr+= value;
+  ptr+= "<i class=\"fa fa-arrow-down\"></i></h1>\n";
+  }
   ptr+= "<form name=\"dropdown\" method=\"get\" style=\" font-size: xx-large;\" >\n";
   ptr+= "<label for=\"currency_label\">Select Currency :</label><br>\n";
   ptr+= "<select name=\"currency\" id=\"currency\">\n";
@@ -242,7 +276,7 @@ String SendHTML(String Currency){
   ptr+= "<option value=\"GBP\">GBP</option>\n";
   ptr+= "<option value=\"EUR\">EUR</option>\n";
   ptr+= "<option value=\"KWD\">KWD</option>\n";
-  ptr+= "<option value=\"INR\">INR</option>\n";
+  ptr+= "<option value=\"AUR\">AUR</option>\n";
   ptr+= "</select>\n";
   ptr+= "<br><br>\n";
   ptr+= "<label for=\"ceil\">Ceil% :</label><br>\n";
@@ -257,43 +291,177 @@ String SendHTML(String Currency){
 }
 
 void callback(char* topic, byte* payload, unsigned int length) {
-
+//
 //  if (String(topic) == "IOT_6B/G05/BuzzerNotification") {
-//    String payloadstr;
-//    Serial.println();
-//    for (int i = 0; i < length; i++) {
-//      payloadstr += (char)payload[i];
-//    }
-//    Serial.println(payloadstr);
-//     char payloadstr_array[50];
-//     payloadstr.toCharArray(payloadstr_array, 50);
-//
-//   char * token = strtok(payloadstr_array, "$");
-//   // loop through the string to extract all other tokens
-//   while( token != NULL ) {
-//      Serial.print(token); //printing each token
-//      Serial.println();
-//      token = strtok(NULL, "$");
-//   }
+//   process_notification(payload, length, 50, 5);
 //  }
-
   
-//  if (String(topic) == "IOT_6B/G05/CommonData") {
-//    String payloadstr;
-//    Serial.println();
-//    for (int i = 0; i < length; i++) {
-//      payloadstr += (char)payload[i];
-//    }
-//
-//     char payloadstr_array[50];
-//     payloadstr.toCharArray(payloadstr_array, 70);
-//
-//   char * token = strtok(payloadstr_array, "$");
-//   // loop through the string to extract all other tokens
-//   while( token != NULL ) {
-//      Serial.print(token); //printing each token
-//      Serial.println();
-//      token = strtok(NULL, "$");
-//   }
-//  }
+  if (String(topic) == "IOT_6B/G05/CommonData") {
+   process_data(payload, length, 70, 8);
+  }
+  Serial.println(Current_currency);
+//  server.send(200, "text/html", SendHTML(Current_currency,Current_value,Current_UpDown));
+}
+
+void process_data(byte* payload, unsigned int length, int charlen, int numitem) {
+
+    payloadstr = "";
+    Serial.println();
+    for (int i = 0; i < length; i++) {
+      payloadstr += (char)payload[i];
+    }
+
+     char payloadstr_array[charlen];
+     payloadstr.toCharArray(payloadstr_array, charlen);
+
+   char * token = strtok(payloadstr_array, "$");
+
+   for (int i = 1; i < numitem+1; i++) {
+      switch (i) {
+       case 1:
+          timestamp = long(token);
+          Serial.print(timestamp);
+          Serial.println();
+          break;
+       case 2:
+
+           USD = String(token).toFloat();
+           Serial.print(USD);
+           Serial.println();
+           break;
+       case 3:
+
+           GBP = String(token).toFloat();
+           Serial.print(GBP);
+           Serial.println();
+           break;
+       case 4:
+
+           JPY = String(token).toFloat();
+           Serial.print(JPY);
+           Serial.println();
+          break;
+       case 5:
+
+           AUD = String(token).toFloat();
+           Serial.print(AUD);
+           Serial.println();
+          break;
+       case 6:
+          //do something when var equals 1
+           KWD = String(token).toFloat();
+           Serial.print(KWD);
+           Serial.println();
+          break;
+       case 7:
+
+           EUR = String(token).toFloat();
+           Serial.print(EUR);
+           Serial.println();
+          break;
+       case 8:
+           set_updown(token);
+           break;        
+       }
+       token = strtok(NULL, "$");
+   }
+
+   if (Current_currency == "USD"){
+    Current_value = String(USD);
+    Current_UpDown = usd_up;
+   }
+   if (Current_currency == "AUD"){
+    Current_value = String(AUD);
+    Current_UpDown = aud_up;
+   }
+   if (Current_currency == "JPY"){
+    Current_value = String(JPY);
+    Current_UpDown = jpy_up;
+   }
+   if (Current_currency == "GBP"){
+    Current_value = String(GBP);
+    Current_UpDown = gbp_up;
+   }
+   if (Current_currency == "KWD"){
+    Current_value = String(KWD);
+    Current_UpDown = kwd_up;
+   }
+   if (Current_currency == "EUR"){
+    Current_value = String(EUR);
+    Current_UpDown = eur_up;
+   }
+   
+}
+
+void set_updown(char * binary) {
+  int digit;
+  for (int i = 1; i < 7; i++) {
+    switch (i) {
+       case 1:
+       digit = String((char)binary[i-1]).toInt();
+       if (digit == 1) {
+        usd_up = true;
+       } else {
+        usd_up = false;
+       }
+       Serial.print(usd_up);
+       Serial.println();
+       break;
+
+       case 2:
+       digit = String((char)binary[i-1]).toInt();
+       if (digit == 1) {
+        gbp_up = true;
+       } else {
+        gbp_up = false;
+       }
+       Serial.print(gbp_up);
+       Serial.println();
+       break;
+
+       case 3:
+       digit = String((char)binary[i-1]).toInt();
+       if (digit == 1) {
+        jpy_up = true;
+       } else {
+        jpy_up = false;
+       }
+       Serial.print(jpy_up);
+       Serial.println();
+       break;
+
+       case 4:
+       digit = String((char)binary[i-1]).toInt();
+       if (digit == 1) {
+        aud_up = true;
+       } else {
+        aud_up = false;
+       }
+       Serial.print(aud_up);
+       Serial.println();
+       break;
+
+       case 5:
+       digit = String((char)binary[i-1]).toInt();
+       if (digit == 1) {
+        kwd_up = true;
+       } else {
+        kwd_up = false;
+       }
+       Serial.print(kwd_up);
+       Serial.println();
+       break;
+
+       case 6:
+       digit = String((char)binary[i-1]).toInt();
+       if (digit == 1) {
+        eur_up = true;
+       } else {
+        eur_up = false;
+       }
+       Serial.print(eur_up);
+       Serial.println();
+       break;
+    }
+  }
 }
