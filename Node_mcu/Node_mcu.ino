@@ -21,6 +21,7 @@ WebServer server(80);
 WiFiClient wifiClient;
 PubSubClient client(wifiClient); 
 
+
 const char* mqttServer = "test.mosquitto.org";
 uint addr = 0;
 struct { 
@@ -36,9 +37,9 @@ unsigned long lastMsg = 0;
 #define MSG_BUFFER_SIZE  (50)
 char msg[MSG_BUFFER_SIZE];
 int value = 0;
-String Current_currency;
-String Current_value;
-uint8_t Current_UpDown;
+String Current_currency = "NON";
+String Current_value = "0.00";
+uint8_t Current_UpDown = true;
 
 float USD = 198.25; // up - true, down - false
 float GBP = 198.25; // up - true, down - false
@@ -107,6 +108,7 @@ void setup() {
   EEPROM.put(addr,data);
   EEPROM.commit(); 
 
+  server.on("/update",handleupdate);
   server.on("/",handlerequest);
   server.onNotFound(handle_NotFound);
 
@@ -116,11 +118,16 @@ void setup() {
 
 void loop() {
   server.handleClient();
+//  Update_values();
   if (!client.connected()) {
     reconnect();
   }
   client.loop();
+}
 
+void handleupdate(){
+  Serial.println("Received Update");
+  server.send(200, "text/html", SendHTML(Current_currency,Current_value,Current_UpDown));
 }
 
 void handlerequest(){
@@ -148,6 +155,8 @@ void handlerequest(){
           String UserNeeds;
            
           Current_currency = server.arg("currency");
+
+          Update_values();
      
           String Ceil = server.arg("ceil");
           String Floor = server.arg("floor");
@@ -163,7 +172,7 @@ void handlerequest(){
           char UserNeeds_array[UserNeeds_len];
           UserNeeds.toCharArray(UserNeeds_array, UserNeeds_len);
           client.publish("IOT_6B/G05/UserNeeds", UserNeeds_array );
-          server.send(200, "text/html", SendHTML(Current_currency,"0.00",false));
+          server.send(200, "text/html", SendHTML(Current_currency,Current_value,Current_UpDown));
         }
         else{
           server.send(200, "text/html", UserAuthentification());
@@ -172,24 +181,6 @@ void handlerequest(){
       else{
           server.send(200, "text/html", UserAuthentification());
         }
-         
-//      String UserNeeds;
-//      String currency = server.arg("currency");
-//      String Ceil = server.arg("ceil");
-//      String Floor = server.arg("floor");
-//      
-//      UserNeeds = currency +"$"+ Ceil +"$"+ Floor;
-//      
-//      int currency_len = currency.length() + 1;
-//      int ceil_len = Ceil.length() + 1;
-//      int floor_len = Floor.length() + 1; 
-//
-//      int UserNeeds_len = currency_len + ceil_len + floor_len;
-//
-//      char UserNeeds_array[UserNeeds_len];
-//      UserNeeds.toCharArray(UserNeeds_array, UserNeeds_len);
-//      client.publish("IOT_6B/G05/UserNeeds", UserNeeds_array );
-//      server.send(200, "text/html", SendHTML(currency));
 }
 
 void handle_NotFound(){
@@ -229,7 +220,7 @@ String SendHTML(String Currency,String value,uint8_t UpDown){
   ptr+= "<head>\n";
   ptr+= "<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\">\n";   
   ptr+= "<meta charset=\"UTF-8\">\n";
-  ptr+= "<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n";
+  ptr+= "<meta http-equiv=\"refresh\" content=\"15\">\n";
   ptr+= "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n";
   ptr+= "<title>GROUP 5</title>\n";
   ptr+= "</head>\n";
@@ -251,8 +242,8 @@ String SendHTML(String Currency,String value,uint8_t UpDown){
   else if (Currency == "KWD"){
     ptr+="<h2>LKR/KWD</h2>\n";
   }
-  else if (Currency == "AUR"){
-    ptr+="<h2>LKR/AUR</h2>\n";
+  else if (Currency == "AUD"){
+    ptr+="<h2>LKR/AUD</h2>\n";
   }
   else{
     ptr+="<h2>LKR/NON</h2>\n";
@@ -276,14 +267,14 @@ String SendHTML(String Currency,String value,uint8_t UpDown){
   ptr+= "<option value=\"GBP\">GBP</option>\n";
   ptr+= "<option value=\"EUR\">EUR</option>\n";
   ptr+= "<option value=\"KWD\">KWD</option>\n";
-  ptr+= "<option value=\"AUR\">AUR</option>\n";
+  ptr+= "<option value=\"AUD\">AUD</option>\n";
   ptr+= "</select>\n";
   ptr+= "<br><br>\n";
   ptr+= "<label for=\"ceil\">Ceil% :</label><br>\n";
   ptr+= "<input type=\"number\" id=\"ceil\" name=\"ceil\" value=5><br><br>\n";
   ptr+= "<label for=\"floor\">Floor% :</label><br>\n";
   ptr+= "<input type=\"number\" id=\"floor\" name=\"floor\" value=5><br><br>\n";
-  ptr+= "<input type=\"submit\" value=\"Submit\">\n";
+  ptr+= "<input type=\"submit\" value=\"Submit\">\n"; 
   ptr+= "</form>\n";
   ptr+= "</body>\n";
   ptr+= "</html>\n";
@@ -299,8 +290,6 @@ void callback(char* topic, byte* payload, unsigned int length) {
   if (String(topic) == "IOT_6B/G05/CommonData") {
    process_data(payload, length, 70, 8);
   }
-  Serial.println(Current_currency);
-//  server.send(200, "text/html", SendHTML(Current_currency,Current_value,Current_UpDown));
 }
 
 void process_data(byte* payload, unsigned int length, int charlen, int numitem) {
@@ -365,33 +354,46 @@ void process_data(byte* payload, unsigned int length, int charlen, int numitem) 
        }
        token = strtok(NULL, "$");
    }
+   
+   Update_values();
+   
+}
 
-   if (Current_currency == "USD"){
-    Current_value = String(USD);
+void Update_values(){
+
+  if (Current_currency == "USD"){
+    Current_value = String(USD,2);
     Current_UpDown = usd_up;
    }
    if (Current_currency == "AUD"){
-    Current_value = String(AUD);
+    Current_value = String(AUD,2);
     Current_UpDown = aud_up;
    }
    if (Current_currency == "JPY"){
-    Current_value = String(JPY);
+    Current_value = String(JPY,2);
     Current_UpDown = jpy_up;
    }
    if (Current_currency == "GBP"){
-    Current_value = String(GBP);
+    Current_value = String(GBP,2);
     Current_UpDown = gbp_up;
    }
    if (Current_currency == "KWD"){
-    Current_value = String(KWD);
+    Current_value = String(KWD,2);
     Current_UpDown = kwd_up;
    }
    if (Current_currency == "EUR"){
-    Current_value = String(EUR);
+    Current_value = String(EUR,2);
     Current_UpDown = eur_up;
    }
+   if (Current_currency == "NON")
+   {
+    Current_value = "0.00";
+    Current_UpDown = true;
+   }
+
+   Serial.println(Current_currency+Current_value+"hello world");
    
-}
+  }
 
 void set_updown(char * binary) {
   int digit;
