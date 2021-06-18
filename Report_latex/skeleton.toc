@@ -2,12 +2,15 @@
 \contentsline {subsection}{\numberline {1.1}Overview}{2}{subsection.1.1}%
 \contentsline {subsection}{\numberline {1.2}Objectives}{2}{subsection.1.2}%
 \contentsline {subsection}{\numberline {1.3}Scope}{2}{subsection.1.3}%
-\contentsline {subsection}{\numberline {1.4}Architecture}{2}{subsection.1.4}%
 \contentsline {section}{\numberline {2}Methodology}{3}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Exchange API}{3}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Integrating Firebase}{3}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}Creating the Node-Red dashboard}{3}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.1}Architecture}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Exchange API}{3}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Integrating Firebase}{3}{subsection.2.3}%
 \contentsline {subsection}{\numberline {2.4}Technical analysis charts}{3}{subsection.2.4}%
-\contentsline {subsection}{\numberline {2.5}Problems and proposed solutions}{3}{subsection.2.5}%
-\contentsline {subsection}{\numberline {2.6}Configuring ESP8266}{3}{subsection.2.6}%
-\contentsline {section}{\numberline {3}Conclusion}{3}{section.3}%
+\contentsline {subsection}{\numberline {2.5}Creating the Node-Red dashboard}{4}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}Configuring ESP8266}{4}{subsection.2.6}%
+\contentsline {subsubsection}{\numberline {2.6.1}Setting up MQTT}{4}{subsubsection.2.6.1}%
+\contentsline {subsubsection}{\numberline {2.6.2}Decoding compact received data}{5}{subsubsection.2.6.2}%
+\contentsline {subsubsection}{\numberline {2.6.3}Sensing alerts and notifying the user}{6}{subsubsection.2.6.3}%
+\contentsline {subsubsection}{\numberline {2.6.4}Supporting the LCD 16x2 display}{6}{subsubsection.2.6.4}%
+\contentsline {section}{\numberline {3}Conclusion}{6}{section.3}%

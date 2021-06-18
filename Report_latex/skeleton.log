@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.5.15)  18 JUN 2021 11:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.5.15)  19 JUN 2021 01:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1101,56 +1101,121 @@ LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 1
 
 (/usr/local/texlive/2021basic/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-)
-<images/arch.png, id=100, 1585.925pt x 889.3225pt>
+) [2]
+<images/arch.png, id=113, 1585.925pt x 889.3225pt>
 File: images/arch.png Graphic file (type png)
 <use images/arch.png>
-Package pdftex.def Info: images/arch.png  used on input line 35.
+Package pdftex.def Info: images/arch.png  used on input line 57.
 (pdftex.def)             Requested size: 452.9679pt x 254.00233pt.
+<images/front.png, id=114, 1284.8pt x 961.5925pt>
+File: images/front.png Graphic file (type png)
+<use images/front.png>
+Package pdftex.def Info: images/front.png  used on input line 86.
+(pdftex.def)             Requested size: 317.07614pt x 237.30159pt.
 
+[3 <./images/arch.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 110--111
+
+ []
+
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 1
+12.
+(/usr/local/texlive/2021basic/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
+)
+Underfull \hbox (badness 10000) in paragraph at lines 120--121
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 123--124
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 125--126
+
+ []
+
+[4 <./images/front.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 128--129
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 130--131
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 165--166
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 168--169
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 171--172
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 173--174
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 189--190
+
+ []
+
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 225--226
+
+ []
+
+<images/lcd.jpg, id=155, 1284.8pt x 819.06pt>
+File: images/lcd.jpg Graphic file (type jpg)
+<use images/lcd.jpg>
+Package pdftex.def Info: images/lcd.jpg  used on input line 240.
+(pdftex.def)             Requested size: 226.48395pt x 144.37497pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) [2] [3 <./images/arch.png>]
+) [6]
 No file skeleton.bbl.
+[7 <./images/lcd.jpg>]
 
 LaTeX3 Info: Redefining command \BeforeClosingMainAux with sig. 'm' on line
 (LaTeX3)     135.
 
-(./skeleton.aux)
+ (./skeleton.aux)
 
-Package rerunfilecheck Warning: File `skeleton.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
-Package rerunfilecheck Info: Checksums for `skeleton.out':
-(rerunfilecheck)             Before: AF616BCB7D981170A37ACBA2D55803C8;2201
-(rerunfilecheck)             After:  58081CBECD685EA14224B13D2965B2F2;1766.
+Package rerunfilecheck Info: File `skeleton.out' has not changed.
+(rerunfilecheck)             Checksum: 697AB587E7FB274804834D6AA4CA43CC;2423.
  ) 
 Here is how much of TeX's memory you used:
- 25644 strings out of 480445
- 471701 string characters out of 5892391
- 801011 words of memory out of 5000000
- 42419 multiletter control sequences out of 15000+600000
- 446486 words of font info for 85 fonts, out of 8000000 for 9000
+ 26181 strings out of 480445
+ 477406 string characters out of 5892391
+ 960159 words of memory out of 5000000
+ 42880 multiletter control sequences out of 15000+600000
+ 451479 words of font info for 90 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
- 98i,6n,102p,799b,343s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{subsection.4.2} has been referenced but does not 
-exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.4.1} has been referenced but does not ex
-ist, replaced by a fixed one
-
-pdfTeX warning (dest): name{section.4} has been referenced but does not exist, 
-replaced by a fixed one
-
-{/usr/local/texlive/2021basic/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/loca
-l/texlive/2021basic/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/tex
-live/2021basic/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on skeleton.pdf (4 pages, 838753 bytes).
+ 98i,6n,102p,799b,1895s stack positions out of 5000i,500n,10000p,200000b,80000s
+ </Users/harindujayarathne/Library/texlive/2021basic/texmf-var/fonts/pk/ljfou
+r/jknappen/ec/ectt0900.600pk>{/usr/local/texlive/2021basic/texmf-dist/fonts/enc
+/dvips/base/8r.enc}</usr/local/texlive/2021basic/texmf-dist/fonts/type1/urw/tim
+es/utmb8a.pfb></usr/local/texlive/2021basic/texmf-dist/fonts/type1/urw/times/ut
+mr8a.pfb>
+Output written on skeleton.pdf (8 pages, 1140399 bytes).
 PDF statistics:
- 128 PDF objects out of 1000 (max. 8388607)
- 114 compressed objects within 2 object streams
- 21 named destinations out of 1000 (max. 500000)
- 151 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 295 PDF objects out of 1000 (max. 8388607)
+ 209 compressed objects within 3 object streams
+ 88 named destinations out of 1000 (max. 500000)
+ 161 words of extra memory for PDF output out of 10000 (max. 10000000)
 
