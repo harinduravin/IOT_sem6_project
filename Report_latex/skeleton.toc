@@ -11,6 +11,3 @@
 \contentsline {subsection}{\numberline {2.5}Problems and proposed solutions}{3}{subsection.2.5}%
 \contentsline {subsection}{\numberline {2.6}Configuring ESP8266}{3}{subsection.2.6}%
 \contentsline {section}{\numberline {3}Conclusion}{3}{section.3}%
-\contentsline {section}{\numberline {4}Annexes}{4}{section.4}%
-\contentsline {subsection}{\numberline {4.1}ESP8266 code}{4}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}JavaScript codes used in Node-Red}{14}{subsection.4.2}%

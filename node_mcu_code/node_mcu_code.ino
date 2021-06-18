@@ -199,6 +199,7 @@ void loop() {
   delay(500);
 
   if (counter == 8){
+    lcd.clear();
     counter = 0;
     lcd.setCursor(0, 0);
     lcd.print("LKR/USD "+ String(USD));
