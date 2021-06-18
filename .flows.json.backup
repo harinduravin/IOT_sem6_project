@@ -7028,38 +7028,5 @@
                 "ba388334.7a4cc"
             ]
         ]
-    },
-    {
-        "id": "6b68f396.d1987c",
-        "type": "mqtt in",
-        "z": "8272fd45.4d821",
-        "name": "",
-        "topic": "IOT_6B/G05/AuthResponse",
-        "qos": "2",
-        "datatype": "auto",
-        "broker": "27cb39de.f814e6",
-        "x": 190,
-        "y": 1580,
-        "wires": [
-            [
-                "4546cfcf.862d4"
-            ]
-        ]
-    },
-    {
-        "id": "4546cfcf.862d4",
-        "type": "debug",
-        "z": "8272fd45.4d821",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 510,
-        "y": 1580,
-        "wires": []
     }
 ]
