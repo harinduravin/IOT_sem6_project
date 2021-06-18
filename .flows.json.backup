@@ -145,7 +145,7 @@
     {
         "id": "3a4aeaa5.e720d6",
         "type": "exchangerates-key",
-        "name": "Thishani2"
+        "name": "Thushara"
     },
     {
         "id": "ec9f480b.2b6f68",
@@ -2298,7 +2298,7 @@
         "type": "function",
         "z": "ae1d0766.e75b68",
         "name": "API_CALL",
-        "func": "msg.params = {};\n// msg.params.base = 'USD'\n// msg.params.symbols = 'LKR'\nreturn msg;",
+        "func": "msg.params = {\n        symbols : 'USD,AUD,JPY,GBP,EUR,KWD,LKR'\n};\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -3656,6 +3656,314 @@
         "info": "",
         "x": 150,
         "y": 40,
+        "wires": []
+    },
+    {
+        "id": "378d4209.d91afe",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "Query",
+        "func": "msg.params = {\n        symbols : 'USD,AUD,JPY,GBP,EUR,KWD,LKR'\n};\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 330,
+        "y": 360,
+        "wires": [
+            [
+                "31571381.b0778c"
+            ]
+        ]
+    },
+    {
+        "id": "c6aace7d.2a93d",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "formater",
+        "func": "const rates = msg.payload.rates;\nconst LKR = rates[\"LKR\"]\nconst newRates = {\n    USD:parseFloat((LKR/rates.USD).toFixed(3)),\n    AUD:parseFloat((LKR/rates.AUD).toFixed(3)),\n    JPY:parseFloat((LKR/rates.JPY).toFixed(3)),\n    GBP:parseFloat((LKR/rates.GBP).toFixed(3)),\n    EUR:parseFloat((LKR/rates.EUR).toFixed(3)),\n    KWD:parseFloat((LKR/rates.KWD).toFixed(3)),\n}\n//save currency to global once in a hour\n\nglobal.set(\"current_currencies\",newRates)\n\nconst now = Date.now()\nvar newMsg = { formatedPayload: {[now]:newRates} };\nreturn [newMsg];",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 700,
+        "y": 380,
+        "wires": [
+            [
+                "b2654f82.c9d6"
+            ]
+        ]
+    },
+    {
+        "id": "31571381.b0778c",
+        "type": "exchangeratesapi",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "url": "latest",
+        "base": "",
+        "symbols": "",
+        "creds": "3a4aeaa5.e720d6",
+        "x": 520,
+        "y": 320,
+        "wires": [
+            [
+                "c6aace7d.2a93d"
+            ]
+        ]
+    },
+    {
+        "id": "1902bfde.e530e",
+        "type": "firebase modify",
+        "z": "8272fd45.4d821",
+        "name": "push",
+        "firebaseconfig": "6ef5f71b.98f1b8",
+        "childpath": "values",
+        "method": "push",
+        "value": "msg.payload",
+        "priority": "msg.priority",
+        "x": 1070,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9f3acd6f.3faf6",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "ceil/floor checker",
+        "func": "const latest = Object.values(msg.formatedPayload)[0];\nconst last =  Object.values(Object.values(msg.payload)[0])[0];\n\nconst selectedNow = last[global.get(\"selected_currency\")];\nconst selectedLast = last[global.get(\"selected_currency\")];\nlet status = \"\";\nif(selectedNow==selectedLast){\n    status = \"no_change\"\n}else{\nconst isWentUp=selectedNow>selectedLast;\nif(isWentUp){\n    const change = (selectedNow-selectedLast)/selectedLast\n    if(change>=global.get(\"ceil\")/100){\n        status=\"ceiling_crossed\"\n    }else{\n        status=\"went_up\"\n    }\n}else{\n    const change = (selectedLast-selectedNow)/selectedLast   \n    if(change>=global.get(\"floor\")/100){\n        status=\"floor_crossed\"\n    }else{\n        status=\"went_down\"\n    }\n}\n}\nreturn {\nlatest,\nlast,\nselectedNow,\nselectedLast,\nstatus,\npayload:msg.formatedPayload\n};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1030,
+        "y": 380,
+        "wires": [
+            [
+                "ec61a6d4.c6cd08",
+                "1902bfde.e530e"
+            ]
+        ]
+    },
+    {
+        "id": "ec61a6d4.c6cd08",
+        "type": "debug",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1070,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "b2654f82.c9d6",
+        "type": "firebase.once",
+        "z": "8272fd45.4d821",
+        "name": "get last value",
+        "firebaseconfig": "6ef5f71b.98f1b8",
+        "childpath": "values",
+        "repeatifnull": false,
+        "eventType": "value",
+        "queries": [
+            {
+                "name": "orderByValue",
+                "value": "",
+                "valType": ""
+            },
+            {
+                "name": "limitToLast",
+                "value": "1",
+                "valType": "str"
+            }
+        ],
+        "x": 850,
+        "y": 320,
+        "wires": [
+            [
+                "9f3acd6f.3faf6"
+            ]
+        ]
+    },
+    {
+        "id": "bf09b3d1.525",
+        "type": "comment",
+        "z": "8272fd45.4d821",
+        "name": "Fetch / Push / Check for ceil/floor ",
+        "info": "## This is just dummy nodes",
+        "x": 170,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "7bcdb981.6f1478",
+        "type": "inject",
+        "z": "8272fd45.4d821",
+        "name": "1 Hour Timer",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "3600",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 360,
+        "wires": [
+            [
+                "378d4209.d91afe"
+            ]
+        ]
+    },
+    {
+        "id": "8f8d3f5a.13922",
+        "type": "inject",
+        "z": "8272fd45.4d821",
+        "name": "1 minute Timer",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "60",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "75",
+        "payloadType": "num",
+        "x": 140,
+        "y": 520,
+        "wires": [
+            [
+                "e6f874b3.94b6b8"
+            ]
+        ]
+    },
+    {
+        "id": "c026821a.2000f",
+        "type": "debug",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 810,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "3cd62ee1.1f7802",
+        "type": "comment",
+        "z": "8272fd45.4d821",
+        "name": "Simulate rapid fluctuation ",
+        "info": "## This is just dummy nodes",
+        "x": 150,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "ceaa1f06.6d1d4",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "Fomater ",
+        "func": "var price=global.get(\"current_currencies\");\nvar sd = 0.00001;\nvar gauss = msg.payload.values[0].value;\nconst newRates = {\n    USD:parseFloat((price.USD*(1+gauss*price.AUD*sd)).toFixed(3)),\n    AUD:parseFloat((price.AUD*(1+gauss*price.AUD*sd)).toFixed(3)),\n    JPY:parseFloat((price.JPY*(1+gauss*price.JPY*sd)).toFixed(3)),\n    GBP:parseFloat((price.GBP*(1+gauss*price.GBP*sd)).toFixed(3)),\n    EUR:parseFloat((price.EUR*(1+gauss*price.EUR*sd)).toFixed(3)),\n    KWD:parseFloat((price.KWD*(1+gauss*price.KWD*sd)).toFixed(3)),\n}\n\n\nreturn {payload:newRates, Topic:\"New Price\"};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 600,
+        "y": 520,
+        "wires": [
+            [
+                "c026821a.2000f",
+                "b2f82d09.08997"
+            ]
+        ]
+    },
+    {
+        "id": "e6f874b3.94b6b8",
+        "type": "gaussian",
+        "z": "8272fd45.4d821",
+        "name": "gaussian",
+        "mu_day": "0",
+        "sigma_day": "1",
+        "tstart_day": "7",
+        "tend_day": "19",
+        "mu_even": "0",
+        "sigma_even": "1",
+        "tstart_even": "19",
+        "tend_even": "23",
+        "mu_night": "0",
+        "sigma_night": "1",
+        "tstart_night": "0",
+        "tend_night": "7",
+        "layout": "row-spread",
+        "x": 380,
+        "y": 520,
+        "wires": [
+            [
+                "ceaa1f06.6d1d4"
+            ]
+        ]
+    },
+    {
+        "id": "b2f82d09.08997",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "ceil/floor checker",
+        "func": "const last = global.get(\"current_currencies\");\nconst latest = msg.payload;\n\nconst selectedNow = latest[global.get(\"selected_currency\")];\nconst selectedLast = last[global.get(\"selected_currency\")];\nlet status = \"\";\nif(selectedNow==selectedLast){\n    status = \"no_change\"\n}else{\nconst isWentUp=selectedNow>selectedLast;\nif(isWentUp){\n    const change = (selectedNow-selectedLast)/selectedLast\n    if(change>=global.get(\"ceil\")/100){\n        status=\"ceiling_crossed\"\n    }else{\n        status=\"went_up\"\n    }\n}else{\n    const change = (selectedLast-selectedNow)/selectedLast   \n    if(change>=global.get(\"floor\")/100){\n        status=\"floor_crossed\"\n    }else{\n        status=\"went_down\"\n    }\n}\n}\nreturn {payload:{\nlatest,\nlast,\nselectedNow,\nselectedLast,\nstatus,\n}};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 830,
+        "y": 620,
+        "wires": [
+            [
+                "d28ebe12.3f1ca"
+            ]
+        ]
+    },
+    {
+        "id": "d28ebe12.3f1ca",
+        "type": "debug",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1060,
+        "y": 620,
         "wires": []
     }
 ]
