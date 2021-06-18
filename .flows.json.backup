@@ -217,104 +217,6 @@
         "willPayload": ""
     },
     {
-        "id": "def511c5.dc0c8",
-        "type": "ui_base",
-        "theme": {
-            "name": "theme-dark",
-            "lightTheme": {
-                "default": "#0094CE",
-                "baseColor": "#0094CE",
-                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
-                "edited": true,
-                "reset": false
-            },
-            "darkTheme": {
-                "default": "#097479",
-                "baseColor": "#097479",
-                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
-                "edited": true,
-                "reset": false
-            },
-            "customTheme": {
-                "name": "Untitled Theme 1",
-                "default": "#4B7930",
-                "baseColor": "#4B7930",
-                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
-            },
-            "themeState": {
-                "base-color": {
-                    "default": "#097479",
-                    "value": "#097479",
-                    "edited": false
-                },
-                "page-titlebar-backgroundColor": {
-                    "value": "#097479",
-                    "edited": false
-                },
-                "page-backgroundColor": {
-                    "value": "#111111",
-                    "edited": false
-                },
-                "page-sidebar-backgroundColor": {
-                    "value": "#333333",
-                    "edited": false
-                },
-                "group-textColor": {
-                    "value": "#0eb8c0",
-                    "edited": false
-                },
-                "group-borderColor": {
-                    "value": "#555555",
-                    "edited": false
-                },
-                "group-backgroundColor": {
-                    "value": "#333333",
-                    "edited": false
-                },
-                "widget-textColor": {
-                    "value": "#eeeeee",
-                    "edited": false
-                },
-                "widget-backgroundColor": {
-                    "value": "#097479",
-                    "edited": false
-                },
-                "widget-borderColor": {
-                    "value": "#333333",
-                    "edited": false
-                },
-                "base-font": {
-                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
-                }
-            },
-            "angularTheme": {
-                "primary": "indigo",
-                "accents": "blue",
-                "warn": "red",
-                "background": "grey",
-                "palette": "light"
-            }
-        },
-        "site": {
-            "name": "Node-RED Dashboard",
-            "hideToolbar": "false",
-            "allowSwipe": "false",
-            "lockMenu": "false",
-            "allowTempTheme": "true",
-            "dateFormat": "DD/MM/YYYY",
-            "sizes": {
-                "sx": 48,
-                "sy": 48,
-                "gx": 6,
-                "gy": 6,
-                "cx": 6,
-                "cy": 6,
-                "px": 0,
-                "py": 0
-            }
-        }
-    },
-    {
         "id": "b438ea9a.594368",
         "type": "ui_tab",
         "name": "Breat Britain Pound (GBP)",
@@ -1263,7 +1165,7 @@
             },
             {
                 "name": "limitToLast",
-                "value": "30",
+                "value": "",
                 "valType": "str"
             }
         ],
@@ -2604,494 +2506,6 @@
         ]
     },
     {
-        "id": "4bfaed8f.c50f04",
-        "type": "function",
-        "z": "ae1d0766.e75b68",
-        "name": "Simple Moving Average (SMA)",
-        "func": "var moment = global.get('techmodule');\n\nconst SMA = moment.SMA\nlet period = msg.values.period; \nlet values = msg.values.value;                    \n\nvar out = {\n  values    : SMA.calculate({period : period, values : values})\n}\nmsg =  out\nreturn msg\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 370,
-        "y": 440,
-        "wires": [
-            [
-                "74ff70c6.1d5a3",
-                "10d492c5.4ed75d"
-            ]
-        ]
-    },
-    {
-        "id": "390193c0.cbd6ec",
-        "type": "inject",
-        "z": "ae1d0766.e75b68",
-        "name": "Send Array",
-        "props": [
-            {
-                "p": "values",
-                "v": "{\"value\":[127.75,129.02,132.75,145.4,148.98,137.52,147.38,139.05,137.23,149.3,162.45,178.95,200.35,221.9,243.23,243.52,286.42,280.27],\"period\":4}",
-                "vt": "json"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 140,
-        "y": 440,
-        "wires": [
-            [
-                "4bfaed8f.c50f04"
-            ]
-        ]
-    },
-    {
-        "id": "10d492c5.4ed75d",
-        "type": "debug",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 670,
-        "y": 380,
-        "wires": []
-    },
-    {
-        "id": "720084b8.39222c",
-        "type": "function",
-        "z": "ae1d0766.e75b68",
-        "name": "MACD",
-        "func": "var moment = global.get('techmodule');\nvar MACD = moment.MACD;\n\n\nvar macdInput = msg.values;                    \n\nvar out = {\n  values    : MACD.calculate(macdInput)\n}\nmsg =  out\nreturn msg\n\n\n\n\n\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 370,
-        "y": 700,
-        "wires": [
-            [
-                "64cb1cb9.d4e6e4",
-                "aad7dd1c.0d98c"
-            ]
-        ]
-    },
-    {
-        "id": "550b7270.699f5c",
-        "type": "inject",
-        "z": "ae1d0766.e75b68",
-        "name": "Send Array",
-        "props": [
-            {
-                "p": "values",
-                "v": "{\"values\":[127.75,129.02,132.75,145.4,148.98,137.52,147.38,139.05,137.23,149.3,162.45,178.95,200.35,221.9,243.23,243.52,286.42,280.27],\"fastPeriod\":5,\"slowPeriod\":8,\"signalPeriod\":3,\"SimpleMAOscillator\":false,\"SimpleMASignal\":false}",
-                "vt": "json"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 140,
-        "y": 680,
-        "wires": [
-            [
-                "720084b8.39222c"
-            ]
-        ]
-    },
-    {
-        "id": "aad7dd1c.0d98c",
-        "type": "debug",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 850,
-        "y": 660,
-        "wires": []
-    },
-    {
-        "id": "f1866a1c.c3eee8",
-        "type": "function",
-        "z": "ae1d0766.e75b68",
-        "name": "Rate Of Change (ROC)",
-        "func": "var moment = global.get('techmodule');\n\nconst ROC = moment.ROC\nlet period = msg.values.period; \nlet values = msg.values.value;                    \n\nvar out = {\n  values    : ROC.calculate({period : period, values : values})\n}\nmsg =  out\nreturn msg;\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 410,
-        "y": 560,
-        "wires": [
-            [
-                "e33505e9.0a6848",
-                "417f1c11.1f4764"
-            ]
-        ]
-    },
-    {
-        "id": "b8c931c7.788d7",
-        "type": "inject",
-        "z": "ae1d0766.e75b68",
-        "name": "Send Array",
-        "props": [
-            {
-                "p": "values",
-                "v": "{\"value\":[11045.27,11167.32,11008.61,11151.83,10926.77,10868.12,10520.32,10380.43,10785.14,10748.26,10896.91,10782.95,10620.16,10625.83,10510.95,10444.37,10068.01,10193.39,10066.57,10043.75],\"period\":5}",
-                "vt": "json"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 140,
-        "y": 540,
-        "wires": [
-            [
-                "f1866a1c.c3eee8"
-            ]
-        ]
-    },
-    {
-        "id": "417f1c11.1f4764",
-        "type": "debug",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 810,
-        "y": 600,
-        "wires": []
-    },
-    {
-        "id": "3904fd82.2c5432",
-        "type": "function",
-        "z": "ae1d0766.e75b68",
-        "name": "Relative Strength Index (RSI)",
-        "func": "var moment = global.get('techmodule');\n\nconst RSI = moment.RSI\nlet period = msg.values.period; \nlet values = msg.values.value;                    \n\nvar out = {\n  values    : RSI.calculate({period : period, values : values})\n}\nmsg =  out\nreturn msg\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 400,
-        "y": 820,
-        "wires": [
-            [
-                "fd47dee8.caae1"
-            ]
-        ]
-    },
-    {
-        "id": "cbe3e567.648d98",
-        "type": "inject",
-        "z": "ae1d0766.e75b68",
-        "name": "Send Array",
-        "props": [
-            {
-                "p": "values",
-                "v": "{\"value\":[127.75,129.02,132.75,145.4,148.98,137.52,147.38,139.05,137.23,149.3,162.45,178.95,200.35,221.9,243.23,243.52,286.42,280.27,277.35,269.02,263.23,214.9],\"period\":5}",
-                "vt": "json"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 140,
-        "y": 800,
-        "wires": [
-            [
-                "3904fd82.2c5432"
-            ]
-        ]
-    },
-    {
-        "id": "cc211c94.3a96f",
-        "type": "debug",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 850,
-        "y": 800,
-        "wires": []
-    },
-    {
-        "id": "db62dc43.4ccf7",
-        "type": "ui_chart",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "group": "f46fb384.41299",
-        "order": 2,
-        "width": "10",
-        "height": "6",
-        "label": "ROC",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "x",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": true,
-        "ymin": "",
-        "ymax": "",
-        "removeOlder": 1,
-        "removeOlderPoints": "",
-        "removeOlderUnit": "3600",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "x": 850,
-        "y": 540,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "e33505e9.0a6848",
-        "type": "function",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "func": "var i;\nvar pay = msg.values;\nvar labels = \"Simple Moving Average\";\nvar series = \"SMA\";\nvar data = [];\nfor (i = 0; i < pay.length; i++) {\n    data.push({\"x\":i,\"y\":pay[i]});\n}\n\n\n\nmsg.payload = [{\"series\":series,\n                \"data\":[data],\n                \"labels\":labels}];\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 680,
-        "y": 560,
-        "wires": [
-            [
-                "db62dc43.4ccf7"
-            ]
-        ]
-    },
-    {
-        "id": "64cb1cb9.d4e6e4",
-        "type": "function",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "func": "var i;\nvar pay = msg.values;\nvar labels = \"Simple Moving Average\";\nvar series = \"SMA\";\nvar data = [];\nfor (i = 0; i < pay.length; i++) {\n    data.push({\"x\":i,\"y\":pay[i]});\n}\n\n\n\nmsg.payload = [{\"series\":series,\n                \"data\":[data],\n                \"labels\":labels}];\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 680,
-        "y": 700,
-        "wires": [
-            [
-                "3a68837b.f34b0c"
-            ]
-        ]
-    },
-    {
-        "id": "3a68837b.f34b0c",
-        "type": "ui_chart",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "group": "13ca4ad2.b96045",
-        "order": 2,
-        "width": 0,
-        "height": 0,
-        "label": "MACD",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "x",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": true,
-        "ymin": "",
-        "ymax": "",
-        "removeOlder": 1,
-        "removeOlderPoints": "",
-        "removeOlderUnit": "3600",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "x": 850,
-        "y": 720,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "ebed476a.b20298",
-        "type": "ui_chart",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "group": "f46fb384.41299",
-        "order": 1,
-        "width": "10",
-        "height": "6",
-        "label": "SMA",
-        "chartType": "line",
-        "legend": "true",
-        "xformat": "x",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": true,
-        "ymin": "",
-        "ymax": "",
-        "removeOlder": 1,
-        "removeOlderPoints": "",
-        "removeOlderUnit": "3600",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "x": 850,
-        "y": 460,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "fddb1058.bf9e5",
-        "type": "ui_chart",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "group": "f46fb384.41299",
-        "order": 3,
-        "width": "10",
-        "height": "6",
-        "label": "RSI",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "x",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": true,
-        "ymin": "",
-        "ymax": "",
-        "removeOlder": 1,
-        "removeOlderPoints": "",
-        "removeOlderUnit": "3600",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "x": 850,
-        "y": 840,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "74ff70c6.1d5a3",
-        "type": "function",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "func": "var i;\nvar pay = msg.values;\nvar labels = \"Simple Moving Average\";\nvar series = \"SMA\";\nvar data = [];\nfor (i = 0; i < pay.length; i++) {\n    data.push({\"x\":i,\"y\":pay[i]});\n}\n\n\n\nmsg.payload = [{\"series\":series,\n                \"data\":[data],\n                \"labels\":labels}];\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 680,
-        "y": 440,
-        "wires": [
-            [
-                "ebed476a.b20298"
-            ]
-        ]
-    },
-    {
-        "id": "fd47dee8.caae1",
-        "type": "function",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "func": "var i;\nvar pay = msg.values;\nvar labels = \"Simple Moving Average\";\nvar series = \"SMA\";\nvar data = [];\nfor (i = 0; i < pay.length; i++) {\n    data.push({\"x\":i,\"y\":pay[i]});\n}\n\n\n\nmsg.payload = [{\"series\":series,\n                \"data\":[data],\n                \"labels\":labels}];\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 680,
-        "y": 820,
-        "wires": [
-            [
-                "fddb1058.bf9e5",
-                "cc211c94.3a96f"
-            ]
-        ]
-    },
-    {
         "id": "dabc34a6.2f0098",
         "type": "debug",
         "z": "ae1d0766.e75b68",
@@ -3946,7 +3360,8 @@
         "y": 620,
         "wires": [
             [
-                "d28ebe12.3f1ca"
+                "d28ebe12.3f1ca",
+                "9afc634d.6f194"
             ]
         ]
     },
@@ -3964,6 +3379,836 @@
         "statusType": "auto",
         "x": 1060,
         "y": 620,
+        "wires": []
+    },
+    {
+        "id": "62af1c54.4ab0e4",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "Simple Moving Average (SMA)",
+        "func": "var moment = global.get('techmodule');\n\nconst SMA = moment.SMA\nlet period = msg.values.period; \nlet values = msg.values.value;                    \n\nvar out = {\n  values    : SMA.calculate({period : period, values : values})\n}\nmsg =  out\nreturn msg\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 670,
+        "y": 780,
+        "wires": [
+            [
+                "be3ba054.0850a"
+            ]
+        ]
+    },
+    {
+        "id": "d66fdce5.7ec6f",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "MACD",
+        "func": "var moment = global.get('techmodule');\nvar MACD = moment.MACD;\n\n\nvar macdInput = msg.values;                    \n\nvar out = {\n  values    : MACD.calculate(macdInput)\n}\nmsg =  out\nreturn msg\n\n\n\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 590,
+        "y": 900,
+        "wires": [
+            [
+                "4dda6079.6a265"
+            ]
+        ]
+    },
+    {
+        "id": "3bb0cd33.3e4322",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "Rate Of Change (ROC)",
+        "func": "var moment = global.get('techmodule');\n\nconst ROC = moment.ROC\nlet period = msg.values.period; \nlet values = msg.values.value;                    \n\nvar out = {\n  values    : ROC.calculate({period : period, values : values})\n}\nmsg =  out\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 650,
+        "y": 840,
+        "wires": [
+            [
+                "dcc5f8a1.6bbc18"
+            ]
+        ]
+    },
+    {
+        "id": "76bb9582.c1937c",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "Relative Strength Index (RSI)",
+        "func": "var moment = global.get('techmodule');\n\nconst RSI = moment.RSI\nlet period = msg.values.period; \nlet values = msg.values.value;                    \n\nvar out = {\n  values    : RSI.calculate({period : period, values : values})\n}\nmsg =  out\nreturn msg\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 660,
+        "y": 960,
+        "wires": [
+            [
+                "aac9b509.724e78"
+            ]
+        ]
+    },
+    {
+        "id": "b7b7820f.9c358",
+        "type": "inject",
+        "z": "8272fd45.4d821",
+        "name": "Send Array",
+        "props": [
+            {
+                "p": "values",
+                "v": "{\"value\":[127.75,129.02,132.75,145.4,148.98,137.52,147.38,139.05,137.23,149.3,162.45,178.95,200.35,221.9,243.23,243.52,286.42,280.27,277.35,269.02,263.23,214.9],\"period\":5}",
+                "vt": "json"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 140,
+        "y": 960,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ad43a077.ff2a5",
+        "type": "ui_chart",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "group": "f46fb384.41299",
+        "order": 2,
+        "width": "10",
+        "height": "6",
+        "label": "ROC",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "x",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 1070,
+        "y": 840,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "dcc5f8a1.6bbc18",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "func": "var i;\nvar pay = msg.values;\nvar labels = \"Rate of Change\";\nvar series = \"ROC\";\nvar data = [];\nfor (i = 0; i < pay.length; i++) {\n    data.push({\"x\":i,\"y\":pay[i]});\n}\n\n\n\nmsg.payload = [{\"series\":series,\n                \"data\":[data],\n                \"labels\":labels}];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 900,
+        "y": 840,
+        "wires": [
+            [
+                "ad43a077.ff2a5"
+            ]
+        ]
+    },
+    {
+        "id": "4dda6079.6a265",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "func": "var i;\nvar pay = msg.values;\nvar labels = \"Simple Moving Average\";\nvar series = \"SMA\";\nvar data = [];\nfor (i = 0; i < pay.length; i++) {\n    data.push({\"x\":i,\"y\":pay[i]});\n}\n\n\n\nmsg.payload = [{\"series\":series,\n                \"data\":[data],\n                \"labels\":labels}];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 900,
+        "y": 900,
+        "wires": [
+            [
+                "b250cc46.ebe73"
+            ]
+        ]
+    },
+    {
+        "id": "b250cc46.ebe73",
+        "type": "ui_chart",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "group": "13ca4ad2.b96045",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "label": "MACD",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "x",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 1070,
+        "y": 900,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7a423f1.563c1c",
+        "type": "ui_chart",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "group": "f46fb384.41299",
+        "order": 1,
+        "width": "10",
+        "height": "6",
+        "label": "SMA",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "x",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 1070,
+        "y": 780,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "907c8e4b.7ff97",
+        "type": "ui_chart",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "group": "f46fb384.41299",
+        "order": 3,
+        "width": "10",
+        "height": "6",
+        "label": "RSI",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "x",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 1070,
+        "y": 960,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "be3ba054.0850a",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "func": "var i;\nvar pay = msg.values;\nvar labels = \"Simple Moving Average\";\nvar series = \"SMA\";\nvar data = [];\nfor (i = 0; i < pay.length; i++) {\n    data.push({\"x\":i,\"y\":pay[i]});\n}\n\n\n\nmsg.payload = [{\"series\":series,\n                \"data\":[data],\n                \"labels\":labels}];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 900,
+        "y": 780,
+        "wires": [
+            [
+                "7a423f1.563c1c"
+            ]
+        ]
+    },
+    {
+        "id": "aac9b509.724e78",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "func": "var i;\nvar pay = msg.values;\nvar labels = \"Relative Strength Index\";\nvar series = \"RSI\";\nvar data = [];\nfor (i = 0; i < pay.length; i++) {\n    data.push({\"x\":i,\"y\":pay[i]});\n}\n\n\n\nmsg.payload = [{\"series\":series,\n                \"data\":[data],\n                \"labels\":labels}];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 900,
+        "y": 960,
+        "wires": [
+            [
+                "907c8e4b.7ff97"
+            ]
+        ]
+    },
+    {
+        "id": "f28021cc.f1fd6",
+        "type": "comment",
+        "z": "8272fd45.4d821",
+        "name": "CHART - USD",
+        "info": "## This is just dummy nodes",
+        "x": 130,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "d1b684ac.451188",
+        "type": "firebase.once",
+        "z": "8272fd45.4d821",
+        "name": "get values",
+        "firebaseconfig": "6ef5f71b.98f1b8",
+        "childpath": "values",
+        "repeatifnull": false,
+        "eventType": "value",
+        "queries": [
+            {
+                "name": "orderByValue",
+                "value": "",
+                "valType": ""
+            },
+            {
+                "name": "limitToLast",
+                "value": "40",
+                "valType": "str"
+            }
+        ],
+        "x": 300,
+        "y": 840,
+        "wires": [
+            [
+                "bcac6a44.3114f8"
+            ]
+        ]
+    },
+    {
+        "id": "424c2cb1.dfb404",
+        "type": "firebase.once",
+        "z": "8272fd45.4d821",
+        "name": "get values",
+        "firebaseconfig": "6ef5f71b.98f1b8",
+        "childpath": "values",
+        "repeatifnull": false,
+        "eventType": "value",
+        "queries": [
+            {
+                "name": "orderByValue",
+                "value": "",
+                "valType": ""
+            },
+            {
+                "name": "limitToLast",
+                "value": "40",
+                "valType": "str"
+            }
+        ],
+        "x": 300,
+        "y": 900,
+        "wires": [
+            [
+                "b2683fc0.32dd9"
+            ]
+        ]
+    },
+    {
+        "id": "b11f7780.cbcc98",
+        "type": "firebase.once",
+        "z": "8272fd45.4d821",
+        "name": "get values",
+        "firebaseconfig": "6ef5f71b.98f1b8",
+        "childpath": "values",
+        "repeatifnull": false,
+        "eventType": "value",
+        "queries": [
+            {
+                "name": "orderByValue",
+                "value": "",
+                "valType": ""
+            },
+            {
+                "name": "limitToLast",
+                "value": "40",
+                "valType": "str"
+            }
+        ],
+        "x": 300,
+        "y": 780,
+        "wires": [
+            [
+                "8de4b25c.2934d"
+            ]
+        ]
+    },
+    {
+        "id": "4928d775.aec2a8",
+        "type": "firebase.once",
+        "z": "8272fd45.4d821",
+        "name": "get values",
+        "firebaseconfig": "6ef5f71b.98f1b8",
+        "childpath": "values",
+        "repeatifnull": false,
+        "eventType": "value",
+        "queries": [
+            {
+                "name": "orderByValue",
+                "value": "",
+                "valType": ""
+            },
+            {
+                "name": "limitToLast",
+                "value": "40",
+                "valType": "str"
+            }
+        ],
+        "x": 300,
+        "y": 960,
+        "wires": [
+            [
+                "a1a229b7.596fd8"
+            ]
+        ]
+    },
+    {
+        "id": "bcac6a44.3114f8",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "filter",
+        "func": "const values = []\n\n\nObject.keys(msg.payload).map(key=>{\n    let currency_ob=Object.values(msg.payload[key])[0][global.get(\"selected_currency\")];\n    values.push(currency_ob);\n    })\n\nvar newMsg = { \n    values: {\n        \"value\":values,\n         \"period\": 5\n    }\n};\nreturn [newMsg];",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 450,
+        "y": 840,
+        "wires": [
+            [
+                "3bb0cd33.3e4322"
+            ]
+        ]
+    },
+    {
+        "id": "b2683fc0.32dd9",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "filter",
+        "func": "const values = []\n\n\nObject.keys(msg.payload).map(key=>{\n    let currency_ob=Object.values(msg.payload[key])[0][global.get(\"selected_currency\")];\n    values.push(currency_ob);\n    })\n\nvar newMsg = { \n    values: {\n        \"values\":values,\n        \"fastPeriod\": 5,\n    \"slowPeriod\": 8,\n    \"signalPeriod\": 3,\n    \"SimpleMAOscillator\": false,\n    \"SimpleMASignal\": false\n    }\n};\nreturn [newMsg];",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 450,
+        "y": 900,
+        "wires": [
+            [
+                "d66fdce5.7ec6f"
+            ]
+        ]
+    },
+    {
+        "id": "8de4b25c.2934d",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "filter",
+        "func": "const values = []\n\n\nObject.keys(msg.payload).map(key=>{\n    let currency_ob=Object.values(msg.payload[key])[0][global.get(\"selected_currency\")];\n    values.push(currency_ob);\n    })\n\nvar newMsg = { \n    values: {\n        \"value\":values,\n       \"period\": 4\n    }\n};\nreturn [newMsg];",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 450,
+        "y": 780,
+        "wires": [
+            [
+                "62af1c54.4ab0e4"
+            ]
+        ]
+    },
+    {
+        "id": "a1a229b7.596fd8",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "filter",
+        "func": "const values = []\n\n\nObject.keys(msg.payload).map(key=>{\n    let currency_ob=Object.values(msg.payload[key])[0][global.get(\"selected_currency\")];\n    values.push(currency_ob);\n    })\n\nvar newMsg = { \n    values: {\n    \"value\":values,\n       \"period\": 5\n    }\n};\nreturn [newMsg];",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 450,
+        "y": 960,
+        "wires": [
+            [
+                "76bb9582.c1937c"
+            ]
+        ]
+    },
+    {
+        "id": "e166a999.da1ae8",
+        "type": "e-mail",
+        "z": "8272fd45.4d821",
+        "server": "smtp.gmail.com",
+        "port": "465",
+        "secure": true,
+        "tls": true,
+        "name": "anuradha.thishani@gmail.com",
+        "dname": "Hello email",
+        "x": 1490,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "1f4ea9ff.627276",
+        "type": "inject",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "Hello World Email ",
+        "payload": "Dear All, This is a \"Hello, World\" email.",
+        "payloadType": "str",
+        "x": 1290,
+        "y": 460,
+        "wires": [
+            [
+                "e166a999.da1ae8",
+                "6f295722.932748"
+            ]
+        ]
+    },
+    {
+        "id": "6f295722.932748",
+        "type": "debug",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1470,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "54402a74.affbb4",
+        "type": "inject",
+        "z": "8272fd45.4d821",
+        "name": "1 hour Timer",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "3600",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "75",
+        "payloadType": "num",
+        "x": 140,
+        "y": 700,
+        "wires": [
+            [
+                "4928d775.aec2a8",
+                "424c2cb1.dfb404",
+                "d1b684ac.451188",
+                "b11f7780.cbcc98"
+            ]
+        ]
+    },
+    {
+        "id": "93daaf6d.dc365",
+        "type": "inject",
+        "z": "8272fd45.4d821",
+        "name": "Send Array",
+        "props": [
+            {
+                "p": "values",
+                "v": "{\"values\":[127.75,129.02,132.75,145.4,148.98,137.52,147.38,139.05,137.23,149.3,162.45,178.95,200.35,221.9,243.23,243.52,286.42,280.27],\"fastPeriod\":5,\"slowPeriod\":8,\"signalPeriod\":3,\"SimpleMAOscillator\":false,\"SimpleMASignal\":false}",
+                "vt": "json"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 140,
+        "y": 900,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "710250f8.57a25",
+        "type": "inject",
+        "z": "8272fd45.4d821",
+        "name": "Send Array",
+        "props": [
+            {
+                "p": "values",
+                "v": "{\"value\":[11045.27,11167.32,11008.61,11151.83,10926.77,10868.12,10520.32,10380.43,10785.14,10748.26,10896.91,10782.95,10620.16,10625.83,10510.95,10444.37,10068.01,10193.39,10066.57,10043.75],\"period\":5}",
+                "vt": "json"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 140,
+        "y": 840,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "57c87c5b.af45a4",
+        "type": "inject",
+        "z": "8272fd45.4d821",
+        "name": "Send Array",
+        "props": [
+            {
+                "p": "values",
+                "v": "{\"value\":[127.75,129.02,132.75,145.4,148.98,137.52,147.38,139.05,137.23,149.3,162.45,178.95,200.35,221.9,243.23,243.52,286.42,280.27],\"period\":4}",
+                "vt": "json"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 140,
+        "y": 780,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9afc634d.6f194",
+        "type": "switch",
+        "z": "8272fd45.4d821",
+        "name": "Switch actions with status",
+        "property": "payload.status",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "ceiling_crossed",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "floor_crossed",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1080,
+        "y": 700,
+        "wires": [
+            [
+                "9bb1a166.4623"
+            ],
+            [
+                "cfecccb7.71f0a"
+            ]
+        ]
+    },
+    {
+        "id": "125ddb6.9786025",
+        "type": "e-mail",
+        "z": "8272fd45.4d821",
+        "server": "smtp.gmail.com",
+        "port": "465",
+        "secure": true,
+        "tls": true,
+        "name": "kungfuts@gmail.com",
+        "dname": "Ceil mail",
+        "x": 1420,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "9bb1a166.4623",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "mail body",
+        "func": "\nreturn {\n    payload:`Dear Sir/Madame, Ceil limit is crossed in ${global.get(\"selected_currency\")}`\n    \n};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1280,
+        "y": 680,
+        "wires": [
+            [
+                "125ddb6.9786025",
+                "24a94dc.12aeab2"
+            ]
+        ]
+    },
+    {
+        "id": "b872a7e7.f84be8",
+        "type": "e-mail",
+        "z": "8272fd45.4d821",
+        "server": "smtp.gmail.com",
+        "port": "465",
+        "secure": true,
+        "tls": true,
+        "name": "kungfuts@gmail.com",
+        "dname": "Floor mail",
+        "x": 1420,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "cfecccb7.71f0a",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "mail body",
+        "func": "\nreturn {\n    payload:`Dear Sir/Madame, floor limit is crossed in ${global.get(\"selected_currency\")}`\n    \n};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1280,
+        "y": 720,
+        "wires": [
+            [
+                "b872a7e7.f84be8",
+                "61ad31a0.3149b"
+            ]
+        ]
+    },
+    {
+        "id": "24a94dc.12aeab2",
+        "type": "debug",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1450,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "61ad31a0.3149b",
+        "type": "debug",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1470,
+        "y": 840,
         "wires": []
     }
 ]
