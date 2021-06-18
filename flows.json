@@ -213,7 +213,7 @@
         "type": "ui_tab",
         "name": "Breat Britain Pound (GBP)",
         "icon": "fa-gbp",
-        "order": 3,
+        "order": 5,
         "disabled": false,
         "hidden": false
     },
@@ -231,7 +231,7 @@
         "type": "ui_tab",
         "name": "Australian Dollars (AUD)",
         "icon": "fa-usd",
-        "order": 5,
+        "order": 2,
         "disabled": false,
         "hidden": false
     },
@@ -248,21 +248,21 @@
     {
         "id": "8f4351af.98659",
         "type": "ui_group",
-        "name": "Group_01",
+        "name": "SMA_AUD",
         "tab": "acbf1a0b.827148",
         "order": 2,
         "disp": true,
-        "width": "30",
+        "width": "18",
         "collapse": false
     },
     {
         "id": "13ca4ad2.b96045",
         "type": "ui_group",
-        "name": "Group 1",
+        "name": "SMA_JPY",
         "tab": "9aca7e3a.86356",
         "order": 1,
         "disp": true,
-        "width": "30",
+        "width": "18",
         "collapse": false
     },
     {
@@ -279,87 +279,6 @@
         "type": "ui_spacer",
         "name": "spacer",
         "group": "b1d9d1fa.350a38",
-        "order": 1,
-        "width": 1,
-        "height": 1
-    },
-    {
-        "id": "8d747cd5.a08ff",
-        "type": "ui_spacer",
-        "name": "spacer",
-        "group": "8f4351af.98659",
-        "order": 2,
-        "width": 8,
-        "height": 1
-    },
-    {
-        "id": "3a3c336b.2df3ac",
-        "type": "ui_spacer",
-        "name": "spacer",
-        "group": "8f4351af.98659",
-        "order": 3,
-        "width": 8,
-        "height": 1
-    },
-    {
-        "id": "d47f42c6.9a2e6",
-        "type": "ui_spacer",
-        "name": "spacer",
-        "group": "8f4351af.98659",
-        "order": 4,
-        "width": 8,
-        "height": 1
-    },
-    {
-        "id": "1cd241e6.05bc6e",
-        "type": "ui_spacer",
-        "name": "spacer",
-        "group": "8f4351af.98659",
-        "order": 5,
-        "width": 8,
-        "height": 1
-    },
-    {
-        "id": "f1f12272.c698e",
-        "type": "ui_spacer",
-        "name": "spacer",
-        "group": "8f4351af.98659",
-        "order": 6,
-        "width": 8,
-        "height": 1
-    },
-    {
-        "id": "34417db3.908f92",
-        "type": "ui_spacer",
-        "name": "spacer",
-        "group": "8f4351af.98659",
-        "order": 7,
-        "width": 8,
-        "height": 1
-    },
-    {
-        "id": "fe193a77.53f588",
-        "type": "ui_spacer",
-        "name": "spacer",
-        "group": "8f4351af.98659",
-        "order": 8,
-        "width": 8,
-        "height": 1
-    },
-    {
-        "id": "3356dff2.eaa36",
-        "type": "ui_spacer",
-        "name": "spacer",
-        "group": "8f4351af.98659",
-        "order": 9,
-        "width": 8,
-        "height": 1
-    },
-    {
-        "id": "4d276901.84ace8",
-        "type": "ui_spacer",
-        "name": "spacer",
-        "group": "13ca4ad2.b96045",
         "order": 1,
         "width": 1,
         "height": 1
@@ -458,6 +377,164 @@
         "type": "ui_group",
         "name": "RSI_GBP",
         "tab": "b438ea9a.594368",
+        "order": 4,
+        "disp": true,
+        "width": "18",
+        "collapse": false
+    },
+    {
+        "id": "7f199c11.e99ce4",
+        "type": "ui_tab",
+        "name": "European Euro (EUR)",
+        "icon": "fa-eur",
+        "order": 3,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "746f420d.6accbc",
+        "type": "ui_group",
+        "name": "ROC_JPY",
+        "tab": "9aca7e3a.86356",
+        "order": 2,
+        "disp": true,
+        "width": "18",
+        "collapse": false
+    },
+    {
+        "id": "a3fa0c97.87ed6",
+        "type": "ui_group",
+        "name": "MACD_JPY",
+        "tab": "9aca7e3a.86356",
+        "order": 3,
+        "disp": true,
+        "width": "18",
+        "collapse": false
+    },
+    {
+        "id": "734a50b0.fb055",
+        "type": "ui_group",
+        "name": "RSI_JPY",
+        "tab": "9aca7e3a.86356",
+        "order": 4,
+        "disp": true,
+        "width": "18",
+        "collapse": false
+    },
+    {
+        "id": "49f6ac53.db1284",
+        "type": "ui_group",
+        "name": "ROC_AUD",
+        "tab": "acbf1a0b.827148",
+        "order": 2,
+        "disp": true,
+        "width": "18",
+        "collapse": false
+    },
+    {
+        "id": "9fcb5aec.ba81b8",
+        "type": "ui_group",
+        "name": "MACD_AUD",
+        "tab": "acbf1a0b.827148",
+        "order": 3,
+        "disp": true,
+        "width": "18",
+        "collapse": false
+    },
+    {
+        "id": "7e879c82.79f134",
+        "type": "ui_group",
+        "name": "RSI_AUD",
+        "tab": "acbf1a0b.827148",
+        "order": 4,
+        "disp": true,
+        "width": "18",
+        "collapse": false
+    },
+    {
+        "id": "f87583e3.28fb6",
+        "type": "ui_group",
+        "name": "SMA_EUR",
+        "tab": "7f199c11.e99ce4",
+        "order": 1,
+        "disp": true,
+        "width": "18",
+        "collapse": false
+    },
+    {
+        "id": "30ce8b62.807724",
+        "type": "ui_group",
+        "name": "ROC_EUR",
+        "tab": "7f199c11.e99ce4",
+        "order": 2,
+        "disp": true,
+        "width": "18",
+        "collapse": false
+    },
+    {
+        "id": "202493d2.1fd96c",
+        "type": "ui_group",
+        "name": "MACD_EUR",
+        "tab": "7f199c11.e99ce4",
+        "order": 3,
+        "disp": true,
+        "width": "18",
+        "collapse": false
+    },
+    {
+        "id": "94d5d7da.5ea488",
+        "type": "ui_group",
+        "name": "RSI_EUR",
+        "tab": "7f199c11.e99ce4",
+        "order": 4,
+        "disp": true,
+        "width": "18",
+        "collapse": false
+    },
+    {
+        "id": "cf87323.4d31cd",
+        "type": "ui_tab",
+        "name": "Kuwaiti Dinar (KWD)",
+        "icon": "fa-usd",
+        "order": 6,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "bbbb092.d70abf8",
+        "type": "ui_group",
+        "name": "SMA_KWD",
+        "tab": "cf87323.4d31cd",
+        "order": 1,
+        "disp": true,
+        "width": "18",
+        "collapse": false
+    },
+    {
+        "id": "e9a7d04f.da92b",
+        "type": "ui_group",
+        "name": "ROC_KWD",
+        "tab": "cf87323.4d31cd",
+        "order": 2,
+        "disp": true,
+        "width": "18",
+        "collapse": false
+    },
+    {
+        "id": "65932f0f.b8ea9",
+        "type": "ui_group",
+        "name": "MACD_KWD",
+        "tab": "cf87323.4d31cd",
+        "order": 3,
+        "disp": true,
+        "width": "18",
+        "collapse": false
+    },
+    {
+        "id": "73a0efff.b50c8",
+        "type": "ui_group",
+        "name": "RSI_KWD",
+        "tab": "cf87323.4d31cd",
         "order": 4,
         "disp": true,
         "width": "18",
@@ -673,23 +750,6 @@
         ]
     },
     {
-        "id": "e947f495.e22668",
-        "type": "debug",
-        "z": "2ad522d6.3d80ce",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 930,
-        "y": 60,
-        "wires": []
-    },
-    {
         "id": "a2c60656.85d268",
         "type": "function",
         "z": "2ad522d6.3d80ce",
@@ -720,9 +780,7 @@
         "x": 720,
         "y": 60,
         "wires": [
-            [
-                "e947f495.e22668"
-            ]
+            []
         ]
     },
     {
@@ -752,8 +810,8 @@
         "repeatifnull": false,
         "eventType": "value",
         "queries": [],
-        "x": 450,
-        "y": 460,
+        "x": 460,
+        "y": 300,
         "wires": [
             [
                 "ffddca73.d1678"
@@ -781,8 +839,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 230,
-        "y": 460,
+        "x": 240,
+        "y": 300,
         "wires": [
             [
                 "81ec3326.0bd8e8"
@@ -801,8 +859,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1020,
-        "y": 460,
+        "x": 1030,
+        "y": 300,
         "wires": []
     },
     {
@@ -815,8 +873,8 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 670,
-        "y": 460,
+        "x": 680,
+        "y": 300,
         "wires": [
             [
                 "9b5b3bbb.e2d9"
@@ -833,8 +891,8 @@
         "repeatifnull": false,
         "eventType": "value",
         "queries": [],
-        "x": 640,
-        "y": 540,
+        "x": 650,
+        "y": 380,
         "wires": [
             [
                 "c90823.4e389fe"
@@ -862,8 +920,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 270,
-        "y": 540,
+        "x": 280,
+        "y": 380,
         "wires": [
             [
                 "98dfe73.3b25298"
@@ -882,8 +940,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1020,
-        "y": 540,
+        "x": 1030,
+        "y": 380,
         "wires": []
     },
     {
@@ -903,8 +961,8 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 270,
-        "y": 700,
+        "x": 280,
+        "y": 540,
         "wires": [
             [
                 "c34533df.488658"
@@ -924,8 +982,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1010,
-        "y": 700,
+        "x": 1020,
+        "y": 540,
         "wires": []
     },
     {
@@ -938,8 +996,8 @@
         "repeatifnull": false,
         "eventType": "value",
         "queries": [],
-        "x": 620,
-        "y": 620,
+        "x": 630,
+        "y": 460,
         "wires": [
             [
                 "25f02bcf.44f5c4"
@@ -967,8 +1025,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 250,
-        "y": 620,
+        "x": 260,
+        "y": 460,
         "wires": [
             [
                 "8603f53.8567b88"
@@ -987,8 +1045,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1020,
-        "y": 620,
+        "x": 1030,
+        "y": 460,
         "wires": []
     },
     {
@@ -1001,8 +1059,8 @@
         "repeatifnull": false,
         "eventType": "value",
         "queries": [],
-        "x": 600,
-        "y": 700,
+        "x": 610,
+        "y": 540,
         "wires": [
             [
                 "8e740a58.c2bd88"
@@ -1019,8 +1077,8 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 800,
-        "y": 700,
+        "x": 810,
+        "y": 540,
         "wires": [
             [
                 "45fe98ed.964918"
@@ -1086,49 +1144,6 @@
         "x": 910,
         "y": 460,
         "wires": []
-    },
-    {
-        "id": "5ecc8d77.851124",
-        "type": "firebase.on",
-        "z": "4d83ec58.e26e84",
-        "name": "fetch selected currency in init and save it globaly",
-        "firebaseconfig": "6ef5f71b.98f1b8",
-        "childpath": "selected_currency",
-        "atStart": true,
-        "eventType": "value",
-        "queries": [],
-        "x": 320,
-        "y": 40,
-        "wires": [
-            [
-                "4525f06f.c4f87"
-            ]
-        ]
-    },
-    {
-        "id": "4525f06f.c4f87",
-        "type": "change",
-        "z": "4d83ec58.e26e84",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "selected_currency",
-                "pt": "global",
-                "to": "payload",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 660,
-        "y": 40,
-        "wires": [
-            []
-        ]
     },
     {
         "id": "b957780.deff688",
@@ -1413,8 +1428,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 250,
-        "y": 780,
+        "x": 260,
+        "y": 620,
         "wires": [
             [
                 "a2d3233a.96fd4"
@@ -1431,8 +1446,8 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 430,
-        "y": 780,
+        "x": 440,
+        "y": 620,
         "wires": [
             [
                 "e0c16b3b.e49258"
@@ -1449,8 +1464,8 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 840,
-        "y": 780,
+        "x": 850,
+        "y": 620,
         "wires": [
             [
                 "e2529988.3231c8"
@@ -1466,8 +1481,8 @@
         "base": "",
         "symbols": "",
         "creds": "ec9f480b.2b6f68",
-        "x": 640,
-        "y": 780,
+        "x": 650,
+        "y": 620,
         "wires": [
             [
                 "dff0df42.44ea9",
@@ -1485,94 +1500,8 @@
         "method": "push",
         "value": "msg.payload",
         "priority": "msg.priority",
-        "x": 1150,
-        "y": 1040,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "d9507d77.0f38d",
-        "type": "firebase.on",
-        "z": "4d83ec58.e26e84",
-        "name": "fetch ceil in init and save it globaly",
-        "firebaseconfig": "6ef5f71b.98f1b8",
-        "childpath": "ceil",
-        "atStart": true,
-        "eventType": "value",
-        "queries": [],
-        "x": 280,
-        "y": 100,
-        "wires": [
-            [
-                "a370db36.012b58"
-            ]
-        ]
-    },
-    {
-        "id": "a370db36.012b58",
-        "type": "change",
-        "z": "4d83ec58.e26e84",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "ceil",
-                "pt": "global",
-                "to": "payload",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 620,
-        "y": 100,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "57a1945b.aa7cac",
-        "type": "firebase.on",
-        "z": "4d83ec58.e26e84",
-        "name": "fetch floor in init and save it globaly",
-        "firebaseconfig": "6ef5f71b.98f1b8",
-        "childpath": "floor",
-        "atStart": true,
-        "eventType": "value",
-        "queries": [],
-        "x": 280,
-        "y": 160,
-        "wires": [
-            [
-                "de164255.b0d84"
-            ]
-        ]
-    },
-    {
-        "id": "de164255.b0d84",
-        "type": "change",
-        "z": "4d83ec58.e26e84",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "floor",
-                "pt": "global",
-                "to": "payload",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 620,
-        "y": 160,
+        "x": 1070,
+        "y": 620,
         "wires": [
             []
         ]
@@ -1587,8 +1516,8 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 930,
-        "y": 960,
+        "x": 940,
+        "y": 800,
         "wires": [
             [
                 "ffb98f8a.985",
@@ -1606,8 +1535,8 @@
         "method": "set",
         "value": "msg.payload",
         "priority": "msg.priority",
-        "x": 1010,
-        "y": 220,
+        "x": 1020,
+        "y": 60,
         "wires": [
             []
         ]
@@ -1633,8 +1562,8 @@
         "topic": "",
         "payload": "USD",
         "payloadType": "str",
-        "x": 270,
-        "y": 220,
+        "x": 280,
+        "y": 60,
         "wires": [
             [
                 "8cbcc465.7ad078"
@@ -1651,8 +1580,8 @@
         "method": "set",
         "value": "msg.payload",
         "priority": "msg.priority",
-        "x": 1010,
-        "y": 300,
+        "x": 1020,
+        "y": 140,
         "wires": [
             []
         ]
@@ -1678,8 +1607,8 @@
         "topic": "",
         "payload": "5",
         "payloadType": "num",
-        "x": 230,
-        "y": 300,
+        "x": 240,
+        "y": 140,
         "wires": [
             [
                 "27290d4a.21b602"
@@ -1696,8 +1625,8 @@
         "method": "set",
         "value": "msg.payload",
         "priority": "msg.priority",
-        "x": 1010,
-        "y": 380,
+        "x": 1020,
+        "y": 220,
         "wires": [
             []
         ]
@@ -1723,8 +1652,8 @@
         "topic": "",
         "payload": "5",
         "payloadType": "num",
-        "x": 230,
-        "y": 380,
+        "x": 240,
+        "y": 220,
         "wires": [
             [
                 "7518841f.0e3c7c"
@@ -1744,8 +1673,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1210,
-        "y": 960,
+        "x": 1090,
+        "y": 880,
         "wires": []
     },
     {
@@ -1769,8 +1698,8 @@
                 "valType": "str"
             }
         ],
-        "x": 890,
-        "y": 860,
+        "x": 900,
+        "y": 700,
         "wires": [
             [
                 "950f9e51.ad732"
@@ -1897,8 +1826,8 @@
                 "valid": true
             }
         ],
-        "x": 230,
-        "y": 860,
+        "x": 240,
+        "y": 700,
         "wires": [
             [
                 "a2d3233a.96fd4"
@@ -1926,8 +1855,8 @@
         "topic": "",
         "payload": "{\"USD\":[198.05,198.49,199.78,198.05,198.57,198.93,198.13,197.19,198.52,197.43,197.3,198.46,199.25,197.41,199.27,199.14,199.7,199.36,198.44,198.2,198.49,197.18,199.46,198.19,199.6,198.47,197.96,199.85,198.3,199.17],\"JYP\":[1.8,1.77,1.8,1.77,1.77,1.79,1.79,1.81,1.79,1.8,1.79,1.81,1.81,1.8,1.82,1.78,1.8,1.8,1.79,1.8,1.81,1.78,1.78,1.79,1.8,1.81,1.79,1.8,1.82,1.81],\"EUR\":[238.27,239.72,239.47,242.28,236.03,235.16,240.2,239.92,241.46,238.91,240.87,237.94,242.98,239.2,240.28,238.48,236.34,237.55,237.06,238.59,235.14,238.4,237.64,240.18,239.66,236.69,242.28,235.07,241.14,237.81],\"AUD\":[153.36,153.62,153.11,152.73,152.17,154.26,150.96,150.07,152.41,152.09,153.71,151.36,150.08,154.13,150.24,150.67,152.71,154.12,151.16,151.3,151.53,150.7,154.42,154.79,151,154.83,153.66,151.98,151.92,150.66],\"KWD\":[656.35,659.39,657.09,655.26,656.47,657.58,655.77,654.36,659.6,657.59,658.24,658.41,655,658.28,659.41,658.59,656.84,659.12,659.33,656.17,654.45,654.45,656.83,654.83,655.65,659.65,658.7,654.71,659.54,658.38],\"GBP\":[281.41,278.46,278.7,281.36,277.73,276.23,282.15,278.14,278.93,280.43,282.34,282.04,276.65,281.72,282.59,281.4,276.42,276.96,280.09,278.19,279.96,276.24,278.84,279.65,282.16,282.96,276.06,276.4,278.5,282.44]}",
         "payloadType": "json",
-        "x": 230,
-        "y": 1140,
+        "x": 290,
+        "y": 880,
         "wires": [
             [
                 "f61afb9.5ea0808",
@@ -1945,8 +1874,8 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 500,
-        "y": 1140,
+        "x": 560,
+        "y": 880,
         "wires": [
             [
                 "d5505067.66613",
@@ -1964,8 +1893,8 @@
         "method": "push",
         "value": "msg.payload",
         "priority": "msg.priority",
-        "x": 850,
-        "y": 1180,
+        "x": 910,
+        "y": 920,
         "wires": [
             []
         ]
@@ -1983,8 +1912,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 710,
-        "y": 1140,
+        "x": 770,
+        "y": 880,
         "wires": []
     },
     {
@@ -2006,8 +1935,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1060,
-        "y": 1280,
+        "x": 1080,
+        "y": 1020,
         "wires": [
             []
         ]
@@ -2022,8 +1951,8 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 500,
-        "y": 1180,
+        "x": 560,
+        "y": 920,
         "wires": [
             [
                 "c239dd8c.4da3e",
@@ -2052,8 +1981,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 200,
-        "y": 1260,
+        "x": 260,
+        "y": 1000,
         "wires": [
             [
                 "b4305e4.25c24a"
@@ -2079,8 +2008,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 440,
-        "y": 1260,
+        "x": 500,
+        "y": 1000,
         "wires": [
             []
         ]
@@ -2097,8 +2026,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 950,
-        "y": 1220,
+        "x": 1010,
+        "y": 960,
         "wires": []
     },
     {
@@ -2107,8 +2036,8 @@
         "z": "4d83ec58.e26e84",
         "name": "## This is just dummy nodes",
         "info": "## This is just dummy nodes",
-        "x": 240,
-        "y": 1080,
+        "x": 300,
+        "y": 820,
         "wires": []
     },
     {
@@ -2124,43 +2053,9 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 570,
-        "y": 940,
+        "x": 580,
+        "y": 780,
         "wires": []
-    },
-    {
-        "id": "55328b6f.edfac4",
-        "type": "inject",
-        "z": "ae1d0766.e75b68",
-        "name": "1 minute Timer",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "60",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "75",
-        "payloadType": "num",
-        "x": 180,
-        "y": 1020,
-        "wires": [
-            [
-                "4fb3f35d.ac78cc",
-                "ef009de9.21fcb",
-                "b52e5763.edae68",
-                "f0774816.873978",
-                "ebffa6a8.8a84c8",
-                "829f91b1.e04c7"
-            ]
-        ]
     },
     {
         "id": "b4ff1e9d.3edae",
@@ -2172,12 +2067,10 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 640,
-        "y": 1020,
+        "x": 880,
+        "y": 280,
         "wires": [
-            [
-                "a357f6f8.dd7db8"
-            ]
+            []
         ]
     },
     {
@@ -2201,8 +2094,8 @@
         "topic": "",
         "payload": "75",
         "payloadType": "num",
-        "x": 1540,
-        "y": 80,
+        "x": 680,
+        "y": 40,
         "wires": [
             []
         ]
@@ -2217,8 +2110,8 @@
         "tls": true,
         "name": "anuradha.thishani@gmail.com",
         "dname": "Hello email",
-        "x": 350,
-        "y": 320,
+        "x": 330,
+        "y": 420,
         "wires": []
     },
     {
@@ -2242,8 +2135,8 @@
         "topic": "Hello World Email ",
         "payload": "Dear All, This is a \"Hello, World\" email.",
         "payloadType": "str",
-        "x": 150,
-        "y": 300,
+        "x": 130,
+        "y": 400,
         "wires": [
             [
                 "a64ddbff.9c68c8",
@@ -2264,8 +2157,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1170,
-        "y": 40,
+        "x": 470,
+        "y": 100,
         "wires": []
     },
     {
@@ -2278,12 +2171,10 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 290,
-        "y": 80,
+        "x": 150,
+        "y": 40,
         "wires": [
-            [
-                "c05a9418.7d20c8"
-            ]
+            []
         ]
     },
     {
@@ -2296,8 +2187,8 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 790,
-        "y": 80,
+        "x": 190,
+        "y": 200,
         "wires": [
             [
                 "6918d921.b76bb8"
@@ -2341,8 +2232,8 @@
         "topic": "LKR",
         "payload": "1",
         "payloadType": "num",
-        "x": 1540,
-        "y": 160,
+        "x": 680,
+        "y": 120,
         "wires": [
             []
         ]
@@ -2357,38 +2248,9 @@
         "tls": true,
         "name": "anuradha.thishani@gmail.com",
         "dname": "Hello email",
-        "x": 1530,
-        "y": 240,
+        "x": 670,
+        "y": 200,
         "wires": []
-    },
-    {
-        "id": "3c13ebc6.5b2814",
-        "type": "inject",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 120,
-        "y": 80,
-        "wires": [
-            [
-                "efc5c7b2.40ad78"
-            ]
-        ]
     },
     {
         "id": "42a4dba6.4e5a64",
@@ -2403,8 +2265,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1170,
-        "y": 80,
+        "x": 470,
+        "y": 140,
         "wires": []
     },
     {
@@ -2420,8 +2282,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1170,
-        "y": 120,
+        "x": 470,
+        "y": 180,
         "wires": []
     },
     {
@@ -2437,8 +2299,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1170,
-        "y": 160,
+        "x": 470,
+        "y": 220,
         "wires": []
     },
     {
@@ -2454,8 +2316,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1170,
-        "y": 200,
+        "x": 470,
+        "y": 260,
         "wires": []
     },
     {
@@ -2471,112 +2333,9 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1170,
-        "y": 240,
+        "x": 470,
+        "y": 300,
         "wires": []
-    },
-    {
-        "id": "c05a9418.7d20c8",
-        "type": "exchangeratesapi",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "url": "latest",
-        "base": "",
-        "symbols": "KRW",
-        "creds": "3a4aeaa5.e720d6",
-        "x": 500,
-        "y": 80,
-        "wires": [
-            [
-                "220eef4a.85562"
-            ]
-        ]
-    },
-    {
-        "id": "1e8b51f4.8e39fe",
-        "type": "ui_chart",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "group": "8f4351af.98659",
-        "order": 1,
-        "width": 22,
-        "height": 8,
-        "label": "USD_KWD_GBP",
-        "chartType": "line",
-        "legend": "true",
-        "xformat": "HH:mm:ss",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": true,
-        "ymin": "",
-        "ymax": "",
-        "removeOlder": "10",
-        "removeOlderPoints": "720",
-        "removeOlderUnit": "86400",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "x": 1810,
-        "y": 140,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "92f97e98.beaeb",
-        "type": "ui_chart",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "group": "13ca4ad2.b96045",
-        "order": 3,
-        "width": 0,
-        "height": 0,
-        "label": "GBP",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "HH:mm:ss",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "",
-        "ymax": "",
-        "removeOlder": 1,
-        "removeOlderPoints": "",
-        "removeOlderUnit": "3600",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "x": 1770,
-        "y": 100,
-        "wires": [
-            []
-        ]
     },
     {
         "id": "dabc34a6.2f0098",
@@ -2591,8 +2350,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 340,
-        "y": 260,
+        "x": 320,
+        "y": 360,
         "wires": []
     },
     {
@@ -2605,12 +2364,10 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 620,
-        "y": 1080,
+        "x": 860,
+        "y": 340,
         "wires": [
-            [
-                "a357f6f8.dd7db8"
-            ]
+            []
         ]
     },
     {
@@ -2623,12 +2380,10 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 620,
-        "y": 1140,
+        "x": 860,
+        "y": 400,
         "wires": [
-            [
-                "a357f6f8.dd7db8"
-            ]
+            []
         ]
     },
     {
@@ -2641,12 +2396,10 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 600,
-        "y": 1200,
+        "x": 840,
+        "y": 460,
         "wires": [
-            [
-                "a357f6f8.dd7db8"
-            ]
+            []
         ]
     },
     {
@@ -2659,12 +2412,10 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 580,
-        "y": 1260,
+        "x": 820,
+        "y": 520,
         "wires": [
-            [
-                "a357f6f8.dd7db8"
-            ]
+            []
         ]
     },
     {
@@ -2677,26 +2428,11 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 580,
-        "y": 1320,
+        "x": 820,
+        "y": 580,
         "wires": [
-            [
-                "a357f6f8.dd7db8"
-            ]
+            []
         ]
-    },
-    {
-        "id": "f219c43d.367318",
-        "type": "mqtt out",
-        "z": "ae1d0766.e75b68",
-        "name": "IOT_6B/G05/UserNeeds",
-        "topic": "IOT_6B/G05/UserNeeds",
-        "qos": "2",
-        "retain": "true",
-        "broker": "27cb39de.f814e6",
-        "x": 1430,
-        "y": 720,
-        "wires": []
     },
     {
         "id": "f4d065aa.99dee8",
@@ -2707,7 +2443,7 @@
         "qos": "2",
         "datatype": "auto",
         "broker": "27cb39de.f814e6",
-        "x": 1430,
+        "x": 150,
         "y": 480,
         "wires": [
             [
@@ -2724,7 +2460,7 @@
         "qos": "2",
         "datatype": "auto",
         "broker": "27cb39de.f814e6",
-        "x": 1450,
+        "x": 170,
         "y": 540,
         "wires": [
             []
@@ -2739,7 +2475,7 @@
         "qos": "2",
         "datatype": "auto",
         "broker": "27cb39de.f814e6",
-        "x": 1430,
+        "x": 150,
         "y": 600,
         "wires": [
             []
@@ -2754,8 +2490,8 @@
         "qos": "2",
         "retain": "true",
         "broker": "27cb39de.f814e6",
-        "x": 1670,
-        "y": 800,
+        "x": 410,
+        "y": 740,
         "wires": []
     },
     {
@@ -2767,8 +2503,8 @@
         "qos": "2",
         "retain": "true",
         "broker": "27cb39de.f814e6",
-        "x": 1440,
-        "y": 860,
+        "x": 140,
+        "y": 800,
         "wires": []
     },
     {
@@ -2792,8 +2528,8 @@
         "topic": "",
         "payload": "Harindu Ravin Jayaratne",
         "payloadType": "str",
-        "x": 1430,
-        "y": 800,
+        "x": 170,
+        "y": 740,
         "wires": [
             [
                 "84c68d6f.65677"
@@ -2805,32 +2541,16 @@
         "type": "function",
         "z": "ae1d0766.e75b68",
         "name": "",
-        "func": "var inputString = msg.Payload;\nvar inputData = [];\n\nvar i;\nfor (i = 0; i < inputString.length; i++) {\n  inputData.push(inputString[i]);\n}\nreturn inputData;",
+        "func": "var inputString = msg.payload;\nvar inputData = inputString.split(\"$\");\n//timestamp$user_email$currency$ceil_percentage$floor_percentage\n\nconst data = {\n    timestamp:inputData[0],\n    user_email:inputData[1],\n    currency:inputData[2],\n    ceil_percentage:parseInt(inputData[3]),\n    floor_percentage:parseInt(inputData[4]),\n}\nreturn{ payload:data};",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 1680,
+        "x": 400,
         "y": 480,
         "wires": [
             []
         ]
-    },
-    {
-        "id": "a357f6f8.dd7db8",
-        "type": "debug",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 850,
-        "y": 1080,
-        "wires": []
     },
     {
         "id": "ae61de6.c90212",
@@ -2841,7 +2561,7 @@
         "qos": "2",
         "datatype": "auto",
         "broker": "27cb39de.f814e6",
-        "x": 1420,
+        "x": 140,
         "y": 660,
         "wires": [
             []
@@ -2856,8 +2576,8 @@
         "qos": "2",
         "retain": "true",
         "broker": "27cb39de.f814e6",
-        "x": 1440,
-        "y": 940,
+        "x": 140,
+        "y": 880,
         "wires": []
     },
     {
@@ -2878,8 +2598,8 @@
         "tstart_night": "0",
         "tend_night": "7",
         "layout": "row-spread",
-        "x": 450,
-        "y": 1020,
+        "x": 690,
+        "y": 280,
         "wires": [
             [
                 "b4ff1e9d.3edae"
@@ -2904,8 +2624,8 @@
         "tstart_night": "0",
         "tend_night": "7",
         "layout": "row-spread",
-        "x": 420,
-        "y": 1200,
+        "x": 660,
+        "y": 460,
         "wires": [
             [
                 "8ade8622.717038"
@@ -2930,8 +2650,8 @@
         "tstart_night": "0",
         "tend_night": "7",
         "layout": "row-spread",
-        "x": 420,
-        "y": 1260,
+        "x": 660,
+        "y": 520,
         "wires": [
             [
                 "3f0312f5.4ebe8e"
@@ -2956,8 +2676,8 @@
         "tstart_night": "0",
         "tend_night": "7",
         "layout": "row-spread",
-        "x": 420,
-        "y": 1080,
+        "x": 660,
+        "y": 340,
         "wires": [
             [
                 "55bbbae5.2acb04"
@@ -2982,8 +2702,8 @@
         "tstart_night": "0",
         "tend_night": "7",
         "layout": "row-spread",
-        "x": 420,
-        "y": 1140,
+        "x": 660,
+        "y": 400,
         "wires": [
             [
                 "cf9b5681.69a348"
@@ -3008,8 +2728,8 @@
         "tstart_night": "0",
         "tend_night": "7",
         "layout": "row-spread",
-        "x": 420,
-        "y": 1320,
+        "x": 660,
+        "y": 580,
         "wires": [
             [
                 "d38ee6cc.d2c308"
@@ -3358,16 +3078,6 @@
         ]
     },
     {
-        "id": "3cd62ee1.1f7802",
-        "type": "comment",
-        "z": "8272fd45.4d821",
-        "name": "Simulate rapid fluctuation ",
-        "info": "## This is just dummy nodes",
-        "x": 150,
-        "y": 460,
-        "wires": []
-    },
-    {
         "id": "e6f874b3.94b6b8",
         "type": "gaussian",
         "z": "8272fd45.4d821",
@@ -3422,8 +3132,8 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 730,
-        "y": 1180,
+        "x": 1290,
+        "y": 1200,
         "wires": [
             [
                 "be3ba054.0850a"
@@ -3440,8 +3150,8 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 710,
-        "y": 1240,
+        "x": 1270,
+        "y": 1260,
         "wires": [
             [
                 "dcc5f8a1.6bbc18"
@@ -3458,8 +3168,8 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 720,
-        "y": 1360,
+        "x": 1280,
+        "y": 1380,
         "wires": [
             [
                 "aac9b509.724e78"
@@ -3476,8 +3186,8 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 960,
-        "y": 1240,
+        "x": 1520,
+        "y": 1260,
         "wires": [
             [
                 "9037750e.abaf38"
@@ -3494,8 +3204,8 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 960,
-        "y": 1180,
+        "x": 1520,
+        "y": 1200,
         "wires": [
             [
                 "eb0529f5.834d38"
@@ -3512,8 +3222,8 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 960,
-        "y": 1360,
+        "x": 1520,
+        "y": 1380,
         "wires": [
             [
                 "4346724f.9bf44c"
@@ -3526,38 +3236,9 @@
         "z": "8272fd45.4d821",
         "name": "CHART - USD",
         "info": "## This is just dummy nodes",
-        "x": 110,
-        "y": 1140,
+        "x": 1890,
+        "y": 1280,
         "wires": []
-    },
-    {
-        "id": "d1b684ac.451188",
-        "type": "firebase.once",
-        "z": "8272fd45.4d821",
-        "name": "get values",
-        "firebaseconfig": "6ef5f71b.98f1b8",
-        "childpath": "values",
-        "repeatifnull": false,
-        "eventType": "value",
-        "queries": [
-            {
-                "name": "orderByValue",
-                "value": "",
-                "valType": ""
-            },
-            {
-                "name": "limitToLast",
-                "value": "40",
-                "valType": "str"
-            }
-        ],
-        "x": 360,
-        "y": 1240,
-        "wires": [
-            [
-                "bcac6a44.3114f8"
-            ]
-        ]
     },
     {
         "id": "b11f7780.cbcc98",
@@ -3581,39 +3262,33 @@
             }
         ],
         "x": 360,
-        "y": 1180,
+        "y": 2080,
         "wires": [
             [
-                "8de4b25c.2934d"
-            ]
-        ]
-    },
-    {
-        "id": "4928d775.aec2a8",
-        "type": "firebase.once",
-        "z": "8272fd45.4d821",
-        "name": "get values",
-        "firebaseconfig": "6ef5f71b.98f1b8",
-        "childpath": "values",
-        "repeatifnull": false,
-        "eventType": "value",
-        "queries": [
-            {
-                "name": "orderByValue",
-                "value": "",
-                "valType": ""
-            },
-            {
-                "name": "limitToLast",
-                "value": "40",
-                "valType": "str"
-            }
-        ],
-        "x": 360,
-        "y": 1360,
-        "wires": [
-            [
-                "a1a229b7.596fd8"
+                "8de4b25c.2934d",
+                "bcac6a44.3114f8",
+                "8b547eb5.98e5e",
+                "a1a229b7.596fd8",
+                "e2ea5698.e573c8",
+                "d2edb4ba.d9b8b8",
+                "5a7ea818.0798f8",
+                "64a34aa9.e4be14",
+                "a7a2c085.85e53",
+                "6624e17e.92de",
+                "3d5195e7.03a2fa",
+                "45935f08.e4a8d",
+                "a35f22a9.ab32b",
+                "26cdcd15.68c9b2",
+                "4ca47a1d.4970e4",
+                "1da1dd31.493ef3",
+                "60f948e5.fa8dd8",
+                "bd14f107.b1592",
+                "2b4133cc.00fd9c",
+                "4d309b3.78ea664",
+                "48887156.468c7",
+                "647cc880.aa2a58",
+                "32bd374f.5e7538",
+                "abe4570e.760d08"
             ]
         ]
     },
@@ -3627,8 +3302,8 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 510,
-        "y": 1240,
+        "x": 1070,
+        "y": 1260,
         "wires": [
             [
                 "3bb0cd33.3e4322"
@@ -3645,8 +3320,8 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 510,
-        "y": 1180,
+        "x": 1070,
+        "y": 1200,
         "wires": [
             [
                 "62af1c54.4ab0e4"
@@ -3663,8 +3338,8 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 510,
-        "y": 1360,
+        "x": 1070,
+        "y": 1380,
         "wires": [
             [
                 "76bb9582.c1937c"
@@ -3692,14 +3367,11 @@
         "topic": "",
         "payload": "75",
         "payloadType": "num",
-        "x": 140,
-        "y": 1260,
+        "x": 160,
+        "y": 2080,
         "wires": [
             [
-                "4928d775.aec2a8",
-                "d1b684ac.451188",
-                "b11f7780.cbcc98",
-                "1eba6a73.ac85e6"
+                "b11f7780.cbcc98"
             ]
         ]
     },
@@ -3757,7 +3429,7 @@
         "type": "function",
         "z": "8272fd45.4d821",
         "name": "mail body",
-        "func": "\nreturn {\n    payload:`Dear Sir/Madame, Ceil limit is crossed in ${global.get(\"selected_currency\")}`\n    \n};",
+        "func": "\nreturn {\n    payload:`Dear Sir/Madame, Ceil limit is crossed.Current value of  in ${global.get(\"selected_currency\")} is ${global.get(\"current_currencies\")[global.get(\"selected_currency\")]} LKR`,\n    //to:global.get(\"current_user\")\n    topic:\"Ceil Crossed\"\n    \n};",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -3789,7 +3461,7 @@
         "type": "function",
         "z": "8272fd45.4d821",
         "name": "mail body",
-        "func": "\nreturn {\n    payload:`Dear Sir/Madame, floor limit is crossed in ${global.get(\"selected_currency\")}`\n    \n};",
+        "func": "\nreturn {\n payload:`Dear Sir/Madame, floor limit is crossed.Current value of  in ${global.get(\"selected_currency\")} is ${global.get(\"current_currencies\")[global.get(\"selected_currency\")]} LKR`,\n    //to:global.get(\"current_user\")\n    topic:\"Floor Crossed\"\n};",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -3849,8 +3521,8 @@
         ],
         "outputs": 1,
         "useDifferentColor": false,
-        "x": 1150,
-        "y": 1180,
+        "x": 1710,
+        "y": 1200,
         "wires": [
             []
         ]
@@ -3892,8 +3564,8 @@
         ],
         "outputs": 1,
         "useDifferentColor": false,
-        "x": 1150,
-        "y": 1240,
+        "x": 1710,
+        "y": 1260,
         "wires": [
             []
         ]
@@ -3935,8 +3607,8 @@
         ],
         "outputs": 1,
         "useDifferentColor": false,
-        "x": 1140,
-        "y": 1360,
+        "x": 1700,
+        "y": 1380,
         "wires": [
             []
         ]
@@ -3985,40 +3657,11 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 510,
-        "y": 1300,
+        "x": 1070,
+        "y": 1320,
         "wires": [
             [
                 "484123bc.16b9ec"
-            ]
-        ]
-    },
-    {
-        "id": "1eba6a73.ac85e6",
-        "type": "firebase.once",
-        "z": "8272fd45.4d821",
-        "name": "get values",
-        "firebaseconfig": "6ef5f71b.98f1b8",
-        "childpath": "values",
-        "repeatifnull": false,
-        "eventType": "value",
-        "queries": [
-            {
-                "name": "orderByValue",
-                "value": "",
-                "valType": ""
-            },
-            {
-                "name": "limitToLast",
-                "value": "40",
-                "valType": "str"
-            }
-        ],
-        "x": 360,
-        "y": 1300,
-        "wires": [
-            [
-                "8b547eb5.98e5e"
             ]
         ]
     },
@@ -4032,8 +3675,8 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 650,
-        "y": 1300,
+        "x": 1210,
+        "y": 1320,
         "wires": [
             [
                 "337d10a7.b966c"
@@ -4050,8 +3693,8 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 960,
-        "y": 1300,
+        "x": 1520,
+        "y": 1320,
         "wires": [
             [
                 "fb0fb2f3.11692"
@@ -4095,8 +3738,8 @@
         ],
         "outputs": 1,
         "useDifferentColor": false,
-        "x": 1150,
-        "y": 1300,
+        "x": 1710,
+        "y": 1320,
         "wires": [
             []
         ]
@@ -4111,8 +3754,8 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 730,
-        "y": 1560,
+        "x": 1290,
+        "y": 1460,
         "wires": [
             [
                 "521bf29e.359c1c"
@@ -4129,8 +3772,8 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 710,
-        "y": 1620,
+        "x": 1270,
+        "y": 1520,
         "wires": [
             [
                 "94ea65cd.1e4958"
@@ -4147,8 +3790,8 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 720,
-        "y": 1740,
+        "x": 1280,
+        "y": 1640,
         "wires": [
             [
                 "af9a00d3.284fd"
@@ -4165,8 +3808,8 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 960,
-        "y": 1620,
+        "x": 1520,
+        "y": 1520,
         "wires": [
             [
                 "367ad6e3.af410a"
@@ -4183,8 +3826,8 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 960,
-        "y": 1560,
+        "x": 1520,
+        "y": 1460,
         "wires": [
             [
                 "bc1e0247.9a3de"
@@ -4201,8 +3844,8 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 960,
-        "y": 1740,
+        "x": 1520,
+        "y": 1640,
         "wires": [
             [
                 "67b55ddc.3be324"
@@ -4215,96 +3858,9 @@
         "z": "8272fd45.4d821",
         "name": "CHART - GBP",
         "info": "## This is just dummy nodes",
-        "x": 110,
-        "y": 1520,
+        "x": 1890,
+        "y": 1540,
         "wires": []
-    },
-    {
-        "id": "ae7aa6ba.dd2a98",
-        "type": "firebase.once",
-        "z": "8272fd45.4d821",
-        "name": "get values",
-        "firebaseconfig": "6ef5f71b.98f1b8",
-        "childpath": "values",
-        "repeatifnull": false,
-        "eventType": "value",
-        "queries": [
-            {
-                "name": "orderByValue",
-                "value": "",
-                "valType": ""
-            },
-            {
-                "name": "limitToLast",
-                "value": "40",
-                "valType": "str"
-            }
-        ],
-        "x": 360,
-        "y": 1620,
-        "wires": [
-            [
-                "d2edb4ba.d9b8b8"
-            ]
-        ]
-    },
-    {
-        "id": "f3d83a02.1bf938",
-        "type": "firebase.once",
-        "z": "8272fd45.4d821",
-        "name": "get values",
-        "firebaseconfig": "6ef5f71b.98f1b8",
-        "childpath": "values",
-        "repeatifnull": false,
-        "eventType": "value",
-        "queries": [
-            {
-                "name": "orderByValue",
-                "value": "",
-                "valType": ""
-            },
-            {
-                "name": "limitToLast",
-                "value": "40",
-                "valType": "str"
-            }
-        ],
-        "x": 360,
-        "y": 1560,
-        "wires": [
-            [
-                "e2ea5698.e573c8"
-            ]
-        ]
-    },
-    {
-        "id": "7c639a44.05ec84",
-        "type": "firebase.once",
-        "z": "8272fd45.4d821",
-        "name": "get values",
-        "firebaseconfig": "6ef5f71b.98f1b8",
-        "childpath": "values",
-        "repeatifnull": false,
-        "eventType": "value",
-        "queries": [
-            {
-                "name": "orderByValue",
-                "value": "",
-                "valType": ""
-            },
-            {
-                "name": "limitToLast",
-                "value": "40",
-                "valType": "str"
-            }
-        ],
-        "x": 360,
-        "y": 1740,
-        "wires": [
-            [
-                "64a34aa9.e4be14"
-            ]
-        ]
     },
     {
         "id": "d2edb4ba.d9b8b8",
@@ -4316,8 +3872,8 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 510,
-        "y": 1620,
+        "x": 1070,
+        "y": 1520,
         "wires": [
             [
                 "fa818041.736e2"
@@ -4334,8 +3890,8 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 510,
-        "y": 1560,
+        "x": 1070,
+        "y": 1460,
         "wires": [
             [
                 "f9516941.386e08"
@@ -4352,43 +3908,11 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 510,
-        "y": 1740,
-        "wires": [
-            [
-                "88324518.3d2938"
-            ]
-        ]
-    },
-    {
-        "id": "fb162afa.c3d5b8",
-        "type": "inject",
-        "z": "8272fd45.4d821",
-        "name": "1 hour Timer",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "3600",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "75",
-        "payloadType": "num",
-        "x": 140,
+        "x": 1070,
         "y": 1640,
         "wires": [
             [
-                "7c639a44.05ec84",
-                "ae7aa6ba.dd2a98",
-                "f3d83a02.1bf938",
-                "1ef03647.58caba"
+                "88324518.3d2938"
             ]
         ]
     },
@@ -4429,8 +3953,8 @@
         ],
         "outputs": 1,
         "useDifferentColor": false,
-        "x": 1150,
-        "y": 1560,
+        "x": 1710,
+        "y": 1460,
         "wires": [
             []
         ]
@@ -4441,7 +3965,7 @@
         "z": "8272fd45.4d821",
         "name": "",
         "group": "e840065c.390a28",
-        "order": 2,
+        "order": 1,
         "width": "18",
         "height": "7",
         "label": "ROC_GBP",
@@ -4472,8 +3996,8 @@
         ],
         "outputs": 1,
         "useDifferentColor": false,
-        "x": 1150,
-        "y": 1620,
+        "x": 1710,
+        "y": 1520,
         "wires": [
             []
         ]
@@ -4488,40 +4012,11 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 510,
-        "y": 1680,
+        "x": 1070,
+        "y": 1580,
         "wires": [
             [
                 "4205680d.d5a2c8"
-            ]
-        ]
-    },
-    {
-        "id": "1ef03647.58caba",
-        "type": "firebase.once",
-        "z": "8272fd45.4d821",
-        "name": "get values",
-        "firebaseconfig": "6ef5f71b.98f1b8",
-        "childpath": "values",
-        "repeatifnull": false,
-        "eventType": "value",
-        "queries": [
-            {
-                "name": "orderByValue",
-                "value": "",
-                "valType": ""
-            },
-            {
-                "name": "limitToLast",
-                "value": "40",
-                "valType": "str"
-            }
-        ],
-        "x": 360,
-        "y": 1680,
-        "wires": [
-            [
-                "5a7ea818.0798f8"
             ]
         ]
     },
@@ -4535,8 +4030,8 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 650,
-        "y": 1680,
+        "x": 1210,
+        "y": 1580,
         "wires": [
             [
                 "553d9c14.3c9ac4"
@@ -4553,8 +4048,8 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 960,
-        "y": 1680,
+        "x": 1520,
+        "y": 1580,
         "wires": [
             [
                 "fc1551d6.5f473"
@@ -4598,8 +4093,8 @@
         ],
         "outputs": 1,
         "useDifferentColor": false,
-        "x": 1150,
-        "y": 1680,
+        "x": 1710,
+        "y": 1580,
         "wires": [
             []
         ]
@@ -4610,7 +4105,7 @@
         "z": "8272fd45.4d821",
         "name": "",
         "group": "b1d628da.081638",
-        "order": 2,
+        "order": 1,
         "width": "18",
         "height": "7",
         "label": "RSI_GBP",
@@ -4641,21 +4136,11 @@
         ],
         "outputs": 1,
         "useDifferentColor": false,
-        "x": 1140,
-        "y": 1740,
+        "x": 1700,
+        "y": 1640,
         "wires": [
             []
         ]
-    },
-    {
-        "id": "82b18519.203f48",
-        "type": "comment",
-        "z": "8272fd45.4d821",
-        "name": "MQTT",
-        "info": "## This is just dummy nodes",
-        "x": 90,
-        "y": 1380,
-        "wires": []
     },
     {
         "id": "4ab1e32b.98cf7c",
@@ -4773,7 +4258,7 @@
         "initialize": "",
         "finalize": "",
         "x": 1280,
-        "y": 620,
+        "y": 640,
         "wires": [
             [
                 "415db567.257c9c"
@@ -4884,29 +4369,13 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 600,
+        "x": 580,
         "y": 520,
         "wires": [
             [
                 "b2f82d09.08997"
             ]
         ]
-    },
-    {
-        "id": "15e4fd73.dd0183",
-        "type": "debug",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1270,
-        "y": 1640,
-        "wires": []
     },
     {
         "id": "eec6234d.e0a48",
@@ -4918,12 +4387,11 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 800,
-        "y": 1480,
+        "x": 1020,
+        "y": 660,
         "wires": [
             [
-                "bbb1df13.2f1b3",
-                "3aa8bcdb.d6b7e4"
+                "bbb1df13.2f1b3"
             ]
         ]
     },
@@ -4937,8 +4405,8 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 800,
-        "y": 1540,
+        "x": 1020,
+        "y": 720,
         "wires": [
             [
                 "bbb1df13.2f1b3"
@@ -4955,8 +4423,8 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 800,
-        "y": 1600,
+        "x": 1020,
+        "y": 780,
         "wires": [
             [
                 "bbb1df13.2f1b3"
@@ -4973,8 +4441,8 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 800,
-        "y": 1660,
+        "x": 1020,
+        "y": 840,
         "wires": [
             [
                 "bbb1df13.2f1b3"
@@ -4991,8 +4459,8 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 800,
-        "y": 1720,
+        "x": 1020,
+        "y": 900,
         "wires": [
             [
                 "bbb1df13.2f1b3"
@@ -5009,8 +4477,8 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 800,
-        "y": 1780,
+        "x": 1020,
+        "y": 960,
         "wires": [
             [
                 "bbb1df13.2f1b3"
@@ -5035,8 +4503,8 @@
         "tstart_night": "0",
         "tend_night": "7",
         "layout": "row-spread",
-        "x": 620,
-        "y": 1480,
+        "x": 840,
+        "y": 660,
         "wires": [
             [
                 "eec6234d.e0a48"
@@ -5061,8 +4529,8 @@
         "tstart_night": "0",
         "tend_night": "7",
         "layout": "row-spread",
-        "x": 620,
-        "y": 1660,
+        "x": 840,
+        "y": 840,
         "wires": [
             [
                 "122b055f.c74a5b"
@@ -5087,8 +4555,8 @@
         "tstart_night": "0",
         "tend_night": "7",
         "layout": "row-spread",
-        "x": 620,
-        "y": 1720,
+        "x": 840,
+        "y": 900,
         "wires": [
             [
                 "e0887c89.6d339"
@@ -5113,8 +4581,8 @@
         "tstart_night": "0",
         "tend_night": "7",
         "layout": "row-spread",
-        "x": 620,
-        "y": 1540,
+        "x": 840,
+        "y": 720,
         "wires": [
             [
                 "b6c5849c.178888"
@@ -5139,8 +4607,8 @@
         "tstart_night": "0",
         "tend_night": "7",
         "layout": "row-spread",
-        "x": 620,
-        "y": 1600,
+        "x": 840,
+        "y": 780,
         "wires": [
             [
                 "b605f5ce.f5c3f8"
@@ -5165,8 +4633,8 @@
         "tstart_night": "0",
         "tend_night": "7",
         "layout": "row-spread",
-        "x": 620,
-        "y": 1780,
+        "x": 840,
+        "y": 960,
         "wires": [
             [
                 "fe228419.04e6b8"
@@ -5183,12 +4651,10 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 1110,
-        "y": 1640,
+        "x": 1330,
+        "y": 820,
         "wires": [
-            [
-                "15e4fd73.dd0183"
-            ]
+            []
         ]
     },
     {
@@ -5212,8 +4678,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 460,
-        "y": 1480,
+        "x": 680,
+        "y": 660,
         "wires": [
             [
                 "a331837b.93b78"
@@ -5240,8 +4706,8 @@
         "reduceInit": "",
         "reduceInitType": "",
         "reduceFixup": "",
-        "x": 970,
-        "y": 1640,
+        "x": 1190,
+        "y": 820,
         "wires": [
             [
                 "616bfb4.cdc6d04"
@@ -5269,8 +4735,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 460,
-        "y": 1540,
+        "x": 680,
+        "y": 720,
         "wires": [
             [
                 "d13b9dce.3b519"
@@ -5298,8 +4764,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 460,
-        "y": 1600,
+        "x": 680,
+        "y": 780,
         "wires": [
             [
                 "4f7078bb.d7f9b8"
@@ -5327,8 +4793,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 460,
-        "y": 1660,
+        "x": 680,
+        "y": 840,
         "wires": [
             [
                 "f5e59951.f77b88"
@@ -5356,8 +4822,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 460,
-        "y": 1720,
+        "x": 680,
+        "y": 900,
         "wires": [
             [
                 "c3d8592a.54f848"
@@ -5385,8 +4851,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 460,
-        "y": 1780,
+        "x": 680,
+        "y": 960,
         "wires": [
             [
                 "908f461d.f94968"
@@ -5394,9 +4860,415 @@
         ]
     },
     {
-        "id": "3aa8bcdb.d6b7e4",
+        "id": "bd99adb.5edcd5",
+        "type": "firebase modify",
+        "z": "8272fd45.4d821",
+        "name": "set",
+        "firebaseconfig": "6ef5f71b.98f1b8",
+        "childpath": "selected_currency",
+        "method": "set",
+        "value": "msg.payload",
+        "priority": "msg.priority",
+        "x": 990,
+        "y": 660,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "36224d8e.673ba2",
+        "type": "firebase modify",
+        "z": "8272fd45.4d821",
+        "name": "set",
+        "firebaseconfig": "6ef5f71b.98f1b8",
+        "childpath": "ceil",
+        "method": "set",
+        "value": "msg.payload",
+        "priority": "msg.priority",
+        "x": 990,
+        "y": 700,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "cc0c9866.931be8",
+        "type": "firebase modify",
+        "z": "8272fd45.4d821",
+        "name": "set",
+        "firebaseconfig": "6ef5f71b.98f1b8",
+        "childpath": "floor",
+        "method": "set",
+        "value": "msg.payload",
+        "priority": "msg.priority",
+        "x": 990,
+        "y": 740,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8055aebc.7a0a7",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "func": "\nreturn {payload:msg.payload.selected_currency};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 740,
+        "y": 660,
+        "wires": [
+            [
+                "bd99adb.5edcd5"
+            ]
+        ]
+    },
+    {
+        "id": "f37b35cd.26ebb8",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "func": "\nreturn {payload:msg.payload.ceil};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 740,
+        "y": 700,
+        "wires": [
+            [
+                "36224d8e.673ba2"
+            ]
+        ]
+    },
+    {
+        "id": "bf4d7483.c9b728",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "func": "\nreturn {payload:msg.payload.floor};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 740,
+        "y": 740,
+        "wires": [
+            [
+                "cc0c9866.931be8"
+            ]
+        ]
+    },
+    {
+        "id": "6bee77ed.8ed238",
+        "type": "mqtt in",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "topic": "IOT_6B/G05/UserAuth",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "27cb39de.f814e6",
+        "x": 140,
+        "y": 960,
+        "wires": [
+            [
+                "5684af05.8233e"
+            ]
+        ]
+    },
+    {
+        "id": "90f2fe69.2a02",
+        "type": "comment",
+        "z": "8272fd45.4d821",
+        "name": "Simulate rapid fluctuation ",
+        "info": "## This is just dummy nodes",
+        "x": 150,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "41163c3e.098354",
+        "type": "comment",
+        "z": "8272fd45.4d821",
+        "name": "MQTT",
+        "info": "## This is just dummy nodes",
+        "x": 90,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "5684af05.8233e",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "func": "var inputString = msg.payload;\nvar inputData = inputString.split(\"$\");\n//timestamp$user_email$password\nconst userdata = {\n    timestamp:inputData[0],\n    email:inputData[1],\n    password:inputData[2],\n}\nreturn{userdata};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 480,
+        "y": 960,
+        "wires": [
+            [
+                "227d1148.29237e"
+            ]
+        ]
+    },
+    {
+        "id": "227d1148.29237e",
+        "type": "firebase.once",
+        "z": "8272fd45.4d821",
+        "name": "get current user",
+        "firebaseconfig": "6ef5f71b.98f1b8",
+        "childpath": "user",
+        "repeatifnull": false,
+        "eventType": "value",
+        "queries": [],
+        "x": 680,
+        "y": 960,
+        "wires": [
+            [
+                "5d6424ce.2fa61c"
+            ]
+        ]
+    },
+    {
+        "id": "5d6424ce.2fa61c",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "auth",
+        "func": "let  iscorrect=\"false\"\nif (msg.payload.password==msg.userdata.password && msg.payload.email==msg.userdata.email ){\n    iscorrect=\"true\"\n}\nvar newMsg = { payload: iscorrect };\nreturn [newMsg];\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 870,
+        "y": 960,
+        "wires": [
+            [
+                "1ce834c7.62e9ab"
+            ]
+        ]
+    },
+    {
+        "id": "1ce834c7.62e9ab",
+        "type": "switch",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "true",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "false",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1070,
+        "y": 960,
+        "wires": [
+            [
+                "aba426b7.57c5d8"
+            ],
+            [
+                "8bb9d06b.dfdbb"
+            ]
+        ]
+    },
+    {
+        "id": "8ee24e45.00d2d",
+        "type": "mqtt out",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "topic": "IOT_6B/G05/AuthResponse",
+        "qos": "",
+        "retain": "",
+        "broker": "27cb39de.f814e6",
+        "x": 1460,
+        "y": 980,
+        "wires": []
+    },
+    {
+        "id": "7a50f3a1.b28c3c",
+        "type": "mqtt out",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "topic": "IOT_6B/G05/AuthResponse",
+        "qos": "",
+        "retain": "",
+        "broker": "27cb39de.f814e6",
+        "x": 1460,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "aba426b7.57c5d8",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "func": "\nconst token = Math.random().toString(36).substr(2);\nglobal.set(\"token\",token)\nreturn {\n    payload:`success$${token}`\n};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1240,
+        "y": 940,
+        "wires": [
+            [
+                "7a50f3a1.b28c3c"
+            ]
+        ]
+    },
+    {
+        "id": "8bb9d06b.dfdbb",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "func": "global.set(\"token\",\"\")\nreturn {\n    payload:`error$null`\n};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1240,
+        "y": 980,
+        "wires": [
+            [
+                "8ee24e45.00d2d"
+            ]
+        ]
+    },
+    {
+        "id": "c45b7557.2b14f8",
+        "type": "switch",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "property": "token",
+        "propertyType": "global",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "payload.token",
+                "vt": "msg"
+            },
+            {
+                "t": "neq",
+                "v": "payload.token",
+                "vt": "msg"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 510,
+        "y": 720,
+        "wires": [
+            [
+                "8055aebc.7a0a7",
+                "bf4d7483.c9b728",
+                "f37b35cd.26ebb8",
+                "d13468bb.755048"
+            ],
+            [
+                "8944ec3e.86679"
+            ]
+        ]
+    },
+    {
+        "id": "c2308bde.27c3b8",
+        "type": "mqtt in",
+        "z": "8272fd45.4d821",
+        "name": "IOT_6B/G05/UserNeeds",
+        "topic": "IOT_6B/G05/UserNeeds",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "27cb39de.f814e6",
+        "x": 150,
+        "y": 720,
+        "wires": [
+            [
+                "f0d2c30c.a6598"
+            ]
+        ]
+    },
+    {
+        "id": "f0d2c30c.a6598",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "func": "var inputString = msg.payload;\n\nvar inputData = inputString.split(\"$\");\n//timestamp$user_email$currency$ceil_percentage$floor_percentage\n\nconst data = {\n    timestamp:inputData[0],\n    token:inputData[1],\n    selected_currency:inputData[2],\n    ceil:parseInt(inputData[3]),\n    floor:parseInt(inputData[4]),\n}\nreturn{ payload:data};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 360,
+        "y": 720,
+        "wires": [
+            [
+                "c45b7557.2b14f8"
+            ]
+        ]
+    },
+    {
+        "id": "8944ec3e.86679",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "func": "\nreturn {payload:\"not-authenticated\"};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 740,
+        "y": 860,
+        "wires": [
+            [
+                "d02b1e55.a885d"
+            ]
+        ]
+    },
+    {
+        "id": "bd124c.ec4c1db8",
+        "type": "inject",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "token",
+        "payloadType": "global",
+        "x": 130,
+        "y": 660,
+        "wires": [
+            [
+                "e9497db.663848"
+            ]
+        ]
+    },
+    {
+        "id": "e9497db.663848",
         "type": "debug",
-        "z": "ae1d0766.e75b68",
+        "z": "8272fd45.4d821",
         "name": "",
         "active": true,
         "tosidebar": true,
@@ -5405,8 +5277,1644 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1100,
-        "y": 1500,
+        "x": 350,
+        "y": 660,
         "wires": []
+    },
+    {
+        "id": "621844da.cfdc1c",
+        "type": "mqtt out",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "topic": "IOT_6B/G05/UserNeedsResponse ",
+        "qos": "",
+        "retain": "",
+        "broker": "27cb39de.f814e6",
+        "x": 1060,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "d13468bb.755048",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "func": "\nreturn {payload:\"success\"};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 740,
+        "y": 800,
+        "wires": [
+            [
+                "621844da.cfdc1c"
+            ]
+        ]
+    },
+    {
+        "id": "d02b1e55.a885d",
+        "type": "mqtt out",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "topic": "IOT_6B/G05/UserNeedsResponse ",
+        "qos": "",
+        "retain": "",
+        "broker": "27cb39de.f814e6",
+        "x": 1060,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "eec63619.4f63a8",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "Simple Moving Average (SMA)",
+        "func": "var moment = global.get('techmodule');\n\nconst SMA = moment.SMA\nlet period = msg.values.period; \nlet values = msg.values.value;                    \n\nvar out = {\n  values    : SMA.calculate({period : period, values : values})\n}\nmsg =  out\nreturn msg\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1290,
+        "y": 1740,
+        "wires": [
+            [
+                "a8d7ebb5.580a98"
+            ]
+        ]
+    },
+    {
+        "id": "127021fe.2a9cde",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "Rate Of Change (ROC)",
+        "func": "var moment = global.get('techmodule');\n\nconst ROC = moment.ROC\nlet period = msg.values.period; \nlet values = msg.values.value;                    \n\nvar out = {\n  values    : ROC.calculate({period : period, values : values})\n}\nmsg =  out\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1270,
+        "y": 1800,
+        "wires": [
+            [
+                "2e32c1.4f363d4"
+            ]
+        ]
+    },
+    {
+        "id": "7279911e.2d77b",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "Relative Strength Index (RSI)",
+        "func": "var moment = global.get('techmodule');\n\nconst RSI = moment.RSI\nlet period = msg.values.period; \nlet values = msg.values.value;                    \n\nvar out = {\n  values    : RSI.calculate({period : period, values : values})\n}\nmsg =  out\nreturn msg\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1280,
+        "y": 1920,
+        "wires": [
+            [
+                "4838fbc2.3ab4c4"
+            ]
+        ]
+    },
+    {
+        "id": "2e32c1.4f363d4",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "func": "var i;\nvar pay = msg.values;\nvar labels = \"Rate of Change\";\nvar series = \"ROC\";\nvar data = [];\nfor (i = 0; i < pay.length; i++) {\n    data.push({\"x\":i,\"y\":pay[i]});\n}\n\n\n\nmsg.payload = [{\"series\":series,\n                \"data\":[data],\n                \"labels\":labels}];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1520,
+        "y": 1800,
+        "wires": [
+            [
+                "b9957b43.482338"
+            ]
+        ]
+    },
+    {
+        "id": "a8d7ebb5.580a98",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "func": "var i;\nvar pay = msg.values;\nvar labels = \"Simple Moving Average\";\nvar series = \"SMA\";\nvar data = [];\nfor (i = 0; i < pay.length; i++) {\n    data.push({\"x\":i,\"y\":pay[i]});\n}\n\n\n\nmsg.payload = [{\"series\":series,\n                \"data\":[data],\n                \"labels\":labels}];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1520,
+        "y": 1740,
+        "wires": [
+            [
+                "294012bb.e45cde"
+            ]
+        ]
+    },
+    {
+        "id": "4838fbc2.3ab4c4",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "func": "var i;\nvar pay = msg.values;\nvar labels = \"Relative Strength Index\";\nvar series = \"RSI\";\nvar data = [];\nfor (i = 0; i < pay.length; i++) {\n    data.push({\"x\":i,\"y\":pay[i]});\n}\n\n\n\nmsg.payload = [{\"series\":series,\n                \"data\":[data],\n                \"labels\":labels}];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1520,
+        "y": 1920,
+        "wires": [
+            [
+                "77e4f3ce.ebbfec"
+            ]
+        ]
+    },
+    {
+        "id": "a37a3c87.873ee",
+        "type": "comment",
+        "z": "8272fd45.4d821",
+        "name": "CHART - AUD",
+        "info": "## This is just dummy nodes",
+        "x": 1890,
+        "y": 1820,
+        "wires": []
+    },
+    {
+        "id": "6624e17e.92de",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "filter",
+        "func": "const values = []\n\n\nObject.keys(msg.payload).map(key=>{\n    let currency_ob=Object.values(msg.payload[key])[0][\"AUD\"];\n    values.push(currency_ob);\n    })\n\nvar newMsg = { \n    values: {\n        \"value\":values,\n         \"period\": 5\n    }\n};\nreturn [newMsg];",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1070,
+        "y": 1800,
+        "wires": [
+            [
+                "127021fe.2a9cde"
+            ]
+        ]
+    },
+    {
+        "id": "a7a2c085.85e53",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "filter",
+        "func": "const values = []\n\n\nObject.keys(msg.payload).map(key=>{\n    let currency_ob=Object.values(msg.payload[key])[0][\"AUD\"];\n    values.push(currency_ob);\n    })\n\nvar newMsg = { \n    values: {\n        \"value\":values,\n       \"period\": 4\n    }\n};\nreturn [newMsg];",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1070,
+        "y": 1740,
+        "wires": [
+            [
+                "eec63619.4f63a8"
+            ]
+        ]
+    },
+    {
+        "id": "45935f08.e4a8d",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "filter",
+        "func": "const values = []\n\n\nObject.keys(msg.payload).map(key=>{\n    let currency_ob=Object.values(msg.payload[key])[0][\"AUD\"];\n    values.push(currency_ob);\n    })\n\nvar newMsg = { \n    values: {\n    \"value\":values,\n       \"period\": 5\n    }\n};\nreturn [newMsg];",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1070,
+        "y": 1920,
+        "wires": [
+            [
+                "7279911e.2d77b"
+            ]
+        ]
+    },
+    {
+        "id": "294012bb.e45cde",
+        "type": "ui_chart",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "group": "8f4351af.98659",
+        "order": 1,
+        "width": "18",
+        "height": "7",
+        "label": "SMA_AUD",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "x",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 1710,
+        "y": 1740,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b9957b43.482338",
+        "type": "ui_chart",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "group": "49f6ac53.db1284",
+        "order": 1,
+        "width": "18",
+        "height": "7",
+        "label": "ROC_AUD",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "x",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 1710,
+        "y": 1800,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "77e4f3ce.ebbfec",
+        "type": "ui_chart",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "group": "7e879c82.79f134",
+        "order": 1,
+        "width": "18",
+        "height": "7",
+        "label": "RSI_AUD",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "x",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 1700,
+        "y": 1920,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3d5195e7.03a2fa",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "filter",
+        "func": "const values = []\n\n\nObject.keys(msg.payload).map(key=>{\n    let currency_ob=Object.values(msg.payload[key])[0][\"AUD\"];\n    values.push(currency_ob);\n    })\n\nvar newMsg = { \n    values: {\n        \"values\":values,\n        \"fastPeriod\": 5,\n    \"slowPeriod\": 8,\n    \"signalPeriod\": 3,\n    \"SimpleMAOscillator\": false,\n    \"SimpleMASignal\": false\n    }\n};\nreturn [newMsg];",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1070,
+        "y": 1860,
+        "wires": [
+            [
+                "686cdab7.b1b374"
+            ]
+        ]
+    },
+    {
+        "id": "686cdab7.b1b374",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "MACD",
+        "func": "var moment = global.get('techmodule');\nvar MACD = moment.MACD;\n\n\nvar macdInput = msg.values;                    \n\nvar out = {\n  values    : MACD.calculate(macdInput)\n}\nmsg =  out\nreturn msg\n\n\n\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1210,
+        "y": 1860,
+        "wires": [
+            [
+                "ec76f315.6841c"
+            ]
+        ]
+    },
+    {
+        "id": "ec76f315.6841c",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "func": "var i;\nvar pay = msg.values;\nvar labels = [\"MACD\",\"Signal\",\"Histogram\"];\nvar series = [\"MACD\",\"Signal\",\"Histogram\"];\nvar data1 = [];\nvar data2 = [];\nvar data3 = [];\n\nfor (i = 2; i < pay.length; i++) {\n    data1.push({\"x\":i,\"y\":pay[i].MACD});\n    data2.push({\"x\":i,\"y\":pay[i].signal});\n    data3.push({\"x\":i,\"y\":pay[i].histogram});\n}\n\n\n\nmsg.payload = [{\"series\":series,\n                \"data\":[data1,data2,data3],\n                \"labels\":labels}];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1520,
+        "y": 1860,
+        "wires": [
+            [
+                "c9a95c9b.9cc4b"
+            ]
+        ]
+    },
+    {
+        "id": "c9a95c9b.9cc4b",
+        "type": "ui_chart",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "group": "9fcb5aec.ba81b8",
+        "order": 1,
+        "width": "18",
+        "height": "7",
+        "label": "MACD_AUD",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "x",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 1710,
+        "y": 1860,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9deba970.ca3c98",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "Simple Moving Average (SMA)",
+        "func": "var moment = global.get('techmodule');\n\nconst SMA = moment.SMA\nlet period = msg.values.period; \nlet values = msg.values.value;                    \n\nvar out = {\n  values    : SMA.calculate({period : period, values : values})\n}\nmsg =  out\nreturn msg\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1310,
+        "y": 2040,
+        "wires": [
+            [
+                "e920ec9d.b0ef"
+            ]
+        ]
+    },
+    {
+        "id": "d5f2aa.2d848d58",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "Rate Of Change (ROC)",
+        "func": "var moment = global.get('techmodule');\n\nconst ROC = moment.ROC\nlet period = msg.values.period; \nlet values = msg.values.value;                    \n\nvar out = {\n  values    : ROC.calculate({period : period, values : values})\n}\nmsg =  out\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1290,
+        "y": 2100,
+        "wires": [
+            [
+                "cfa5bb4e.a156f8"
+            ]
+        ]
+    },
+    {
+        "id": "684803eb.83e54c",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "Relative Strength Index (RSI)",
+        "func": "var moment = global.get('techmodule');\n\nconst RSI = moment.RSI\nlet period = msg.values.period; \nlet values = msg.values.value;                    \n\nvar out = {\n  values    : RSI.calculate({period : period, values : values})\n}\nmsg =  out\nreturn msg\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1300,
+        "y": 2220,
+        "wires": [
+            [
+                "8630a5e.c43ad58"
+            ]
+        ]
+    },
+    {
+        "id": "cfa5bb4e.a156f8",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "func": "var i;\nvar pay = msg.values;\nvar labels = \"Rate of Change\";\nvar series = \"ROC\";\nvar data = [];\nfor (i = 0; i < pay.length; i++) {\n    data.push({\"x\":i,\"y\":pay[i]});\n}\n\n\n\nmsg.payload = [{\"series\":series,\n                \"data\":[data],\n                \"labels\":labels}];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1540,
+        "y": 2100,
+        "wires": [
+            [
+                "eda74c78.9f1e2"
+            ]
+        ]
+    },
+    {
+        "id": "e920ec9d.b0ef",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "func": "var i;\nvar pay = msg.values;\nvar labels = \"Simple Moving Average\";\nvar series = \"SMA\";\nvar data = [];\nfor (i = 0; i < pay.length; i++) {\n    data.push({\"x\":i,\"y\":pay[i]});\n}\n\n\n\nmsg.payload = [{\"series\":series,\n                \"data\":[data],\n                \"labels\":labels}];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1540,
+        "y": 2040,
+        "wires": [
+            [
+                "af481d98.d20d4"
+            ]
+        ]
+    },
+    {
+        "id": "8630a5e.c43ad58",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "func": "var i;\nvar pay = msg.values;\nvar labels = \"Relative Strength Index\";\nvar series = \"RSI\";\nvar data = [];\nfor (i = 0; i < pay.length; i++) {\n    data.push({\"x\":i,\"y\":pay[i]});\n}\n\n\n\nmsg.payload = [{\"series\":series,\n                \"data\":[data],\n                \"labels\":labels}];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1540,
+        "y": 2220,
+        "wires": [
+            [
+                "7b7a5d20.04e5b4"
+            ]
+        ]
+    },
+    {
+        "id": "809ae6c4.324658",
+        "type": "comment",
+        "z": "8272fd45.4d821",
+        "name": "CHART - JPY",
+        "info": "## This is just dummy nodes",
+        "x": 1890,
+        "y": 2140,
+        "wires": []
+    },
+    {
+        "id": "26cdcd15.68c9b2",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "filter",
+        "func": "const values = []\n\n\nObject.keys(msg.payload).map(key=>{\n    let currency_ob=Object.values(msg.payload[key])[0][\"JPY\"];\n    values.push(currency_ob);\n    })\n\nvar newMsg = { \n    values: {\n        \"value\":values,\n         \"period\": 5\n    }\n};\nreturn [newMsg];",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1090,
+        "y": 2100,
+        "wires": [
+            [
+                "d5f2aa.2d848d58"
+            ]
+        ]
+    },
+    {
+        "id": "a35f22a9.ab32b",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "filter",
+        "func": "const values = []\n\n\nObject.keys(msg.payload).map(key=>{\n    let currency_ob=Object.values(msg.payload[key])[0][\"JPY\"];\n    values.push(currency_ob);\n    })\n\nvar newMsg = { \n    values: {\n        \"value\":values,\n       \"period\": 4\n    }\n};\nreturn [newMsg];",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1090,
+        "y": 2040,
+        "wires": [
+            [
+                "9deba970.ca3c98"
+            ]
+        ]
+    },
+    {
+        "id": "1da1dd31.493ef3",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "filter",
+        "func": "const values = []\n\n\nObject.keys(msg.payload).map(key=>{\n    let currency_ob=Object.values(msg.payload[key])[0][\"JPY\"];\n    values.push(currency_ob);\n    })\n\nvar newMsg = { \n    values: {\n    \"value\":values,\n       \"period\": 5\n    }\n};\nreturn [newMsg];",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1090,
+        "y": 2220,
+        "wires": [
+            [
+                "684803eb.83e54c"
+            ]
+        ]
+    },
+    {
+        "id": "af481d98.d20d4",
+        "type": "ui_chart",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "group": "13ca4ad2.b96045",
+        "order": 1,
+        "width": "18",
+        "height": "7",
+        "label": "SMA_JPY",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "x",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 1730,
+        "y": 2040,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "eda74c78.9f1e2",
+        "type": "ui_chart",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "group": "746f420d.6accbc",
+        "order": 1,
+        "width": "18",
+        "height": "7",
+        "label": "ROC_JPY",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "x",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 1730,
+        "y": 2100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4ca47a1d.4970e4",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "filter",
+        "func": "const values = []\n\n\nObject.keys(msg.payload).map(key=>{\n    let currency_ob=Object.values(msg.payload[key])[0][\"JPY\"];\n    values.push(currency_ob);\n    })\n\nvar newMsg = { \n    values: {\n        \"values\":values,\n        \"fastPeriod\": 5,\n    \"slowPeriod\": 8,\n    \"signalPeriod\": 3,\n    \"SimpleMAOscillator\": false,\n    \"SimpleMASignal\": false\n    }\n};\nreturn [newMsg];",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1090,
+        "y": 2160,
+        "wires": [
+            [
+                "75dfbf2e.edb12"
+            ]
+        ]
+    },
+    {
+        "id": "75dfbf2e.edb12",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "MACD",
+        "func": "var moment = global.get('techmodule');\nvar MACD = moment.MACD;\n\n\nvar macdInput = msg.values;                    \n\nvar out = {\n  values    : MACD.calculate(macdInput)\n}\nmsg =  out\nreturn msg\n\n\n\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1230,
+        "y": 2160,
+        "wires": [
+            [
+                "fc92324e.12a72"
+            ]
+        ]
+    },
+    {
+        "id": "fc92324e.12a72",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "func": "var i;\nvar pay = msg.values;\nvar labels = [\"MACD\",\"Signal\",\"Histogram\"];\nvar series = [\"MACD\",\"Signal\",\"Histogram\"];\nvar data1 = [];\nvar data2 = [];\nvar data3 = [];\n\nfor (i = 2; i < pay.length; i++) {\n    data1.push({\"x\":i,\"y\":pay[i].MACD});\n    data2.push({\"x\":i,\"y\":pay[i].signal});\n    data3.push({\"x\":i,\"y\":pay[i].histogram});\n}\n\n\n\nmsg.payload = [{\"series\":series,\n                \"data\":[data1,data2,data3],\n                \"labels\":labels}];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1540,
+        "y": 2160,
+        "wires": [
+            [
+                "8282503.c3b1cb"
+            ]
+        ]
+    },
+    {
+        "id": "8282503.c3b1cb",
+        "type": "ui_chart",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "group": "a3fa0c97.87ed6",
+        "order": 1,
+        "width": "18",
+        "height": "7",
+        "label": "MACD_JPY",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "x",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 1730,
+        "y": 2160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7b7a5d20.04e5b4",
+        "type": "ui_chart",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "group": "734a50b0.fb055",
+        "order": 1,
+        "width": "18",
+        "height": "7",
+        "label": "RSI_JPY",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "x",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 1720,
+        "y": 2220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "321b42cd.ea213e",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "Simple Moving Average (SMA)",
+        "func": "var moment = global.get('techmodule');\n\nconst SMA = moment.SMA\nlet period = msg.values.period; \nlet values = msg.values.value;                    \n\nvar out = {\n  values    : SMA.calculate({period : period, values : values})\n}\nmsg =  out\nreturn msg\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1310,
+        "y": 2300,
+        "wires": [
+            [
+                "9e7c457.49030b8"
+            ]
+        ]
+    },
+    {
+        "id": "7e6888d9.ed7188",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "Rate Of Change (ROC)",
+        "func": "var moment = global.get('techmodule');\n\nconst ROC = moment.ROC\nlet period = msg.values.period; \nlet values = msg.values.value;                    \n\nvar out = {\n  values    : ROC.calculate({period : period, values : values})\n}\nmsg =  out\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1290,
+        "y": 2360,
+        "wires": [
+            [
+                "1edae2ba.2d387d"
+            ]
+        ]
+    },
+    {
+        "id": "3c1442e1.93495e",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "Relative Strength Index (RSI)",
+        "func": "var moment = global.get('techmodule');\n\nconst RSI = moment.RSI\nlet period = msg.values.period; \nlet values = msg.values.value;                    \n\nvar out = {\n  values    : RSI.calculate({period : period, values : values})\n}\nmsg =  out\nreturn msg\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1300,
+        "y": 2480,
+        "wires": [
+            [
+                "fac535db.f56c18"
+            ]
+        ]
+    },
+    {
+        "id": "1edae2ba.2d387d",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "func": "var i;\nvar pay = msg.values;\nvar labels = \"Rate of Change\";\nvar series = \"ROC\";\nvar data = [];\nfor (i = 0; i < pay.length; i++) {\n    data.push({\"x\":i,\"y\":pay[i]});\n}\n\n\n\nmsg.payload = [{\"series\":series,\n                \"data\":[data],\n                \"labels\":labels}];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1540,
+        "y": 2360,
+        "wires": [
+            [
+                "fe8cb2c0.83a96"
+            ]
+        ]
+    },
+    {
+        "id": "9e7c457.49030b8",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "func": "var i;\nvar pay = msg.values;\nvar labels = \"Simple Moving Average\";\nvar series = \"SMA\";\nvar data = [];\nfor (i = 0; i < pay.length; i++) {\n    data.push({\"x\":i,\"y\":pay[i]});\n}\n\n\n\nmsg.payload = [{\"series\":series,\n                \"data\":[data],\n                \"labels\":labels}];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1540,
+        "y": 2300,
+        "wires": [
+            [
+                "305bf935.0d1836"
+            ]
+        ]
+    },
+    {
+        "id": "fac535db.f56c18",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "func": "var i;\nvar pay = msg.values;\nvar labels = \"Relative Strength Index\";\nvar series = \"RSI\";\nvar data = [];\nfor (i = 0; i < pay.length; i++) {\n    data.push({\"x\":i,\"y\":pay[i]});\n}\n\n\n\nmsg.payload = [{\"series\":series,\n                \"data\":[data],\n                \"labels\":labels}];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1540,
+        "y": 2480,
+        "wires": [
+            [
+                "a4144466.52f3d8"
+            ]
+        ]
+    },
+    {
+        "id": "16d98bcc.df2e44",
+        "type": "comment",
+        "z": "8272fd45.4d821",
+        "name": "CHART - EUR",
+        "info": "## This is just dummy nodes",
+        "x": 1910,
+        "y": 2360,
+        "wires": []
+    },
+    {
+        "id": "bd14f107.b1592",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "filter",
+        "func": "const values = []\n\n\nObject.keys(msg.payload).map(key=>{\n    let currency_ob=Object.values(msg.payload[key])[0][\"EUR\"];\n    values.push(currency_ob);\n    })\n\nvar newMsg = { \n    values: {\n        \"value\":values,\n         \"period\": 5\n    }\n};\nreturn [newMsg];",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1090,
+        "y": 2360,
+        "wires": [
+            [
+                "7e6888d9.ed7188"
+            ]
+        ]
+    },
+    {
+        "id": "60f948e5.fa8dd8",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "filter",
+        "func": "const values = []\n\n\nObject.keys(msg.payload).map(key=>{\n    let currency_ob=Object.values(msg.payload[key])[0][\"EUR\"];\n    values.push(currency_ob);\n    })\n\nvar newMsg = { \n    values: {\n        \"value\":values,\n       \"period\": 4\n    }\n};\nreturn [newMsg];",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1090,
+        "y": 2300,
+        "wires": [
+            [
+                "321b42cd.ea213e"
+            ]
+        ]
+    },
+    {
+        "id": "4d309b3.78ea664",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "filter",
+        "func": "const values = []\n\n\nObject.keys(msg.payload).map(key=>{\n    let currency_ob=Object.values(msg.payload[key])[0][\"EUR\"];\n    values.push(currency_ob);\n    })\n\nvar newMsg = { \n    values: {\n    \"value\":values,\n       \"period\": 5\n    }\n};\nreturn [newMsg];",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1090,
+        "y": 2480,
+        "wires": [
+            [
+                "3c1442e1.93495e"
+            ]
+        ]
+    },
+    {
+        "id": "305bf935.0d1836",
+        "type": "ui_chart",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "group": "f87583e3.28fb6",
+        "order": 1,
+        "width": "18",
+        "height": "7",
+        "label": "SMA_EUR",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "x",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 1730,
+        "y": 2300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "fe8cb2c0.83a96",
+        "type": "ui_chart",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "group": "30ce8b62.807724",
+        "order": 1,
+        "width": "18",
+        "height": "7",
+        "label": "ROC_EUR",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "x",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 1730,
+        "y": 2360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2b4133cc.00fd9c",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "filter",
+        "func": "const values = []\n\n\nObject.keys(msg.payload).map(key=>{\n    let currency_ob=Object.values(msg.payload[key])[0][\"EUR\"];\n    values.push(currency_ob);\n    })\n\nvar newMsg = { \n    values: {\n        \"values\":values,\n        \"fastPeriod\": 5,\n    \"slowPeriod\": 8,\n    \"signalPeriod\": 3,\n    \"SimpleMAOscillator\": false,\n    \"SimpleMASignal\": false\n    }\n};\nreturn [newMsg];",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1090,
+        "y": 2420,
+        "wires": [
+            [
+                "981d62d1.eb955"
+            ]
+        ]
+    },
+    {
+        "id": "981d62d1.eb955",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "MACD",
+        "func": "var moment = global.get('techmodule');\nvar MACD = moment.MACD;\n\n\nvar macdInput = msg.values;                    \n\nvar out = {\n  values    : MACD.calculate(macdInput)\n}\nmsg =  out\nreturn msg\n\n\n\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1230,
+        "y": 2420,
+        "wires": [
+            [
+                "c640570b.bb87e8"
+            ]
+        ]
+    },
+    {
+        "id": "c640570b.bb87e8",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "func": "var i;\nvar pay = msg.values;\nvar labels = [\"MACD\",\"Signal\",\"Histogram\"];\nvar series = [\"MACD\",\"Signal\",\"Histogram\"];\nvar data1 = [];\nvar data2 = [];\nvar data3 = [];\n\nfor (i = 2; i < pay.length; i++) {\n    data1.push({\"x\":i,\"y\":pay[i].MACD});\n    data2.push({\"x\":i,\"y\":pay[i].signal});\n    data3.push({\"x\":i,\"y\":pay[i].histogram});\n}\n\n\n\nmsg.payload = [{\"series\":series,\n                \"data\":[data1,data2,data3],\n                \"labels\":labels}];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1540,
+        "y": 2420,
+        "wires": [
+            [
+                "50afdc1e.94ddd4"
+            ]
+        ]
+    },
+    {
+        "id": "50afdc1e.94ddd4",
+        "type": "ui_chart",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "group": "202493d2.1fd96c",
+        "order": 1,
+        "width": "18",
+        "height": "7",
+        "label": "MACD_EUR",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "x",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 1730,
+        "y": 2420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a4144466.52f3d8",
+        "type": "ui_chart",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "group": "94d5d7da.5ea488",
+        "order": 1,
+        "width": "18",
+        "height": "7",
+        "label": "RSI_EUR",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "x",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 1720,
+        "y": 2480,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4c14ab72.127e44",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "Simple Moving Average (SMA)",
+        "func": "var moment = global.get('techmodule');\n\nconst SMA = moment.SMA\nlet period = msg.values.period; \nlet values = msg.values.value;                    \n\nvar out = {\n  values    : SMA.calculate({period : period, values : values})\n}\nmsg =  out\nreturn msg\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1310,
+        "y": 2600,
+        "wires": [
+            [
+                "f376b1a1.52fc4"
+            ]
+        ]
+    },
+    {
+        "id": "9633c2fc.d0803",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "Rate Of Change (ROC)",
+        "func": "var moment = global.get('techmodule');\n\nconst ROC = moment.ROC\nlet period = msg.values.period; \nlet values = msg.values.value;                    \n\nvar out = {\n  values    : ROC.calculate({period : period, values : values})\n}\nmsg =  out\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1290,
+        "y": 2660,
+        "wires": [
+            [
+                "787476d8.836b78"
+            ]
+        ]
+    },
+    {
+        "id": "5ba1f000.34bcf",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "Relative Strength Index (RSI)",
+        "func": "var moment = global.get('techmodule');\n\nconst RSI = moment.RSI\nlet period = msg.values.period; \nlet values = msg.values.value;                    \n\nvar out = {\n  values    : RSI.calculate({period : period, values : values})\n}\nmsg =  out\nreturn msg\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1300,
+        "y": 2780,
+        "wires": [
+            [
+                "d37ff0b1.2765"
+            ]
+        ]
+    },
+    {
+        "id": "787476d8.836b78",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "func": "var i;\nvar pay = msg.values;\nvar labels = \"Rate of Change\";\nvar series = \"ROC\";\nvar data = [];\nfor (i = 0; i < pay.length; i++) {\n    data.push({\"x\":i,\"y\":pay[i]});\n}\n\n\n\nmsg.payload = [{\"series\":series,\n                \"data\":[data],\n                \"labels\":labels}];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1540,
+        "y": 2660,
+        "wires": [
+            [
+                "f109ccd0.2be25"
+            ]
+        ]
+    },
+    {
+        "id": "f376b1a1.52fc4",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "func": "var i;\nvar pay = msg.values;\nvar labels = \"Simple Moving Average\";\nvar series = \"SMA\";\nvar data = [];\nfor (i = 0; i < pay.length; i++) {\n    data.push({\"x\":i,\"y\":pay[i]});\n}\n\n\n\nmsg.payload = [{\"series\":series,\n                \"data\":[data],\n                \"labels\":labels}];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1540,
+        "y": 2600,
+        "wires": [
+            [
+                "64fc2866.621898"
+            ]
+        ]
+    },
+    {
+        "id": "d37ff0b1.2765",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "func": "var i;\nvar pay = msg.values;\nvar labels = \"Relative Strength Index\";\nvar series = \"RSI\";\nvar data = [];\nfor (i = 0; i < pay.length; i++) {\n    data.push({\"x\":i,\"y\":pay[i]});\n}\n\n\n\nmsg.payload = [{\"series\":series,\n                \"data\":[data],\n                \"labels\":labels}];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1540,
+        "y": 2780,
+        "wires": [
+            [
+                "b16e5610.44e988"
+            ]
+        ]
+    },
+    {
+        "id": "18bec44.03eed3c",
+        "type": "comment",
+        "z": "8272fd45.4d821",
+        "name": "CHART - KWD",
+        "info": "## This is just dummy nodes",
+        "x": 1920,
+        "y": 2660,
+        "wires": []
+    },
+    {
+        "id": "647cc880.aa2a58",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "filter",
+        "func": "const values = []\n\n\nObject.keys(msg.payload).map(key=>{\n    let currency_ob=Object.values(msg.payload[key])[0][\"KWD\"];\n    values.push(currency_ob);\n    })\n\nvar newMsg = { \n    values: {\n        \"value\":values,\n         \"period\": 5\n    }\n};\nreturn [newMsg];",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1090,
+        "y": 2660,
+        "wires": [
+            [
+                "9633c2fc.d0803"
+            ]
+        ]
+    },
+    {
+        "id": "48887156.468c7",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "filter",
+        "func": "const values = []\n\n\nObject.keys(msg.payload).map(key=>{\n    let currency_ob=Object.values(msg.payload[key])[0][\"KWD\"];\n    values.push(currency_ob);\n    })\n\nvar newMsg = { \n    values: {\n        \"value\":values,\n       \"period\": 4\n    }\n};\nreturn [newMsg];",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1090,
+        "y": 2600,
+        "wires": [
+            [
+                "4c14ab72.127e44"
+            ]
+        ]
+    },
+    {
+        "id": "abe4570e.760d08",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "filter",
+        "func": "const values = []\n\n\nObject.keys(msg.payload).map(key=>{\n    let currency_ob=Object.values(msg.payload[key])[0][\"KWD\"];\n    values.push(currency_ob);\n    })\n\nvar newMsg = { \n    values: {\n    \"value\":values,\n       \"period\": 5\n    }\n};\nreturn [newMsg];",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1090,
+        "y": 2780,
+        "wires": [
+            [
+                "5ba1f000.34bcf"
+            ]
+        ]
+    },
+    {
+        "id": "64fc2866.621898",
+        "type": "ui_chart",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "group": "bbbb092.d70abf8",
+        "order": 1,
+        "width": "18",
+        "height": "7",
+        "label": "SMA_KWD",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "x",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 1730,
+        "y": 2600,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f109ccd0.2be25",
+        "type": "ui_chart",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "group": "e9a7d04f.da92b",
+        "order": 1,
+        "width": "18",
+        "height": "7",
+        "label": "ROC_KWD",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "x",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 1730,
+        "y": 2660,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "32bd374f.5e7538",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "filter",
+        "func": "const values = []\n\n\nObject.keys(msg.payload).map(key=>{\n    let currency_ob=Object.values(msg.payload[key])[0][\"KWD\"];\n    values.push(currency_ob);\n    })\n\nvar newMsg = { \n    values: {\n        \"values\":values,\n        \"fastPeriod\": 5,\n    \"slowPeriod\": 8,\n    \"signalPeriod\": 3,\n    \"SimpleMAOscillator\": false,\n    \"SimpleMASignal\": false\n    }\n};\nreturn [newMsg];",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1090,
+        "y": 2720,
+        "wires": [
+            [
+                "b71ae71a.087d58"
+            ]
+        ]
+    },
+    {
+        "id": "b71ae71a.087d58",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "MACD",
+        "func": "var moment = global.get('techmodule');\nvar MACD = moment.MACD;\n\n\nvar macdInput = msg.values;                    \n\nvar out = {\n  values    : MACD.calculate(macdInput)\n}\nmsg =  out\nreturn msg\n\n\n\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1230,
+        "y": 2720,
+        "wires": [
+            [
+                "eff996a3.4664c8"
+            ]
+        ]
+    },
+    {
+        "id": "eff996a3.4664c8",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "func": "var i;\nvar pay = msg.values;\nvar labels = [\"MACD\",\"Signal\",\"Histogram\"];\nvar series = [\"MACD\",\"Signal\",\"Histogram\"];\nvar data1 = [];\nvar data2 = [];\nvar data3 = [];\n\nfor (i = 2; i < pay.length; i++) {\n    data1.push({\"x\":i,\"y\":pay[i].MACD});\n    data2.push({\"x\":i,\"y\":pay[i].signal});\n    data3.push({\"x\":i,\"y\":pay[i].histogram});\n}\n\n\n\nmsg.payload = [{\"series\":series,\n                \"data\":[data1,data2,data3],\n                \"labels\":labels}];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1540,
+        "y": 2720,
+        "wires": [
+            [
+                "596cb003.c66f3"
+            ]
+        ]
+    },
+    {
+        "id": "596cb003.c66f3",
+        "type": "ui_chart",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "group": "65932f0f.b8ea9",
+        "order": 1,
+        "width": "18",
+        "height": "7",
+        "label": "MACD_KWD",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "x",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 1730,
+        "y": 2720,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b16e5610.44e988",
+        "type": "ui_chart",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "group": "73a0efff.b50c8",
+        "order": 1,
+        "width": "18",
+        "height": "7",
+        "label": "RSI_KWD",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "x",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 1720,
+        "y": 2780,
+        "wires": [
+            []
+        ]
     }
 ]
