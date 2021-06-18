@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper]{article}
+\documentclass[11pt,a4paper]{article}
 \usepackage[a4paper, portrait, margin=1in]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc} 
@@ -68,6 +68,11 @@
   keywordstyle=\color{cyan},
   morekeywords={xmlns,version,type}
 }
+\lstset{language=C++,
+                keywordstyle=\color{blue},
+                stringstyle=\color{red},
+                commentstyle=\color{green},
+                morecomment=[l][\color{magenta}]{\#}}
 
 \lstset{style=mystyle}
 
@@ -117,10 +122,14 @@
 
 \input{body}
 
-
 \newpage
 \bibliographystyle{IEEEbib}
 \bibliography{references}
+
+
+\input{annexes}
+
+
 
 
 \end{document}
