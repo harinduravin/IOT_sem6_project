@@ -40,6 +40,7 @@ int value = 0;
 String Current_currency = "NON";
 String Current_value = "0.00";
 uint8_t Current_UpDown = true;
+String UserNeeds;
 
 float USD = 198.25; // up - true, down - false
 float GBP = 198.25; // up - true, down - false
@@ -152,27 +153,27 @@ void handlerequest(){
       if (strcmp(data.email,data.Email_submitted) == 0){
         if (data.Authenticated){
           Authorized = true;
-          String UserNeeds;
            
           Current_currency = server.arg("currency");
-
           Update_values();
+          server.send(200, "text/html", SendHTML(Current_currency,Current_value,Current_UpDown));
      
           String Ceil = server.arg("ceil");
           String Floor = server.arg("floor");
+
+          if (UserNeeds != Current_currency +"$"+ Ceil +"$"+ Floor){
           
-          UserNeeds = Current_currency +"$"+ Ceil +"$"+ Floor;
+            UserNeeds = Current_currency +"$"+ Ceil +"$"+ Floor;
+            int currency_len = Current_currency.length() + 1;
+            int ceil_len = Ceil.length() + 1;
+            int floor_len = Floor.length() + 1; 
+            int UserNeeds_len = currency_len + ceil_len + floor_len;
+            char UserNeeds_array[UserNeeds_len];
+            UserNeeds.toCharArray(UserNeeds_array, UserNeeds_len);
+            client.publish("IOT_6B/G05/UserNeeds", UserNeeds_array );
+            
+          }
           
-          int currency_len = Current_currency.length() + 1;
-          int ceil_len = Ceil.length() + 1;
-          int floor_len = Floor.length() + 1; 
-    
-          int UserNeeds_len = currency_len + ceil_len + floor_len;
-    
-          char UserNeeds_array[UserNeeds_len];
-          UserNeeds.toCharArray(UserNeeds_array, UserNeeds_len);
-          client.publish("IOT_6B/G05/UserNeeds", UserNeeds_array );
-          server.send(200, "text/html", SendHTML(Current_currency,Current_value,Current_UpDown));
         }
         else{
           server.send(200, "text/html", UserAuthentification());
@@ -224,7 +225,7 @@ String SendHTML(String Currency,String value,uint8_t UpDown){
   ptr+= "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n";
   ptr+= "<title>GROUP 5</title>\n";
   ptr+= "</head>\n";
-  ptr+= "<body style=\"text-align:center;display:grid;place-content: center;background-color: rgb(23, 196, 196);overflow-y: scroll;\"\n";
+  ptr+= "<body style=\"text-align:center;display:grid;place-content: center;background-color: rgb(23, 196, 196);overflow-y: auto;\">\n";
   ptr+= "<h1 style=\"font-size: 50px;\" >Get Exchange</h1>\n";
   
   if (Currency == "USD"){
