@@ -3342,7 +3342,7 @@
                 "vt": "str"
             }
         ],
-        "repeat": "60",
+        "repeat": "30",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
@@ -3799,24 +3799,6 @@
         "wires": [
             [
                 "b872a7e7.f84be8"
-            ]
-        ]
-    },
-    {
-        "id": "ceaa1f06.6d1d4",
-        "type": "function",
-        "z": "8272fd45.4d821",
-        "name": "Fomater ",
-        "func": "var price=global.get(\"current_currencies\");\nvar sd = 0.00001;\nvar gauss = msg.payload.values[0].value;\nconst newRates = {\n    USD:parseFloat((price.USD*(1+gauss*price.AUD*sd)).toFixed(3)),\n    AUD:parseFloat((price.AUD*(1+gauss*price.AUD*sd)).toFixed(3)),\n    JPY:parseFloat((price.JPY*(1+gauss*price.JPY*sd)).toFixed(3)),\n    GBP:parseFloat((price.GBP*(1+gauss*price.GBP*sd)).toFixed(3)),\n    EUR:parseFloat((price.EUR*(1+gauss*price.EUR*sd)).toFixed(3)),\n    KWD:parseFloat((price.KWD*(1+gauss*price.KWD*sd)).toFixed(3)),\n}\n\n\nreturn {payload:newRates, Topic:\"New Price\"};",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 600,
-        "y": 520,
-        "wires": [
-            [
-                "b2f82d09.08997"
             ]
         ]
     },
@@ -4812,9 +4794,108 @@
         "wires": []
     },
     {
-        "id": "756b6cfd.228094",
-        "type": "debug",
+        "id": "e155304a.85ee2",
+        "type": "function",
         "z": "8272fd45.4d821",
+        "name": "",
+        "func": "let gaussianValues=[0,0,0,0,0,0]\nif(global.get(\"gaussianValues\")){\n    gaussianValues=global.get(\"gaussianValues\")\n    var gauss = msg.payload.values[0].value;\n    gaussianValues.splice(0, 0, gauss);\n    gaussianValues.pop();\n}else{\n   global.set(\"gaussianValues\",[0,0,0,0,0,0]) \n}\n\nglobal.set(\"gaussianValues\",gaussianValues)\nreturn {payload:gauss, topic:gauss};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1180,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9438846a.99ce68",
+        "type": "gaussian",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "mu_day": "0",
+        "sigma_day": "1",
+        "tstart_day": "7",
+        "tend_day": "19",
+        "mu_even": "0",
+        "sigma_even": "1",
+        "tstart_even": "19",
+        "tend_even": "23",
+        "mu_night": "0",
+        "sigma_night": "1",
+        "tstart_night": "0",
+        "tend_night": "7",
+        "layout": "row-spread",
+        "x": 1020,
+        "y": 100,
+        "wires": [
+            [
+                "e155304a.85ee2"
+            ]
+        ]
+    },
+    {
+        "id": "70d8500b.fae52",
+        "type": "inject",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "4",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 830,
+        "y": 100,
+        "wires": [
+            [
+                "9438846a.99ce68"
+            ]
+        ]
+    },
+    {
+        "id": "a64a7285.af5ea",
+        "type": "comment",
+        "z": "8272fd45.4d821",
+        "name": "Gaussian generator",
+        "info": "## This is just dummy nodes",
+        "x": 830,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "ceaa1f06.6d1d4",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "Fomater ",
+        "func": "var price=global.get(\"current_currencies\");\nvar sd = 0.00001;\nvar gausses = global.get(\"gaussianValues\");\nconst newRates = {\n    USD:parseFloat((price.USD*(1+gausses[0]*price.AUD*sd)).toFixed(3)),\n    AUD:parseFloat((price.AUD*(1+gausses[1]*price.AUD*sd)).toFixed(3)),\n    JPY:parseFloat((price.JPY*(1+gausses[2]*price.JPY*sd)).toFixed(3)),\n    GBP:parseFloat((price.GBP*(1+gausses[3]*price.GBP*sd)).toFixed(3)),\n    EUR:parseFloat((price.EUR*(1+gausses[4]*price.EUR*sd)).toFixed(3)),\n    KWD:parseFloat((price.KWD*(1+gausses[5]*price.KWD*sd)).toFixed(3)),\n}\n\n\nreturn {payload:newRates, Topic:\"New Price\"};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 600,
+        "y": 520,
+        "wires": [
+            [
+                "b2f82d09.08997"
+            ]
+        ]
+    },
+    {
+        "id": "15e4fd73.dd0183",
+        "type": "debug",
+        "z": "ae1d0766.e75b68",
         "name": "",
         "active": true,
         "tosidebar": true,
@@ -4823,124 +4904,123 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 890,
-        "y": 800,
+        "x": 1270,
+        "y": 1640,
         "wires": []
     },
     {
-        "id": "6213becc.100a3",
+        "id": "eec6234d.e0a48",
         "type": "function",
-        "z": "8272fd45.4d821",
+        "z": "ae1d0766.e75b68",
         "name": "",
         "func": "var price=global.get(\"current_currencies\").USD\nvar sd = price*0.000001;\nvar gauss = msg.payload.values[0].value;\nvar newPrice = price*(1+gauss*sd);\nreturn {payload:newPrice, topic:\"USD\"};",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 420,
-        "y": 640,
+        "x": 800,
+        "y": 1480,
         "wires": [
             [
-                "fb281666.858208",
-                "f149cd7c.273df"
+                "bbb1df13.2f1b3",
+                "3aa8bcdb.d6b7e4"
             ]
         ]
     },
     {
-        "id": "2455b069.eb5df",
+        "id": "b6c5849c.178888",
         "type": "function",
-        "z": "8272fd45.4d821",
+        "z": "ae1d0766.e75b68",
         "name": "",
         "func": "var price=global.get(\"current_currencies\").AUD\nvar sd = price*0.000001;\nvar gauss = msg.payload.values[0].value;\nvar newPrice = price*(1+gauss*sd);\nreturn {payload:newPrice, topic:\"AUD\"};",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 420,
-        "y": 700,
+        "x": 800,
+        "y": 1540,
         "wires": [
             [
-                "fb281666.858208"
+                "bbb1df13.2f1b3"
             ]
         ]
     },
     {
-        "id": "1dc92eb8.003d41",
+        "id": "b605f5ce.f5c3f8",
         "type": "function",
-        "z": "8272fd45.4d821",
+        "z": "ae1d0766.e75b68",
         "name": "",
         "func": "var price=global.get(\"current_currencies\").JPY\nvar sd = price*0.000001;\nvar gauss = msg.payload.values[0].value;\nvar newPrice = price*(1+gauss*sd);\nreturn {payload:newPrice, topic:\"JPY\"};",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 420,
-        "y": 760,
+        "x": 800,
+        "y": 1600,
         "wires": [
             [
-                "fb281666.858208"
+                "bbb1df13.2f1b3"
             ]
         ]
     },
     {
-        "id": "4be4f8e5.a510e8",
+        "id": "122b055f.c74a5b",
         "type": "function",
-        "z": "8272fd45.4d821",
+        "z": "ae1d0766.e75b68",
         "name": "",
         "func": "var price=global.get(\"current_currencies\").GBP\nvar sd = price*0.000001;\nvar gauss = msg.payload.values[0].value;\nvar newPrice = price*(1+gauss*sd);\nreturn {payload:newPrice, topic:\"GBP\"};",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 420,
-        "y": 820,
+        "x": 800,
+        "y": 1660,
         "wires": [
             [
-                "fb281666.858208"
+                "bbb1df13.2f1b3"
             ]
         ]
     },
     {
-        "id": "68e38e7e.3402c",
+        "id": "e0887c89.6d339",
         "type": "function",
-        "z": "8272fd45.4d821",
+        "z": "ae1d0766.e75b68",
         "name": "",
         "func": "var price=global.get(\"current_currencies\").EUR\nvar sd = price*0.000001;\nvar gauss = msg.payload.values[0].value;\nvar newPrice = price*(1+gauss*sd);\nreturn {payload:newPrice, topic:\"EUR\"};",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 420,
-        "y": 880,
+        "x": 800,
+        "y": 1720,
         "wires": [
             [
-                "fb281666.858208"
+                "bbb1df13.2f1b3"
             ]
         ]
     },
     {
-        "id": "b490df2f.7adf7",
+        "id": "fe228419.04e6b8",
         "type": "function",
-        "z": "8272fd45.4d821",
+        "z": "ae1d0766.e75b68",
         "name": "",
         "func": "var price=global.get(\"current_currencies\").KWD\nvar sd = price*0.000001;\nvar gauss = msg.payload.values[0].value;\nvar newPrice = price*(1+gauss*sd);\nreturn {payload:newPrice, topic:\"KWD\"};",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 420,
-        "y": 940,
+        "x": 800,
+        "y": 1780,
         "wires": [
             [
-                "fb281666.858208",
-                "34fccc65.9ef924"
+                "bbb1df13.2f1b3"
             ]
         ]
     },
     {
-        "id": "ce5b7e24.82274",
+        "id": "a331837b.93b78",
         "type": "gaussian",
-        "z": "8272fd45.4d821",
+        "z": "ae1d0766.e75b68",
         "name": "",
         "mu_day": "0",
         "sigma_day": "1",
@@ -4955,18 +5035,18 @@
         "tstart_night": "0",
         "tend_night": "7",
         "layout": "row-spread",
-        "x": 240,
-        "y": 640,
+        "x": 620,
+        "y": 1480,
         "wires": [
             [
-                "6213becc.100a3"
+                "eec6234d.e0a48"
             ]
         ]
     },
     {
-        "id": "b4351d9e.48ce6",
+        "id": "f5e59951.f77b88",
         "type": "gaussian",
-        "z": "8272fd45.4d821",
+        "z": "ae1d0766.e75b68",
         "name": "",
         "mu_day": "0",
         "sigma_day": "1",
@@ -4981,18 +5061,18 @@
         "tstart_night": "0",
         "tend_night": "7",
         "layout": "row-spread",
-        "x": 240,
-        "y": 820,
+        "x": 620,
+        "y": 1660,
         "wires": [
             [
-                "4be4f8e5.a510e8"
+                "122b055f.c74a5b"
             ]
         ]
     },
     {
-        "id": "d2c5d551.845208",
+        "id": "c3d8592a.54f848",
         "type": "gaussian",
-        "z": "8272fd45.4d821",
+        "z": "ae1d0766.e75b68",
         "name": "",
         "mu_day": "0",
         "sigma_day": "1",
@@ -5007,18 +5087,18 @@
         "tstart_night": "0",
         "tend_night": "7",
         "layout": "row-spread",
-        "x": 240,
-        "y": 880,
+        "x": 620,
+        "y": 1720,
         "wires": [
             [
-                "68e38e7e.3402c"
+                "e0887c89.6d339"
             ]
         ]
     },
     {
-        "id": "e603ab02.009d58",
+        "id": "d13b9dce.3b519",
         "type": "gaussian",
-        "z": "8272fd45.4d821",
+        "z": "ae1d0766.e75b68",
         "name": "",
         "mu_day": "0",
         "sigma_day": "1",
@@ -5033,18 +5113,18 @@
         "tstart_night": "0",
         "tend_night": "7",
         "layout": "row-spread",
-        "x": 240,
-        "y": 700,
+        "x": 620,
+        "y": 1540,
         "wires": [
             [
-                "2455b069.eb5df"
+                "b6c5849c.178888"
             ]
         ]
     },
     {
-        "id": "781ec89a.393a58",
+        "id": "4f7078bb.d7f9b8",
         "type": "gaussian",
-        "z": "8272fd45.4d821",
+        "z": "ae1d0766.e75b68",
         "name": "",
         "mu_day": "0",
         "sigma_day": "1",
@@ -5059,18 +5139,18 @@
         "tstart_night": "0",
         "tend_night": "7",
         "layout": "row-spread",
-        "x": 240,
-        "y": 760,
+        "x": 620,
+        "y": 1600,
         "wires": [
             [
-                "1dc92eb8.003d41"
+                "b605f5ce.f5c3f8"
             ]
         ]
     },
     {
-        "id": "423debb8.ff5074",
+        "id": "908f461d.f94968",
         "type": "gaussian",
-        "z": "8272fd45.4d821",
+        "z": "ae1d0766.e75b68",
         "name": "",
         "mu_day": "0",
         "sigma_day": "1",
@@ -5085,36 +5165,36 @@
         "tstart_night": "0",
         "tend_night": "7",
         "layout": "row-spread",
-        "x": 240,
-        "y": 940,
+        "x": 620,
+        "y": 1780,
         "wires": [
             [
-                "b490df2f.7adf7"
+                "fe228419.04e6b8"
             ]
         ]
     },
     {
-        "id": "2a801b5f.9cb654",
+        "id": "616bfb4.cdc6d04",
         "type": "function",
-        "z": "8272fd45.4d821",
+        "z": "ae1d0766.e75b68",
         "name": "",
         "func": "const newRates = {\n    USD:msg.USD,\n    AUD:msg.AUD,\n    JPY:msg.JPY,\n    GBP:msg.GBP,\n    EUR:msg.EUR,\n    KWD:msg.KWD\n}\nreturn {payload:newRates};",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 730,
-        "y": 800,
+        "x": 1110,
+        "y": 1640,
         "wires": [
             [
-                "756b6cfd.228094"
+                "15e4fd73.dd0183"
             ]
         ]
     },
     {
-        "id": "f6906940.4ba5f8",
+        "id": "34d21f45.62892",
         "type": "inject",
-        "z": "8272fd45.4d821",
+        "z": "ae1d0766.e75b68",
         "name": "",
         "props": [
             {
@@ -5132,138 +5212,18 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 80,
-        "y": 640,
+        "x": 460,
+        "y": 1480,
         "wires": [
             [
-                "ce5b7e24.82274"
+                "a331837b.93b78"
             ]
         ]
     },
     {
-        "id": "8ccddb9a.a55f38",
-        "type": "inject",
-        "z": "8272fd45.4d821",
-        "name": "temperature",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "temperature",
-        "payload": "10",
-        "payloadType": "num",
-        "x": 330,
-        "y": 1020,
-        "wires": [
-            [
-                "47b769c5.cb0e28"
-            ]
-        ]
-    },
-    {
-        "id": "47b769c5.cb0e28",
+        "id": "bbb1df13.2f1b3",
         "type": "join",
-        "z": "8272fd45.4d821",
-        "name": "",
-        "mode": "custom",
-        "build": "object",
-        "property": "payload",
-        "propertyType": "msg",
-        "key": "topic",
-        "joiner": "\\n",
-        "joinerType": "str",
-        "accumulate": false,
-        "timeout": "",
-        "count": "3",
-        "reduceRight": false,
-        "reduceExp": "",
-        "reduceInit": "",
-        "reduceInitType": "",
-        "reduceFixup": "",
-        "x": 530,
-        "y": 1060,
-        "wires": [
-            [
-                "f9afb265.b11b7"
-            ]
-        ]
-    },
-    {
-        "id": "f9afb265.b11b7",
-        "type": "debug",
-        "z": "8272fd45.4d821",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "x": 690,
-        "y": 1060,
-        "wires": []
-    },
-    {
-        "id": "2d269127.4f04ce",
-        "type": "inject",
-        "z": "8272fd45.4d821",
-        "name": "humidity",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "humidity",
-        "payload": "",
-        "payloadType": "num",
-        "x": 320,
-        "y": 1060,
-        "wires": [
-            [
-                "47b769c5.cb0e28"
-            ]
-        ]
-    },
-    {
-        "id": "d6fbe805.0e4628",
-        "type": "inject",
-        "z": "8272fd45.4d821",
-        "name": "pressure",
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "pressure",
-        "payload": "999",
-        "payloadType": "num",
-        "x": 320,
-        "y": 1100,
-        "wires": [
-            [
-                "47b769c5.cb0e28"
-            ]
-        ]
-    },
-    {
-        "id": "fb281666.858208",
-        "type": "join",
-        "z": "8272fd45.4d821",
+        "z": "ae1d0766.e75b68",
         "name": "",
         "mode": "custom",
         "build": "object",
@@ -5280,18 +5240,18 @@
         "reduceInit": "",
         "reduceInitType": "",
         "reduceFixup": "",
-        "x": 590,
-        "y": 800,
+        "x": 970,
+        "y": 1640,
         "wires": [
             [
-                "2a801b5f.9cb654"
+                "616bfb4.cdc6d04"
             ]
         ]
     },
     {
-        "id": "34304af2.29e4b6",
+        "id": "260f4553.b375ea",
         "type": "inject",
-        "z": "8272fd45.4d821",
+        "z": "ae1d0766.e75b68",
         "name": "",
         "props": [
             {
@@ -5309,18 +5269,18 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 80,
-        "y": 700,
+        "x": 460,
+        "y": 1540,
         "wires": [
             [
-                "e603ab02.009d58"
+                "d13b9dce.3b519"
             ]
         ]
     },
     {
-        "id": "f2418c8d.bceda",
+        "id": "5002bd9c.28cf54",
         "type": "inject",
-        "z": "8272fd45.4d821",
+        "z": "ae1d0766.e75b68",
         "name": "",
         "props": [
             {
@@ -5338,18 +5298,18 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 80,
-        "y": 760,
+        "x": 460,
+        "y": 1600,
         "wires": [
             [
-                "781ec89a.393a58"
+                "4f7078bb.d7f9b8"
             ]
         ]
     },
     {
-        "id": "2b73d7da.d97168",
+        "id": "e10c092e.2289d8",
         "type": "inject",
-        "z": "8272fd45.4d821",
+        "z": "ae1d0766.e75b68",
         "name": "",
         "props": [
             {
@@ -5367,18 +5327,18 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 80,
-        "y": 820,
+        "x": 460,
+        "y": 1660,
         "wires": [
             [
-                "b4351d9e.48ce6"
+                "f5e59951.f77b88"
             ]
         ]
     },
     {
-        "id": "5424191a.d83998",
+        "id": "93710c45.6c4f8",
         "type": "inject",
-        "z": "8272fd45.4d821",
+        "z": "ae1d0766.e75b68",
         "name": "",
         "props": [
             {
@@ -5396,18 +5356,18 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 80,
-        "y": 880,
+        "x": 460,
+        "y": 1720,
         "wires": [
             [
-                "d2c5d551.845208"
+                "c3d8592a.54f848"
             ]
         ]
     },
     {
-        "id": "b4c27197.763f6",
+        "id": "c4512b6c.93dd08",
         "type": "inject",
-        "z": "8272fd45.4d821",
+        "z": "ae1d0766.e75b68",
         "name": "",
         "props": [
             {
@@ -5425,18 +5385,18 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 80,
-        "y": 940,
+        "x": 460,
+        "y": 1780,
         "wires": [
             [
-                "423debb8.ff5074"
+                "908f461d.f94968"
             ]
         ]
     },
     {
-        "id": "f149cd7c.273df",
+        "id": "3aa8bcdb.d6b7e4",
         "type": "debug",
-        "z": "8272fd45.4d821",
+        "z": "ae1d0766.e75b68",
         "name": "",
         "active": true,
         "tosidebar": true,
@@ -5445,24 +5405,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 720,
-        "y": 660,
-        "wires": []
-    },
-    {
-        "id": "34fccc65.9ef924",
-        "type": "debug",
-        "z": "8272fd45.4d821",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 720,
-        "y": 960,
+        "x": 1100,
+        "y": 1500,
         "wires": []
     }
 ]

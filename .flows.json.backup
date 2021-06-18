@@ -4842,7 +4842,7 @@
         "wires": [
             [
                 "fb281666.858208",
-                "8e703de9.709cf"
+                "f149cd7c.273df"
             ]
         ]
     },
@@ -5140,127 +5140,6 @@
         ]
     },
     {
-        "id": "8ccddb9a.a55f38",
-        "type": "inject",
-        "z": "8272fd45.4d821",
-        "name": "temperature",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "temperature",
-        "payload": "10",
-        "payloadType": "num",
-        "x": 330,
-        "y": 1020,
-        "wires": [
-            [
-                "47b769c5.cb0e28",
-                "8e703de9.709cf"
-            ]
-        ]
-    },
-    {
-        "id": "47b769c5.cb0e28",
-        "type": "join",
-        "z": "8272fd45.4d821",
-        "name": "",
-        "mode": "custom",
-        "build": "object",
-        "property": "payload",
-        "propertyType": "msg",
-        "key": "topic",
-        "joiner": "\\n",
-        "joinerType": "str",
-        "accumulate": false,
-        "timeout": "",
-        "count": "3",
-        "reduceRight": false,
-        "reduceExp": "",
-        "reduceInit": "",
-        "reduceInitType": "",
-        "reduceFixup": "",
-        "x": 530,
-        "y": 1060,
-        "wires": [
-            [
-                "f9afb265.b11b7"
-            ]
-        ]
-    },
-    {
-        "id": "f9afb265.b11b7",
-        "type": "debug",
-        "z": "8272fd45.4d821",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "x": 690,
-        "y": 1060,
-        "wires": []
-    },
-    {
-        "id": "2d269127.4f04ce",
-        "type": "inject",
-        "z": "8272fd45.4d821",
-        "name": "humidity",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "humidity",
-        "payload": "",
-        "payloadType": "num",
-        "x": 320,
-        "y": 1060,
-        "wires": [
-            [
-                "47b769c5.cb0e28"
-            ]
-        ]
-    },
-    {
-        "id": "d6fbe805.0e4628",
-        "type": "inject",
-        "z": "8272fd45.4d821",
-        "name": "pressure",
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "pressure",
-        "payload": "999",
-        "payloadType": "num",
-        "x": 320,
-        "y": 1100,
-        "wires": [
-            [
-                "47b769c5.cb0e28"
-            ]
-        ]
-    },
-    {
         "id": "fb281666.858208",
         "type": "join",
         "z": "8272fd45.4d821",
@@ -5287,23 +5166,6 @@
                 "2a801b5f.9cb654"
             ]
         ]
-    },
-    {
-        "id": "8e703de9.709cf",
-        "type": "debug",
-        "z": "8272fd45.4d821",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 620,
-        "y": 740,
-        "wires": []
     },
     {
         "id": "34304af2.29e4b6",
@@ -5447,6 +5309,138 @@
         "wires": [
             [
                 "423debb8.ff5074"
+            ]
+        ]
+    },
+    {
+        "id": "f149cd7c.273df",
+        "type": "debug",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 720,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "34fccc65.9ef924",
+        "type": "debug",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 690,
+        "y": 1100,
+        "wires": []
+    },
+    {
+        "id": "3fee5cdb.3f1b84",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "func": "let gaussianValues=[0,0,0,0,0,0]\nif(global.get(\"gaussianValues\")){\n    gaussianValues=global.get(\"gaussianValues\")\n    var gauss = msg.payload.values[0].value;\n    gaussianValues.splice(0, 0, gauss);\n    gaussianValues.pop();\n}else{\n   global.set(\"gaussianValues\",[0,0,0,0,0,0]) \n}\n\nglobal.set(\"gaussianValues\",gaussianValues)\nreturn {payload:gauss, topic:gauss};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 460,
+        "y": 1040,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "26729c08.332e24",
+        "type": "gaussian",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "mu_day": "0",
+        "sigma_day": "1",
+        "tstart_day": "7",
+        "tend_day": "19",
+        "mu_even": "0",
+        "sigma_even": "1",
+        "tstart_even": "19",
+        "tend_even": "23",
+        "mu_night": "0",
+        "sigma_night": "1",
+        "tstart_night": "0",
+        "tend_night": "7",
+        "layout": "row-spread",
+        "x": 300,
+        "y": 1040,
+        "wires": [
+            [
+                "3fee5cdb.3f1b84"
+            ]
+        ]
+    },
+    {
+        "id": "c7d7cdbc.ce2b7",
+        "type": "inject",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "4",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 1040,
+        "wires": [
+            [
+                "26729c08.332e24"
+            ]
+        ]
+    },
+    {
+        "id": "9f58cc5.1ef583",
+        "type": "inject",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "gaussianValues",
+        "payloadType": "global",
+        "x": 430,
+        "y": 1120,
+        "wires": [
+            [
+                "34fccc65.9ef924"
             ]
         ]
     }
