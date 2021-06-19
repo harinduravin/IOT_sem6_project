@@ -45,7 +45,8 @@ int counter = 0;
 unsigned long unix_epoch;
 char ascii;
 
-
+String Ceil;
+String Floor;
 
 String payloadstr;
 unsigned long timestamp;
@@ -53,17 +54,19 @@ unsigned long timestamp;
 #define MSG_BUFFER_SIZE  (50)
 char msg[MSG_BUFFER_SIZE];
 int value = 0;
-String Current_currency = "NON";
-String Current_value = "0.00";
+String Current_currency = "USD";
+String Current_value = "198.25";
 uint8_t Current_UpDown = true;
 String UserNeeds;
 String access_token;
-String Authorization_Message = "error";
+String Authorization_Message;
 String Email_returned;
+
+  bool waiting = false;
 
 float USD = 198.25; // up - true, down - false
 float GBP = 198.25; // up - true, down - false
-float JPY = 198.25; // up - true, down - false
+float JPY = 1.83; // up - true, down - false
 float AUD = 198.25; // up - true, down - false
 float KWD = 198.25; // up - true, down - false
 float EUR = 198.25; // up - true, down - false
@@ -166,7 +169,6 @@ void loop() {
   client.loop();
     timeClient.update();
   unix_epoch = timeClient.getEpochTime();    // Get Unix epoch time from the NTP server
-  //Serial.println(unix_epoch);
   second_ = second(unix_epoch);
   if (last_second != second_) {
  
@@ -307,7 +309,7 @@ void loop() {
 
 
 void handlerequest(){
-    
+
   String Email = server.arg("email");
   String Password = server.arg("password");
   
@@ -317,13 +319,12 @@ void handlerequest(){
   EEPROM.get(addr,data);
   
   if (data.Authenticated){
-       
     Current_currency = server.arg("currency");
     Update_values();
     server.send(200, "text/html", SendHTML(Current_currency,Current_value,Current_UpDown));
   
-    String Ceil = server.arg("ceil");
-    String Floor = server.arg("floor");
+    Ceil = server.arg("ceil");
+    Floor = server.arg("floor");
   
     if (UserNeeds != Current_currency +"$"+ Ceil +"$"+ Floor){
       UserNeeds = Current_currency +"$"+ Ceil +"$"+ Floor;
@@ -355,7 +356,36 @@ void handlerequest(){
       int UserAuthentication_len = time_length+Password_len + Email_len;
       char UserAuthentication_array[UserAuthentication_len];
       UserAuthentication.toCharArray(UserAuthentication_array, UserAuthentication_len);
-      client.publish("IOT_6B/G05/UserAuth", UserAuthentication_array );
+      client.publish("IOT_6B/G05/UserAuth", UserAuthentication_array ); 
+
+      Serial.println("Authorization_Message : ");
+      Serial.println(Authorization_Message);
+      client.loop();
+      delay(2000);
+      client.loop();
+      delay(2000);
+      client.loop();
+      delay(2000);
+
+      Serial.println("Authorization_Message : ");
+      Serial.println(Authorization_Message);
+
+      if (Authorization_Message == "success" && Email_returned == Email ){
+        Serial.println("Authenticated");
+        data.Authenticated = true;
+        data.accesstoken = access_token;
+        data.Password = Password;
+        strncpy(data.Email,Email_array,50);
+        EEPROM.put(addr,data);
+        EEPROM.commit();
+        server.send(200, "text/html", SendHTML(Current_currency,Current_value,Current_UpDown)); 
+        }
+      else {
+        data.Data_provided = false;
+        EEPROM.put(addr,data);
+        EEPROM.commit();
+        server.send(200, "text/html", UserAuthentification());
+        }
       }
     }
 }
@@ -439,19 +469,73 @@ String SendHTML(String Currency,String value,uint8_t UpDown){
   ptr+= "<form name=\"dropdown\" method=\"get\" style=\" font-size: xx-large;\" >\n";
   ptr+= "<label for=\"currency_label\">Select Currency :</label><br>\n";
   ptr+= "<select name=\"currency\" id=\"currency\">\n";
+
+  if (Currency == "USD"){
+  ptr+= "<option value=\"USD\" selected >USD</option>\n";
+  ptr+= "<option value=\"JPY\">JPY</option>\n";
+  ptr+= "<option value=\"GBP\">GBP</option>\n";
+  ptr+= "<option value=\"EUR\">EUR</option>\n";
+  ptr+= "<option value=\"KWD\">KWD</option>\n";
+  ptr+= "<option value=\"AUD\">AUD</option>\n";
+  }
+  else if (Currency == "JPY"){
+  ptr+= "<option value=\"USD\">USD</option>\n";
+  ptr+= "<option value=\"JPY\" selected >JPY</option>\n";
+  ptr+= "<option value=\"GBP\">GBP</option>\n";
+  ptr+= "<option value=\"EUR\">EUR</option>\n";
+  ptr+= "<option value=\"KWD\">KWD</option>\n";
+  ptr+= "<option value=\"AUD\">AUD</option>\n";
+  }
+  else if (Currency == "GBP"){
+  ptr+= "<option value=\"USD\">USD</option>\n";
+  ptr+= "<option value=\"JPY\">JPY</option>\n";
+  ptr+= "<option value=\"GBP\" selected >GBP</option>\n";
+  ptr+= "<option value=\"EUR\">EUR</option>\n";
+  ptr+= "<option value=\"KWD\">KWD</option>\n";
+  ptr+= "<option value=\"AUD\">AUD</option>\n";
+  }
+  else if (Currency == "EUR"){
+  ptr+= "<option value=\"USD\">USD</option>\n";
+  ptr+= "<option value=\"JPY\">JPY</option>\n";
+  ptr+= "<option value=\"GBP\">GBP</option>\n";
+  ptr+= "<option value=\"EUR\" selected >EUR</option>\n";
+  ptr+= "<option value=\"KWD\">KWD</option>\n";
+  ptr+= "<option value=\"AUD\">AUD</option>\n";
+  }
+  else if (Currency == "KWD"){
+  ptr+= "<option value=\"USD\">USD</option>\n";
+  ptr+= "<option value=\"JPY\">JPY</option>\n";
+  ptr+= "<option value=\"GBP\">GBP</option>\n";
+  ptr+= "<option value=\"EUR\">EUR</option>\n";
+  ptr+= "<option value=\"KWD\" selected >KWD</option>\n";
+  ptr+= "<option value=\"AUD\">AUD</option>\n";
+  }
+  else if (Currency == "AUD"){
+  ptr+= "<option value=\"USD\">USD</option>\n";
+  ptr+= "<option value=\"JPY\">JPY</option>\n";
+  ptr+= "<option value=\"GBP\">GBP</option>\n";
+  ptr+= "<option value=\"EUR\">EUR</option>\n";
+  ptr+= "<option value=\"KWD\">KWD</option>\n";
+  ptr+= "<option value=\"AUD\" selected >AUD</option>\n";
+  }
+  else{
   ptr+= "<option value=\"USD\">USD</option>\n";
   ptr+= "<option value=\"JPY\">JPY</option>\n";
   ptr+= "<option value=\"GBP\">GBP</option>\n";
   ptr+= "<option value=\"EUR\">EUR</option>\n";
   ptr+= "<option value=\"KWD\">KWD</option>\n";
   ptr+= "<option value=\"AUD\">AUD</option>\n";
+  }
+
+
   ptr+= "</select>\n";
   ptr+= "<br><br>\n";
   ptr+= "<label for=\"ceil\">Ceil% :</label><br>\n";
-  ptr+= "<input type=\"number\" id=\"ceil\" name=\"ceil\" value=5><br><br>\n";
+  ptr+= "<input type=\"number\" id=\"ceil\" name=\"ceil\" value=" + Ceil + "><br><br>\n";
   ptr+= "<label for=\"floor\">Floor% :</label><br>\n";
-  ptr+= "<input type=\"number\" id=\"floor\" name=\"floor\" value=5><br><br>\n";
-  ptr+= "<input type=\"submit\" value=\"Submit\">\n";
+  ptr+= "<input type=\"number\" id=\"floor\" name=\"floor\" value=" + Floor + "><br><br>\n";
+  ptr+= "<input  style=\"height:35px;width: 100px;background-color: aquamarine;\" type=\"submit\" value=\"Submit\">\n";
+  //ptr+= "<button  style=\"height:35px;width: 100px;background-color: aquamarine;\" onclick=\"window.location.reload()\">Refresh Page</button>\n";
   ptr+= "</form>\n";
   ptr+= "</body>\n";
   ptr+= "</html>\n";
@@ -477,27 +561,6 @@ void callback(char* topic, byte* payload, unsigned int length) {
     ceil_crossed = false;
     floor_crossed = false;
   }
-
-  if (Authorization_Message == "success") {
-      if (Authorization_Message == "success" && Email_returned == Email ){
-        Serial.println("HelloAuthorized");
-        data.Authenticated = true;
-        data.accesstoken = access_token;
-        data.Password = Password;
-        strncpy(data.Email,Email_array,50);
-        EEPROM.put(addr,data);
-        EEPROM.commit();
-        server.send(200, "text/html", SendHTML(Current_currency,Current_value,Current_UpDown)); 
-        }
-      else{
-        data.Data_provided = false;
-        EEPROM.put(addr,data);
-        EEPROM.commit();
-        server.send(200, "text/html", UserAuthentification());
-        }
-    Authorization_Message == "error"
-  }
-
 }
 
 void process_Authentication(byte* payload, unsigned int length, int charlen, int numitem) {
@@ -535,6 +598,10 @@ void process_Authentication(byte* payload, unsigned int length, int charlen, int
       case 4:
           if (timestamp > unix_epoch - 19820) {
           access_token = String(token);
+          //saving to eeprom
+          data.accesstoken = access_token;
+          EEPROM.put(addr,data);
+          EEPROM.commit();
           Serial.println(access_token);
           }
           break;
@@ -707,14 +774,6 @@ void Update_values(){
     Current_value = String(EUR,2);
     Current_UpDown = eur_up;
    }
-   if (Current_currency == "NON")
-   {
-    Current_value = "0.00";
-    Current_UpDown = true;
-   }
-
-   Serial.println(Current_currency+" "+Current_value);
-   
 }
 
 void set_updown(char * binary) {
