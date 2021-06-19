@@ -162,9 +162,10 @@ void handlerequest(){
 
         if (UserNeeds != Current_currency +"$"+ Ceil +"$"+ Floor){
           UserNeeds = Current_currency +"$"+ Ceil +"$"+ Floor;
-          String UserNeedswithtime = String(unix_epoch)+"$"+User_ID+"$"+UserNeeds;
+          EEPROM.get(addr,data);
+          String UserNeedswithtime = String(unix_epoch)+"$"+String(data.UserID)+"$"+UserNeeds;
           int time_length = String(unix_epoch).length()+ 1;
-          int UserId_len = User_ID.length()+1;
+          int UserId_len =String(data.UserID).length()+1;
           int currency_len = Current_currency.length() + 1;
           int ceil_len = Ceil.length() + 1;
           int floor_len = Floor.length() + 1; 
