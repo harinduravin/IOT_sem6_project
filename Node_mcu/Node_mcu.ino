@@ -14,22 +14,29 @@
 #include <DNSServer.h>
 #include <PubSubClient.h>
 #include <EEPROM.h>
+#include <WiFiUdp.h>
+#include <NTPClient.h>    
 
 int BUILTIN_LED = 2;
 WebServer server(80);
 
 WiFiClient wifiClient;
 PubSubClient client(wifiClient); 
+WiFiUDP ntpUDP;
+NTPClient timeClient(ntpUDP, "pool.ntp.org", 19800);
 
 
 const char* mqttServer = "test.mosquitto.org";
 uint addr = 0;
 struct { 
   bool Authenticated = false;
-  char email[30] = "";
-  char Email_submitted[30] = "";
+  bool Data_provided = false;
+  String Password = "";
+  char Email[50] = "";
+  String UserID;
   }data;
-bool Authorized = false;
+  
+
 
 String payloadstr;
 long timestamp;
@@ -41,6 +48,11 @@ String Current_currency = "NON";
 String Current_value = "0.00";
 uint8_t Current_UpDown = true;
 String UserNeeds;
+unsigned long unix_epoch;
+String User_ID;
+String Authorization_Message;
+String Email_returned;
+
 
 float USD = 198.25; // up - true, down - false
 float GBP = 198.25; // up - true, down - false
@@ -85,6 +97,7 @@ void reconnect() {
       // ... and resubscribe
 //      client.subscribe("IOT_6B/G05/BuzzerNotification");
       client.subscribe("IOT_6B/G05/CommonData");
+      client.subscribe("IOT_6B/G05/AuthResponse");
       
     } else {
       Serial.print("failed, rc=");
@@ -102,14 +115,13 @@ void setup() {
   WiFi.mode(WIFI_AP_STA);
   Serial.begin(115200);
   EEPROM.begin(512);
+  timeClient.begin();
   setup_wifi();
   setupMQTT();
-  data.Authenticated = true;
-  strncpy(data.email, "dhanuka37@outlook.com",30);
+  data.Authenticated = false;
   EEPROM.put(addr,data);
   EEPROM.commit(); 
 
-  server.on("/update",handleupdate);
   server.on("/",handlerequest);
   server.onNotFound(handle_NotFound);
 
@@ -119,70 +131,86 @@ void setup() {
 
 void loop() {
   server.handleClient();
-//  Update_values();
   if (!client.connected()) {
     reconnect();
   }
   client.loop();
+  timeClient.update();
+  unix_epoch = timeClient.getEpochTime();
 }
 
-void handleupdate(){
-  Serial.println("Received Update");
-  server.send(200, "text/html", SendHTML(Current_currency,Current_value,Current_UpDown));
-}
+
 
 void handlerequest(){
-//  if (server.hasArg("plain")== false){ //Check if body received
-//      server.send(200, "text/plain", "Body not received");
-//      return;
-//      }
-
+      
       String Email = server.arg("email");
       String Password = server.arg("password");
-      char Email_array[30];
-      Email.toCharArray(Email_array, 30);
 
-      if (!Authorized){
-        strncpy(data.Email_submitted, Email_array,30);
-        EEPROM.put(addr,data);
-        EEPROM.commit();
-      }
-      
+      char Email_array[50];
+      Email.toCharArray(Email_array, 50);
+     
       EEPROM.get(addr,data);
       
-      if (strcmp(data.email,data.Email_submitted) == 0){
-        if (data.Authenticated){
-          Authorized = true;
+      if (data.Authenticated){
            
-          Current_currency = server.arg("currency");
-          Update_values();
-          server.send(200, "text/html", SendHTML(Current_currency,Current_value,Current_UpDown));
+        Current_currency = server.arg("currency");
+        Update_values();
+        server.send(200, "text/html", SendHTML(Current_currency,Current_value,Current_UpDown));
      
-          String Ceil = server.arg("ceil");
-          String Floor = server.arg("floor");
+        String Ceil = server.arg("ceil");
+        String Floor = server.arg("floor");
 
-          if (UserNeeds != Current_currency +"$"+ Ceil +"$"+ Floor){
-          
-            UserNeeds = Current_currency +"$"+ Ceil +"$"+ Floor;
-            int currency_len = Current_currency.length() + 1;
-            int ceil_len = Ceil.length() + 1;
-            int floor_len = Floor.length() + 1; 
-            int UserNeeds_len = currency_len + ceil_len + floor_len;
-            char UserNeeds_array[UserNeeds_len];
-            UserNeeds.toCharArray(UserNeeds_array, UserNeeds_len);
-            client.publish("IOT_6B/G05/UserNeeds", UserNeeds_array );
-            
+        if (UserNeeds != Current_currency +"$"+ Ceil +"$"+ Floor){
+          UserNeeds = Current_currency +"$"+ Ceil +"$"+ Floor;
+          String UserNeedswithtime = String(unix_epoch)+"$"+User_ID+"$"+UserNeeds;
+          int time_length = String(unix_epoch).length()+ 1;
+          int UserId_len = User_ID.length()+1;
+          int currency_len = Current_currency.length() + 1;
+          int ceil_len = Ceil.length() + 1;
+          int floor_len = Floor.length() + 1; 
+          int UserNeeds_len = time_length+UserId_len+currency_len + ceil_len + floor_len;
+          char UserNeeds_array[UserNeeds_len];
+          UserNeedswithtime.toCharArray(UserNeeds_array, UserNeeds_len);
+          client.publish("IOT_6B/G05/UserNeeds", UserNeeds_array );
           }
-          
         }
         else{
-          server.send(200, "text/html", UserAuthentification());
+          if (!data.Data_provided){
+            data.Data_provided = true;
+            EEPROM.put(addr,data);
+            EEPROM.commit();
+            server.send(200, "text/html", UserAuthentification());
+          }
+          else{
+            String UserAuthentication;
+            UserAuthentication = String(unix_epoch)+"$"+Email+"$"+Password;
+            int Email_len = Email.length() + 1;
+            int Password_len = Password.length()+1;
+            int time_length = String(unix_epoch).length()+ 1;
+            int UserAuthentication_len = time_length+Password_len + Email_len;
+            char UserAuthentication_array[UserAuthentication_len];
+            UserAuthentication.toCharArray(UserAuthentication_array, UserAuthentication_len);
+            client.publish("IOT_6B/G05/UserAuth", UserAuthentication_array );
+            delay(10000);
+            if (Authorization_Message == "success" && Email_returned == Email ){
+              Serial.println("HelloAuthorized");
+              data.Authenticated = true;
+              data.UserID = User_ID;
+              data.Password = Password;
+              strncpy(data.Email,Email_array,50);
+              EEPROM.put(addr,data);
+              EEPROM.commit();
+              server.send(200, "text/html", SendHTML(Current_currency,Current_value,Current_UpDown)); 
+              }
+            else{
+              data.Data_provided = false;
+              EEPROM.put(addr,data);
+              EEPROM.commit();
+//              server.send(200, "text/html", UserAuthentification());
+              }
+            }
+          }
         }
-      }
-      else{
-          server.send(200, "text/html", UserAuthentification());
-        }
-}
 
 void handle_NotFound(){
   server.send(404, "text/html", "Not found");
@@ -226,7 +254,7 @@ String SendHTML(String Currency,String value,uint8_t UpDown){
   ptr+= "<title>GROUP 5</title>\n";
   ptr+= "</head>\n";
   ptr+= "<body style=\"text-align:center;display:grid;place-content: center;background-color: rgb(23, 196, 196);overflow-y: auto;\">\n";
-  ptr+= "<h1 style=\"font-size: 50px;\" >Get Exchange</h1>\n";
+  ptr+= "<h1 style=\"font-size: 45px;\" >Get Exchange</h1>\n";
   
   if (Currency == "USD"){
     ptr+="<h2>LKR/USD</h2>\n";
@@ -283,15 +311,123 @@ String SendHTML(String Currency,String value,uint8_t UpDown){
 }
 
 void callback(char* topic, byte* payload, unsigned int length) {
-//
+
 //  if (String(topic) == "IOT_6B/G05/BuzzerNotification") {
-//   process_notification(payload, length, 50, 5);
+//    process_notification(payload, length, 50, 5);
 //  }
   
   if (String(topic) == "IOT_6B/G05/CommonData") {
    process_data(payload, length, 70, 8);
   }
+
+  if (String(topic) == "IOT_6B/G05/AuthResponse") {
+   process_Authentication(payload, length, 50, 5);
+  }
+
+//  if (ceil_crossed  || floor_crossed) {
+//    buzzerinit();  
+//    ceil_crossed = false;
+//    floor_crossed = false;
+//  }
+  
 }
+
+void process_Authentication(byte* payload, unsigned int length, int charlen, int numitem) {
+
+    payloadstr = "";
+    Serial.println();
+    for (int i = 0; i < length; i++) {
+      payloadstr += (char)payload[i];
+    }
+
+     char payloadstr_array[charlen];
+     payloadstr.toCharArray(payloadstr_array, charlen);
+
+   char * token = strtok(payloadstr_array, "$");
+
+   for (int i = 1; i < numitem+1; i++) {
+    switch (i) {
+      case 1:
+          Email_returned = String(token);
+          Serial.println(Email_returned);
+          break;
+      case 2:
+          Authorization_Message = String(token);
+          Serial.println(Authorization_Message);
+          break;
+      case 3:
+          User_ID = String(token);
+          Serial.println(User_ID);
+          break;
+          }          
+          token = strtok(NULL, "$");
+    }
+
+}
+
+//void process_notification(byte* payload, unsigned int length, int charlen, int numitem) {
+//
+//    int digit;
+//    payloadstr = "";
+//    Serial.println();
+//    for (int i = 0; i < length; i++) {
+//      payloadstr += (char)payload[i];
+//    }
+//
+//     char payloadstr_array[charlen];
+//     payloadstr.toCharArray(payloadstr_array, charlen);
+//
+//   char * token = strtok(payloadstr_array, "$");
+//   
+//   for (int i = 1; i < numitem+1; i++) {
+//      switch (i) {
+//       case 1:
+//          timestamp = atol(token);
+//          Serial.print(timestamp);
+//          Serial.println();
+//          break;
+//       case 2:
+//          if (timestamp > unix_epoch - 19820) {
+//           current_user = String(token);
+//           Serial.print(current_user);
+//           Serial.println();
+//          }
+//           break;
+//       case 3:
+//          if (timestamp > unix_epoch - 19820) {
+//           current_currency = String(token);
+//           Serial.print(current_currency);
+//           Serial.println();
+//          }
+//           break;
+//       case 4:
+//          if (timestamp > unix_epoch - 19820) {
+//           digit = String(token).toInt();
+//           if (digit == 1) {
+//           ceil_crossed = true;
+//            } else {
+//            ceil_crossed  = false;
+//            }
+//           Serial.print(ceil_crossed);
+//           Serial.println();
+//          }
+//          break;
+//       case 5:
+//          if (timestamp > unix_epoch - 19820) {
+//           digit = String(token).toInt();
+//           if (digit == 1) {
+//           floor_crossed = true;
+//            } else {
+//           floor_crossed  = false;
+//            }
+//           Serial.print(ceil_crossed);
+//           Serial.println();
+//          }
+//          break;    
+//       }
+//       token = strtok(NULL, "$");
+//   }
+//}
 
 void process_data(byte* payload, unsigned int length, int charlen, int numitem) {
 
@@ -356,7 +492,7 @@ void process_data(byte* payload, unsigned int length, int charlen, int numitem) 
        token = strtok(NULL, "$");
    }
    
-   Update_values();
+//   Update_values();
    
 }
 
@@ -392,7 +528,7 @@ void Update_values(){
     Current_UpDown = true;
    }
 
-   Serial.println(Current_currency+Current_value+"hello world");
+   Serial.println(Current_currency+" "+Current_value);
    
   }
 
