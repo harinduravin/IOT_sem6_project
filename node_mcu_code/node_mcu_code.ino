@@ -58,7 +58,7 @@ String Current_value = "0.00";
 uint8_t Current_UpDown = true;
 String UserNeeds;
 String access_token;
-String Authorization_Message;
+String Authorization_Message = "error";
 String Email_returned;
 
 float USD = 198.25; // up - true, down - false
@@ -356,23 +356,6 @@ void handlerequest(){
       char UserAuthentication_array[UserAuthentication_len];
       UserAuthentication.toCharArray(UserAuthentication_array, UserAuthentication_len);
       client.publish("IOT_6B/G05/UserAuth", UserAuthentication_array );
-      delay(3000);
-      if (Authorization_Message == "success" && Email_returned == Email ){
-        Serial.println("HelloAuthorized");
-        data.Authenticated = true;
-        data.accesstoken = access_token;
-        data.Password = Password;
-        strncpy(data.Email,Email_array,50);
-        EEPROM.put(addr,data);
-        EEPROM.commit();
-        server.send(200, "text/html", SendHTML(Current_currency,Current_value,Current_UpDown)); 
-        }
-      else{
-        data.Data_provided = false;
-        EEPROM.put(addr,data);
-        EEPROM.commit();
-        server.send(200, "text/html", UserAuthentification());
-        }
       }
     }
 }
@@ -493,6 +476,26 @@ void callback(char* topic, byte* payload, unsigned int length) {
     buzzerinit();  
     ceil_crossed = false;
     floor_crossed = false;
+  }
+
+  if (Authorization_Message == "success") {
+      if (Authorization_Message == "success" && Email_returned == Email ){
+        Serial.println("HelloAuthorized");
+        data.Authenticated = true;
+        data.accesstoken = access_token;
+        data.Password = Password;
+        strncpy(data.Email,Email_array,50);
+        EEPROM.put(addr,data);
+        EEPROM.commit();
+        server.send(200, "text/html", SendHTML(Current_currency,Current_value,Current_UpDown)); 
+        }
+      else{
+        data.Data_provided = false;
+        EEPROM.put(addr,data);
+        EEPROM.commit();
+        server.send(200, "text/html", UserAuthentification());
+        }
+    Authorization_Message == "error"
   }
 
 }
