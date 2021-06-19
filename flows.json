@@ -2920,8 +2920,8 @@
         "base": "",
         "symbols": "",
         "creds": "3a4aeaa5.e720d6",
-        "x": 560,
-        "y": 440,
+        "x": 540,
+        "y": 420,
         "wires": [
             [
                 "c6aace7d.2a93d"
@@ -2997,7 +2997,7 @@
             },
             {
                 "name": "limitToLast",
-                "value": "",
+                "value": "1",
                 "valType": "str"
             }
         ],
@@ -3392,9 +3392,9 @@
         "port": "465",
         "secure": true,
         "tls": true,
-        "name": "kungfuts@gmail.com",
+        "name": "",
         "dname": "Ceil mail",
-        "x": 1470,
+        "x": 1480,
         "y": 760,
         "wires": []
     },
@@ -3403,7 +3403,7 @@
         "type": "function",
         "z": "8272fd45.4d821",
         "name": "mail body",
-        "func": "\nreturn {\n    payload:`Dear Sir/Madame, Ceil limit is crossed.Current value of  in ${global.get(\"selected_currency\")} is ${global.get(\"current_currencies\")[global.get(\"selected_currency\")]} LKR`,\n    //to:global.get(\"current_user\")\n    topic:\"Ceil Crossed\"\n    \n};",
+        "func": "\nreturn {\n    payload:`Dear Sir/Madame, Ceil limit is crossed.Current value of  in ${global.get(\"selected_currency\")} is ${global.get(\"current_currencies\")[global.get(\"selected_currency\")]} LKR`,\n    to:global.get(\"current_user\"),\n    topic:\"Ceil Crossed\"\n    \n};",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -3424,7 +3424,7 @@
         "port": "465",
         "secure": true,
         "tls": true,
-        "name": "kungfuts@gmail.com",
+        "name": "",
         "dname": "Floor mail",
         "x": 1480,
         "y": 800,
@@ -3435,7 +3435,7 @@
         "type": "function",
         "z": "8272fd45.4d821",
         "name": "mail body",
-        "func": "\nreturn {\n payload:`Dear Sir/Madame, floor limit is crossed.Current value of  in ${global.get(\"selected_currency\")} is ${global.get(\"current_currencies\")[global.get(\"selected_currency\")]} LKR`,\n    //to:global.get(\"current_user\")\n    topic:\"Floor Crossed\"\n};",
+        "func": "\nreturn {\n payload:`Dear Sir/Madame, floor limit is crossed.Current value of  in ${global.get(\"selected_currency\")} is ${global.get(\"current_currencies\")[global.get(\"selected_currency\")]} LKR`,\n    to:global.get(\"current_user\"),\n    topic:\"Floor Crossed\"\n};",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -3454,7 +3454,7 @@
         "z": "8272fd45.4d821",
         "name": "Sends notifications",
         "info": "## This is just dummy nodes",
-        "x": 1630,
+        "x": 1650,
         "y": 780,
         "wires": []
     },
@@ -4134,7 +4134,7 @@
         "type": "function",
         "z": "8272fd45.4d821",
         "name": "",
-        "func": "let payload = \n    `${Date.now()}$${global.get(\"current_user\").email}$${global.get(\"selected_currency\")}$${1}$${0}`\n\nreturn {payload};",
+        "func": "let payload = \n    `${parseInt((Date.now()/1000).toString())}$${global.get(\"current_user\").email}$${global.get(\"selected_currency\")}$${1}$${0}`\n\nreturn {payload};",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -4208,7 +4208,7 @@
         "type": "function",
         "z": "8272fd45.4d821",
         "name": "",
-        "func": "let payload = \n    `${Date.now()}$${global.get(\"current_user\").email}$${global.get(\"selected_currency\")}$${0}$${1}`\n\nreturn {payload};",
+        "func": "let payload = \n    `${parseInt((Date.now()/1000).toString())}$${global.get(\"current_user\").email}$${global.get(\"selected_currency\")}$${0}$${1}`\n\nreturn {payload};",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -4226,7 +4226,7 @@
         "type": "function",
         "z": "8272fd45.4d821",
         "name": "",
-        "func": "const currencies = msg.payload.latest \nconst last = msg.payload.last \n\nlet bitarray = \"\"\nfor (const [key, value] of Object.entries(currencies)) {\n  if(currencies[key]>=last[key]){\n      bitarray=bitarray+\"1\"\n  }else{\n      bitarray=bitarray+\"0\"\n  }\n  console.log(currencies[key],last[key])\n}\n\nlet payload = \n`${Date.now()}$${currencies.USD}$${currencies.GBP}$${currencies.JPY}$${currencies.AUD}$${currencies.KWD}$${currencies.EUR}$${bitarray}`\n   // `${Date.now()}$${global.get(\"current_user\").email}$${global.get(\"selected_currency\")}$${1}$${0}`\n\nreturn {payload};",
+        "func": "const currencies = msg.payload.latest \nconst last = msg.payload.last \n\nlet bitarray = \"\"\nfor (const [key, value] of Object.entries(currencies)) {\n  if(currencies[key]>=last[key]){\n      bitarray=bitarray+\"1\"\n  }else{\n      bitarray=bitarray+\"0\"\n  }\n  console.log(currencies[key],last[key])\n}\n\nlet payload = \n`${parseInt((Date.now()/1000).toString())}$${currencies.USD}$${currencies.GBP}$${currencies.JPY}$${currencies.AUD}$${currencies.KWD}$${currencies.EUR}$${bitarray}`\n   // `${Date.now()}$${global.get(\"current_user\").email}$${global.get(\"selected_currency\")}$${1}$${0}`\n\nreturn {payload};",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -4886,7 +4886,7 @@
         "type": "function",
         "z": "8272fd45.4d821",
         "name": "",
-        "func": "\nreturn {payload:msg.payload.selected_currency};",
+        "func": "var currency =  \"USD\"\n    \nif(payload.selected_currency){\n    currency =  payload.selected_currency\n}\n\n\n\nreturn {payload:currency};",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -4904,7 +4904,7 @@
         "type": "function",
         "z": "8272fd45.4d821",
         "name": "",
-        "func": "\nreturn {payload:msg.payload.ceil};",
+        "func": "\nvar ceil =  5\n    \nif(payload.ceil){\n    ceil =  payload.ceil\n}\n\n\nreturn {payload:ceil};",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -4922,7 +4922,7 @@
         "type": "function",
         "z": "8272fd45.4d821",
         "name": "",
-        "func": "\nreturn {payload:msg.payload.floor};",
+        "func": "\n\nvar floor =  5\n    \nif(payload.floor){\n    floor =  payload.floor\n}\n\nreturn {payload:floor};",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -4977,16 +4977,17 @@
         "type": "function",
         "z": "8272fd45.4d821",
         "name": "",
-        "func": "var inputString = msg.payload;\nvar inputData = inputString.split(\"$\");\n//timestamp$user_email$password\nconst userdata = {\n    timestamp:inputData[0],\n    email:inputData[1],\n    password:inputData[2],\n}\nreturn{userdata};",
+        "func": "var inputString = msg.payload;\nvar inputData = inputString.split(\"$\");\n//timestamp$user_email$password\n// const isTooLate =  (Date.now()-20) < inputData[0];\n\nglobal.set(\"last_logged_user\",{\n    email:inputData[1],\n    password:inputData[2],\n})\n\nconst userdata = {\n    timestamp:inputData[0],\n    email:inputData[1],\n    password:inputData[2],\n   // isTooLate:isTooLate\n}\nreturn{userdata};",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 500,
+        "x": 400,
         "y": 1460,
         "wires": [
             [
-                "227d1148.29237e"
+                "227d1148.29237e",
+                "25cbdd40.0a8782"
             ]
         ]
     },
@@ -5022,7 +5023,8 @@
         "y": 1460,
         "wires": [
             [
-                "1ce834c7.62e9ab"
+                "1ce834c7.62e9ab",
+                "c94756e8.5f7d78"
             ]
         ]
     },
@@ -5052,10 +5054,12 @@
         "y": 1460,
         "wires": [
             [
-                "aba426b7.57c5d8"
+                "aba426b7.57c5d8",
+                "b44f44ed.bd3448"
             ],
             [
-                "8bb9d06b.dfdbb"
+                "8bb9d06b.dfdbb",
+                "661d1956.3dac98"
             ]
         ]
     },
@@ -5090,7 +5094,7 @@
         "type": "function",
         "z": "8272fd45.4d821",
         "name": "",
-        "func": "\nconst token = Math.random().toString(36).substr(2);\nglobal.set(\"token\",token)\nreturn {\n    payload:`success$${token}`\n};",
+        "func": "\nconst token = Math.random().toString(36).substr(2);\nglobal.set(\"token\",token)\nreturn {\n    payload:`${parseInt((Date.now()/1000).toString())}$${global.get(\"last_logged_user\").email}$success$${token}`\n};",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -5108,7 +5112,7 @@
         "type": "function",
         "z": "8272fd45.4d821",
         "name": "",
-        "func": "global.set(\"token\",\"\")\nreturn {\n    payload:`error$null`\n};",
+        "func": "global.set(\"token\",\"\")\nreturn {\n    payload:`${parseInt((Date.now()/1000).toString())}$${global.get(\"last_logged_user\").email}$error$null`\n};",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -5150,7 +5154,8 @@
                 "8055aebc.7a0a7",
                 "bf4d7483.c9b728",
                 "f37b35cd.26ebb8",
-                "d13468bb.755048"
+                "d13468bb.755048",
+                "174b4d3e.d2fc43"
             ],
             [
                 "8944ec3e.86679"
@@ -5197,7 +5202,7 @@
         "type": "function",
         "z": "8272fd45.4d821",
         "name": "",
-        "func": "\nreturn {payload:\"not-authenticated\"};",
+        "func": "\nreturn {payload:`${parseInt((Date.now()/1000).toString())}$not-authenticated`};",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -5206,7 +5211,8 @@
         "y": 1280,
         "wires": [
             [
-                "d02b1e55.a885d"
+                "d02b1e55.a885d",
+                "4569432f.1a3ccc"
             ]
         ]
     },
@@ -5273,7 +5279,7 @@
         "type": "function",
         "z": "8272fd45.4d821",
         "name": "",
-        "func": "\nreturn {payload:\"success\"};",
+        "func": "\nreturn {payload:`${parseInt((Date.now()/1000).toString())}$success`};",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -6919,5 +6925,215 @@
                 "55cdca30.b39a04"
             ]
         ]
+    },
+    {
+        "id": "4569432f.1a3ccc",
+        "type": "debug",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 770,
+        "y": 1360,
+        "wires": []
+    },
+    {
+        "id": "25cbdd40.0a8782",
+        "type": "debug",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 770,
+        "y": 1660,
+        "wires": []
+    },
+    {
+        "id": "174b4d3e.d2fc43",
+        "type": "debug",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 820,
+        "y": 980,
+        "wires": []
+    },
+    {
+        "id": "c94756e8.5f7d78",
+        "type": "debug",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1110,
+        "y": 1660,
+        "wires": []
+    },
+    {
+        "id": "7576a562.917c7c",
+        "type": "inject",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "current_user",
+        "payloadType": "global",
+        "x": 190,
+        "y": 360,
+        "wires": [
+            [
+                "d4ab5e4.2bbf1a"
+            ]
+        ]
+    },
+    {
+        "id": "d4ab5e4.2bbf1a",
+        "type": "debug",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 380,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "944500e9.e6d85",
+        "type": "inject",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 1740,
+        "wires": [
+            [
+                "7d77deb0.35d1b"
+            ]
+        ]
+    },
+    {
+        "id": "2a24446e.4c01ec",
+        "type": "debug",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 610,
+        "y": 1740,
+        "wires": []
+    },
+    {
+        "id": "7d77deb0.35d1b",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "func": "\nreturn {payload:Date.now()};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 330,
+        "y": 1740,
+        "wires": [
+            [
+                "2a24446e.4c01ec"
+            ]
+        ]
+    },
+    {
+        "id": "b44f44ed.bd3448",
+        "type": "debug",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1270,
+        "y": 1340,
+        "wires": []
+    },
+    {
+        "id": "661d1956.3dac98",
+        "type": "debug",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1270,
+        "y": 1580,
+        "wires": []
     }
 ]
