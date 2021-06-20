@@ -150,27 +150,37 @@ void reconnect() {
 //Function to determine sleep time
 void findSleep(){
   if (Day == "Saturday"){
-    if ((Hour>=1) && (Minutes>30)){
-      Issleeptime = true;
-      }
-    else{
-      Issleeptime = false;
+    if (Hour>=1){
+      if ((Hour == 1 ) && (Minutes>30)){
+        Issleeptime = true;
+        }
+      else if (Hour>1){
+        Issleeptime = true;
+        }
+      else{
+        Issleeptime = false;
+        }
       }
     }
   else if (Day == "Sunday"){
       Issleeptime = true;
     }
   else if (Day == "Monday"){
-    if ((Hour <= 2) && (Minutes <30)){
-      Issleeptime = true;
+    if (Hour <= 2){
+      if ((Hour == 2)&& (Minutes <30)){
+        Issleeptime = true;
+        }
+      else if (Hour<2){
+        Issleeptime = true;
+        }
+      else{
+        Issleeptime = false;
+        }
       }
-    else{
-      Issleeptime = false;
     }
-  }
   else{
     Issleeptime = false;
-    }
+  }
 }
 
 void setup() {
