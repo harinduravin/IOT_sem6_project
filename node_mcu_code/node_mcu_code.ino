@@ -161,6 +161,9 @@ void findSleep(){
         Issleeptime = false;
         }
       }
+    else{
+        Issleeptime = false;
+      }
     }
   else if (Day == "Sunday"){
       Issleeptime = true;
@@ -176,6 +179,9 @@ void findSleep(){
       else{
         Issleeptime = false;
         }
+      }
+    else{
+        Issleeptime = false;
       }
     }
   else{
