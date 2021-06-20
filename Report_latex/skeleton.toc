@@ -5,18 +5,17 @@
 \contentsline {section}{\numberline {2}Methodology}{3}{section.2}%
 \contentsline {subsection}{\numberline {2.1}Architecture}{3}{subsection.2.1}%
 \contentsline {subsection}{\numberline {2.2}Functionalities of NodeMCU}{4}{subsection.2.2}%
-\contentsline {subsubsection}{\numberline {2.2.1}Hosting Web Interface for User}{4}{subsubsection.2.2.1}%
-\contentsline {subsubsection}{\numberline {2.2.2}Authentication and authorization flow}{4}{subsubsection.2.2.2}%
-\contentsline {subsubsection}{\numberline {2.2.3}Setting up the MQTT Broker}{4}{subsubsection.2.2.3}%
-\contentsline {subsubsection}{\numberline {2.2.4}Decoding compact received data}{4}{subsubsection.2.2.4}%
-\contentsline {subsubsection}{\numberline {2.2.5}Sensing alerts and notifying the user}{4}{subsubsection.2.2.5}%
-\contentsline {subsubsection}{\numberline {2.2.6}Supporting the LCD 16x2 display}{4}{subsubsection.2.2.6}%
-\contentsline {subsubsection}{\numberline {2.2.7}Sleep function of the NodeMCU}{4}{subsubsection.2.2.7}%
-\contentsline {subsection}{\numberline {2.3}Functionalities of the Node-RED Application}{4}{subsection.2.3}%
-\contentsline {subsubsection}{\numberline {2.3.1}Extracting Data from the Exchange Rate API}{4}{subsubsection.2.3.1}%
-\contentsline {subsubsection}{\numberline {2.3.2}Integrating Firebase}{4}{subsubsection.2.3.2}%
-\contentsline {subsubsection}{\numberline {2.3.3}Obtaining technical analysis charts from prices}{4}{subsubsection.2.3.3}%
-\contentsline {subsubsection}{\numberline {2.3.4}Creating the Node-RED dashboard}{4}{subsubsection.2.3.4}%
-\contentsline {section}{\numberline {3}Results and Discussion}{4}{section.3}%
-\contentsline {section}{\numberline {4}Conclusion}{4}{section.4}%
-\contentsline {section}{\numberline {5}Annexes}{5}{section.5}%
+\contentsline {subsubsection}{\numberline {2.2.1}Hosting Web Interface for User}{5}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}Authentication and authorization flow}{5}{subsubsection.2.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.3}Setting up the MQTT Broker}{6}{subsubsection.2.2.3}%
+\contentsline {subsubsection}{\numberline {2.2.4}Decoding compact received data}{9}{subsubsection.2.2.4}%
+\contentsline {subsubsection}{\numberline {2.2.5}Sensing alerts and notifying the user}{10}{subsubsection.2.2.5}%
+\contentsline {subsubsection}{\numberline {2.2.6}Supporting the LCD 16x2 display}{10}{subsubsection.2.2.6}%
+\contentsline {subsubsection}{\numberline {2.2.7}Power Saving Mechanisms of the NodeMCU}{10}{subsubsection.2.2.7}%
+\contentsline {subsection}{\numberline {2.3}Functionalities of the Node-RED Application}{11}{subsection.2.3}%
+\contentsline {subsubsection}{\numberline {2.3.1}Extracting Data from the Exchange Rate API}{11}{subsubsection.2.3.1}%
+\contentsline {subsubsection}{\numberline {2.3.2}Integrating Firebase}{12}{subsubsection.2.3.2}%
+\contentsline {subsubsection}{\numberline {2.3.3}Obtaining technical analysis charts from prices}{14}{subsubsection.2.3.3}%
+\contentsline {subsubsection}{\numberline {2.3.4}Creating the Node-RED dashboard}{14}{subsubsection.2.3.4}%
+\contentsline {section}{\numberline {3}Results and Discussion}{14}{section.3}%
+\contentsline {section}{\numberline {4}Conclusion}{15}{section.4}%

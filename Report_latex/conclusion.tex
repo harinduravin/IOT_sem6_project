@@ -1,5 +1,11 @@
 \section{Results and Discussion}
 
+This prototype was successfully implemented to include all the functionalities mentioned in the Methodology for a single user, who can subscribe to a single currency type. However, this system could be extended to accommodate multiple users as well as to include the functionality for a single user to be able to subscribe to multiple currency types for notifications.\\
 
+Since the exchange rates are available to Day-Traders on a daily basis only, and this application succeeds at providing exchange rate information at a higher frequency (hourly) even with a free API subscription plan, this could be seen as a useful service for Day-Traders. This could however be extended to provide data every 30 seconds with a paid subscription, or even to be updated every second with the same API.\\
+
+There were several challenges encountered during the design and development of this application and one of which would be the implementation of a sleep mode for the NodeMCU. As the exchange rate information is required at high rates (30 seconds or less), it was not possible to implement a sleep mode energy saving algorithm for the NodeMCU and the constrained devices connected to it, at times when the Forex market is active.
 
 \section{Conclusion}
+
+Day Trading is an important activity to maintain the value of a currency type. The value of currency in the Forex market is determined by the supply and demand of currency and Day-trading supports this process. This project included the implementation of a prototype of a service to provide Day-Traders with exchange rate information and several Technical indicators over a period of time information which they require to conduct their Day-Trading activities successfully. The ability to view this information through live dashboards and to receive notifications regarding their investments automate the process of having to monitor the exchange rates manually.

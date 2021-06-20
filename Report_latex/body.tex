@@ -81,32 +81,9 @@ timestamp\$USD\$GBP\$JPY\$AUD\$KWD\$EUR\$100101\\
 
 Eg: 1623921792\$200.25\$155.25\$1.82\$143.25\$197.25\$142.25\$101000
 
-\begin{flushleft}
-{\selectfont
-\NumTabs{7}
 
-\setlength{\itemindent}{0.1in}
-\item timestamp 
-      \tab
-      :  Unix epoch time when the data is sent
-\item ceil\_bit
-      \tab
-      :  This is set to 1 when the ceiling price is crossed, otherwise set to 0
- 
-\item floor\_bit
-      \tab
-      :  This is set to 1 when the floor price is crossed, otherwise set to 0
 
-\item 001001
-      \tab
-      :  Each bit represents the six currencies. 1 represents a recent rise in price, while 0  
-      
-\item 
-      \tab
-          represents a recent reduction in price.
-}
 
-\end{flushleft}
 
 Combining the data like this was necessary, because a set of data should be available at a certain instance. Then the LCD display can be updated with new values at once. In addition, validating the timestamp of the data for expiration is easier when the data is combined. MQTT packets are received at random times, so receiving them together makes it easier to receive the data in an organized fashion.
 
@@ -185,9 +162,9 @@ if (timestamp > unix_epoch - 19820) {
 LCD display is used to display the live currency prices, along with the date and time. These values are displayed one by one sequentially.
 
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
-      \includegraphics[width=0.5\textwidth]{images/lcd.jpg}
+      \includegraphics[width=0.5\textwidth]{images/lcd.png}
     \caption{LCD display showing currency values, time and date}
     \label{lcd}
 \end{figure}

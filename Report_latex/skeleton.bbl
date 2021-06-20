@@ -1,0 +1,43 @@
+\begin{thebibliography}{1}
+
+\bibitem{mosq}
+``test.mosquitto.org,'' . \emph{Available
+  at:}~\url{https://test.mosquitto.org/}~(\emph{accessed} 2021-06-20).
+
+\bibitem{token}
+``{What Is Token-Based Authentication? | Okta},'' . \emph{Available
+  at:}~\url{https://www.okta.com/identity-101/what-is-token-based-authentication/}~(\emph{accessed}
+  2021-06-20).
+
+\bibitem{deepsleep}
+``{Max deep sleep for ESP8266, a deep-dive analysis • ThingPulse},'' .
+  \emph{Available
+  at:}~\url{https://thingpulse.com/max-deep-sleep-for-esp8266/}~(\emph{accessed}
+  2021-06-20).
+
+\bibitem{hours}
+``{Forex Market Hours},'' . \emph{Available
+  at:}~\url{https://www.markethours.net/forex-market-hours}~(\emph{accessed}
+  2021-06-20).
+
+\bibitem{api}
+``{node-red-contrib-exchangeratesapi (node) - Node-RED},'' . \emph{Available
+  at:}~\url{https://flows.nodered.org/node/node-red-contrib-exchangeratesapi}~(\emph{accessed}
+  2021-06-20).
+
+\bibitem{acoustics}
+``{node-red-contrib-acoustics (node) - Node-RED},'' . \emph{Available
+  at:}~\url{https://flows.nodered.org/node/node-red-contrib-acoustics}~(\emph{accessed}
+  2021-06-20).
+
+\bibitem{firebase}
+``{Firebase Realtime Database},'' . \emph{Available
+  at:}~\url{https://firebase.google.com/docs/database}~(\emph{accessed}
+  2021-06-20).
+
+\bibitem{noderedfire}
+``{node-red-contrib-firebase (node) - Node-RED},'' . \emph{Available
+  at:}~\url{https://flows.nodered.org/node/node-red-contrib-firebase}~(\emph{accessed}
+  2021-06-20).
+
+\end{thebibliography}
