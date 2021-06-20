@@ -215,8 +215,8 @@ void loop() {
   Minutes = timeClient.getMinutes();
   findSleep();
   if (Issleeptime){
-    ESP.deepSleep(10*FACTOR);
-//    ESP.deepSleep(3600*FACTOR);
+    ESP.deepSleep(10*1e6);
+//    ESP.deepSleep(3600*1e6);
   }
   
   unix_epoch = timeClient.getEpochTime();    // Get Unix epoch time from the NTP server
