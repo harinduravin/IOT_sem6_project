@@ -414,7 +414,7 @@ void handlerequest(){
       data.Data_provided = true;
       EEPROM.put(addr,data);
       EEPROM.commit();
-      server.send(200, "text/html", UserAuthentication());
+      server.send(200, "text/html", User_Authentication());
     }
     else{
       //Processing the data provided by user
@@ -466,7 +466,7 @@ void handlerequest(){
       
       //If the user is not a valid user , redirect them to User Authentication page
       else {
-        server.send(200, "text/html", UserAuthentication());
+        server.send(200, "text/html", User_Authentication());
       }
     }
   }
@@ -478,7 +478,7 @@ void handle_NotFound(){
 }
 
 //Function to display User Authentication HTML page
-String UserAuthentication() {
+String User_Authentication() {
   String s="<!DOCTYPE html>\n";
   s+= "<html lang=\"en\">\n";
   s+= "<head>\n";
