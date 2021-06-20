@@ -25,6 +25,8 @@ ESP8266WebServer server(80);
 WiFiClient wifiClient;
 PubSubClient client(wifiClient); 
 const char* mqttServer = "test.mosquitto.org";
+
+//struct to save user data
 uint addr = 0;
 struct { 
   bool Authenticated = false;
@@ -45,8 +47,8 @@ int counter = 0;
 unsigned long unix_epoch;
 char ascii;
 
-String Ceil;
-String Floor;
+String Ceil  = "5";
+String Floor = "5";
 
 String payloadstr;
 unsigned long timestamp;
@@ -54,22 +56,28 @@ unsigned long timestamp;
 #define MSG_BUFFER_SIZE  (50)
 char msg[MSG_BUFFER_SIZE];
 int value = 0;
+
+//Variables to keep the current selected surrency, it's value and whether it increased or decreased
 String Current_currency = "USD";
 String Current_value = "198.25";
 uint8_t Current_UpDown = true;
+
+//Variable to save current currency, ceil and floor percentage values
 String UserNeeds;
+
+//Variable to save the received access_token
 String access_token;
+
 String Authorization_Message;
 String Email_returned;
 
-  bool waiting = false;
 
-float USD = 198.25; // up - true, down - false
-float GBP = 198.25; // up - true, down - false
-float JPY = 1.83; // up - true, down - false
-float AUD = 198.25; // up - true, down - false
-float KWD = 198.25; // up - true, down - false
-float EUR = 198.25; // up - true, down - false
+float USD = 198.78; // up - true, down - false
+float GBP = 274.55; // up - true, down - false
+float JPY = 1.80; // up - true, down - false
+float AUD = 148.71; // up - true, down - false
+float KWD = 659.78; // up - true, down - false
+float EUR = 235.48; // up - true, down - false
 
 
 bool usd_up = false;
@@ -80,7 +88,7 @@ bool kwd_up = false;
 bool eur_up = false;
 char * binary;
 
-String current_user;
+String access_token_received;
 String current_currency;
 bool ceil_crossed = false;
 bool floor_crossed = false;
@@ -101,6 +109,7 @@ void setup_wifi() {
 }
 
 void setupMQTT() {
+  //Setting uo MQTT server
   client.setServer(mqttServer,1883);
   client.setCallback(callback);
   }
@@ -130,7 +139,6 @@ void reconnect() {
 }
 
 void setup() {
-  // put your setup code here, to run once:
   
   lcd.begin(16, 2);                 // Initialize 16x2 LCD Display
   lcd.clear();
@@ -142,15 +150,13 @@ void setup() {
 
   pinMode(speakerPin, OUTPUT);  // Output pin for buzzer
 
-  
-  pinMode(BUILTIN_LED, OUTPUT);     // Initialize the BUILTIN_LED pin as an output
   WiFi.mode(WIFI_AP_STA);
   Serial.begin(115200);
-    EEPROM.begin(512);
+  EEPROM.begin(512);
   timeClient.begin();
   setup_wifi();
   setupMQTT();
-    data.Authenticated = false;
+  data.Authenticated = false;
   EEPROM.put(addr,data);
   EEPROM.commit(); 
   
@@ -167,7 +173,7 @@ void loop() {
     reconnect();
   }
   client.loop();
-    timeClient.update();
+  timeClient.update();
   unix_epoch = timeClient.getEpochTime();    // Get Unix epoch time from the NTP server
   second_ = second(unix_epoch);
   if (last_second != second_) {
@@ -178,7 +184,6 @@ void loop() {
     day_    = day(unix_epoch);
     month_  = month(unix_epoch);
     year_   = year(unix_epoch);
-
  
 
     Time[12] = second_ % 10 + 48;
@@ -188,7 +193,6 @@ void loop() {
     Time[6]  = hour_   % 10 + 48;
     Time[5]  = hour_   / 10 + 48;
 
- 
 
     Date[5]  = day_   / 10 + 48;
     Date[6]  = day_   % 10 + 48;
@@ -197,8 +201,6 @@ void loop() {
     Date[13] = (year_   / 10) % 10 + 48;
     Date[14] = year_   % 10 % 10 + 48;
 
-    //Serial.println(Time);
-    //Serial.println(Date);
 
     lcd.setCursor(0, 0);
     lcd.print(Time);
@@ -307,26 +309,25 @@ void loop() {
 
 }
 
-
+//Function to handle HTTP requests
 void handlerequest(){
 
-  String Email = server.arg("email");
-  String Password = server.arg("password");
-  
-  char Email_array[50];
-  Email.toCharArray(Email_array, 50);
-      
+  //Getting data from the EEPROM  
   EEPROM.get(addr,data);
-  
+
+  //Checking if the user is Authenticated
   if (data.Authenticated){
+
+    //Processing data provided by user
     Current_currency = server.arg("currency");
     Update_values();
-    server.send(200, "text/html", SendHTML(Current_currency,Current_value,Current_UpDown));
-  
     Ceil = server.arg("ceil");
     Floor = server.arg("floor");
-  
+
+    //Checking if the current userneeds differ from the previously provided userneeds
     if (UserNeeds != Current_currency +"$"+ Ceil +"$"+ Floor){
+
+      //Processing the provided user needs
       UserNeeds = Current_currency +"$"+ Ceil +"$"+ Floor;
       String UserNeedswithtime = String(unix_epoch)+"$"+ data.accesstoken +"$"+UserNeeds;
       int time_length = String(unix_epoch).length()+ 1;
@@ -337,17 +338,30 @@ void handlerequest(){
       int UserNeeds_len = time_length+accesstoken_len+currency_len + ceil_len + floor_len;
       char UserNeeds_array[UserNeeds_len];
       UserNeedswithtime.toCharArray(UserNeeds_array, UserNeeds_len);
+
+      //Publishing the user needs to MQTT server
       client.publish("IOT_6B/G05/UserNeeds", UserNeeds_array );
       }
+
+    //Directing the user to Home page
+    server.send(200, "text/html", SendHTML(Current_currency,Current_value,Current_UpDown));
     }
   else{
+
+    //Checking whether user has provided the data(email and password)
     if (!data.Data_provided){
       data.Data_provided = true;
       EEPROM.put(addr,data);
       EEPROM.commit();
-      server.send(200, "text/html", UserAuthentification());
+      server.send(200, "text/html", UserAuthentication());
     }
     else{
+      //Processing the data provided by user
+      String Email = server.arg("email");
+      String Password = server.arg("password");
+  
+      char Email_array[50];
+      Email.toCharArray(Email_array, 50);
       String UserAuthentication;
       UserAuthentication = String(unix_epoch)+"$"+Email+"$"+Password;
       int Email_len = Email.length() + 1;
@@ -356,8 +370,11 @@ void handlerequest(){
       int UserAuthentication_len = time_length+Password_len + Email_len;
       char UserAuthentication_array[UserAuthentication_len];
       UserAuthentication.toCharArray(UserAuthentication_array, UserAuthentication_len);
+
+      //Publishing the data to MQTT server to check whether user data is in the data base
       client.publish("IOT_6B/G05/UserAuth", UserAuthentication_array ); 
 
+      //Waiting for a response from MQTT server  
       Serial.println("Authorization_Message : ");
       Serial.println(Authorization_Message);
       client.loop();
@@ -370,7 +387,10 @@ void handlerequest(){
       Serial.println("Authorization_Message : ");
       Serial.println(Authorization_Message);
 
+      //Checking if the user is a valid user
       if (Authorization_Message == "success" && Email_returned == Email ){
+
+        //Saving the data of user to EEPROM
         Serial.println("Authenticated");
         data.Authenticated = true;
         data.accesstoken = access_token;
@@ -380,21 +400,22 @@ void handlerequest(){
         EEPROM.commit();
         server.send(200, "text/html", SendHTML(Current_currency,Current_value,Current_UpDown)); 
         }
+      
+      //If the user is not a valid user , redirect them to User Authentication page
       else {
-        data.Data_provided = false;
-        EEPROM.put(addr,data);
-        EEPROM.commit();
-        server.send(200, "text/html", UserAuthentification());
+        server.send(200, "text/html", UserAuthentication());
         }
       }
     }
 }
 
+//Function to handle invalid HTTP requests
 void handle_NotFound(){
   server.send(404, "text/plain", "Not found");
 }
 
-String UserAuthentification() {
+//Function to display User Authentication HTML page
+String UserAuthentication() {
   String s="<!DOCTYPE html>\n";
   s+= "<html lang=\"en\">\n";
   s+= "<head>\n";
@@ -422,6 +443,7 @@ String UserAuthentification() {
   return s;
 }
 
+//Function to display home HTML page where we can submit our needs and current selected currency and price of that currency is shown.
 String SendHTML(String Currency,String value,uint8_t UpDown){
   String ptr = "<!DOCTYPE html> <html lang=\"en\">\n";
   ptr+= "<head>\n";
@@ -535,13 +557,13 @@ String SendHTML(String Currency,String value,uint8_t UpDown){
   ptr+= "<label for=\"floor\">Floor% :</label><br>\n";
   ptr+= "<input type=\"number\" id=\"floor\" name=\"floor\" value=" + Floor + "><br><br>\n";
   ptr+= "<input  style=\"height:35px;width: 100px;background-color: aquamarine;\" type=\"submit\" value=\"Submit\">\n";
-  //ptr+= "<button  style=\"height:35px;width: 100px;background-color: aquamarine;\" onclick=\"window.location.reload()\">Refresh Page</button>\n";
   ptr+= "</form>\n";
   ptr+= "</body>\n";
   ptr+= "</html>\n";
   return ptr;
 }
 
+//Function to handle data received by MQTT server
 void callback(char* topic, byte* payload, unsigned int length) {
 
   if (String(topic) == "IOT_6B/G05/BuzzerNotification") {
@@ -556,10 +578,16 @@ void callback(char* topic, byte* payload, unsigned int length) {
    process_Authentication(payload, length, 80, 4);
   }
 
-  if (ceil_crossed  || floor_crossed) {
-    buzzerinit();  
-    ceil_crossed = false;
-    floor_crossed = false;
+  EEPROM.get(addr,data);
+  if (access_token_received == data.accesstoken){
+    if (ceil_crossed  || floor_crossed) {
+      buzzerinit();  
+      ceil_crossed = false;
+      floor_crossed = false;
+    }
+  }
+  else{
+    Serial.println("User is not Authenticated")
   }
 }
 
@@ -634,8 +662,8 @@ void process_notification(byte* payload, unsigned int length, int charlen, int n
           break;
        case 2:
           if (timestamp > unix_epoch - 19820) {
-           current_user = String(token);
-           Serial.print(current_user);
+           access_token_received = String(token);
+           Serial.print(access_token_received);
            Serial.println();
           }
            break;
@@ -748,32 +776,33 @@ void process_data(byte* payload, unsigned int length, int charlen, int numitem) 
    
 }
 
+//Function to update Currency value and updown status based on current currency.
 void Update_values(){
 
   if (Current_currency == "USD"){
     Current_value = String(USD,2);
     Current_UpDown = usd_up;
-   }
-   if (Current_currency == "AUD"){
+  }
+  if (Current_currency == "AUD"){
     Current_value = String(AUD,2);
     Current_UpDown = aud_up;
-   }
-   if (Current_currency == "JPY"){
+  }
+  if (Current_currency == "JPY"){
     Current_value = String(JPY,2);
     Current_UpDown = jpy_up;
-   }
-   if (Current_currency == "GBP"){
+  }
+  if (Current_currency == "GBP"){
     Current_value = String(GBP,2);
     Current_UpDown = gbp_up;
-   }
-   if (Current_currency == "KWD"){
+  }
+  if (Current_currency == "KWD"){
     Current_value = String(KWD,2);
     Current_UpDown = kwd_up;
-   }
-   if (Current_currency == "EUR"){
+  }
+  if (Current_currency == "EUR"){
     Current_value = String(EUR,2);
     Current_UpDown = eur_up;
-   }
+  }
 }
 
 void set_updown(char * binary) {
