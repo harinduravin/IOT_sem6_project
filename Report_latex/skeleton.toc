@@ -1,16 +1,22 @@
 \contentsline {section}{\numberline {1}Introduction}{2}{section.1}%
 \contentsline {subsection}{\numberline {1.1}Overview}{2}{subsection.1.1}%
 \contentsline {subsection}{\numberline {1.2}Objectives}{2}{subsection.1.2}%
-\contentsline {subsection}{\numberline {1.3}Scope}{2}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.3}Scope}{3}{subsection.1.3}%
 \contentsline {section}{\numberline {2}Methodology}{3}{section.2}%
 \contentsline {subsection}{\numberline {2.1}Architecture}{3}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Exchange API}{3}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}Integrating Firebase}{3}{subsection.2.3}%
-\contentsline {subsection}{\numberline {2.4}Technical analysis charts}{3}{subsection.2.4}%
-\contentsline {subsection}{\numberline {2.5}Creating the Node-Red dashboard}{4}{subsection.2.5}%
-\contentsline {subsection}{\numberline {2.6}Configuring ESP8266}{4}{subsection.2.6}%
-\contentsline {subsubsection}{\numberline {2.6.1}Setting up MQTT}{4}{subsubsection.2.6.1}%
-\contentsline {subsubsection}{\numberline {2.6.2}Decoding compact received data}{5}{subsubsection.2.6.2}%
-\contentsline {subsubsection}{\numberline {2.6.3}Sensing alerts and notifying the user}{6}{subsubsection.2.6.3}%
-\contentsline {subsubsection}{\numberline {2.6.4}Supporting the LCD 16x2 display}{6}{subsubsection.2.6.4}%
-\contentsline {section}{\numberline {3}Conclusion}{6}{section.3}%
+\contentsline {subsection}{\numberline {2.2}Functionalities of NodeMCU}{4}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Hosting Web Interface for User}{4}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}Authentication and authorization flow}{4}{subsubsection.2.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.3}Setting up the MQTT Broker}{4}{subsubsection.2.2.3}%
+\contentsline {subsubsection}{\numberline {2.2.4}Decoding compact received data}{4}{subsubsection.2.2.4}%
+\contentsline {subsubsection}{\numberline {2.2.5}Sensing alerts and notifying the user}{4}{subsubsection.2.2.5}%
+\contentsline {subsubsection}{\numberline {2.2.6}Supporting the LCD 16x2 display}{4}{subsubsection.2.2.6}%
+\contentsline {subsubsection}{\numberline {2.2.7}Sleep function of the NodeMCU}{4}{subsubsection.2.2.7}%
+\contentsline {subsection}{\numberline {2.3}Functionalities of the Node-RED Application}{4}{subsection.2.3}%
+\contentsline {subsubsection}{\numberline {2.3.1}Extracting Data from the Exchange Rate API}{4}{subsubsection.2.3.1}%
+\contentsline {subsubsection}{\numberline {2.3.2}Integrating Firebase}{4}{subsubsection.2.3.2}%
+\contentsline {subsubsection}{\numberline {2.3.3}Obtaining technical analysis charts from prices}{4}{subsubsection.2.3.3}%
+\contentsline {subsubsection}{\numberline {2.3.4}Creating the Node-RED dashboard}{4}{subsubsection.2.3.4}%
+\contentsline {section}{\numberline {3}Results and Discussion}{4}{section.3}%
+\contentsline {section}{\numberline {4}Conclusion}{4}{section.4}%
+\contentsline {section}{\numberline {5}Annexes}{5}{section.5}%
