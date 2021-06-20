@@ -100,6 +100,13 @@ char notes[] = " C C C C C C C C C ";// a space represents a rest
 int beats[] = { 1,1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
 int tempo = 300;
 
+//Variables required to find the sleep time
+char daysOfTheWeek[7][12] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+const int FACTOR = 1e6;
+String Day;
+int Hour;
+int Minutes;
+bool Issleeptime = false;
 
 void setup_wifi() {
   // Connecting to a WiFi network
@@ -140,6 +147,32 @@ void reconnect() {
   }
 }
 
+//Function to determine sleep time
+void findSleep(){
+  if (Day == "Saturday"){
+    if ((Hour>=1) && (Minutes>30)){
+      Issleeptime = true;
+      }
+    else{
+      Issleeptime = false;
+      }
+    }
+  else if (Day == "Sunday"){
+      Issleeptime = true;
+    }
+  else if (Day == "Monday"){
+    if ((Hour <= 2) && (Minutes <30)){
+      Issleeptime = true;
+      }
+    else{
+      Issleeptime = false;
+    }
+  }
+  else{
+    Issleeptime = false;
+    }
+}
+
 void setup() {
   
   lcd.begin(16, 2);            // Initialize 16x2 LCD Display
@@ -176,6 +209,16 @@ void loop() {
   }
   client.loop();
   timeClient.update();
+  
+  Day = daysOfTheWeek[timeClient.getDay()];
+  Hour = timeClient.getHours();
+  Minutes = timeClient.getMinutes();
+  findSleep();
+  if (Issleeptime){
+    ESP.deepSleep(10*FACTOR);
+//    ESP.deepSleep(3600*FACTOR);
+  }
+  
   unix_epoch = timeClient.getEpochTime();    // Get Unix epoch time from the NTP server
   second_ = second(unix_epoch);
   if (last_second != second_) {
@@ -592,9 +635,6 @@ void callback(char* topic, byte* payload, unsigned int length) {
       ceil_crossed = false;
       floor_crossed = false;
     }
-  }
-  else{
-    Serial.println("User is not Authenticated")
   }
 }
 void process_Userneedsresponse(byte* payload, unsigned int length, int charlen, int numitem) {
