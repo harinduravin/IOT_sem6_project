@@ -32,28 +32,42 @@ These indicators calculated using exchange rate data over 40 hours are plotted o
     \centering
       \includegraphics[width=0.7\textwidth]{images/front.png}
     \caption{Setting up ESP8266 with an LCD display and a buzzer}
-    \label{front}
+    \label{fig:front}
 \end{figure}
 
-The NodeMCU used in the IOT system performs multiple tasks to facilitate the connectivity between the user’s device, the LCD display, and the buzzer. ESP8266 NodeMCU was used in the testing process. The flow chart in the figure, describes the functionality of the NodeMCU.
+The NodeMCU used in the IOT system performs multiple tasks to facilitate the connectivity between the user’s device, the LCD display, and the buzzer. ESP8266 NodeMCU was used in the testing process. The flow chart in the figure ~\ref{fig:overall}, describes the functionality of the NodeMCU.
 
+\subsubsection{Initial setup}
+
+When the NodeMCU is powered up, it follows a sequence of steps to make sure it is connected to the internet. In order to implement this sequence, 'WiFi manager' library was used.
+
+As the first step,it sets it up in \textit{Station mode} and tries to connect to a previously saved Access Point.
+
+In case it is unsuccessful, NodeMCU will act as an access point with the SSID 'IoT6B\_G05' and create a web server (Default IP \textbf{198.168.4.1}). The user can connect to this access point through any WiFi enabled device and go to the above mentioned IP address using a web browser. The web browser will display the available WiFi access points near the user. By providing the WiFi password of the preferred access point, NodeMCU can connect to the access point. Now the NodeMCU is connected to the internet.
+
+\begin{figure}[H]
+    \centering
+      \includegraphics[width=0.4\textwidth]{images/wifilogin.jpeg}
+    \caption{WiFi login interface for user}
+    \label{fig:wifilogin}
+\end{figure}
 
 \subsubsection{Hosting Web Interface for User}
 
 \begin{figure}[H]
     \centering
-      \includegraphics[width=0.4\textwidth]{images/login.png}
+      \includegraphics[width=0.7\textwidth]{images/login.png}
     \caption{Login page and home page for the user}
-    \label{host}
+    \label{fig:host}
 \end{figure}
 
-The above code calls two functions that return HTML scripts, which enable two HTML pages in figure  to be displayed. When the user loads 192.168.1.8 in the web browser, the login page on the left will appear in the mobile. After the authentication details are submitted, the user is redirected to the home page given that the authentication is successful.\\
+The above code calls two functions that return HTML scripts, which enable two HTML pages in figure \ref{fig:host} to be displayed. When the user loads \textbf{192.168.1.8} in the web browser, the login page on the left will appear in the mobile. After the authentication details are submitted, the user is redirected to the home page given that the authentication is successful.\\
 
 In the home page. The user can select a preferred currency out of six available currencies. Additionally, the user can select two percentages to set the ceiling and floor prices compared to the current price. The current price of the selected exchange rate is then displayed on the home page.
 
 \subsubsection{Authentication and authorization flow}
 
-An authentication and an authorization flow is included in the IOT system. This flow is included in figure  . The first step of authentication is the initial login page that requests the user to enter an email and a password. After obtaining the username and the password, NodeMCU sends authentication data to Node-RED through MQTT. Node-RED acts as an authorization server and generates an application access token. This access token is sent back to the NodeMCU through MQTT. NodeMCU then stores the access token along with the user name. Whenever NodeMCU is sending user specific data to Node-RED, the access token is also sent along with it to verify the validity of the user.
+An authentication and an authorization flow is included in the IOT system. This flow is included in figure \ref{fig:overall}. The first step of authentication is the initial login page that requests the user to enter an email and a password. After obtaining the username and the password, NodeMCU sends authentication data to Node-RED through MQTT. Node-RED acts as an authorization server and generates an application access token. This access token is sent back to the NodeMCU through MQTT. NodeMCU then stores the access token along with the user name. Whenever NodeMCU is sending user specific data to Node-RED, the access token is also sent along with it to verify the validity of the user.
 
 \subsubsection{Setting up the MQTT Broker}
 
@@ -63,55 +77,67 @@ The NodeMCU subscribes to four MQTT topics (a., b., c., and d. below), and publi
 
 \textbf{a. IOT\_6B/G05/UserAuth}\\
 
-The login credentials of the user are sent to the Node-RED application for validation through this topic. The format of the published message is as follows.\\
+The login credentials of the user are sent to the Node-RED application for validation through this topic. The format of the published message is as follows.
 
-timestamp\$user\_email\$password\\
+
+\begin{center}
+\includegraphics[width=0.7\textwidth]{images/userauth.pdf}
+\end{center}
+
 
 \textbf{b. IOT\_6B/G05/AuthResponse}\\
 
-The Nod-RED publishes the response status of the user authentication to this topic and is received by the NodeMCU. The format of the published message is as follows.\\
+The Nod-RED publishes the response status of the user authentication to this topic and is received by the NodeMCU. The format of the published message is as follows.
 
-timestamp\$email\$status\$token\\
-1623921792\$first.last@gmail.com\$success\$dhbasdg\\
-1623921792\$first.last@gmail.com\$error\$null\\
+\begin{center}
+      \includegraphics[width=0.7\textwidth]{images/authres.pdf}
+\end{center}
 
 \textbf{c. IOT\_6B/G05/UserNeeds}\\
 
-The Nod MCU publishes the currency type subscribed to by a particular user, along with the ceiling and floor values requested for notifications. The format of the published message is as follows.\\
+The Nod MCU publishes the currency type subscribed to by a particular user, along with the ceiling and floor values requested for notifications. The format of the published message is as follows.
 
-timestamp\$token\$currency\$ceil\_percentage\$floor\_percentage\\
+
+\begin{center}
+\includegraphics[width=0.7\textwidth]{images/userneeds.pdf}
+\end{center}
+
 
 \textbf{d. IOT\_6B/G05/UserNeedsResponse}\\
 
-The response token from the Node-RED, stating the validity of the request message sent to the IOT\_6B/G05/UserNeeds topic, is published to this topic.  The format of the published message is as follows.\\
+The response token from the Node-RED, stating the validity of the request message sent to the IOT\_6B/G05/UserNeeds topic, is published to this topic.  The format of the published message is as follows.
 
-timestamp\$access\_token\$status\\
-Status - success or error\\
+
+\begin{center}
+\includegraphics[width=0.7\textwidth]{images/userneedsres.pdf}
+\end{center}
+
 
 \textbf{e. IOT\_6B/G05/CommonData} \\
 
-This topic  receives the exchange rates of all 6 currency types and is updated every 30 seconds from the Node-RED. These values are received by the NodeMCU, and displayed on the LCD screen. The exchange rate of the selected currency type is displayed on the web interface for the user. The format of the published message is as follows.\\
+This topic  receives the exchange rates of all 6 currency types and is updated every 30 seconds from the Node-RED. These values are received by the NodeMCU, and displayed on the LCD screen. The exchange rate of the selected currency type is displayed on the web interface for the user. The format of the published message is as follows.
 
-timestamp\$USD\$GBP\$JPY\$AUD\$KWD\$EUR\$100101 \\
-1623921792\$195.25\$145.25\$195.25\$145.25\$195.25\$145.25\$001101\\
+\begin{center}
+\includegraphics[width=0.7\textwidth]{images/commondata.pdf}
+\end{center}
 
 \textbf{f. IOT\_6B/G05/BuzzerNotification} \\
 
-Messages are published to this topic by the Node-RED application when the ceiling and floor prices, specified by the user, have been exceeded by the exchange rate. The format of the published message is as follows.\\
+Messages are published to this topic by the Node-RED application when the ceiling and floor prices, specified by the user, have been exceeded by the exchange rate. The format of the published message is as follows.
 
-timestamp\$access\_token\$currency\$ceil\_bit\$floor\_bit\\
-1623921792\$dhbasdg\$USD\$1\$0\\
-
+\begin{center}
+\includegraphics[width=0.7\textwidth]{images/buzzernot.pdf}
+\end{center}
 
 The components of the encoded MQTT messages are as follows.
 
 \begin{itemize}[itemsep=-1.7mm]
 
-\item timestamp - Time at which the data is sent in Unix epoch format. This helps to validate timely data and to discard older messages.
-\item ceil\_bit - A flag bit which is set to 1 if the ceiling price is crossed, else zero
-\item floor\_bit - A flag bit which is set to 1 if the floor price is crossed, else zero
-\item Bit stream - Each of the 6 bits corresponds to the 6 currency types and is set to 1 if there is an increase in the exchange rate, 0 otherwise.
-\item access\_token - Indicates that the application is authorized to access user’s data \cite{token}
+\item \textbf{timestamp} - Time at which the data is sent in Unix epoch format. This helps to validate timely data and to discard older messages.
+\item \textbf{ceil\_bit} - A flag bit which is set to 1 if the ceiling price is crossed, else zero
+\item \textbf{floor\_bit} - A flag bit which is set to 1 if the floor price is crossed, else zero
+\item \textbf{Bit stream} - Each of the 6 bits corresponds to the 6 currency types and is set to 1 if there is an increase in the exchange rate, 0 otherwise.
+\item \textbf{access\_token} - Indicates that the application is authorized to access user’s data \cite{token}
 
 \end{itemize}
 
@@ -126,7 +152,7 @@ This simple encoding scheme allows more data to be transmitted with little overh
     \centering
       \includegraphics[width=1\textwidth]{images/overallmin.png}
     \caption{Complete technical process flow chart of the Methodology}
-    \label{front}
+    \label{fig:overall}
 \end{figure}
 
 \newpage
@@ -206,7 +232,7 @@ if (timestamp > unix_epoch - 19820) {
     \centering
       \includegraphics[width=0.4\textwidth]{images/lcd.png}
     \caption{LCD display showing currency values time and date}
-    \label{abcd}
+    \label{fig:lcd}
 \end{figure}
 
 

@@ -4,27 +4,27 @@ Node-RED is a flow-based development tool which was used in this project to impl
 
 \subsubsection{Extracting Data from the Exchange Rate API}
 
-The Exchangeratesapi.io API service has been used to obtain the exchange rates of the selected 6 currency types. The API service used for this application is updated every second with the exchange rates of many types of currencies. For our application we proposed that exchange rates are needed to be sampled at 30 second intervals but a paid account is required with a fee up to USD 80.00 per month to obtain exchange rates at such a high frequency, as shown in the figure.
+The Exchangeratesapi.io API service has been used to obtain the exchange rates of the selected 6 currency types. The API service used for this application is updated every second with the exchange rates of many types of currencies. For our application we proposed that exchange rates are needed to be sampled at 30 second intervals but a paid account is required with a fee up to USD 80.00 per month to obtain exchange rates at such a high frequency, as shown in the figure \ref{fig:exapi}.
 
 \begin{figure}[H]
     \centering
-      \includegraphics[width=0.8\textwidth]{images/exapi.png}
+      \includegraphics[width=1\textwidth]{images/exapi.png}
     \caption{The subscription plans of the API and the Response array containing Exchange rates}
-    \label{exapi}
+    \label{fig:exapi}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-      \includegraphics[width=0.4\textwidth]{images/apinodes.png}
+      \includegraphics[width=0.3\textwidth]{images/apinodes.png}
     \caption{ Exchange rate API node and Gaussian value generating node}
-    \label{exapi}
+    \label{fig:apinodes}
 \end{figure}
 
 Hence, for the purpose of designing a prototype for this application, we have used the free package which updates the exchange rates hourly. Further, we used a random number generator to vary the hourly rate at 30 second intervals so that only its 5th decimal place varies (which is similar to the real variations of exchange rates every 30 seconds) to simulate the actual variation of exchange rates. These were simulated using Node-RED, and the following packages were used.\\
 
 \textbf{a. node-red-contrib-exchangeratesapi \cite{api}}\\
 
-The base currency and the currency of which the exchange rate is required needs to be specified to this node and it sends an API request to retrieve the required exchange rates. The response from this API containing a large collection of exchange rates is shown in figure , from which 6 currency types are selected for our application.\\
+The base currency and the currency of which the exchange rate is required needs to be specified to this node and it sends an API request to retrieve the required exchange rates. The response from this API containing a large collection of exchange rates is shown in figure \ref{fig:exapi}, from which 6 currency types are selected for our application.\\
 
 A timer was created using the “Inject” node with repeat enabled at hourly intervals to simulate this function.\\
 
@@ -39,16 +39,16 @@ A timer was created using the “Inject” node with repeat enabled at 30 second
 
 \begin{figure}[H]
     \centering
-      \includegraphics[width=0.6\textwidth]{images/fire.png}
+      \includegraphics[width=0.5\textwidth]{images/fire.png}
     \caption{Firebase data structure}
-    \label{exapi}
+    \label{fig:fire}
 \end{figure}
 
 The data obtained hourly through API requests, is stored in a Firebase realtime database \cite{firebase} for future use, as there are no free sources of historical exchange rate data for Day Traders. This functionality was implemented via Node-RED as well using the node-red-contrib-firebase \cite{noderedfire} package.\\
 
 Firebase is able to synchronize data to all its connected clients within milliseconds i.e., any change to the database would be reflected in its applications without the need for HTTP requests. Further, the applications hosted using firebase remain interactive, even when the devices are offline, and synchronizes with the database as soon as connectivity is established.\\
 
-The Firebase realtime database is a cloud-hosted database, and one of the many products and services of Google. This is a NoSQL database and hence the data is stored in JSON format. Figure  shows the structure which was used to store the user data, user ceiling / floor values, and the exchange rates in the Firebase realtime database.\\
+The Firebase realtime database is a cloud-hosted database, and one of the many products and services of Google. This is a NoSQL database and hence the data is stored in JSON format. Figure \ref{fig:fire} shows the structure which was used to store the user data, user ceiling / floor values, and the exchange rates in the Firebase realtime database.\\
 
 Three nodes from the node-red-contrib-firebase package have been used to connect the Firebase Realtime database to the Node-RED application, and they are as follows.\\
 
@@ -66,26 +66,26 @@ This node is used to write or modify the data in the database using the Node-RED
 
 \begin{figure}[H]
     \centering
-      \includegraphics[width=0.4\textwidth]{images/firenodes.png}
-    \caption{ Firebase data structure}
-    \label{firenodes}
+      \includegraphics[width=0.7\textwidth]{images/firenodes.png}
+    \caption{Firebase nodes used in the project}
+    \label{fig:firenodes}
 \end{figure}
 
-What we store.
+Following items are saved in Firebase,
 
 \begin{itemize}[itemsep=-1.7mm]
 \item User credentials
 \item User inputs : selected currency, ceil, floor
-\item Fetched hourly forex values 
+\item Fetched hourly foreign exchange rates
 \end{itemize}
 
 
-This is important because the stored data must be available in case of the following situations.
+This is important because the stored data must be available in case of the following situations,
 
 \begin{itemize}[itemsep=-1.7mm]
-\item In case nodeMCU resets
-\item In case Node-RED server restarts
-\item store formatted data into database and fetch from it   
+\item In case the NodeMCU resets
+\item In case the Node-RED server restarts
+\item To store formatted data into database and fetch later  
 \end{itemize}
 
 \subsubsection{Obtaining technical analysis charts from prices}
@@ -105,6 +105,34 @@ The hourly price data collected and stored in the real-time database can be sent
 
 \subsubsection{Creating the Node-RED dashboard}
 
-The exchange rate data obtained from the API were analyzed using Node-RED functions to yield the above values of technical indicators over a period of 40 hours and plotted using a Node-RED dashboard as shown in Fig..
+The exchange rate data obtained from the API were analyzed using Node-RED functions to yield the above values of technical indicators over a period of 40 hours and plotted using a Node-RED dashboard as shown in the figure \ref{fig:MACD},\ref{fig:SMA},\ref{fig:ROC} and \ref{fig:RSI}.
+
+\begin{figure}[H]
+    \centering
+      \includegraphics[width=1\textwidth]{images/MACD.jpg}
+    \caption{MACD indicator in Node-RED dashboard}
+    \label{fig:MACD}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+      \includegraphics[width=1\textwidth]{images/SMA.jpg}
+    \caption{SMA indicator in Node-RED dashboard}
+    \label{fig:SMA}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+      \includegraphics[width=1\textwidth]{images/ROC.jpg}
+    \caption{ROC indicator in Node-RED dashboard}
+    \label{fig:ROC}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+      \includegraphics[width=1\textwidth]{images/RSI.jpg}
+    \caption{RSI indicator in Node-RED dashboard}
+    \label{fig:RSI}
+\end{figure}
 
 The dashboard contains 6 Tabs, one for each currency type and 4 groups per tab. Each group contains the plot of  a single technical indicator. The Day Trader can predict the future fluctuations of exchange rates by viewing these charts and making decisions on his future investments. If the exchange rates are going to increase in time to come, he would purchase more currency, and if they are to decrease, he would short sell the currency in his possession.

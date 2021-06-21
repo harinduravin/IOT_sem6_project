@@ -151,7 +151,7 @@ void reconnect() {
 void findSleep(){
   if (Day == "Saturday"){
     if (Hour>=1){
-      if ((Hour == 1 ) && (Minutes>30)){
+      if ((Hour == 1 ) && (Minutes>45)){
         Issleeptime = true;
         }
       else if (Hour>1){
@@ -170,7 +170,7 @@ void findSleep(){
     }
   else if (Day == "Monday"){
     if (Hour <= 2){
-      if ((Hour == 2)&& (Minutes <30)){
+      if ((Hour == 2)&& (Minutes <15)){
         Issleeptime = true;
         }
       else if (Hour<2){
@@ -225,14 +225,17 @@ void loop() {
   }
   client.loop();
   timeClient.update();
-  
+
+  // NodeMCU sleeps when the market is closed.
+  // Set sleep time is 1 hour. 
+  // It wakes up and checks whether the market is closed.
+  // If the market is closed it sleeps back again, keeps awake otherwise.
   Day = daysOfTheWeek[timeClient.getDay()];
   Hour = timeClient.getHours();
   Minutes = timeClient.getMinutes();
   findSleep();
   if (Issleeptime){
-    ESP.deepSleep(10*1e6);
-//    ESP.deepSleep(3600*1e6);
+    ESP.deepSleep(3600*1e6);
   }
   
   unix_epoch = timeClient.getEpochTime();    // Get Unix epoch time from the NTP server
