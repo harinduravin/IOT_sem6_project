@@ -100,10 +100,18 @@ char notes[] = " C C C C C C C C C ";// a space represents a rest
 int beats[] = { 1,1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
 int tempo = 300;
 
+//Variables required to find the sleep time
+char daysOfTheWeek[7][12] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+const int FACTOR = 1e6;
+String Day;
+int Hour;
+int Minutes;
+bool Issleeptime = false;
 
 void setup_wifi() {
   // Connecting to a WiFi network
   delay(5000);
+  // wifiManager.resetSettings();
   WiFiManager wifiManager; 
   wifiManager.autoConnect("IoT6B_G05","12345678");
 }
@@ -119,7 +127,7 @@ void reconnect() {
   while (!client.connected()) {
     Serial.print("Attempting MQTT connection...");
     // Create a random client ID
-    String clientId = "ESP32Client-";
+    String clientId = "ESP8266Client-";
     clientId += String(random(0xffff), HEX);
     // Attempt to connect
     if (client.connect(clientId.c_str())) {
@@ -128,6 +136,7 @@ void reconnect() {
       client.subscribe("IOT_6B/G05/BuzzerNotification");
       client.subscribe("IOT_6B/G05/CommonData");
       client.subscribe("IOT_6B/G05/AuthResponse");
+      client.subscribe("IOT_6B/G05/UserNeedsResponse");
     } else {
       Serial.print("failed, rc=");
       Serial.print(client.state());
@@ -138,9 +147,51 @@ void reconnect() {
   }
 }
 
+//Function to determine sleep time
+void findSleep(){
+  if (Day == "Saturday"){
+    if (Hour>=1){
+      if ((Hour == 1 ) && (Minutes>30)){
+        Issleeptime = true;
+        }
+      else if (Hour>1){
+        Issleeptime = true;
+        }
+      else{
+        Issleeptime = false;
+        }
+      }
+    else{
+        Issleeptime = false;
+      }
+    }
+  else if (Day == "Sunday"){
+      Issleeptime = true;
+    }
+  else if (Day == "Monday"){
+    if (Hour <= 2){
+      if ((Hour == 2)&& (Minutes <30)){
+        Issleeptime = true;
+        }
+      else if (Hour<2){
+        Issleeptime = true;
+        }
+      else{
+        Issleeptime = false;
+        }
+      }
+    else{
+        Issleeptime = false;
+      }
+    }
+  else{
+    Issleeptime = false;
+  }
+}
+
 void setup() {
   
-  lcd.begin(16, 2);                 // Initialize 16x2 LCD Display
+  lcd.begin(16, 2);            // Initialize 16x2 LCD Display
   lcd.clear();
   lcd.setCursor(0, 0);
   lcd.print(Time);
@@ -174,6 +225,16 @@ void loop() {
   }
   client.loop();
   timeClient.update();
+  
+  Day = daysOfTheWeek[timeClient.getDay()];
+  Hour = timeClient.getHours();
+  Minutes = timeClient.getMinutes();
+  findSleep();
+  if (Issleeptime){
+    ESP.deepSleep(10*1e6);
+//    ESP.deepSleep(3600*1e6);
+  }
+  
   unix_epoch = timeClient.getEpochTime();    // Get Unix epoch time from the NTP server
   second_ = second(unix_epoch);
   if (last_second != second_) {
@@ -353,15 +414,17 @@ void handlerequest(){
       data.Data_provided = true;
       EEPROM.put(addr,data);
       EEPROM.commit();
-      server.send(200, "text/html", UserAuthentication());
+      server.send(200, "text/html", User_Authentication());
     }
     else{
       //Processing the data provided by user
-      String Email = server.arg("email");
+      
       String Password = server.arg("password");
-  
+
+      String Email = server.arg("email");
       char Email_array[50];
       Email.toCharArray(Email_array, 50);
+
       String UserAuthentication;
       UserAuthentication = String(unix_epoch)+"$"+Email+"$"+Password;
       int Email_len = Email.length() + 1;
@@ -399,14 +462,14 @@ void handlerequest(){
         EEPROM.put(addr,data);
         EEPROM.commit();
         server.send(200, "text/html", SendHTML(Current_currency,Current_value,Current_UpDown)); 
-        }
+      }
       
       //If the user is not a valid user , redirect them to User Authentication page
       else {
-        server.send(200, "text/html", UserAuthentication());
-        }
+        server.send(200, "text/html", User_Authentication());
       }
     }
+  }
 }
 
 //Function to handle invalid HTTP requests
@@ -415,7 +478,7 @@ void handle_NotFound(){
 }
 
 //Function to display User Authentication HTML page
-String UserAuthentication() {
+String User_Authentication() {
   String s="<!DOCTYPE html>\n";
   s+= "<html lang=\"en\">\n";
   s+= "<head>\n";
@@ -549,7 +612,6 @@ String SendHTML(String Currency,String value,uint8_t UpDown){
   ptr+= "<option value=\"AUD\">AUD</option>\n";
   }
 
-
   ptr+= "</select>\n";
   ptr+= "<br><br>\n";
   ptr+= "<label for=\"ceil\">Ceil% :</label><br>\n";
@@ -578,6 +640,10 @@ void callback(char* topic, byte* payload, unsigned int length) {
    process_Authentication(payload, length, 80, 4);
   }
 
+  if (String(topic) == "IOT_6B/G05/UserNeedsResponse") {
+   process_Userneedsresponse(payload, length, 50, 3);
+  }
+
   EEPROM.get(addr,data);
   if (access_token_received == data.accesstoken){
     if (ceil_crossed  || floor_crossed) {
@@ -586,11 +652,44 @@ void callback(char* topic, byte* payload, unsigned int length) {
       floor_crossed = false;
     }
   }
-  else{
-    Serial.println("User is not Authenticated")
-  }
 }
+void process_Userneedsresponse(byte* payload, unsigned int length, int charlen, int numitem) {
 
+    payloadstr = "";
+    Serial.println();
+    for (int i = 0; i < length; i++) {
+      payloadstr += (char)payload[i];
+    }
+
+     char payloadstr_array[charlen];
+     payloadstr.toCharArray(payloadstr_array, charlen);
+
+   char * token = strtok(payloadstr_array, "$");
+
+   for (int i = 1; i < numitem+1; i++) {
+    switch (i) {
+      case 1:
+          timestamp = atol(token);
+          Serial.print(timestamp);
+          Serial.println();
+          break;
+      case 2:
+          if (timestamp > unix_epoch - 19820) {
+          String Aceess_token_received = String(token);
+          Serial.println(Aceess_token_received);
+          }
+          break;
+      case 3:
+          if (timestamp > unix_epoch - 19820) {
+          String Status = String(token);
+          Serial.println(Status);
+          }
+          break;
+          }          
+          token = strtok(NULL, "$");
+    }
+  
+}
 void process_Authentication(byte* payload, unsigned int length, int charlen, int numitem) {
 
     payloadstr = "";
