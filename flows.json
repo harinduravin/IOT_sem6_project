@@ -4516,7 +4516,7 @@
         "id": "4a5d98b7.48bd18",
         "type": "inject",
         "z": "8272fd45.4d821",
-        "name": "",
+        "name": "Test Email",
         "props": [
             {
                 "p": "payload"
