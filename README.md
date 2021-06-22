@@ -10,7 +10,7 @@ Project requires the use of,
 
 [Report](https://docs.google.com/document/d/1lIhydCAg9MP8kpNGN1_WM4RtWZevNY7cXbWvHvwags0/edit?usp=sharing)
 
-[Slides](https://docs.google.com/presentation/d/1Zc3bUSLmyQ0eEo3ydKgtb1zy5-GVt_S1W1-Y2AtOgSs/edit?usp=sharing)
+[Slides - view](https://uniofmora-my.sharepoint.com/:p:/g/personal/170698j_uom_lk/ESvLFM4r7zlJu-f7t1FKSjwBPTaaDyFH2K9L5IWciiq5Bw)
 
 [Project Folder](https://drive.google.com/drive/folders/1OUBGmAvG72nTm4SO5RdEnyXV5uj4UvsJ?usp=sharing)
 
