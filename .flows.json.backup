@@ -1,26 +1,5 @@
 [
     {
-        "id": "4d83ec58.e26e84",
-        "type": "tab",
-        "label": "Firebase",
-        "disabled": false,
-        "info": ""
-    },
-    {
-        "id": "2ad522d6.3d80ce",
-        "type": "tab",
-        "label": "Forex Functions",
-        "disabled": false,
-        "info": ""
-    },
-    {
-        "id": "ae1d0766.e75b68",
-        "type": "tab",
-        "label": "Dashboard",
-        "disabled": false,
-        "info": ""
-    },
-    {
         "id": "8272fd45.4d821",
         "type": "tab",
         "label": "Master Flow",
@@ -541,2202 +520,6 @@
         "collapse": false
     },
     {
-        "id": "a1367960.5c4dd8",
-        "type": "function",
-        "z": "2ad522d6.3d80ce",
-        "name": "Simple Moving Average (SMA)",
-        "func": "var moment = global.get('techmodule');\n\nconst SMA = moment.SMA\nlet period = msg.values.period; \nlet values = msg.values.value;                    \n\nvar out = {\n  values    : SMA.calculate({period : period, values : values})\n}\nmsg =  out\nreturn msg\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 370,
-        "y": 360,
-        "wires": [
-            [
-                "77d9c891.b79028"
-            ]
-        ]
-    },
-    {
-        "id": "6220ff02.4761a",
-        "type": "inject",
-        "z": "2ad522d6.3d80ce",
-        "name": "Send Array",
-        "props": [
-            {
-                "p": "values",
-                "v": "{\"value\":[127.85,129.02,132.75,145.4,148.98,137.52,147.38,139.05,137.23,149.3,162.45,178.95,200.35,221.9,243.23,243.52,286.42,280.27],\"period\":4}",
-                "vt": "json"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 120,
-        "y": 360,
-        "wires": [
-            [
-                "a1367960.5c4dd8"
-            ]
-        ]
-    },
-    {
-        "id": "77d9c891.b79028",
-        "type": "debug",
-        "z": "2ad522d6.3d80ce",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 610,
-        "y": 360,
-        "wires": []
-    },
-    {
-        "id": "54e555e0.e31d7c",
-        "type": "function",
-        "z": "2ad522d6.3d80ce",
-        "name": "MACD",
-        "func": "var moment = global.get('techmodule');\nvar MACD = moment.MACD;\n\n\nvar macdInput = msg.values;                    \n\nvar out = {\n  values    : MACD.calculate(macdInput)\n}\nmsg =  out\nreturn msg\n\n\n\n\n\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 290,
-        "y": 260,
-        "wires": [
-            [
-                "8b31f2b2.a4946"
-            ]
-        ]
-    },
-    {
-        "id": "86c32d4c.78803",
-        "type": "inject",
-        "z": "2ad522d6.3d80ce",
-        "name": "Send Array",
-        "props": [
-            {
-                "p": "values",
-                "v": "{\"values\":[127.75,129.02,132.75,145.4,148.98,137.52,147.38,139.05,137.23,149.3,162.45,178.95,200.35,221.9,243.23,243.52,286.42,280.27],\"fastPeriod\":5,\"slowPeriod\":8,\"signalPeriod\":3,\"SimpleMAOscillator\":false,\"SimpleMASignal\":false}",
-                "vt": "json"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 120,
-        "y": 260,
-        "wires": [
-            [
-                "54e555e0.e31d7c"
-            ]
-        ]
-    },
-    {
-        "id": "8b31f2b2.a4946",
-        "type": "debug",
-        "z": "2ad522d6.3d80ce",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 610,
-        "y": 260,
-        "wires": []
-    },
-    {
-        "id": "b486ed73.33e1b",
-        "type": "function",
-        "z": "2ad522d6.3d80ce",
-        "name": "Rate Of Change (ROC)",
-        "func": "var moment = global.get('techmodule');\n\nconst ROC = moment.ROC\nlet period = msg.values.period; \nlet values = msg.values.value;                    \n\nvar out = {\n  values    : ROC.calculate({period : period, values : values})\n}\nmsg =  out\nreturn msg\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 350,
-        "y": 160,
-        "wires": [
-            [
-                "c1ee69f0.0d4318"
-            ]
-        ]
-    },
-    {
-        "id": "828f077a.ed7f88",
-        "type": "inject",
-        "z": "2ad522d6.3d80ce",
-        "name": "Send Array",
-        "props": [
-            {
-                "p": "values",
-                "v": "{\"value\":[11045.27,11167.32,11008.61,11151.83,10926.77,10868.12,10520.32,10380.43,10785.14,10748.26,10896.91,10782.95,10620.16,10625.83,10510.95,10444.37,10068.01,10193.39,10066.57,10043.75],\"period\":5}",
-                "vt": "json"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 120,
-        "y": 160,
-        "wires": [
-            [
-                "b486ed73.33e1b"
-            ]
-        ]
-    },
-    {
-        "id": "c1ee69f0.0d4318",
-        "type": "debug",
-        "z": "2ad522d6.3d80ce",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 610,
-        "y": 160,
-        "wires": []
-    },
-    {
-        "id": "bc95624b.1f5fe",
-        "type": "inject",
-        "z": "2ad522d6.3d80ce",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 120,
-        "y": 60,
-        "wires": [
-            [
-                "a2c60656.85d268"
-            ]
-        ]
-    },
-    {
-        "id": "a2c60656.85d268",
-        "type": "function",
-        "z": "2ad522d6.3d80ce",
-        "name": "",
-        "func": "msg.params = {};\n// msg.params.base = 'USD'\nmsg.params.symbols = 'AUD'\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 300,
-        "y": 60,
-        "wires": [
-            [
-                "3ab86060.4ea31"
-            ]
-        ]
-    },
-    {
-        "id": "dd61d5c7.f00a28",
-        "type": "function",
-        "z": "2ad522d6.3d80ce",
-        "name": "",
-        "func": "// msg.params = {};\n// // msg.params.base = 'USD'\n// msg.params.symbols = 'KRW'\n\n// var rate = msg.payload.rates.LKR;\n// return {rate};\n\n\n// var newMsg = { 'payload2': msg.payload.rates };\n// return newMsg;\n\nvar newMsg = { payload: msg.payload.rates };\nreturn [newMsg];",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 720,
-        "y": 60,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "3ab86060.4ea31",
-        "type": "exchangeratesapi",
-        "z": "2ad522d6.3d80ce",
-        "name": "",
-        "url": "latest",
-        "base": "",
-        "symbols": "",
-        "creds": "3a4aeaa5.e720d6",
-        "x": 520,
-        "y": 60,
-        "wires": [
-            [
-                "dd61d5c7.f00a28"
-            ]
-        ]
-    },
-    {
-        "id": "81ec3326.0bd8e8",
-        "type": "firebase.once",
-        "z": "4d83ec58.e26e84",
-        "name": "get values",
-        "firebaseconfig": "6ef5f71b.98f1b8",
-        "childpath": "values",
-        "repeatifnull": false,
-        "eventType": "value",
-        "queries": [],
-        "x": 460,
-        "y": 300,
-        "wires": [
-            [
-                "ffddca73.d1678"
-            ]
-        ]
-    },
-    {
-        "id": "b73d2405.d495f",
-        "type": "inject",
-        "z": "4d83ec58.e26e84",
-        "name": "get values",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 240,
-        "y": 300,
-        "wires": [
-            [
-                "81ec3326.0bd8e8"
-            ]
-        ]
-    },
-    {
-        "id": "9b5b3bbb.e2d9",
-        "type": "debug",
-        "z": "4d83ec58.e26e84",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1030,
-        "y": 300,
-        "wires": []
-    },
-    {
-        "id": "ffddca73.d1678",
-        "type": "function",
-        "z": "4d83ec58.e26e84",
-        "name": "filter",
-        "func": "const values = []\n\nObject.keys(msg.payload).map(key=>(\n    values.push(msg.payload[key])\n    ))\n\nvar newMsg = { \n    payload: values\n};\nreturn [newMsg];",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 680,
-        "y": 300,
-        "wires": [
-            [
-                "9b5b3bbb.e2d9"
-            ]
-        ]
-    },
-    {
-        "id": "98dfe73.3b25298",
-        "type": "firebase.once",
-        "z": "4d83ec58.e26e84",
-        "name": "get selected currency",
-        "firebaseconfig": "6ef5f71b.98f1b8",
-        "childpath": "selected_currency",
-        "repeatifnull": false,
-        "eventType": "value",
-        "queries": [],
-        "x": 650,
-        "y": 380,
-        "wires": [
-            [
-                "c90823.4e389fe"
-            ]
-        ]
-    },
-    {
-        "id": "b2d533fb.f0c03",
-        "type": "inject",
-        "z": "4d83ec58.e26e84",
-        "name": "get selected currency",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 280,
-        "y": 380,
-        "wires": [
-            [
-                "98dfe73.3b25298"
-            ]
-        ]
-    },
-    {
-        "id": "c90823.4e389fe",
-        "type": "debug",
-        "z": "4d83ec58.e26e84",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1030,
-        "y": 380,
-        "wires": []
-    },
-    {
-        "id": "f1a44017.90ab08",
-        "type": "inject",
-        "z": "4d83ec58.e26e84",
-        "name": "auth with username/pwd",
-        "props": [
-            {
-                "p": "userdata",
-                "v": "{\"username\":\"sem6biot\",\"password\":\"hdts05\"}",
-                "vt": "json"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 280,
-        "y": 540,
-        "wires": [
-            [
-                "c34533df.488658"
-            ]
-        ]
-    },
-    {
-        "id": "45fe98ed.964918",
-        "type": "debug",
-        "z": "4d83ec58.e26e84",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1020,
-        "y": 540,
-        "wires": []
-    },
-    {
-        "id": "8603f53.8567b88",
-        "type": "firebase.once",
-        "z": "4d83ec58.e26e84",
-        "name": "get current user",
-        "firebaseconfig": "6ef5f71b.98f1b8",
-        "childpath": "user",
-        "repeatifnull": false,
-        "eventType": "value",
-        "queries": [],
-        "x": 630,
-        "y": 460,
-        "wires": [
-            [
-                "25f02bcf.44f5c4"
-            ]
-        ]
-    },
-    {
-        "id": "e2bddafa.5c0eb",
-        "type": "inject",
-        "z": "4d83ec58.e26e84",
-        "name": "get curent user",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 260,
-        "y": 460,
-        "wires": [
-            [
-                "8603f53.8567b88"
-            ]
-        ]
-    },
-    {
-        "id": "25f02bcf.44f5c4",
-        "type": "debug",
-        "z": "4d83ec58.e26e84",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1030,
-        "y": 460,
-        "wires": []
-    },
-    {
-        "id": "c34533df.488658",
-        "type": "firebase.once",
-        "z": "4d83ec58.e26e84",
-        "name": "get current user",
-        "firebaseconfig": "6ef5f71b.98f1b8",
-        "childpath": "user",
-        "repeatifnull": false,
-        "eventType": "value",
-        "queries": [],
-        "x": 610,
-        "y": 540,
-        "wires": [
-            [
-                "8e740a58.c2bd88"
-            ]
-        ]
-    },
-    {
-        "id": "8e740a58.c2bd88",
-        "type": "function",
-        "z": "4d83ec58.e26e84",
-        "name": "auth",
-        "func": "let  iscorrect=false\nif (msg.payload.password==msg.userdata.password && msg.payload.username==msg.userdata.username ){\n    iscorrect=true\n}\nvar newMsg = { payload: iscorrect };\nreturn [newMsg];\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 810,
-        "y": 540,
-        "wires": [
-            [
-                "45fe98ed.964918"
-            ]
-        ]
-    },
-    {
-        "id": "1229ee47.933062",
-        "type": "function",
-        "z": "2ad522d6.3d80ce",
-        "name": "Rate Of Change (ROC)",
-        "func": "var moment = global.get('techmodule');\n\nconst ROC = moment.ROC\nlet period = msg.values.period; \nlet values = msg.values.value;                    \n\nvar out = {\n  values    : ROC.calculate({period : period, values : values})\n}\nmsg =  out\nreturn msg\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 710,
-        "y": 460,
-        "wires": [
-            [
-                "8771f92e.bdbde8"
-            ]
-        ]
-    },
-    {
-        "id": "27a88b3.16bec74",
-        "type": "inject",
-        "z": "2ad522d6.3d80ce",
-        "name": "Send Array",
-        "props": [
-            {
-                "p": "values",
-                "v": "{\"value\":[11045.27,11167.32,11008.61,11151.83,10926.77,10868.12,10520.32,10380.43,10785.14,10748.26,10896.91,10782.95,10620.16,10625.83,10510.95,10444.37,10068.01,10193.39,10066.57,10043.75],\"period\":5}",
-                "vt": "json"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 120,
-        "y": 460,
-        "wires": [
-            [
-                "501c2b06.654374"
-            ]
-        ]
-    },
-    {
-        "id": "8771f92e.bdbde8",
-        "type": "debug",
-        "z": "2ad522d6.3d80ce",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 910,
-        "y": 460,
-        "wires": []
-    },
-    {
-        "id": "b957780.deff688",
-        "type": "function",
-        "z": "2ad522d6.3d80ce",
-        "name": "filter",
-        "func": "const values = []\n\n\nObject.keys(msg.payload).map(key=>{\n    let currency_ob=Object.values(msg.payload[key])[0][global.get(\"selected_currency\")];\n    values.push(currency_ob);\n    })\n\nvar newMsg = { \n    values: {\n        \"value\":values,\n         \"period\": 5\n    }\n};\nreturn [newMsg];",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 470,
-        "y": 460,
-        "wires": [
-            [
-                "1229ee47.933062"
-            ]
-        ]
-    },
-    {
-        "id": "501c2b06.654374",
-        "type": "firebase.once",
-        "z": "2ad522d6.3d80ce",
-        "name": "get values",
-        "firebaseconfig": "6ef5f71b.98f1b8",
-        "childpath": "values",
-        "repeatifnull": false,
-        "eventType": "value",
-        "queries": [
-            {
-                "name": "orderByValue",
-                "value": "",
-                "valType": ""
-            },
-            {
-                "name": "limitToLast",
-                "value": "30",
-                "valType": "str"
-            }
-        ],
-        "x": 290,
-        "y": 460,
-        "wires": [
-            [
-                "b957780.deff688"
-            ]
-        ]
-    },
-    {
-        "id": "c38ab726.bfede8",
-        "type": "inject",
-        "z": "2ad522d6.3d80ce",
-        "name": "Send Array",
-        "props": [
-            {
-                "p": "values",
-                "v": "{\"value\":[11045.27,11167.32,11008.61,11151.83,10926.77,10868.12,10520.32,10380.43,10785.14,10748.26,10896.91,10782.95,10620.16,10625.83,10510.95,10444.37,10068.01,10193.39,10066.57,10043.75],\"period\":5}",
-                "vt": "json"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 120,
-        "y": 560,
-        "wires": [
-            [
-                "7c9db6ac.25ef78"
-            ]
-        ]
-    },
-    {
-        "id": "eac65389.25b28",
-        "type": "function",
-        "z": "2ad522d6.3d80ce",
-        "name": "filter",
-        "func": "const values = []\n\n\nObject.keys(msg.payload).map(key=>{\n    let currency_ob=Object.values(msg.payload[key])[0][global.get(\"selected_currency\")];\n    values.push(currency_ob);\n    })\n\nvar newMsg = { \n    values: {\n        \"value\":values,\n        \"fastPeriod\": 5,\n        \"slowPeriod\": 8,\n        \"signalPeriod\": 3,\n        \"SimpleMAOscillator\": false,\n        \"SimpleMASignal\": false\n    }\n};\nreturn [newMsg];",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 470,
-        "y": 560,
-        "wires": [
-            [
-                "267e2fa8.83558"
-            ]
-        ]
-    },
-    {
-        "id": "7c9db6ac.25ef78",
-        "type": "firebase.once",
-        "z": "2ad522d6.3d80ce",
-        "name": "get values",
-        "firebaseconfig": "6ef5f71b.98f1b8",
-        "childpath": "values",
-        "repeatifnull": false,
-        "eventType": "value",
-        "queries": [
-            {
-                "name": "orderByValue",
-                "value": "",
-                "valType": ""
-            },
-            {
-                "name": "limitToLast",
-                "value": "",
-                "valType": "str"
-            }
-        ],
-        "x": 290,
-        "y": 560,
-        "wires": [
-            [
-                "eac65389.25b28"
-            ]
-        ]
-    },
-    {
-        "id": "85272627.73e938",
-        "type": "inject",
-        "z": "2ad522d6.3d80ce",
-        "name": "Send Array",
-        "props": [
-            {
-                "p": "values",
-                "v": "{\"value\":[11045.27,11167.32,11008.61,11151.83,10926.77,10868.12,10520.32,10380.43,10785.14,10748.26,10896.91,10782.95,10620.16,10625.83,10510.95,10444.37,10068.01,10193.39,10066.57,10043.75],\"period\":5}",
-                "vt": "json"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 120,
-        "y": 660,
-        "wires": [
-            [
-                "2d61a6e1.ee06da"
-            ]
-        ]
-    },
-    {
-        "id": "d8cb1a43.0b2148",
-        "type": "function",
-        "z": "2ad522d6.3d80ce",
-        "name": "filter",
-        "func": "const values = []\n\n\nObject.keys(msg.payload).map(key=>{\n    let currency_ob=Object.values(msg.payload[key])[0][global.get(\"selected_currency\")];\n    values.push(currency_ob);\n    })\n\nvar newMsg = { \n    values: {\n        \"values\":values,\n        \"fastPeriod\": 5,\n    \"slowPeriod\": 8,\n    \"signalPeriod\": 3,\n    \"SimpleMAOscillator\": false,\n    \"SimpleMASignal\": false\n    }\n};\nreturn [newMsg];",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 470,
-        "y": 660,
-        "wires": [
-            [
-                "20f10d0.45435f4"
-            ]
-        ]
-    },
-    {
-        "id": "2d61a6e1.ee06da",
-        "type": "firebase.once",
-        "z": "2ad522d6.3d80ce",
-        "name": "get values",
-        "firebaseconfig": "6ef5f71b.98f1b8",
-        "childpath": "values",
-        "repeatifnull": false,
-        "eventType": "value",
-        "queries": [
-            {
-                "name": "orderByValue",
-                "value": "",
-                "valType": ""
-            },
-            {
-                "name": "limitToLast",
-                "value": "",
-                "valType": "str"
-            }
-        ],
-        "x": 290,
-        "y": 660,
-        "wires": [
-            [
-                "d8cb1a43.0b2148"
-            ]
-        ]
-    },
-    {
-        "id": "267e2fa8.83558",
-        "type": "function",
-        "z": "2ad522d6.3d80ce",
-        "name": "Simple Moving Average (SMA)",
-        "func": "var moment = global.get('techmodule');\n\nconst SMA = moment.SMA\nlet period = msg.values.period; \nlet values = msg.values.value;                    \n\nvar out = {\n  values    : SMA.calculate({period : period, values : values})\n}\nmsg =  out\nreturn msg\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 730,
-        "y": 560,
-        "wires": [
-            [
-                "43d2a492.567dfc"
-            ]
-        ]
-    },
-    {
-        "id": "43d2a492.567dfc",
-        "type": "debug",
-        "z": "2ad522d6.3d80ce",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 970,
-        "y": 560,
-        "wires": []
-    },
-    {
-        "id": "20f10d0.45435f4",
-        "type": "function",
-        "z": "2ad522d6.3d80ce",
-        "name": "MACD",
-        "func": "var moment = global.get('techmodule');\nvar MACD = moment.MACD;\n\n\nvar macdInput = msg.values;                    \n\nvar out = {\n  values    : MACD.calculate(macdInput)\n}\nmsg =  out\nreturn msg\n\n\n\n\n\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 650,
-        "y": 660,
-        "wires": [
-            [
-                "b0a69be3.457808",
-                "a135be62.21a95"
-            ]
-        ]
-    },
-    {
-        "id": "b0a69be3.457808",
-        "type": "debug",
-        "z": "2ad522d6.3d80ce",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 890,
-        "y": 640,
-        "wires": []
-    },
-    {
-        "id": "e3fe7a46.d18458",
-        "type": "inject",
-        "z": "4d83ec58.e26e84",
-        "name": "fetch and push rates",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 260,
-        "y": 620,
-        "wires": [
-            [
-                "a2d3233a.96fd4"
-            ]
-        ]
-    },
-    {
-        "id": "a2d3233a.96fd4",
-        "type": "function",
-        "z": "4d83ec58.e26e84",
-        "name": "Query",
-        "func": "msg.params = {\n        symbols : 'USD,AUD,JPY,GBP,EUR,KWD,LKR'\n};\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 440,
-        "y": 620,
-        "wires": [
-            [
-                "e0c16b3b.e49258"
-            ]
-        ]
-    },
-    {
-        "id": "dff0df42.44ea9",
-        "type": "function",
-        "z": "4d83ec58.e26e84",
-        "name": "formater",
-        "func": "const rates = msg.payload.rates;\nconst LKR = rates[\"LKR\"]\nconst newRates = {\n    USD:parseFloat((LKR/rates.USD).toFixed(3)),\n    AUD:parseFloat((LKR/rates.AUD).toFixed(3)),\n    JPY:parseFloat((LKR/rates.JPY).toFixed(3)),\n    GBP:parseFloat((LKR/rates.GBP).toFixed(3)),\n    EUR:parseFloat((LKR/rates.EUR).toFixed(3)),\n    KWD:parseFloat((LKR/rates.KWD).toFixed(3)),\n}\n\n\nconst now = Date.now()\nvar newMsg = { formatedPayload: {[now]:newRates} };\nreturn [newMsg];",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 850,
-        "y": 620,
-        "wires": [
-            [
-                "e2529988.3231c8"
-            ]
-        ]
-    },
-    {
-        "id": "e0c16b3b.e49258",
-        "type": "exchangeratesapi",
-        "z": "4d83ec58.e26e84",
-        "name": "",
-        "url": "latest",
-        "base": "",
-        "symbols": "",
-        "creds": "ec9f480b.2b6f68",
-        "x": 650,
-        "y": 620,
-        "wires": [
-            [
-                "dff0df42.44ea9",
-                "8d919997.754878"
-            ]
-        ]
-    },
-    {
-        "id": "75c18ffc.94eb8",
-        "type": "firebase modify",
-        "z": "4d83ec58.e26e84",
-        "name": "push",
-        "firebaseconfig": "6ef5f71b.98f1b8",
-        "childpath": "values",
-        "method": "push",
-        "value": "msg.payload",
-        "priority": "msg.priority",
-        "x": 1070,
-        "y": 620,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "950f9e51.ad732",
-        "type": "function",
-        "z": "4d83ec58.e26e84",
-        "name": "ceil/floor checker",
-        "func": "const latest = Object.values(msg.formatedPayload)[0];\nconst last =  Object.values(Object.values(msg.payload)[0])[0];\n\nconst selectedNow = last[global.get(\"selected_currency\")];\nconst selectedLast = last[global.get(\"selected_currency\")];\nlet status = \"\";\nif(selectedNow==selectedLast){\n    status = \"no_change\"\n}else{\nconst isWentUp=selectedNow>selectedLast;\nif(isWentUp){\n    const change = (selectedNow-selectedLast)/selectedLast\n    if(change>=global.get(\"ceil\")/100){\n        status=\"ceiling_crossed\"\n    }else{\n        status=\"went_up\"\n    }\n}else{\n    const change = (selectedLast-selectedNow)/selectedLast   \n    if(change>=global.get(\"floor\")/100){\n        status=\"floor_crossed\"\n    }else{\n        status=\"went_down\"\n    }\n}\n}\nreturn {\nlatest,\nlast,\nselectedNow,\nselectedLast,\nstatus,\npayload:msg.formatedPayload\n};",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 940,
-        "y": 800,
-        "wires": [
-            [
-                "ffb98f8a.985",
-                "75c18ffc.94eb8"
-            ]
-        ]
-    },
-    {
-        "id": "8cbcc465.7ad078",
-        "type": "firebase modify",
-        "z": "4d83ec58.e26e84",
-        "name": "set",
-        "firebaseconfig": "6ef5f71b.98f1b8",
-        "childpath": "selected_currency",
-        "method": "set",
-        "value": "msg.payload",
-        "priority": "msg.priority",
-        "x": 1020,
-        "y": 60,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "f31e761.2899b88",
-        "type": "inject",
-        "z": "4d83ec58.e26e84",
-        "name": "set selected currency",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "USD",
-        "payloadType": "str",
-        "x": 280,
-        "y": 60,
-        "wires": [
-            [
-                "8cbcc465.7ad078"
-            ]
-        ]
-    },
-    {
-        "id": "27290d4a.21b602",
-        "type": "firebase modify",
-        "z": "4d83ec58.e26e84",
-        "name": "set",
-        "firebaseconfig": "6ef5f71b.98f1b8",
-        "childpath": "ceil",
-        "method": "set",
-        "value": "msg.payload",
-        "priority": "msg.priority",
-        "x": 1020,
-        "y": 140,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "5d701eeb.74516",
-        "type": "inject",
-        "z": "4d83ec58.e26e84",
-        "name": "set ceil %",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "5",
-        "payloadType": "num",
-        "x": 240,
-        "y": 140,
-        "wires": [
-            [
-                "27290d4a.21b602"
-            ]
-        ]
-    },
-    {
-        "id": "7518841f.0e3c7c",
-        "type": "firebase modify",
-        "z": "4d83ec58.e26e84",
-        "name": "set",
-        "firebaseconfig": "6ef5f71b.98f1b8",
-        "childpath": "floor",
-        "method": "set",
-        "value": "msg.payload",
-        "priority": "msg.priority",
-        "x": 1020,
-        "y": 220,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "8d37634b.32a3c",
-        "type": "inject",
-        "z": "4d83ec58.e26e84",
-        "name": "set floor %",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "5",
-        "payloadType": "num",
-        "x": 240,
-        "y": 220,
-        "wires": [
-            [
-                "7518841f.0e3c7c"
-            ]
-        ]
-    },
-    {
-        "id": "ffb98f8a.985",
-        "type": "debug",
-        "z": "4d83ec58.e26e84",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1090,
-        "y": 880,
-        "wires": []
-    },
-    {
-        "id": "e2529988.3231c8",
-        "type": "firebase.once",
-        "z": "4d83ec58.e26e84",
-        "name": "get last value",
-        "firebaseconfig": "6ef5f71b.98f1b8",
-        "childpath": "values",
-        "repeatifnull": false,
-        "eventType": "value",
-        "queries": [
-            {
-                "name": "orderByValue",
-                "value": "",
-                "valType": ""
-            },
-            {
-                "name": "limitToLast",
-                "value": "1",
-                "valType": "str"
-            }
-        ],
-        "x": 900,
-        "y": 700,
-        "wires": [
-            [
-                "950f9e51.ad732"
-            ]
-        ]
-    },
-    {
-        "id": "5bcb85fe.3e3bac",
-        "type": "timerswitch",
-        "z": "4d83ec58.e26e84",
-        "name": "Hourly Timer",
-        "ontopic": "ON",
-        "offtopic": "ON",
-        "onpayload": "1",
-        "offpayload": "0",
-        "disabled": true,
-        "schedules": [
-            {
-                "on_h": "00",
-                "on_m": "05",
-                "on_s": "00",
-                "off_h": "01",
-                "off_m": "05",
-                "off_s": "00",
-                "valid": true
-            },
-            {
-                "on_h": "02",
-                "on_m": "05",
-                "on_s": "00",
-                "off_h": "03",
-                "off_m": "05",
-                "off_s": "00",
-                "valid": true
-            },
-            {
-                "on_h": "04",
-                "on_m": "05",
-                "on_s": "00",
-                "off_h": "05",
-                "off_m": "05",
-                "off_s": "00",
-                "valid": true
-            },
-            {
-                "on_h": "06",
-                "on_m": "05",
-                "on_s": "00",
-                "off_h": "07",
-                "off_m": "05",
-                "off_s": "00",
-                "valid": true
-            },
-            {
-                "on_h": "08",
-                "on_m": "05",
-                "on_s": "00",
-                "off_h": "09",
-                "off_m": "05",
-                "off_s": "00",
-                "valid": true
-            },
-            {
-                "on_h": "10",
-                "on_m": "05",
-                "on_s": "00",
-                "off_h": "11",
-                "off_m": "05",
-                "off_s": "00",
-                "valid": true
-            },
-            {
-                "on_h": "12",
-                "on_m": "05",
-                "on_s": "00",
-                "off_h": "13",
-                "off_m": "05",
-                "off_s": "00",
-                "valid": true
-            },
-            {
-                "on_h": "14",
-                "on_m": "05",
-                "on_s": "00",
-                "off_h": "15",
-                "off_m": "05",
-                "off_s": "00",
-                "valid": true
-            },
-            {
-                "on_h": "16",
-                "on_m": "05",
-                "on_s": "00",
-                "off_h": "17",
-                "off_m": "05",
-                "off_s": "00",
-                "valid": true
-            },
-            {
-                "on_h": "18",
-                "on_m": "05",
-                "on_s": "00",
-                "off_h": "19",
-                "off_m": "05",
-                "off_s": "00",
-                "valid": true
-            },
-            {
-                "on_h": "20",
-                "on_m": "05",
-                "on_s": "00",
-                "off_h": "21",
-                "off_m": "05",
-                "off_s": "00",
-                "valid": true
-            },
-            {
-                "on_h": "22",
-                "on_m": "05",
-                "on_s": "00",
-                "off_h": "23",
-                "off_m": "05",
-                "off_s": "00",
-                "valid": true
-            }
-        ],
-        "x": 240,
-        "y": 700,
-        "wires": [
-            [
-                "a2d3233a.96fd4"
-            ]
-        ]
-    },
-    {
-        "id": "c70f8f7b.7ccc5",
-        "type": "inject",
-        "z": "4d83ec58.e26e84",
-        "name": "fetch and push rates",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "{\"USD\":[198.05,198.49,199.78,198.05,198.57,198.93,198.13,197.19,198.52,197.43,197.3,198.46,199.25,197.41,199.27,199.14,199.7,199.36,198.44,198.2,198.49,197.18,199.46,198.19,199.6,198.47,197.96,199.85,198.3,199.17],\"JYP\":[1.8,1.77,1.8,1.77,1.77,1.79,1.79,1.81,1.79,1.8,1.79,1.81,1.81,1.8,1.82,1.78,1.8,1.8,1.79,1.8,1.81,1.78,1.78,1.79,1.8,1.81,1.79,1.8,1.82,1.81],\"EUR\":[238.27,239.72,239.47,242.28,236.03,235.16,240.2,239.92,241.46,238.91,240.87,237.94,242.98,239.2,240.28,238.48,236.34,237.55,237.06,238.59,235.14,238.4,237.64,240.18,239.66,236.69,242.28,235.07,241.14,237.81],\"AUD\":[153.36,153.62,153.11,152.73,152.17,154.26,150.96,150.07,152.41,152.09,153.71,151.36,150.08,154.13,150.24,150.67,152.71,154.12,151.16,151.3,151.53,150.7,154.42,154.79,151,154.83,153.66,151.98,151.92,150.66],\"KWD\":[656.35,659.39,657.09,655.26,656.47,657.58,655.77,654.36,659.6,657.59,658.24,658.41,655,658.28,659.41,658.59,656.84,659.12,659.33,656.17,654.45,654.45,656.83,654.83,655.65,659.65,658.7,654.71,659.54,658.38],\"GBP\":[281.41,278.46,278.7,281.36,277.73,276.23,282.15,278.14,278.93,280.43,282.34,282.04,276.65,281.72,282.59,281.4,276.42,276.96,280.09,278.19,279.96,276.24,278.84,279.65,282.16,282.96,276.06,276.4,278.5,282.44]}",
-        "payloadType": "json",
-        "x": 290,
-        "y": 880,
-        "wires": [
-            [
-                "f61afb9.5ea0808",
-                "98be2c9a.61472"
-            ]
-        ]
-    },
-    {
-        "id": "f61afb9.5ea0808",
-        "type": "function",
-        "z": "4d83ec58.e26e84",
-        "name": "formater",
-        "func": "\n\nconst rates = msg.payload;\nconst index = global.get(\"tempIndex\")\nconst newRates = {\n    USD:rates[\"USD\"][index],\n    AUD:rates[\"AUD\"][index],\n    JPY:rates[\"JYP\"][index],\n    GBP:rates[\"GBP\"][index],\n    EUR:rates[\"EUR\"][index],\n    KWD:rates[\"KWD\"][index],\n}\n\n\nconst now = Date.now()\nvar newMsg = { payload: {[now]:newRates} };\nreturn [newMsg];",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 560,
-        "y": 880,
-        "wires": [
-            [
-                "d5505067.66613",
-                "4ba9143d.8af14c"
-            ]
-        ]
-    },
-    {
-        "id": "4ba9143d.8af14c",
-        "type": "firebase modify",
-        "z": "4d83ec58.e26e84",
-        "name": "push",
-        "firebaseconfig": "6ef5f71b.98f1b8",
-        "childpath": "values",
-        "method": "push",
-        "value": "msg.payload",
-        "priority": "msg.priority",
-        "x": 910,
-        "y": 920,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "d5505067.66613",
-        "type": "debug",
-        "z": "4d83ec58.e26e84",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 770,
-        "y": 880,
-        "wires": []
-    },
-    {
-        "id": "c239dd8c.4da3e",
-        "type": "change",
-        "z": "4d83ec58.e26e84",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "tempIndex",
-                "pt": "global",
-                "to": "payload",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1080,
-        "y": 1020,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "98be2c9a.61472",
-        "type": "function",
-        "z": "4d83ec58.e26e84",
-        "name": "",
-        "func": "var newIndex = global.get(\"tempIndex\")+1;\n\n\nreturn {payload:newIndex};",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 560,
-        "y": 920,
-        "wires": [
-            [
-                "c239dd8c.4da3e",
-                "bba01c5e.61f07"
-            ]
-        ]
-    },
-    {
-        "id": "ce5550aa.953ed",
-        "type": "inject",
-        "z": "4d83ec58.e26e84",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 260,
-        "y": 1000,
-        "wires": [
-            [
-                "b4305e4.25c24a"
-            ]
-        ]
-    },
-    {
-        "id": "b4305e4.25c24a",
-        "type": "change",
-        "z": "4d83ec58.e26e84",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "tempIndex",
-                "pt": "global",
-                "to": "0",
-                "tot": "num"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 500,
-        "y": 1000,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "bba01c5e.61f07",
-        "type": "debug",
-        "z": "4d83ec58.e26e84",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1010,
-        "y": 960,
-        "wires": []
-    },
-    {
-        "id": "695304d7.e3f1ac",
-        "type": "comment",
-        "z": "4d83ec58.e26e84",
-        "name": "## This is just dummy nodes",
-        "info": "## This is just dummy nodes",
-        "x": 300,
-        "y": 820,
-        "wires": []
-    },
-    {
-        "id": "8d919997.754878",
-        "type": "debug",
-        "z": "4d83ec58.e26e84",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 580,
-        "y": 780,
-        "wires": []
-    },
-    {
-        "id": "b4ff1e9d.3edae",
-        "type": "function",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "func": "var price=175;\nvar sd = price*0.000001;\nvar gauss = msg.payload.values[0].value;\n\nvar newPrice = price*(1+gauss*sd);\n\n// var gauss2 = gauss.value;\n\n\n\nreturn {payload:newPrice, Topic:\"New Price\"};",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 880,
-        "y": 280,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "db733dd9.aa4ea",
-        "type": "inject",
-        "z": "ae1d0766.e75b68",
-        "name": "Hourly Timer",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "3600",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "75",
-        "payloadType": "num",
-        "x": 680,
-        "y": 40,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "a64ddbff.9c68c8",
-        "type": "e-mail",
-        "z": "ae1d0766.e75b68",
-        "server": "smtp.gmail.com",
-        "port": "465",
-        "secure": true,
-        "tls": true,
-        "name": "anuradha.thishani@gmail.com",
-        "dname": "Hello email",
-        "x": 330,
-        "y": 420,
-        "wires": []
-    },
-    {
-        "id": "5fc53c46.980464",
-        "type": "inject",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "Hello World Email ",
-        "payload": "Dear All, This is a \"Hello, World\" email.",
-        "payloadType": "str",
-        "x": 130,
-        "y": 400,
-        "wires": [
-            [
-                "a64ddbff.9c68c8",
-                "dabc34a6.2f0098"
-            ]
-        ]
-    },
-    {
-        "id": "6918d921.b76bb8",
-        "type": "debug",
-        "z": "ae1d0766.e75b68",
-        "name": "LKR",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 470,
-        "y": 100,
-        "wires": []
-    },
-    {
-        "id": "efc5c7b2.40ad78",
-        "type": "function",
-        "z": "ae1d0766.e75b68",
-        "name": "API_CALL",
-        "func": "msg.params = {\n        symbols : 'USD,AUD,JPY,GBP,EUR,KWD,LKR'\n};\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 150,
-        "y": 40,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "220eef4a.85562",
-        "type": "function",
-        "z": "ae1d0766.e75b68",
-        "name": "FORMAT_CURRENCIES",
-        "func": "// msg.params = {};\n// // msg.params.base = 'USD'\n// msg.params.symbols = 'KRW'\n// return msg;\n\n// var newMsg = { payload: msg.payload.rates.LKR};\n\n// return newMsg;\n\nvar pay = msg.payload;\nvar top = msg.topic;\n\n// var newMsg = {payload: {LKR:pay.rates.LKR,\n//                         AUD:pay.rates.AUD,\n//                         KWD:pay.rates.KWD,\n//                         JPY:pay.rates.JPY,\n//                         EUR:pay.rates.EUR,\n//                         GBP:pay.rates.GBP}, \n//                         topic:top};\nvar rets = [];\nrets.push({payload:pay.rates.LKR, topic:\"LKR\"})\nrets.push({payload:pay.rates.AUD, topic:\"AUD\"})\nrets.push({payload:pay.rates.KWD, topic:\"KWD\"})\nrets.push({payload:pay.rates.JPY, topic:\"JPY\"})\nrets.push({payload:pay.rates.EUR, topic:\"EUR\"})\nrets.push({payload:pay.rates.GBP, topic:\"GBP\"})\n\n// rets.push({payload:pay.rates.LKR, topic:\"LKR\"})\n// rets.push({payload:pay.rates.AUD, topic:\"AUD\"})\n// rets.push({payload:, topic:\"\"})\n\n\n// rets.push({payload:{GBP:pay.rates.GBP,\n//     EUR:pay.rates.EUR,\n//     JPY:pay.rates.JPY,\n//     KWD:pay.rates.KWD,\n    \n    \n// }, topic:\"MQTT\"})\n\nreturn rets;\n",
-        "outputs": 7,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 190,
-        "y": 200,
-        "wires": [
-            [
-                "6918d921.b76bb8"
-            ],
-            [
-                "42a4dba6.4e5a64"
-            ],
-            [
-                "e6cb7f31.1214b"
-            ],
-            [
-                "a357b00e.cd357"
-            ],
-            [
-                "eb439b5d.d3a968"
-            ],
-            [
-                "2707d4df.00af9c"
-            ],
-            []
-        ]
-    },
-    {
-        "id": "72a71d7f.65ffb4",
-        "type": "inject",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "3600",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "LKR",
-        "payload": "1",
-        "payloadType": "num",
-        "x": 680,
-        "y": 120,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "ac7f07fa.013bf8",
-        "type": "e-mail",
-        "z": "ae1d0766.e75b68",
-        "server": "smtp.gmail.com",
-        "port": "465",
-        "secure": true,
-        "tls": true,
-        "name": "anuradha.thishani@gmail.com",
-        "dname": "Hello email",
-        "x": 670,
-        "y": 200,
-        "wires": []
-    },
-    {
-        "id": "42a4dba6.4e5a64",
-        "type": "debug",
-        "z": "ae1d0766.e75b68",
-        "name": "AUD",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 470,
-        "y": 140,
-        "wires": []
-    },
-    {
-        "id": "e6cb7f31.1214b",
-        "type": "debug",
-        "z": "ae1d0766.e75b68",
-        "name": "KWD",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 470,
-        "y": 180,
-        "wires": []
-    },
-    {
-        "id": "a357b00e.cd357",
-        "type": "debug",
-        "z": "ae1d0766.e75b68",
-        "name": "JPY",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 470,
-        "y": 220,
-        "wires": []
-    },
-    {
-        "id": "eb439b5d.d3a968",
-        "type": "debug",
-        "z": "ae1d0766.e75b68",
-        "name": "EUR",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 470,
-        "y": 260,
-        "wires": []
-    },
-    {
-        "id": "2707d4df.00af9c",
-        "type": "debug",
-        "z": "ae1d0766.e75b68",
-        "name": "GBP",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 470,
-        "y": 300,
-        "wires": []
-    },
-    {
-        "id": "dabc34a6.2f0098",
-        "type": "debug",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 320,
-        "y": 360,
-        "wires": []
-    },
-    {
-        "id": "55bbbae5.2acb04",
-        "type": "function",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "func": "var price=175;\nvar sd = price*0.000001;\nvar gauss = msg.payload.values[0].value;\n\nvar newPrice = price*(1+gauss*sd);\n\n// var gauss2 = gauss.value;\n\n\n\nreturn {payload:newPrice, Topic:\"New Price\"};",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 860,
-        "y": 340,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "cf9b5681.69a348",
-        "type": "function",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "func": "var price=175;\nvar sd = price*0.000001;\nvar gauss = msg.payload.values[0].value;\n\nvar newPrice = price*(1+gauss*sd);\n\n// var gauss2 = gauss.value;\n\n\n\nreturn {payload:newPrice, Topic:\"New Price\"};",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 860,
-        "y": 400,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "8ade8622.717038",
-        "type": "function",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "func": "var price=175;\nvar sd = price*0.000001;\nvar gauss = msg.payload.values[0].value;\n\nvar newPrice = price*(1+gauss*sd);\n\n// var gauss2 = gauss.value;\n\n\n\nreturn {payload:newPrice, Topic:\"New Price\"};",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 840,
-        "y": 460,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "3f0312f5.4ebe8e",
-        "type": "function",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "func": "var price=175;\nvar sd = price*0.000001;\nvar gauss = msg.payload.values[0].value;\n\nvar newPrice = price*(1+gauss*sd);\n\n// var gauss2 = gauss.value;\n\n\n\nreturn {payload:newPrice, Topic:\"New Price\"};",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 820,
-        "y": 520,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "d38ee6cc.d2c308",
-        "type": "function",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "func": "var price=175;\nvar sd = price*0.000001;\nvar gauss = msg.payload.values[0].value;\n\nvar newPrice = price*(1+gauss*sd);\n\n// var gauss2 = gauss.value;\n\n\n\nreturn {payload:newPrice, Topic:\"New Price\"};",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 820,
-        "y": 580,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "f4d065aa.99dee8",
-        "type": "mqtt in",
-        "z": "ae1d0766.e75b68",
-        "name": "IOT_6B/G05/UserNeeds",
-        "topic": "IOT_6B/G05/UserNeeds",
-        "qos": "2",
-        "datatype": "auto",
-        "broker": "27cb39de.f814e6",
-        "x": 150,
-        "y": 480,
-        "wires": [
-            [
-                "5b586330.0763ec"
-            ]
-        ]
-    },
-    {
-        "id": "1eb40c31.dca9e4",
-        "type": "mqtt in",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "topic": "IOT_6B/G05/BuzzerNotification",
-        "qos": "2",
-        "datatype": "auto",
-        "broker": "27cb39de.f814e6",
-        "x": 170,
-        "y": 540,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "2d078f8f.9a1eb",
-        "type": "mqtt in",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "topic": "IOT_6B/G05/CommonData",
-        "qos": "2",
-        "datatype": "auto",
-        "broker": "27cb39de.f814e6",
-        "x": 150,
-        "y": 600,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "84c68d6f.65677",
-        "type": "mqtt out",
-        "z": "ae1d0766.e75b68",
-        "name": "IOT_6B/G05/ceil",
-        "topic": "IOT_6B/G05/BuzzerNotification",
-        "qos": "2",
-        "retain": "true",
-        "broker": "27cb39de.f814e6",
-        "x": 410,
-        "y": 740,
-        "wires": []
-    },
-    {
-        "id": "48a6cbc3.8694f4",
-        "type": "mqtt out",
-        "z": "ae1d0766.e75b68",
-        "name": "IOT_6B/G05/currency",
-        "topic": "IOT_6B/G05/CommonData",
-        "qos": "2",
-        "retain": "true",
-        "broker": "27cb39de.f814e6",
-        "x": 140,
-        "y": 800,
-        "wires": []
-    },
-    {
-        "id": "844f9090.db10a",
-        "type": "inject",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "Harindu Ravin Jayaratne",
-        "payloadType": "str",
-        "x": 170,
-        "y": 740,
-        "wires": [
-            [
-                "84c68d6f.65677"
-            ]
-        ]
-    },
-    {
-        "id": "5b586330.0763ec",
-        "type": "function",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "func": "var inputString = msg.payload;\nvar inputData = inputString.split(\"$\");\n//timestamp$user_email$currency$ceil_percentage$floor_percentage\n\nconst data = {\n    timestamp:inputData[0],\n    user_email:inputData[1],\n    currency:inputData[2],\n    ceil_percentage:parseInt(inputData[3]),\n    floor_percentage:parseInt(inputData[4]),\n}\nreturn{ payload:data};",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 400,
-        "y": 480,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "ae61de6.c90212",
-        "type": "mqtt in",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "topic": "IOT_6B/G05/UserAuth",
-        "qos": "2",
-        "datatype": "auto",
-        "broker": "27cb39de.f814e6",
-        "x": 140,
-        "y": 660,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "1107d372.5bd18d",
-        "type": "mqtt out",
-        "z": "ae1d0766.e75b68",
-        "name": "IOT_6B/G05/currency",
-        "topic": "IOT_6B/G05/UserAuth",
-        "qos": "2",
-        "retain": "true",
-        "broker": "27cb39de.f814e6",
-        "x": 140,
-        "y": 880,
-        "wires": []
-    },
-    {
-        "id": "4fb3f35d.ac78cc",
-        "type": "gaussian",
-        "z": "ae1d0766.e75b68",
-        "name": "Gaussian Random",
-        "mu_day": "0",
-        "sigma_day": "1",
-        "tstart_day": "7",
-        "tend_day": "19",
-        "mu_even": "0",
-        "sigma_even": "1",
-        "tstart_even": "19",
-        "tend_even": "23",
-        "mu_night": "0",
-        "sigma_night": "1",
-        "tstart_night": "0",
-        "tend_night": "7",
-        "layout": "row-spread",
-        "x": 690,
-        "y": 280,
-        "wires": [
-            [
-                "b4ff1e9d.3edae"
-            ]
-        ]
-    },
-    {
-        "id": "f0774816.873978",
-        "type": "gaussian",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "mu_day": "0",
-        "sigma_day": "1",
-        "tstart_day": "7",
-        "tend_day": "19",
-        "mu_even": "0",
-        "sigma_even": "1",
-        "tstart_even": "19",
-        "tend_even": "23",
-        "mu_night": "0",
-        "sigma_night": "1",
-        "tstart_night": "0",
-        "tend_night": "7",
-        "layout": "row-spread",
-        "x": 660,
-        "y": 460,
-        "wires": [
-            [
-                "8ade8622.717038"
-            ]
-        ]
-    },
-    {
-        "id": "ebffa6a8.8a84c8",
-        "type": "gaussian",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "mu_day": "0",
-        "sigma_day": "1",
-        "tstart_day": "7",
-        "tend_day": "19",
-        "mu_even": "0",
-        "sigma_even": "1",
-        "tstart_even": "19",
-        "tend_even": "23",
-        "mu_night": "0",
-        "sigma_night": "1",
-        "tstart_night": "0",
-        "tend_night": "7",
-        "layout": "row-spread",
-        "x": 660,
-        "y": 520,
-        "wires": [
-            [
-                "3f0312f5.4ebe8e"
-            ]
-        ]
-    },
-    {
-        "id": "ef009de9.21fcb",
-        "type": "gaussian",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "mu_day": "0",
-        "sigma_day": "1",
-        "tstart_day": "7",
-        "tend_day": "19",
-        "mu_even": "0",
-        "sigma_even": "1",
-        "tstart_even": "19",
-        "tend_even": "23",
-        "mu_night": "0",
-        "sigma_night": "1",
-        "tstart_night": "0",
-        "tend_night": "7",
-        "layout": "row-spread",
-        "x": 660,
-        "y": 340,
-        "wires": [
-            [
-                "55bbbae5.2acb04"
-            ]
-        ]
-    },
-    {
-        "id": "b52e5763.edae68",
-        "type": "gaussian",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "mu_day": "0",
-        "sigma_day": "1",
-        "tstart_day": "7",
-        "tend_day": "19",
-        "mu_even": "0",
-        "sigma_even": "1",
-        "tstart_even": "19",
-        "tend_even": "23",
-        "mu_night": "0",
-        "sigma_night": "1",
-        "tstart_night": "0",
-        "tend_night": "7",
-        "layout": "row-spread",
-        "x": 660,
-        "y": 400,
-        "wires": [
-            [
-                "cf9b5681.69a348"
-            ]
-        ]
-    },
-    {
-        "id": "829f91b1.e04c7",
-        "type": "gaussian",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "mu_day": "0",
-        "sigma_day": "1",
-        "tstart_day": "7",
-        "tend_day": "19",
-        "mu_even": "0",
-        "sigma_even": "1",
-        "tstart_even": "19",
-        "tend_even": "23",
-        "mu_night": "0",
-        "sigma_night": "1",
-        "tstart_night": "0",
-        "tend_night": "7",
-        "layout": "row-spread",
-        "x": 660,
-        "y": 580,
-        "wires": [
-            [
-                "d38ee6cc.d2c308"
-            ]
-        ]
-    },
-    {
         "id": "b1432b63.61db38",
         "type": "firebase.on",
         "z": "8272fd45.4d821",
@@ -2886,7 +669,7 @@
         "initialize": "",
         "finalize": "",
         "x": 370,
-        "y": 480,
+        "y": 520,
         "wires": [
             [
                 "31571381.b0778c"
@@ -2898,16 +681,17 @@
         "type": "function",
         "z": "8272fd45.4d821",
         "name": "formater",
-        "func": "const rates = msg.payload.rates;\nconst LKR = rates[\"LKR\"]\nconst newRates = {\n    USD:parseFloat((LKR/rates.USD).toFixed(3)),\n    AUD:parseFloat((LKR/rates.AUD).toFixed(3)),\n    JPY:parseFloat((LKR/rates.JPY).toFixed(3)),\n    GBP:parseFloat((LKR/rates.GBP).toFixed(3)),\n    EUR:parseFloat((LKR/rates.EUR).toFixed(3)),\n    KWD:parseFloat((LKR/rates.KWD).toFixed(3)),\n}\n//save currency to global once in a hour\n\nglobal.set(\"current_currencies\",newRates)\n\nconst now = Date.now()\nvar newMsg = { formatedPayload: {[now]:newRates} };\nreturn [newMsg];",
+        "func": "const rates = msg.payload.rates;\nconst LKR = rates[\"LKR\"]\nconst newRates = {\n    USD:parseFloat((LKR/rates.USD).toFixed(3)),\n    AUD:parseFloat((LKR/rates.AUD).toFixed(3)),\n    JPY:parseFloat((LKR/rates.JPY).toFixed(3)),\n    GBP:parseFloat((LKR/rates.GBP).toFixed(3)),\n    EUR:parseFloat((LKR/rates.EUR).toFixed(3)),\n    KWD:parseFloat((LKR/rates.KWD).toFixed(3)),\n}\n//save currency to global once in a hour\n\nglobal.set(\"current_currencies\",newRates)\n\nconst now = Date.now()\nvar newMsg = { payload: {[now]:newRates} };\nreturn [newMsg];",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 740,
-        "y": 500,
+        "x": 580,
+        "y": 520,
         "wires": [
             [
-                "b2654f82.c9d6"
+                "1902bfde.e530e",
+                "ec61a6d4.c6cd08"
             ]
         ]
     },
@@ -2920,8 +704,8 @@
         "base": "",
         "symbols": "",
         "creds": "3a4aeaa5.e720d6",
-        "x": 540,
-        "y": 420,
+        "x": 420,
+        "y": 600,
         "wires": [
             [
                 "c6aace7d.2a93d"
@@ -2938,29 +722,10 @@
         "method": "push",
         "value": "msg.payload",
         "priority": "msg.priority",
-        "x": 1290,
-        "y": 500,
+        "x": 1030,
+        "y": 600,
         "wires": [
             []
-        ]
-    },
-    {
-        "id": "9f3acd6f.3faf6",
-        "type": "function",
-        "z": "8272fd45.4d821",
-        "name": "ceil/floor checker",
-        "func": "const latest = Object.values(msg.formatedPayload)[0];\nconst last =  Object.values(Object.values(msg.payload)[0])[0];\n\nconst selectedNow = last[global.get(\"selected_currency\")];\nconst selectedLast = last[global.get(\"selected_currency\")];\nlet status = \"\";\nif(selectedNow==selectedLast){\n    status = \"no_change\"\n}else{\nconst isWentUp=selectedNow>selectedLast;\nif(isWentUp){\n    const change = (selectedNow-selectedLast)/selectedLast\n    if(change>=global.get(\"ceil\")/100){\n        status=\"ceiling_crossed\"\n    }else{\n        status=\"went_up\"\n    }\n}else{\n    const change = (selectedLast-selectedNow)/selectedLast   \n    if(change>=global.get(\"floor\")/100){\n        status=\"floor_crossed\"\n    }else{\n        status=\"went_down\"\n    }\n}\n}\nreturn {\nlatest,\nlast,\nselectedNow,\nselectedLast,\nstatus,\npayload:msg.formatedPayload\n};",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 1070,
-        "y": 500,
-        "wires": [
-            [
-                "ec61a6d4.c6cd08",
-                "1902bfde.e530e"
-            ]
         ]
     },
     {
@@ -2976,38 +741,9 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1290,
-        "y": 440,
+        "x": 1030,
+        "y": 520,
         "wires": []
-    },
-    {
-        "id": "b2654f82.c9d6",
-        "type": "firebase.once",
-        "z": "8272fd45.4d821",
-        "name": "get last value",
-        "firebaseconfig": "6ef5f71b.98f1b8",
-        "childpath": "values",
-        "repeatifnull": false,
-        "eventType": "value",
-        "queries": [
-            {
-                "name": "orderByValue",
-                "value": "",
-                "valType": ""
-            },
-            {
-                "name": "limitToLast",
-                "value": "1",
-                "valType": "str"
-            }
-        ],
-        "x": 890,
-        "y": 420,
-        "wires": [
-            [
-                "9f3acd6f.3faf6"
-            ]
-        ]
     },
     {
         "id": "bf09b3d1.525",
@@ -3016,7 +752,7 @@
         "name": "Fetch / Push / Check for ceil/floor ",
         "info": "## This is just dummy nodes",
         "x": 210,
-        "y": 420,
+        "y": 460,
         "wires": []
     },
     {
@@ -3041,7 +777,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 180,
-        "y": 480,
+        "y": 520,
         "wires": [
             [
                 "378d4209.d91afe"
@@ -3069,8 +805,8 @@
         "topic": "",
         "payload": "75",
         "payloadType": "num",
-        "x": 180,
-        "y": 780,
+        "x": 140,
+        "y": 860,
         "wires": [
             [
                 "ceaa1f06.6d1d4"
@@ -3087,8 +823,8 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 750,
-        "y": 780,
+        "x": 370,
+        "y": 820,
         "wires": [
             [
                 "9afc634d.6f194",
@@ -3371,8 +1107,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 1030,
-        "y": 780,
+        "x": 630,
+        "y": 860,
         "wires": [
             [
                 "9bb1a166.4623",
@@ -3394,8 +1130,8 @@
         "tls": true,
         "name": "",
         "dname": "Ceil mail",
-        "x": 1480,
-        "y": 760,
+        "x": 1000,
+        "y": 840,
         "wires": []
     },
     {
@@ -3403,13 +1139,13 @@
         "type": "function",
         "z": "8272fd45.4d821",
         "name": "mail body",
-        "func": "\nreturn {\n    payload:`Dear Sir/Madame, Ceil limit is crossed.Current value of  in ${global.get(\"selected_currency\")} is ${global.get(\"current_currencies\")[global.get(\"selected_currency\")]} LKR`,\n    to:global.get(\"current_user\").email,\n    topic:\"Ceil Crossed\"\n    \n};",
+        "func": "\nreturn {\n    payload:`Dear Sir/Madame, Ceil limit is crossed.Current value of ${global.get(\"selected_currency\")} is ${global.get(\"current_currencies\")[global.get(\"selected_currency\")]} LKR`,\n    to:global.get(\"current_user\").email,\n    topic:\"Ceil Crossed\"\n};",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 1330,
-        "y": 760,
+        "x": 860,
+        "y": 840,
         "wires": [
             [
                 "125ddb6.9786025"
@@ -3426,8 +1162,8 @@
         "tls": true,
         "name": "",
         "dname": "Floor mail",
-        "x": 1480,
-        "y": 800,
+        "x": 1000,
+        "y": 880,
         "wires": []
     },
     {
@@ -3440,8 +1176,8 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 1330,
-        "y": 800,
+        "x": 860,
+        "y": 880,
         "wires": [
             [
                 "b872a7e7.f84be8"
@@ -3454,8 +1190,8 @@
         "z": "8272fd45.4d821",
         "name": "Sends notifications",
         "info": "## This is just dummy nodes",
-        "x": 1650,
-        "y": 780,
+        "x": 1170,
+        "y": 860,
         "wires": []
     },
     {
@@ -3586,40 +1322,6 @@
         "wires": [
             []
         ]
-    },
-    {
-        "id": "a135be62.21a95",
-        "type": "function",
-        "z": "2ad522d6.3d80ce",
-        "name": "",
-        "func": "var i;\nvar pay = msg.values;\nvar labels = [\"MACD\",\"Signal\",\"Histogram\"];\nvar series = [\"MACD\",\"Signal\",\"Histogram\"];\nvar data1 = [];\nvar data2 = [];\nvar data3 = [];\n\nfor (i = 2; i < pay.length; i++) {\n    data1.push({\"x\":i,\"y\":pay[i].MACD});\n    data2.push({\"x\":i,\"y\":pay[i].signal});\n    data3.push({\"x\":i,\"y\":pay[i].histogram});\n}\n\n\n\nmsg.payload = [{\"series\":series,\n                \"data\":[data1,data2,data3],\n                \"labels\":labels}];\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 820,
-        "y": 760,
-        "wires": [
-            [
-                "5ab2f904.bcb5e8"
-            ]
-        ]
-    },
-    {
-        "id": "5ab2f904.bcb5e8",
-        "type": "debug",
-        "z": "2ad522d6.3d80ce",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1010,
-        "y": 760,
-        "wires": []
     },
     {
         "id": "8b547eb5.98e5e",
@@ -4125,8 +1827,8 @@
         "qos": "",
         "retain": "",
         "broker": "27cb39de.f814e6",
-        "x": 1650,
-        "y": 720,
+        "x": 1170,
+        "y": 800,
         "wires": []
     },
     {
@@ -4134,13 +1836,13 @@
         "type": "function",
         "z": "8272fd45.4d821",
         "name": "",
-        "func": "let payload = \n    `${parseInt((Date.now()/1000).toString())}$${global.get(\"current_user\").email}$${global.get(\"selected_currency\")}$${1}$${0}`\n\nreturn {payload};",
+        "func": "let payload = \n    `${parseInt((Date.now()/1000).toString())}$${global.get(\"token\")}$${global.get(\"selected_currency\")}$${1}$${0}`\n\nreturn {payload};",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 1320,
-        "y": 720,
+        "x": 850,
+        "y": 800,
         "wires": [
             [
                 "4ab1e32b.98cf7c"
@@ -4199,8 +1901,8 @@
         "qos": "",
         "retain": "",
         "broker": "27cb39de.f814e6",
-        "x": 1650,
-        "y": 840,
+        "x": 1170,
+        "y": 920,
         "wires": []
     },
     {
@@ -4208,13 +1910,13 @@
         "type": "function",
         "z": "8272fd45.4d821",
         "name": "",
-        "func": "let payload = \n    `${parseInt((Date.now()/1000).toString())}$${global.get(\"current_user\").email}$${global.get(\"selected_currency\")}$${0}$${1}`\n\nreturn {payload};",
+        "func": "let payload = \n    `${parseInt((Date.now()/1000).toString())}$${global.get(\"token\")}$${global.get(\"selected_currency\")}$${0}$${1}`\n\nreturn {payload};",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 1320,
-        "y": 840,
+        "x": 850,
+        "y": 920,
         "wires": [
             [
                 "667b15a.8c2aeec"
@@ -4226,13 +1928,13 @@
         "type": "function",
         "z": "8272fd45.4d821",
         "name": "",
-        "func": "const currencies = msg.payload.latest \nconst last = msg.payload.last \n\nlet bitarray = \"\"\nfor (const [key, value] of Object.entries(currencies)) {\n  if(currencies[key]>=last[key]){\n      bitarray=bitarray+\"1\"\n  }else{\n      bitarray=bitarray+\"0\"\n  }\n  console.log(currencies[key],last[key])\n}\n\nlet payload = \n`${parseInt((Date.now()/1000).toString())}$${currencies.USD}$${currencies.GBP}$${currencies.JPY}$${currencies.AUD}$${currencies.KWD}$${currencies.EUR}$${bitarray}`\n   // `${Date.now()}$${global.get(\"current_user\").email}$${global.get(\"selected_currency\")}$${1}$${0}`\n\nreturn {payload};",
+        "func": "const currencies = msg.payload.latest \nconst last = msg.payload.last \nconst array = [\"USD\",\"GBP\",\"JPY\",\"AUD\",\"KWD\",\"EUR\"]\nlet bitarray = \"\"\nfor (const key of array) {\n  if(currencies[key]>=last[key]){\n      bitarray=bitarray+\"1\"\n  }else{\n      bitarray=bitarray+\"0\"\n  }\n  console.log(currencies[key],last[key])\n}\n\nlet payload = \n`${parseInt((Date.now()/1000).toString())}$${currencies.USD}$${currencies.GBP}$${currencies.JPY}$${currencies.AUD}$${currencies.KWD}$${currencies.EUR}$${bitarray}`\n   // `${Date.now()}$${global.get(\"current_user\").email}$${global.get(\"selected_currency\")}$${1}$${0}`\n\nreturn {payload,latest:currencies,last};",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 1080,
-        "y": 920,
+        "x": 540,
+        "y": 980,
         "wires": [
             [
                 "415db567.257c9c"
@@ -4248,8 +1950,8 @@
         "qos": "",
         "retain": "",
         "broker": "27cb39de.f814e6",
-        "x": 1480,
-        "y": 920,
+        "x": 760,
+        "y": 980,
         "wires": []
     },
     {
@@ -4343,493 +2045,11 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 540,
-        "y": 780,
+        "x": 340,
+        "y": 900,
         "wires": [
             [
                 "b2f82d09.08997"
-            ]
-        ]
-    },
-    {
-        "id": "eec6234d.e0a48",
-        "type": "function",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "func": "var price=global.get(\"current_currencies\").USD\nvar sd = price*0.000001;\nvar gauss = msg.payload.values[0].value;\nvar newPrice = price*(1+gauss*sd);\nreturn {payload:newPrice, topic:\"USD\"};",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 1020,
-        "y": 660,
-        "wires": [
-            [
-                "bbb1df13.2f1b3"
-            ]
-        ]
-    },
-    {
-        "id": "b6c5849c.178888",
-        "type": "function",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "func": "var price=global.get(\"current_currencies\").AUD\nvar sd = price*0.000001;\nvar gauss = msg.payload.values[0].value;\nvar newPrice = price*(1+gauss*sd);\nreturn {payload:newPrice, topic:\"AUD\"};",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 1020,
-        "y": 720,
-        "wires": [
-            [
-                "bbb1df13.2f1b3"
-            ]
-        ]
-    },
-    {
-        "id": "b605f5ce.f5c3f8",
-        "type": "function",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "func": "var price=global.get(\"current_currencies\").JPY\nvar sd = price*0.000001;\nvar gauss = msg.payload.values[0].value;\nvar newPrice = price*(1+gauss*sd);\nreturn {payload:newPrice, topic:\"JPY\"};",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 1020,
-        "y": 780,
-        "wires": [
-            [
-                "bbb1df13.2f1b3"
-            ]
-        ]
-    },
-    {
-        "id": "122b055f.c74a5b",
-        "type": "function",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "func": "var price=global.get(\"current_currencies\").GBP\nvar sd = price*0.000001;\nvar gauss = msg.payload.values[0].value;\nvar newPrice = price*(1+gauss*sd);\nreturn {payload:newPrice, topic:\"GBP\"};",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 1020,
-        "y": 840,
-        "wires": [
-            [
-                "bbb1df13.2f1b3"
-            ]
-        ]
-    },
-    {
-        "id": "e0887c89.6d339",
-        "type": "function",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "func": "var price=global.get(\"current_currencies\").EUR\nvar sd = price*0.000001;\nvar gauss = msg.payload.values[0].value;\nvar newPrice = price*(1+gauss*sd);\nreturn {payload:newPrice, topic:\"EUR\"};",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 1020,
-        "y": 900,
-        "wires": [
-            [
-                "bbb1df13.2f1b3"
-            ]
-        ]
-    },
-    {
-        "id": "fe228419.04e6b8",
-        "type": "function",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "func": "var price=global.get(\"current_currencies\").KWD\nvar sd = price*0.000001;\nvar gauss = msg.payload.values[0].value;\nvar newPrice = price*(1+gauss*sd);\nreturn {payload:newPrice, topic:\"KWD\"};",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 1020,
-        "y": 960,
-        "wires": [
-            [
-                "bbb1df13.2f1b3"
-            ]
-        ]
-    },
-    {
-        "id": "a331837b.93b78",
-        "type": "gaussian",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "mu_day": "0",
-        "sigma_day": "1",
-        "tstart_day": "7",
-        "tend_day": "19",
-        "mu_even": "0",
-        "sigma_even": "1",
-        "tstart_even": "19",
-        "tend_even": "23",
-        "mu_night": "0",
-        "sigma_night": "1",
-        "tstart_night": "0",
-        "tend_night": "7",
-        "layout": "row-spread",
-        "x": 840,
-        "y": 660,
-        "wires": [
-            [
-                "eec6234d.e0a48"
-            ]
-        ]
-    },
-    {
-        "id": "f5e59951.f77b88",
-        "type": "gaussian",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "mu_day": "0",
-        "sigma_day": "1",
-        "tstart_day": "7",
-        "tend_day": "19",
-        "mu_even": "0",
-        "sigma_even": "1",
-        "tstart_even": "19",
-        "tend_even": "23",
-        "mu_night": "0",
-        "sigma_night": "1",
-        "tstart_night": "0",
-        "tend_night": "7",
-        "layout": "row-spread",
-        "x": 840,
-        "y": 840,
-        "wires": [
-            [
-                "122b055f.c74a5b"
-            ]
-        ]
-    },
-    {
-        "id": "c3d8592a.54f848",
-        "type": "gaussian",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "mu_day": "0",
-        "sigma_day": "1",
-        "tstart_day": "7",
-        "tend_day": "19",
-        "mu_even": "0",
-        "sigma_even": "1",
-        "tstart_even": "19",
-        "tend_even": "23",
-        "mu_night": "0",
-        "sigma_night": "1",
-        "tstart_night": "0",
-        "tend_night": "7",
-        "layout": "row-spread",
-        "x": 840,
-        "y": 900,
-        "wires": [
-            [
-                "e0887c89.6d339"
-            ]
-        ]
-    },
-    {
-        "id": "d13b9dce.3b519",
-        "type": "gaussian",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "mu_day": "0",
-        "sigma_day": "1",
-        "tstart_day": "7",
-        "tend_day": "19",
-        "mu_even": "0",
-        "sigma_even": "1",
-        "tstart_even": "19",
-        "tend_even": "23",
-        "mu_night": "0",
-        "sigma_night": "1",
-        "tstart_night": "0",
-        "tend_night": "7",
-        "layout": "row-spread",
-        "x": 840,
-        "y": 720,
-        "wires": [
-            [
-                "b6c5849c.178888"
-            ]
-        ]
-    },
-    {
-        "id": "4f7078bb.d7f9b8",
-        "type": "gaussian",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "mu_day": "0",
-        "sigma_day": "1",
-        "tstart_day": "7",
-        "tend_day": "19",
-        "mu_even": "0",
-        "sigma_even": "1",
-        "tstart_even": "19",
-        "tend_even": "23",
-        "mu_night": "0",
-        "sigma_night": "1",
-        "tstart_night": "0",
-        "tend_night": "7",
-        "layout": "row-spread",
-        "x": 840,
-        "y": 780,
-        "wires": [
-            [
-                "b605f5ce.f5c3f8"
-            ]
-        ]
-    },
-    {
-        "id": "908f461d.f94968",
-        "type": "gaussian",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "mu_day": "0",
-        "sigma_day": "1",
-        "tstart_day": "7",
-        "tend_day": "19",
-        "mu_even": "0",
-        "sigma_even": "1",
-        "tstart_even": "19",
-        "tend_even": "23",
-        "mu_night": "0",
-        "sigma_night": "1",
-        "tstart_night": "0",
-        "tend_night": "7",
-        "layout": "row-spread",
-        "x": 840,
-        "y": 960,
-        "wires": [
-            [
-                "fe228419.04e6b8"
-            ]
-        ]
-    },
-    {
-        "id": "616bfb4.cdc6d04",
-        "type": "function",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "func": "const newRates = {\n    USD:msg.USD,\n    AUD:msg.AUD,\n    JPY:msg.JPY,\n    GBP:msg.GBP,\n    EUR:msg.EUR,\n    KWD:msg.KWD\n}\nreturn {payload:newRates};",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 1330,
-        "y": 820,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "34d21f45.62892",
-        "type": "inject",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 680,
-        "y": 660,
-        "wires": [
-            [
-                "a331837b.93b78"
-            ]
-        ]
-    },
-    {
-        "id": "bbb1df13.2f1b3",
-        "type": "join",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "mode": "custom",
-        "build": "object",
-        "property": "payload",
-        "propertyType": "msg",
-        "key": "topic",
-        "joiner": "\\n",
-        "joinerType": "str",
-        "accumulate": false,
-        "timeout": "",
-        "count": "6",
-        "reduceRight": false,
-        "reduceExp": "",
-        "reduceInit": "",
-        "reduceInitType": "",
-        "reduceFixup": "",
-        "x": 1190,
-        "y": 820,
-        "wires": [
-            [
-                "616bfb4.cdc6d04"
-            ]
-        ]
-    },
-    {
-        "id": "260f4553.b375ea",
-        "type": "inject",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 680,
-        "y": 720,
-        "wires": [
-            [
-                "d13b9dce.3b519"
-            ]
-        ]
-    },
-    {
-        "id": "5002bd9c.28cf54",
-        "type": "inject",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 680,
-        "y": 780,
-        "wires": [
-            [
-                "4f7078bb.d7f9b8"
-            ]
-        ]
-    },
-    {
-        "id": "e10c092e.2289d8",
-        "type": "inject",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 680,
-        "y": 840,
-        "wires": [
-            [
-                "f5e59951.f77b88"
-            ]
-        ]
-    },
-    {
-        "id": "93710c45.6c4f8",
-        "type": "inject",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 680,
-        "y": 900,
-        "wires": [
-            [
-                "c3d8592a.54f848"
-            ]
-        ]
-    },
-    {
-        "id": "c4512b6c.93dd08",
-        "type": "inject",
-        "z": "ae1d0766.e75b68",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 680,
-        "y": 960,
-        "wires": [
-            [
-                "908f461d.f94968"
             ]
         ]
     },
@@ -4958,8 +2178,8 @@
         "z": "8272fd45.4d821",
         "name": "Simulate rapid fluctuation ",
         "info": "## This is just dummy nodes",
-        "x": 190,
-        "y": 700,
+        "x": 210,
+        "y": 740,
         "wires": []
     },
     {
@@ -4968,8 +2188,8 @@
         "z": "8272fd45.4d821",
         "name": "MQTT",
         "info": "## This is just dummy nodes",
-        "x": 110,
-        "y": 1020,
+        "x": 450,
+        "y": 1200,
         "wires": []
     },
     {
@@ -6918,8 +4138,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 1020,
-        "y": 660,
+        "x": 530,
+        "y": 700,
         "wires": [
             [
                 "55cdca30.b39a04"
@@ -6973,8 +4193,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1180,
-        "y": 980,
+        "x": 1230,
+        "y": 1100,
         "wires": []
     },
     {
@@ -7019,7 +4239,7 @@
         "y": 360,
         "wires": [
             [
-                "d4ab5e4.2bbf1a"
+                "d3866a12.dde258"
             ]
         ]
     },
@@ -7032,10 +4252,11 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "true",
+        "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 380,
+        "x": 490,
         "y": 360,
         "wires": []
     },
@@ -7311,11 +4532,29 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 770,
-        "y": 720,
+        "x": 540,
+        "y": 760,
         "wires": [
             [
                 "9bb1a166.4623"
+            ]
+        ]
+    },
+    {
+        "id": "d3866a12.dde258",
+        "type": "function",
+        "z": "8272fd45.4d821",
+        "name": "",
+        "func": "\nreturn {ceil:global.get(\"ceil\"),\n    floor:global.get(\"floor\"),\n    user:global.get(\"current_user\"),\n    token:global.get(\"token\"),\n    currencies:global.get(\"current_currencies\")\n    \n};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 360,
+        "y": 360,
+        "wires": [
+            [
+                "d4ab5e4.2bbf1a"
             ]
         ]
     }
